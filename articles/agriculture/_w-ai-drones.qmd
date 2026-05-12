@@ -1,0 +1,564 @@
+```{=html}
+<style>
+        
+[data-widget="w-ai-drones"] * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        
+[data-widget="w-ai-drones"] {
+            font-family: inherit;
+            
+            
+        }
+        
+        
+[data-widget="w-ai-drones"] .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+            border: 1px solid #e4e4e7;
+            padding: 24px;
+        }
+        
+        
+[data-widget="w-ai-drones"] h1 {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 10px;
+            font-size: 28px;
+            color: #2c3e50;
+        }
+        
+        
+[data-widget="w-ai-drones"] .subtitle {
+            text-align: center;
+            color: #7f8c8d;
+            margin-bottom: 25px;
+            font-size: 15px;
+        }
+        
+        
+[data-widget="w-ai-drones"] .tech-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        
+        
+[data-widget="w-ai-drones"] .tech-section {
+            background: #f7f7f8;
+            border-radius: 8px;
+            padding: 20px;
+            border: 1px solid #e4e4e7;
+        }
+        
+        
+[data-widget="w-ai-drones"] .tech-section.full-width {
+            grid-column: 1 / -1;
+        }
+        
+        
+[data-widget="w-ai-drones"] .tech-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #e4e4e7;
+        }
+        
+        
+[data-widget="w-ai-drones"] .tech-icon {
+            width: 50px;
+            height: 50px;
+            background: #2a7d6f;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+        }
+        
+        
+[data-widget="w-ai-drones"] .tech-title {
+            flex: 1;
+        }
+        
+        
+[data-widget="w-ai-drones"] .tech-title h2 {
+            font-size: 20px;
+            color: #2c3e50;
+            margin-bottom: 3px;
+        }
+        
+        
+[data-widget="w-ai-drones"] .tech-title .tech-subtitle {
+            font-size: 13px;
+            color: #7f8c8d;
+            font-weight: normal;
+        }
+        
+        
+[data-widget="w-ai-drones"] .market-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+        
+        
+[data-widget="w-ai-drones"] .stat-box {
+            background: white;
+            padding: 12px;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        
+        
+[data-widget="w-ai-drones"] .stat-value {
+            font-size: 22px;
+            font-weight: bold;
+            color: #2a7d6f;
+            margin-bottom: 4px;
+        }
+        
+        
+[data-widget="w-ai-drones"] .stat-label {
+            font-size: 12px;
+            color: #7f8c8d;
+            line-height: 1.3;
+        }
+        
+        
+[data-widget="w-ai-drones"] .applications {
+            margin-bottom: 15px;
+        }
+        
+        
+[data-widget="w-ai-drones"] .applications h3 {
+            font-size: 15px;
+            color: #2c3e50;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        
+        
+[data-widget="w-ai-drones"] .app-grid {
+            display: grid;
+            gap: 8px;
+        }
+        
+        
+[data-widget="w-ai-drones"] .app-item {
+            background: white;
+            padding: 10px 12px;
+            border-radius: 6px;
+            border-left: 4px solid #2a7d6f;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+        }
+        
+        
+[data-widget="w-ai-drones"] .app-item strong {
+            color: #2c3e50;
+            font-size: 13px;
+            display: block;
+            margin-bottom: 3px;
+        }
+
+
+[data-widget="w-ai-drones"] .app-item p {
+            color: #34495e;
+            font-size: 13px;
+            line-height: 1.5;
+            margin: 0;
+        }
+        
+        
+[data-widget="w-ai-drones"] .impact-box {
+            background: #2a7d6f;
+            color: white;
+            padding: 12px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+        
+        
+[data-widget="w-ai-drones"] .impact-box h3 {
+            font-size: 15px;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        
+        
+[data-widget="w-ai-drones"] .impact-stats {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        
+[data-widget="w-ai-drones"] .impact-stat {
+            text-align: center;
+        }
+        
+        
+[data-widget="w-ai-drones"] .impact-value {
+            font-size: 24px;
+            font-weight: bold;
+            display: block;
+        }
+        
+        
+[data-widget="w-ai-drones"] .impact-label {
+            font-size: 12px;
+            opacity: 0.9;
+        }
+        
+        
+[data-widget="w-ai-drones"] .ml-section {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 15px;
+            border: 1px solid #e4e4e7;
+        }
+        
+        
+[data-widget="w-ai-drones"] .ml-section h3 {
+            font-size: 15px;
+            color: #2c3e50;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        
+        
+[data-widget="w-ai-drones"] .ml-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 10px;
+        }
+        
+        
+[data-widget="w-ai-drones"] .ml-feature {
+            background: #f8f9fa;
+            padding: 10px;
+            border-radius: 6px;
+            border-left: 3px solid #27ae60;
+        }
+        
+        
+[data-widget="w-ai-drones"] .ml-feature strong {
+            color: #2c3e50;
+            font-size: 13px;
+            display: block;
+            margin-bottom: 3px;
+        }
+
+
+[data-widget="w-ai-drones"] .ml-feature p {
+            color: #34495e;
+            font-size: 12px;
+            line-height: 1.4;
+            margin: 0;
+        }
+        
+        
+[data-widget="w-ai-drones"] .citations {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 20px;
+            border: 2px solid #e0e0e0;
+        }
+        
+        
+[data-widget="w-ai-drones"] .citations h3 {
+            font-size: 15px;
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+        
+        
+[data-widget="w-ai-drones"] .citation-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 8px;
+        }
+        
+        
+[data-widget="w-ai-drones"] .citation-item {
+            font-size: 12px;
+            line-height: 1.4;
+            color: #34495e;
+            background: white;
+            padding: 8px;
+            border-radius: 4px;
+        }
+        
+        
+[data-widget="w-ai-drones"] .citation-item a {
+            color: #2a7d6f;
+            text-decoration: none;
+            word-break: break-all;
+        }
+        
+        
+[data-widget="w-ai-drones"] .citation-item a:hover {
+            text-decoration: underline;
+        }
+        
+        
+[data-widget="w-ai-drones"] .citation-number {
+            display: inline-block;
+            width: 18px;
+            height: 18px;
+            background: #2a7d6f;
+            color: white;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 18px;
+            font-weight: bold;
+            margin-right: 5px;
+            font-size: 10px;
+        }
+        
+        
+[data-widget="w-ai-drones"] .efficiency-highlight {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 10px;
+            border-radius: 6px;
+            margin-top: 10px;
+        }
+        
+        
+[data-widget="w-ai-drones"] .efficiency-highlight strong {
+            color: #2c3e50;
+            font-size: 12px;
+            display: block;
+            margin-bottom: 4px;
+        }
+        
+        
+[data-widget="w-ai-drones"] .efficiency-highlight p {
+            color: #34495e;
+            font-size: 11px;
+            line-height: 1.4;
+            margin: 0;
+        }
+    
+
+[data-widget="w-ai-drones"] .container {
+    max-width: none;
+    margin: 0;
+    background: transparent;
+    box-shadow: none;
+    border: none;
+    border-radius: 0;
+    padding: 0.5rem 0;
+}
+</style>
+<div data-widget="w-ai-drones">
+<div class="container">
+        <h1>🤖 AI, Drones & Modern Technologies in Agriculture</h1>
+        <div class="subtitle">Transforming Farming Through Innovation and Data-Driven Decision Making</div>
+        
+        <div class="tech-grid">
+            <!-- AI Section -->
+            <div class="tech-section">
+                <div class="tech-header">
+                    <div class="tech-icon">🧠</div>
+                    <div class="tech-title">
+                        <h2>Artificial Intelligence</h2>
+                        <div class="tech-subtitle">Market growth: $1.6B (2024) → $3.0B (2026)</div>
+                    </div>
+                </div>
+                
+                <div class="market-stats">
+                    <div class="stat-box">
+                        <div class="stat-value">$1.6B</div>
+                        <div class="stat-label">2024 Market</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-value">$3.0B</div>
+                        <div class="stat-label">2026 Projected</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-value">35%</div>
+                        <div class="stat-label">Farm Mgmt Utilization</div>
+                    </div>
+                </div>
+                
+                <div class="applications">
+                    <h3>🎯 Key Applications</h3>
+                    <div class="app-grid">
+                        <div class="app-item">
+                            <strong>Crop Health Monitoring</strong>
+                            <p>Early disease detection via imagery analysis. Plant classification & weeding success rates >90%.</p>
+                        </div>
+                        <div class="app-item">
+                            <strong>Precision Irrigation</strong>
+                            <p>Real-time analysis of weather, soil moisture, and crop water requirements to optimize use.</p>
+                        </div>
+                        <div class="app-item">
+                            <strong>Yield Prediction</strong>
+                            <p>High-accuracy growth monitoring and yield forecasting for harvest planning and logistics.</p>
+                        </div>
+                        <div class="app-item">
+                            <strong>Livestock Management</strong>
+                            <p>Robotic milking, health tracking, behavior monitoring. Poultry: feed optimization & disease detection.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Drones Section -->
+            <div class="tech-section">
+                <div class="tech-header">
+                    <div class="tech-icon">🚁</div>
+                    <div class="tech-title">
+                        <h2>Agricultural Drones</h2>
+                        <div class="tech-subtitle">U.S. market: $2.74B (2024) → $10.45B (2030)</div>
+                    </div>
+                </div>
+                
+                <div class="market-stats">
+                    <div class="stat-box">
+                        <div class="stat-value">$2.74B</div>
+                        <div class="stat-label">U.S. 2024 Market</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-value">$10.45B</div>
+                        <div class="stat-label">U.S. 2030 Projected</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-value">25%</div>
+                        <div class="stat-label">CAGR</div>
+                    </div>
+                </div>
+                
+                <div class="applications">
+                    <h3>🎯 Key Applications</h3>
+                    <div class="app-grid">
+                        <div class="app-item">
+                            <strong>Crop Monitoring (NDVI)</strong>
+                            <p>Normalized Difference Vegetation Index imaging uses detailed color data to indicate plant health.</p>
+                        </div>
+                        <div class="app-item">
+                            <strong>Precision Spraying</strong>
+                            <p>DJI Agras T40: 240 acres/day with 40L tank. Far exceeds traditional methods in efficiency & precision.</p>
+                        </div>
+                        <div class="app-item">
+                            <strong>Field Mapping</strong>
+                            <p>Accurate mapping with elevation data. Identifies drainage patterns, wet/dry spots for efficient irrigation.</p>
+                        </div>
+                        <div class="app-item">
+                            <strong>AI Integration</strong>
+                            <p>Multispectral/thermal sensors + AI algorithms enable real-time monitoring & automated decisions.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="efficiency-highlight">
+                    <strong>⚡ Efficiency Gains</strong>
+                    <p>Survey up to <strong>1,000 acres/day</strong> (vs. traditional methods). Corn, soybean & wheat farmers could save <strong>$1.3B annually</strong> with drone adoption.</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Machine Learning Section (Full Width) -->
+        <div class="tech-section full-width">
+            <div class="tech-header">
+                <div class="tech-icon">🔬</div>
+                <div class="tech-title">
+                    <h2>Machine Learning & IoT Integration</h2>
+                    <div class="tech-subtitle">Adaptive management systems powered by real-time data analytics</div>
+                </div>
+            </div>
+            
+            <div class="ml-section">
+                <h3>🌟 Advanced Capabilities</h3>
+                <div class="ml-features">
+                    <div class="ml-feature">
+                        <strong>Soil & Water Management</strong>
+                        <p>Assess soil moisture levels and optimize irrigation by delivering water directly to roots while maintaining ideal moisture balance.</p>
+                    </div>
+                    <div class="ml-feature">
+                        <strong>Weed Detection</strong>
+                        <p>Agricultural robots achieve >90% accuracy in weed detection, enabling targeted herbicide application and reduced chemical use.</p>
+                    </div>
+                    <div class="ml-feature">
+                        <strong>Real-Time Crop Surveillance</strong>
+                        <p>IoT sensors + cloud computing + AI analytics provide farmers with adaptive systems that dynamically react to environmental changes.</p>
+                    </div>
+                    <div class="ml-feature">
+                        <strong>Policy-Driven Innovation</strong>
+                        <p>Machine learning deployed for precision management and policy optimization, merging data from multiple sources for informed decisions.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Citations -->
+        <div class="citations">
+            <h3>📚 Sources & Citations</h3>
+            <div class="citation-grid">
+                <div class="citation-item">
+                    <span class="citation-number">1</span>
+                    <strong>AI Market Data:</strong> <a href="https://artsmart.ai" target="_blank">ArtSmart</a>
+                </div>
+                <div class="citation-item">
+                    <span class="citation-number">2</span>
+                    <strong>AI Applications:</strong> <a href="https://basicai.com" target="_blank">BasicAI</a>
+                </div>
+                <div class="citation-item">
+                    <span class="citation-number">3</span>
+                    <strong>Yield Prediction:</strong> <a href="https://agrirs.com" target="_blank">Agrirs</a>
+                </div>
+                <div class="citation-item">
+                    <span class="citation-number">4</span>
+                    <strong>IoT Utilization:</strong> <a href="https://globenewswire.com" target="_blank">GlobeNewswire</a>
+                </div>
+                <div class="citation-item">
+                    <span class="citation-number">5</span>
+                    <strong>Livestock AI:</strong> <a href="https://www.udel.edu" target="_blank">University of Delaware</a>
+                </div>
+                <div class="citation-item">
+                    <span class="citation-number">6</span>
+                    <strong>U.S. Drone Market:</strong> <a href="https://farmonaut.com" target="_blank">Farmonaut®</a>
+                </div>
+                <div class="citation-item">
+                    <span class="citation-number">7</span>
+                    <strong>Global Drone Market:</strong> <a href="https://croptracker.com" target="_blank">Croptracker</a>
+                </div>
+                <div class="citation-item">
+                    <span class="citation-number">8</span>
+                    <strong>Precision Spraying:</strong> <a href="https://dronedesk.com" target="_blank">Drone Desk</a>
+                </div>
+                <div class="citation-item">
+                    <span class="citation-number">9</span>
+                    <strong>Efficiency Gains:</strong> <a href="https://extension.umd.edu" target="_blank">University of Maryland Extension</a>
+                </div>
+                <div class="citation-item">
+                    <span class="citation-number">10</span>
+                    <strong>UAV-AI Integration:</strong> <a href="https://www.mdpi.com" target="_blank">MDPI</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+```

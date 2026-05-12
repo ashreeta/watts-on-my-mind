@@ -1,0 +1,258 @@
+/*-- scss:defaults --*/
+
+// ── Palette ───────────────────────────────────────────────────────────
+$primary:           #2a7d6f !default;
+$link-color:        #2a7d6f !default;
+$link-hover-color:  #1d5c52 !default;
+
+// Single consistent background — no boxes
+$body-bg:           #fdfcfa !default;   // barely warm white
+$body-color:        #222222 !default;
+$headings-color:    #111111 !default;
+
+// ── Typography ────────────────────────────────────────────────────────
+$font-family-base:      'Inter', system-ui, sans-serif !default;
+$headings-font-family:  'DM Serif Display', Georgia, serif !default;
+$headings-font-weight:  400 !default;   // DM Serif Display looks best at regular weight
+$font-size-base:        1.0rem !default;
+$line-height-base:      1.8 !default;
+
+// ── Navbar ────────────────────────────────────────────────────────────
+$navbar-bg:   #c7cdcb !default;   // warm light gray
+$navbar-fg:   #222222 !default;   // dark text for light background
+$navbar-hl:   #388c76 !default;
+
+// ── Borders & radius ──────────────────────────────────────────────────
+$border-color:  #e4e2da !default;
+$border-radius: 6px !default;
+
+/*-- scss:rules --*/
+
+// ── Navbar ────────────────────────────────────────────────────────────
+.navbar {
+  border-bottom: 1px solid #d4d2c9;
+}
+
+.navbar-brand {
+  font-family: 'DM Serif Display', Georgia, serif;
+  font-size: 1.3rem;
+  letter-spacing: 0;
+}
+
+.navbar-nav .nav-link {
+  font-size: 0.82rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+// ── Headings weight override (Bootstrap sets bold, DM Serif Display looks best at 400) ──
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6 {
+  font-weight: 400;
+}
+
+// ── Title block ───────────────────────────────────────────────────────
+// No background overrides — inherits $body-bg cleanly
+#title-block-header.quarto-title-block {
+  padding-bottom: 1.8rem;
+  border-bottom: 1px solid $border-color;
+  margin-bottom: 2.5rem;
+}
+
+h1.title {
+  font-size: 2.2rem;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  margin-bottom: 0.5rem;
+}
+
+.description {
+  font-size: 0.98rem;
+  color: #777;
+  line-height: 1.65;
+  margin-top: 0.5rem;
+  margin-bottom: 0;
+  font-style: italic;
+}
+
+// ── Category pills ────────────────────────────────────────────────────
+.quarto-categories {
+  margin-top: 0.6rem;
+  margin-bottom: 0;
+}
+
+.quarto-category {
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  background: #eaf3f1;
+  color: $primary;
+  border: none;
+  padding: 3px 9px;
+  border-radius: 3px;
+}
+
+// ── Date ──────────────────────────────────────────────────────────────
+.quarto-title-meta {
+  margin-top: 1.6rem;
+  padding-top: 0;
+}
+
+.quarto-title-meta-heading {
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #bbb;
+  margin-bottom: 0.15rem;
+}
+
+.quarto-title-meta-contents p.date {
+  font-size: 0.85rem;
+  color: #999;
+  margin: 0;
+  font-weight: 400;
+}
+
+// ── Body text ─────────────────────────────────────────────────────────
+// Inter needs slightly more comfortable paragraph spacing
+.article-content p,
+#quarto-document-content p {
+  margin-bottom: 1.35rem;
+}
+
+// ── Article headings ──────────────────────────────────────────────────
+// DM Serif Display at 400 weight — let the letterforms do the work
+h2 {
+  font-size: 1.65rem;
+  margin-top: 2.8rem;
+  margin-bottom: 0.7rem;
+  padding-bottom: 0.35rem;
+  border-bottom: 1px solid $border-color;
+}
+
+h3 {
+  font-size: 1.25rem;
+  margin-top: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+h4 {
+  font-size: 1.05rem;
+  font-family: 'Inter', system-ui, sans-serif;
+  font-weight: 600;
+  color: #333;
+  margin-top: 1.6rem;
+}
+
+// ── Blockquote ────────────────────────────────────────────────────────
+blockquote {
+  border-left: 2px solid $primary;
+  padding: 0.5rem 1.2rem;
+  margin: 2rem 0;
+  font-style: italic;
+  color: #666;
+}
+
+// ── Links ─────────────────────────────────────────────────────────────
+a {
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+
+// ── Listing cards ─────────────────────────────────────────────────────
+.quarto-listing-default .quarto-post {
+  border: 1px solid $border-color;
+  border-radius: 8px;
+  padding: 1.4rem;
+  background: #ffffff;
+  transition: transform 0.14s ease, box-shadow 0.14s ease;
+}
+
+.quarto-listing-default .quarto-post:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 22px rgba(0,0,0,0.07);
+}
+
+.quarto-listing-default .quarto-post .listing-title {
+  font-family: 'DM Serif Display', Georgia, serif;
+  font-size: 1.15rem;
+  color: #111;
+}
+
+.quarto-listing-default .quarto-post .listing-date {
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #bbb;
+}
+
+// ── TOC ───────────────────────────────────────────────────────────────
+#TOC {
+  font-size: 0.82rem;
+  line-height: 1.7;
+  border-left: 2px solid $border-color;
+  padding-left: 0.9rem;
+}
+
+#TOC a { color: #888; }
+#TOC a:hover, #TOC a.active {
+  color: $primary;
+  text-decoration: none;
+}
+
+// ── Lists ─────────────────────────────────────────────────────────────
+#quarto-document-content ul,
+#quarto-document-content ol {
+  padding-left: 2.8rem;
+}
+
+// ── Tables ────────────────────────────────────────────────────────────
+table {
+  font-size: 0.82rem;
+}
+
+// ── iframes ───────────────────────────────────────────────────────────
+iframe {
+  display: block;
+  border-radius: 8px;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.07);
+  margin: 2.2rem 0;
+}
+
+// ── Inline widgets ────────────────────────────────────────────────────
+[data-widget] {
+  font-size: 0.82rem;
+  line-height: 1.5;
+  margin: 1.8rem 0;
+  overflow-x: auto;
+
+  // Widget-internal headings: compact Inter, no article heading styles
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Inter', system-ui, sans-serif;
+    font-weight: 600;
+    border-bottom: none;
+    padding-bottom: 0;
+    margin-top: 0.6rem;
+    margin-bottom: 0.4rem;
+  }
+  h1 { font-size: 1.1rem; font-weight: 700; text-align: center; margin-bottom: 0.3rem; }
+  h2 { font-size: 1.0rem; }
+  h3 { font-size: 0.88rem; }
+  h4 { font-size: 0.82rem; color: inherit; }
+
+  table { font-size: 0.75rem; }
+  th    { font-size: 0.72rem; }
+}
+
+// ── Footer ────────────────────────────────────────────────────────────
+.nav-footer {
+  font-size: 0.78rem;
+  color: #bbb;
+  border-top: 1px solid $border-color;
+}

@@ -1,0 +1,177 @@
+---
+title: "Energy and Electrification in U.S. Agriculture"
+date: "2025-11-04"
+description: "On-farm energy use, fuel mix, geographic distribution, and electrification opportunities across the U.S. agricultural sector."
+categories: ["agriculture", "electrification", "energy use"]
+---
+
+### Why the US Agriculture Sector Matters
+
+The U.S. is one of the largest exporters of agricultural products in the world. In 2024, it ranked first globally with $176 billion in agricultural exports to 189 countries, with nearly half going to just three destinations: Mexico ($30.3B), Canada ($28.4B), and China ($24.7B). Despite the high value of this sector — which represents about 20% of total U.S. agricultural output — agriculture's direct contribution to GDP remains slightly below 1%, making it a relatively small component of the broader U.S. economy.
+
+The US agricultural sector manages 880 million acres of farmland—39% of total US land area—with cropland alone covering 390 million acres (17% of total US land) ^[[USDA Economic Research Service](https://www.ers.usda.gov/publications/pub-details?pubid=109970)]. This massive land base supports a diverse agricultural economy ranging from irrigated specialty crops in California to corn and soybean production in the Midwest to cattle ranching across the Great Plains.
+
+From an energy perspective, understanding direct on-farm energy consumption is critical because these are the operations farmers directly control and where electrification opportunities are most immediate and actionable.
+
+### Energy Consumption
+
+In 2016, the agricultural sector required 1,872 trillion Btu of energy (548 TWh equivalent), accounting for about 1.9% of total U.S. primary energy consumption ^[[USDA](https://www.usda.gov/oce/energy-and-environment/climate/mitigation)]. Roughly three-fifths of that energy was used directly on-farm, while the remaining two-fifths was used indirectly in the production of fertilizers and pesticides.
+
+A comprehensive analysis of the U.S. food system's energy consumption and greenhouse gas (GHG) emissions — disaggregated by supply-chain stage, fuel type, and food commodity — has been published by [**Armstrong et al. 2025**](<https://pmc.ncbi.nlm.nih.gov/articles/PMC11802779/#CR11>). This article also provides state-level insights into energy use and GHG emissions for on-farm production, food manufacturing, and food distribution.
+
+### Geographic Distribution: Where the Energy Goes
+
+Energy consumption in agriculture is far from uniform across the United States. Five states account for over half of all irrigated acreage and water applied: California, Nebraska, Arkansas, Texas, and Idaho ^[[**USDA NASS**](https://www.nass.usda.gov/Publications/AgCensus/2022/Online_Resources/Farm_and_Ranch_Irrigation_Survey/index.php)].
+
+**Key state-level insights:**
+
+  * **California**: Dominates specialty crop production and irrigation electricity use with ~8 million irrigated acres
+  * **Nebraska**: Second-highest irrigation electricity consumption (9% of state total), 8 million irrigated acres
+  * **Iowa**: Major corn and soybean production, relatively lower irrigation but high fertilizer use
+  * **Texas**: Large-scale cattle operations and cotton production
+  * **Idaho**: 10% of state electricity dedicated to agricultural irrigation
+
+### The Energy Mix: A Fuel-Diverse Sector
+
+Direct on-farm energy consumption breaks down as follows ^[[USDA and Department of Energy](https://www.usda.gov/oce/energy-and-environment/climate/mitigation)]:
+
+  * **Diesel**: 44% (powering tractors, harvesters, and heavy machinery)
+  * **Electricity**: 24% (irrigation, cooling, and lighting)
+  * **Natural gas**: 13% (heating and grain drying)
+  * **Gasoline**: 11% (light equipment and vehicles)
+  * **Liquefied petroleum gas (propane)**: 7% (grain dryers, heating, forklifts)
+
+**Figure 1** provides an interactive breakdown of direct on-farm agricultural energy by function, fuel type, and electrification potential.
+
+{{< include _w-energy-consumption.qmd >}}
+
+### Energy Use Across Agricultural Categories and Functions
+
+### Crop Production
+
+**Field operations** (largest energy consumer):
+
+  * Tractors and combines: Powered primarily by diesel, ranging from small tractors (<100 HP) to massive combines (400+ HP)
+  * Planting and harvesting equipment: Predominantly diesel
+  * Sprayers and applicators: Diesel/gasoline powered
+  * Current electrification status: Only 24% of direct energy is electricity
+
+**Irrigation** (largest electricity consumer):
+
+  * Electric pumps dominate in grid-accessible areas
+  * Diesel pumps still common in remote locations (2-40 gallons per acre)
+  * Center pivot systems can consume 26.2 TWh annually nationwide
+  * System design assumption: Traditional systems sized for 20-24 hour operation with Pumping Utilization Ratio (PUR) of 0.85 ^[[Agriculture Victoria](https://agriculture.vic.gov.au/farm-management/water/irrigation/centre-pivot-and-lateral-move-systems/centre-pivot-system-capacity)]
+
+**Crop processing**:
+
+  * Grain dryers: Over 80% use propane as primary energy source
+  * High-temperature drying: Propane or electricity
+  * Conveyors and elevators: Mixed propane/electricity
+
+### Livestock Operations
+
+**Climate control and housing**:
+
+  * Building heating (barns, poultry houses, greenhouses): Propane-fired furnaces, boilers, and radiant heaters
+  * Ventilation systems: Electricity (often 24/7 operation)
+  * Cooling and refrigeration: Electricity (dairies run continuously)
+
+**Production processes**:
+
+  * Milking systems: Electricity
+  * Hot water for sanitation: Propane/natural gas
+  * Waste management: Electricity/diesel
+  * Feeding systems: Electricity/diesel
+
+### Support Functions
+
+  * Forklifts and material handling: Propane-powered forklifts common
+  * Backup generators: Propane for grid-independent power
+  * Lighting: Increasingly LED (electricity)
+  * Water distribution: Electric pumps
+
+### Electrification Potential
+
+The potential for agricultural electrification is substantial, though nuanced. Research estimates the US agricultural sector could save over $1 billion annually through energy efficiency improvements in irrigation motor systems, lighting, and on-site transportation ^[[American Council for an Energy-Efficient Economy](https://www.aceee.org/research-report/ie053)]. When coordinated with renewable energy sources, farm electrification can decrease the carbon footprint by 44-70% depending on farm type ^[[Renewable Agriculture and Food Systems](https://www.cambridge.org/core/journals/renewable-agriculture-and-food-systems)].
+
+### The Efficiency Advantage
+
+The economics of electrification hinge on a fundamental physics advantage: electric motors operate at 77-90% efficiency converting energy to useful work, while diesel engines achieve only 11-35% thermal efficiency ^[[US Department of Energy](https://www.energy.gov/eere/iedo/motor-systems)]. This 2-3x efficiency advantage fundamentally changes the cost equation, even in states with higher electricity prices.
+
+**Example cost comparison** (diesel at $3.50/gallon):
+
+  * Diesel tractor: ~$0.29 per useful kWh delivered
+  * Electric tractor in California (20¢/kWh electricity): ~$0.235 per useful kWh
+  * Electric tractor in Nebraska (10¢/kWh electricity): ~$0.118 per useful kWh
+
+Even in high-electricity-price states like California (20¢/kWh), electric equipment can be 20% cheaper to operate than diesel. In low-cost states like Nebraska or Texas (9-11¢/kWh), the savings reach 60%.
+
+**Figure 2** presents a comprehensive roadmap for farm equipment electrification potential, showing technology readiness timelines and implementation pathways for different equipment categories.
+
+{{< include _w-electrification-roadmap.qmd >}}
+
+### Technology-Specific Opportunities
+
+**1\. Electric Tractors and Field Equipment** (Highest potential impact)
+
+The US tractor market encompasses approximately 360,000-370,000 units annually, with the total installed base estimated at 4-5 million tractors across all farms ^[[Association of Equipment Manufacturers](https://www.aem.org/); [Grand View Research](https://www.grandviewresearch.com/)]. Diesel fuel powers 44% of direct on-farm energy consumption (approximately 493 trillion Btu annually), with the majority consumed by tractors and field equipment.
+
+If 50% of tractors under 100 HP were electrified—representing approximately 1.8-2 million units suitable for battery-electric conversion—the energy transformation would be dramatic. Electric motors operating at 85% efficiency would require only 52-58 TWh annually to replace the 493 trillion Btu of diesel fuel (assuming 30% diesel engine efficiency). This represents elimination of nearly half of agricultural diesel consumption while adding only 70-75% to current agricultural electricity demand of 75-85 TWh.
+
+The market is responding: electric tractor sales grew from a negligible base in 2020 to an estimated market size of $0.7 billion in 2024, projected to reach $3.4 billion by 2030 ^[[Markets and Markets](https://www.marketsandmarkets.com/)]. Key players include [Monarch Tractor](<https://www.monarchtractor.com/>) (whose customers saved $198,000 in fuel expenses in the company's first year), John Deere's 8R/9R autonomous electric series, and AGCO's electrification partnerships. However, large tractors above 300 HP and combines remain technologically constrained by current battery limitations, likely requiring diesel-electric hybrid solutions for the next 5-10 years.
+
+**2\. Irrigation Systems**
+
+The US operates approximately 600,000 irrigation pumps across 58 million irrigated acres ^[[Cadeo Group & Hydraulic Institute](https://www.pumps.org/)]. The current power source distribution varies significantly by region: in Georgia, for example, electric motors comprise over 80% of irrigation power units, diesel engines 15%, and gasoline/LP gas less than 5% ^[[University of Georgia Extension](https://extension.uga.edu/)]. This represents a dramatic shift from 30 years ago when diesel engines comprised more than 80% of power units.
+
+The transition from diesel to electric irrigation pumps delivers substantial efficiency gains. Electric pumping systems achieve 75-85% overall efficiency compared to diesel-powered pumps at only 18-35% efficiency ^[[University of Arkansas Extension](https://www.uaex.uada.edu/)]. A study by Cadeo found that switching the remaining diesel pumps to electric could save farmers $1.8 billion annually, with an average diesel pump costing $13,336 per year to operate versus $5,620 for electric—a $7,716 annual savings per pump ^[[Pumps.org](http://Pumps.org)].
+
+The primary barrier to complete electrification is infrastructure: many remaining diesel pumps are in remote locations where electrical grid extension costs can be prohibitive. However, solar-powered irrigation systems offer a compelling solution, with installations in California's Central Valley reducing energy costs by up to 80% ^[[California Energy Commission](https://www.energy.ca.gov/)]. As on-farm renewable generation becomes more cost-effective, the remaining 15-20% of diesel irrigation pumps represent a significant near-term electrification opportunity.
+
+**3\. Building Climate Control**
+
+Livestock operations and controlled environment agriculture currently rely heavily on propane and natural gas for heating, representing approximately 13% of direct on-farm energy (224 trillion Btu annually). Heat pump technology offers a proven, economical electrification pathway with coefficient of performance (COP) values of 3.0 or higher—meaning three units of heat output for every unit of electricity input.
+
+Wisconsin dairy farmers alone could save approximately $24.7 million annually through efficient milk cooling and barn heating systems using heat pumps ^[[Wisconsin Focus on Energy](https://focusonenergy.com/)]. Greenhouse operators are increasingly adopting heat pump systems, particularly in northern climates, achieving 40-60% reductions in heating costs compared to propane systems. The technology is mature and commercially available, with the primary adoption barrier being upfront capital costs rather than technical feasibility.
+
+Ventilation and cooling systems in livestock operations are already electric, though efficiency upgrades to modern Variable Frequency Drive (VFD) systems can reduce energy consumption by 30-50% while improving climate control precision.
+
+**4\. Grain Dryers**
+
+Grain drying represents one of the largest thermal energy demands in agriculture, with over 80% of systems currently propane-powered ^[[Iowa State University Extension](https://www.extension.iastate.edu/)]. The seasonal, high-temperature nature of grain drying (requiring 180-220°F air temperatures) presents unique electrification challenges. However, heat pump grain drying technology exists and is being deployed in pilot installations, particularly in Europe and Canada.
+
+High-temperature heat pumps capable of 160-180°F output are now commercially available, with development underway for units reaching 220°F. The efficiency advantage is substantial: conventional propane dryers achieve 50-60% thermal efficiency, while heat pump systems can deliver COPs of 2.5-3.5, effectively tripling the energy value of electricity compared to direct combustion.
+
+The US grain drying load represents approximately 90-100 trillion Btu annually in propane consumption ^[[USDA Agricultural Marketing Service](https://www.ams.usda.gov/)]. Full electrification using heat pumps operating at COP 3.0 would require approximately 9-10 TWh of electricity while eliminating the propane load entirely—a 13% increase over current agricultural electricity consumption that removes a significant fossil fuel dependency. The primary barriers are technology scaling, capital costs, and infrastructure requirements for high-power electrical service at grain facilities during harvest season.
+
+### The Realistic Electrification Scenario
+
+If the US electrified diesel-powered equipment (44% of direct on-farm energy = ~493 trillion Btu of diesel), the actual electricity needed would be approximately 52-58 TWh annually, given electric motors' superior efficiency. Similarly, electrifying natural gas and propane heating loads (20% of direct energy = ~224 trillion Btu) using heat pumps operating at 300% efficiency (COP 3.0) would require only ~22 TWh of additional electricity while eliminating these fossil fuel loads entirely.
+
+**Combined electrification scenario:**
+
+  * Current agricultural electricity: 75-85 TWh
+  * Add diesel equipment electrification: +52-58 TWh
+  * Add heating/drying electrification: +22 TWh
+  * **Total projected electricity demand: 149-165 TWh**
+  * **Total current direct energy: 1,120 trillion Btu (328 TWh equivalent)**
+  * **Net energy reduction: ~50% due to efficiency improvements**
+
+### Companies and Technological Advancements: The Innovation Frontier
+
+The agricultural electrification revolution is being driven by an ecosystem spanning established equipment manufacturers, precision agriculture startups, and energy management technology companies. Major manufacturers like John Deere, AGCO, and CNH Industrial are investing heavily in electric and autonomous technologies, while new entrants like Monarch Tractor are purpose-building electric equipment from the ground up. Simultaneously, precision agriculture companies such as Climate FieldView (Bayer), Granular (Corteva), and FarmLogs are developing the digital infrastructure that enables farmers to optimize energy consumption and justify electrification investments through data-driven efficiency gains.
+
+**Figure 3** provides an infographic on AI and drone technology applications in agriculture, showcasing both diagnostic and interventional capabilities.
+
+{{< include _w-ai-drones.qmd >}}
+
+### Conclusion
+
+US agriculture's direct on-farm energy consumption of 1,873 trillion Btu represents a significant electrification opportunity. The 44% consumed as diesel offers the largest single pathway for transformation, with electric motors' 2-3x efficiency advantage making the transition economically viable even in high-electricity-cost states when combined with on-farm solar, time-of-use optimization, and lower maintenance costs.
+
+The path forward is selective and strategic rather than wholesale replacement. Small-to-medium tractors, irrigation pumps, building climate control, and grain handling equipment can transition now with existing technology. Large tractors and high-power harvesting equipment will follow as battery technology matures over the next 5-10 years.
+
+With over $1 billion in annual savings potential and 44-70% emissions reduction achievable for direct on-farm operations through comprehensive electrification, agriculture represents an underappreciated but substantial component of the broader energy transition. As rural grid infrastructure expands, battery costs decline, and precision agriculture tools proliferate, farming will evolve from passive energy consumer to active grid participant, contributing flexibility, storage, and distributed renewable generation to the broader energy system.
+
+###

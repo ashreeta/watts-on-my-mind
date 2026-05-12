@@ -1,0 +1,35 @@
+---
+title: "Behind-the-Meter Natural Gas Power Plants: An Emerging Trend"
+date: "2025-12-04"
+description: "Data centers building dedicated gas generation to bypass interconnection queues — market scale, key players, technology, and carbon capture."
+categories: ["natural gas", "data centers", "behind-the-meter"]
+---
+
+Recent work has given me the opportunity to dive deep into U.S. natural gas markets—supply, pipeline infrastructure, and emerging demand patterns.
+
+What impressed me most? The wealth of information from EIA and industry sources. Pipeline operators and gas distributors openly discuss their growth strategies in investor presentations — for example a Kinder Morgan shipper meeting presentation^[[Kinder Morgan TGP Shipper Meeting, 2022](https://pipeline2.kindermorgan.com/Documents/TGP/2022_TGP_Shipper_Meeting-20220817154209.pdf)] and an EIA overview of natural gas supply trends^[[EIA, Natural Gas Supply Trends](https://www.eia.gov/todayinenergy/detail.php?id=66584)].
+
+This article maps the emerging market for behind-the-meter (BTM) natural gas generation at data centers—a short-to-mid-term strategy gaining serious traction. The goal: understand market scale, key players, technology choices, and how renewables factor in amid gas price uncertainty.
+
+**Market Scale and Geography**
+
+Approximately 28 projects totaling ~55 GW are in development or operation across the U.S. (as of May 2026), with heavy concentration in Texas's Permian Basin. This represents a significant shift in how large-scale electricity demand is being met outside traditional utility frameworks. 
+
+BTM approaches bypass the 5-10 year grid interconnection queues that have become a major bottleneck for new load. By connecting directly to gas infrastructure, these projects can be operational in 12-24 months. Data center developers are finding fast-track routes by partnering with natural gas companies eager to execute immediately.
+
+{{< include _w-btm-projects.qmd >}}
+
+**Carbon Capture Still in Play**
+
+Eight projects incorporate carbon capture and storage (CCS) technology, targeting >90% CO₂ capture rates. The 45Q tax credits—available for projects initiated before 2033—continue to make CCS relevant. Post-combustion capture systems from providers like ExxonMobil, GE Vernova, and Shell are being integrated into project designs.
+
+**Technology and Integration**
+
+The technology mix is sophisticated: combined-cycle turbines, post-combustion CCS, and increasingly, hybrid approaches that integrate solar, wind, and battery storage alongside gas generation. This isn't simply a return to fossil fuels—it's a recognition that baseload power needs and grid constraints require flexible, immediately deployable solutions.
+
+**The Strategic Question**
+
+This convergence sidesteps electricity grid constraints while the gas industry expands into a lucrative new market segment. But the long-term trajectory remains uncertain: Will these sites eventually interconnect to the grid? Transition fully to renewables or hydrogen? Or remain as dedicated, off-grid generation?
+
+The interplay between these pathways—and the economics that drive them—will shape both data center development and energy infrastructure investment for years to come.
+

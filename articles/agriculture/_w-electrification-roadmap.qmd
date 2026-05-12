@@ -1,0 +1,676 @@
+```{=html}
+<style>
+        
+[data-widget="w-electrification-roadmap"] * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        
+[data-widget="w-electrification-roadmap"] {
+            font-family: inherit;
+            
+            
+        }
+        
+        
+[data-widget="w-electrification-roadmap"] .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+            border: 1px solid #e4e4e7;
+            padding: 24px;
+        }
+        
+        
+[data-widget="w-electrification-roadmap"] h1 {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 8px;
+            font-size: 26px;
+        }
+        
+        
+[data-widget="w-electrification-roadmap"] .subtitle {
+            text-align: center;
+            color: #7f8c8d;
+            margin-bottom: 20px;
+            font-size: 15px;
+        }
+        
+        
+[data-widget="w-electrification-roadmap"] .scope-section {
+            margin-bottom: 20px;
+            border: 1px solid #2a7d6f;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        
+[data-widget="w-electrification-roadmap"] .scope-header {
+            background: #2a7d6f;
+            color: white;
+            padding: 8px 15px;
+            font-weight: bold;
+            font-size: 14px;
+        }
+        
+        
+[data-widget="w-electrification-roadmap"] .scope-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+        }
+        
+        
+[data-widget="w-electrification-roadmap"] .scope-item {
+            padding: 12px;
+        }
+        
+        
+[data-widget="w-electrification-roadmap"] .scope-item.included {
+            background: #e8f5e9;
+            border-right: 1px solid #3498db;
+        }
+        
+        
+[data-widget="w-electrification-roadmap"] .scope-item.excluded {
+            background: #fff3e0;
+        }
+        
+        
+[data-widget="w-electrification-roadmap"] .scope-title {
+            font-weight: bold;
+            font-size: 13px;
+            margin-bottom: 6px;
+            color: #2c3e50;
+        }
+        
+        
+[data-widget="w-electrification-roadmap"] .scope-content {
+            font-size: 13px;
+            line-height: 1.5;
+        }
+        
+        
+[data-widget="w-electrification-roadmap"] .scope-content strong {
+            color: #2c3e50;
+        }
+        
+        
+[data-widget="w-electrification-roadmap"] .scope-content ul {
+            margin: 4px 0 0 0;
+            padding-left: 18px;
+        }
+        
+        
+[data-widget="w-electrification-roadmap"] .scope-content li {
+            margin: 3px 0;
+        }
+        
+        
+[data-widget="w-electrification-roadmap"] .scope-note {
+            background: #f8f9fa;
+            padding: 10px 15px;
+            font-size: 13px;
+            line-height: 1.6;
+            border-top: 1px solid #2a7d6f;
+            color: #34495e;
+        }
+        
+        
+[data-widget="w-electrification-roadmap"] .legend {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+        
+        
+[data-widget="w-electrification-roadmap"] .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 13px;
+        }
+        
+        
+[data-widget="w-electrification-roadmap"] .legend-color {
+            width: 16px;
+            height: 16px;
+            border-radius: 3px;
+            border: 2px solid #ddd;
+        }
+        
+        
+[data-widget="w-electrification-roadmap"] .status-commercial { background: #27ae60; }
+        
+[data-widget="w-electrification-roadmap"] .status-pilot { background: #f39c12; }
+        
+[data-widget="w-electrification-roadmap"] .status-prototype { background: #e67e22; }
+        
+[data-widget="w-electrification-roadmap"] .status-research { background: #95a5a6; }
+        
+        
+[data-widget="w-electrification-roadmap"] .roadmap {
+            position: relative;
+            margin-top: 15px;
+        }
+        
+        
+[data-widget="w-electrification-roadmap"] .timeline {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 12px;
+            padding: 0 50px;
+            border-bottom: 2px solid #d1d5db;
+            padding-bottom: 8px;
+        }
+        
+        
+[data-widget="w-electrification-roadmap"] .year {
+            font-weight: bold;
+            color: #34495e;
+            font-size: 13px;
+        }
+        
+        
+[data-widget="w-electrification-roadmap"] .tier-section {
+            margin-bottom: 20px;
+        }
+        
+        
+[data-widget="w-electrification-roadmap"] .tier-header {
+            background: #3d5a6b;
+            color: white;
+            padding: 8px 12px;
+            font-weight: bold;
+            border-radius: 5px 5px 0 0;
+            font-size: 14px;
+        }
+        
+        
+[data-widget="w-electrification-roadmap"] .tier-content {
+            border: 1px solid #d1d5db;
+            border-top: none;
+            border-radius: 0 0 5px 5px;
+            padding: 12px;
+            background: #f8f9fa;
+        }
+        
+        
+[data-widget="w-electrification-roadmap"] .tech-row {
+            margin-bottom: 15px;
+            position: relative;
+        }
+        
+        
+[data-widget="w-electrification-roadmap"] .tech-row:last-child {
+            margin-bottom: 0;
+        }
+        
+        
+[data-widget="w-electrification-roadmap"] .tech-header {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 6px;
+        }
+        
+        
+[data-widget="w-electrification-roadmap"] .tech-icon {
+            width: 32px;
+            height: 32px;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            flex-shrink: 0;
+        }
+        
+        
+[data-widget="w-electrification-roadmap"] .tech-name {
+            font-weight: bold;
+            color: #2c3e50;
+            font-size: 14px;
+        }
+        
+        
+[data-widget="w-electrification-roadmap"] .tech-details {
+            font-size: 12px;
+            color: #7f8c8d;
+            margin-left: 40px;
+            margin-bottom: 4px;
+        }
+        
+        
+[data-widget="w-electrification-roadmap"] .timeline-bar-container {
+            position: relative;
+            height: 40px;
+            margin-left: 40px;
+            background: white;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+        
+        
+[data-widget="w-electrification-roadmap"] .timeline-bar {
+            position: absolute;
+            height: 100%;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            padding: 0 8px;
+            font-size: 11px;
+            font-weight: 600;
+            color: white;
+            transition: transform 0.3s ease;
+        }
+        
+        
+[data-widget="w-electrification-roadmap"] .timeline-bar:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            cursor: pointer;
+        }
+        
+        
+[data-widget="w-electrification-roadmap"] .milestone {
+            position: absolute;
+            width: 3px;
+            height: 100%;
+            background: rgba(255,255,255,0.4);
+            top: 0;
+        }
+        
+        
+[data-widget="w-electrification-roadmap"] .milestone-label {
+            position: absolute;
+            bottom: -20px;
+            left: -20px;
+            font-size: 11px;
+            color: white;
+            white-space: nowrap;
+            transform: rotate(-45deg);
+            transform-origin: left bottom;
+        }
+        
+        
+[data-widget="w-electrification-roadmap"] .info-tooltip {
+            position: absolute;
+            background: #2c3e50;
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            font-size: 12px;
+            width: 280px;
+            display: none;
+            z-index: 1000;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            line-height: 1.4;
+        }
+        
+        
+[data-widget="w-electrification-roadmap"] .timeline-bar:hover + .info-tooltip {
+            display: block;
+        }
+        
+        
+[data-widget="w-electrification-roadmap"] .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 12px;
+            margin-top: 20px;
+            padding: 15px;
+            background: #ecf0f1;
+            border-radius: 6px;
+        }
+        
+        
+[data-widget="w-electrification-roadmap"] .stat-box {
+            background: white;
+            padding: 12px;
+            border-radius: 5px;
+            text-align: center;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+        }
+        
+        
+[data-widget="w-electrification-roadmap"] .stat-value {
+            font-size: 20px;
+            font-weight: bold;
+            color: #27ae60;
+        }
+        
+        
+[data-widget="w-electrification-roadmap"] .stat-label {
+            font-size: 12px;
+            color: #7f8c8d;
+            margin-top: 4px;
+        }
+    
+
+[data-widget="w-electrification-roadmap"] .container {
+    max-width: none;
+    margin: 0;
+    background: transparent;
+    box-shadow: none;
+    border: none;
+    border-radius: 0;
+    padding: 0.5rem 0;
+}
+</style>
+<div data-widget="w-electrification-roadmap">
+<div class="container">
+        <h1>Agricultural Electrification Roadmap</h1>
+        <div class="subtitle">Technology Readiness and Timeline (2025-2040) • On-Farm Equipment Electrification</div>
+        
+        <!-- Scope Section -->
+        <div class="scope-section">
+            <div class="scope-header">ROADMAP SCOPE: On-Farm Equipment Only (126-168 TWh of 450 TWh Non-Electric Agricultural Energy)</div>
+            <div class="scope-grid">
+                <div class="scope-item included">
+                    <div class="scope-title">✓ INCLUDED IN THIS ROADMAP</div>
+                    <div class="scope-content">
+                        <strong>On-Farm Equipment (126-168 TWh, 28-37%):</strong>
+                        <ul>
+                            <li>Tractors & field equipment (diesel displacement)</li>
+                            <li>Irrigation pumps (diesel to electric/solar)</li>
+                            <li>Building heating & cooling systems</li>
+                            <li>Grain dryers (propane to electric)</li>
+                            <li>Light vehicles: pickups, ATVs, UTVs (gasoline displacement)</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="scope-item excluded">
+                    <div class="scope-title">✗ NOT INCLUDED</div>
+                    <div class="scope-content">
+                        <strong>Other Agricultural Energy (280-324 TWh, 62-72%):</strong>
+                        <ul>
+                            <li><strong>Fertilizer/pesticide manufacturing (180-220 TWh):</strong> Indirect, off-farm chemical production requiring natural gas</li>
+                            <li><strong>Food processing & distribution (100-120 TWh):</strong> Beyond farm gate operations</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="scope-note">
+                <strong>Note:</strong> Total U.S. agricultural sector energy consumption is ~550 TWh, of which ~100 TWh is already electric. This roadmap addresses electrification potential for specific on-farm equipment categories within the remaining 450 TWh of fossil fuel use. The majority of agricultural energy consumption occurs in off-farm fertilizer production and post-harvest food processing/distribution, which are outside the scope of equipment electrification strategies.
+            </div>
+        </div>
+        
+        <div class="legend">
+            <div class="legend-item">
+                <div class="legend-color status-commercial"></div>
+                <span>⚡⚡ Mature/Commercial</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color status-pilot"></div>
+                <span>⚡ Commercial/Pilot</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color status-prototype"></div>
+                <span>🔧 Prototype</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color status-research"></div>
+                <span>🔬 Research</span>
+            </div>
+        </div>
+        
+        <div class="timeline">
+            <div class="year">2025</div>
+            <div class="year">2028</div>
+            <div class="year">2030</div>
+            <div class="year">2032</div>
+            <div class="year">2035</div>
+            <div class="year">2038</div>
+            <div class="year">2040</div>
+        </div>
+        
+        <div class="roadmap">
+            <!-- TIER 1: READY NOW -->
+            <div class="tier-section">
+                <div class="tier-header">TIER 1: READY NOW (2025-2027)</div>
+                <div class="tier-content">
+                    <!-- Small Tractors -->
+                    <div class="tech-row">
+                        <div class="tech-header">
+                            <div class="tech-icon" style="background: #27ae60;">🚜</div>
+                            <div>
+                                <div class="tech-name">Small Tractors & Equipment (<100 HP)</div>
+                            </div>
+                        </div>
+                        <div class="tech-details">
+                            1.8-2M units • 20-25 TWh displacement • $40K-80K premium • 3-5 yr payback
+                        </div>
+                        <div class="timeline-bar-container">
+                            <div class="timeline-bar status-commercial" style="left: 0%; width: 13.3%;">
+                                Scaling 2025-2027
+                            </div>
+                            <div class="info-tooltip" style="left: 50px; top: 45px;">
+                                <strong>Commercial Products Available</strong><br>
+                                Key Players: Monarch Tractor, John Deere, Solectrac<br>
+                                Runtime: 4-8 hours<br>
+                                Savings: $198K documented<br>
+                                Barrier: Upfront cost, charging infrastructure
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Irrigation Pumps - Grid -->
+                    <div class="tech-row">
+                        <div class="tech-header">
+                            <div class="tech-icon" style="background: #16a085;">💧</div>
+                            <div>
+                                <div class="tech-name">Irrigation Pumps - Grid-Connected</div>
+                            </div>
+                        </div>
+                        <div class="tech-details">
+                            600K pumps • 10-15 TWh displacement • $7,716/pump savings • 3-7 yr payback
+                        </div>
+                        <div class="timeline-bar-container">
+                            <div class="timeline-bar status-commercial" style="left: 0%; width: 33.3%;">
+                                Ongoing Conversion 2025-2030
+                            </div>
+                            <div class="info-tooltip" style="left: 50px; top: 45px;">
+                                <strong>Mature Technology (67.8% already electric)</strong><br>
+                                Efficiency: 75-85% vs 18-35% diesel<br>
+                                Annual Savings: $1.8B sector-wide<br>
+                                Barrier: Grid connectivity in remote areas (8%)
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Irrigation Pumps - Solar -->
+                    <div class="tech-row">
+                        <div class="tech-header">
+                            <div class="tech-icon" style="background: #f39c12;">☀️</div>
+                            <div>
+                                <div class="tech-name">Irrigation Pumps - Solar+Battery</div>
+                            </div>
+                        </div>
+                        <div class="tech-details">
+                            8% remote areas • 80% energy cost reduction • $25K-150K installed
+                        </div>
+                        <div class="timeline-bar-container">
+                            <div class="timeline-bar status-pilot" style="left: 0%; width: 20%;">
+                                Market Expansion 2025-2028
+                            </div>
+                            <div class="info-tooltip" style="left: 50px; top: 45px;">
+                                <strong>Commercial, Rapidly Scaling</strong><br>
+                                Technology: 10-50 kW PV, 20-100 kWh battery<br>
+                                Best in: CA, AZ, TX (high-solar states)<br>
+                                Barrier: Higher upfront cost, intermittency
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Heat Pumps -->
+                    <div class="tech-row">
+                        <div class="tech-header">
+                            <div class="tech-icon" style="background: #e74c3c;">🌡️</div>
+                            <div>
+                                <div class="tech-name">Building Heat Pumps (Livestock/Greenhouse)</div>
+                            </div>
+                        </div>
+                        <div class="tech-details">
+                            2-3 TWh displacement • 40-60% heating cost reduction • $15K-50K/install
+                        </div>
+                        <div class="timeline-bar-container">
+                            <div class="timeline-bar status-commercial" style="left: 0%; width: 33.3%;">
+                                Steady Adoption 2025-2030
+                            </div>
+                            <div class="info-tooltip" style="left: 50px; top: 45px;">
+                                <strong>Mature Technology</strong><br>
+                                COP: 3.0-4.0 (air), 3.5-5.0 (ground)<br>
+                                WI dairy savings: $24.7M annually<br>
+                                Barrier: Capital cost, electrical upgrades
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Light Vehicles -->
+                    <div class="tech-row">
+                        <div class="tech-header">
+                            <div class="tech-icon" style="background: #9b59b6;">🚗</div>
+                            <div>
+                                <div class="tech-name">Light Vehicles (Pickups, ATVs, UTVs)</div>
+                            </div>
+                        </div>
+                        <div class="tech-details">
+                            60-80 TWh displacement • Electric pickups & UTVs available • $20K-40K premium
+                        </div>
+                        <div class="timeline-bar-container">
+                            <div class="timeline-bar status-pilot" style="left: 0%; width: 33.3%;">
+                                Market Growth 2025-2030
+                            </div>
+                            <div class="info-tooltip" style="left: 50px; top: 45px;">
+                                <strong>Commercial Products Available</strong><br>
+                                Key Players: Ford F-150 Lightning, Rivian, Tesla Cybertruck, Polaris EV<br>
+                                Range: 200-300 miles typical<br>
+                                Barrier: Higher upfront cost, charging infrastructure
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- TIER 2: EMERGING -->
+            <div class="tier-section">
+                <div class="tier-header">TIER 2: EMERGING (2028-2035)</div>
+                <div class="tier-content">
+                    <!-- Medium Tractors -->
+                    <div class="tech-row">
+                        <div class="tech-header">
+                            <div class="tech-icon" style="background: #e67e22;">🚜</div>
+                            <div>
+                                <div class="tech-name">Medium Tractors (100-250 HP)</div>
+                            </div>
+                        </div>
+                        <div class="tech-details">
+                            15-20 TWh displacement • 250+ Wh/kg batteries • 2-4 ton packs • 8+ hr work requirement
+                        </div>
+                        <div class="timeline-bar-container">
+                            <div class="timeline-bar status-prototype" style="left: 20%; width: 46.7%;">
+                                Early Commercial 2028-2032 → Widespread 2032-2035
+                            </div>
+                            <div class="info-tooltip" style="left: 150px; top: 45px;">
+                                <strong>Prototype Stage</strong><br>
+                                Technology: Next-gen 250+ Wh/kg, 800V systems<br>
+                                Challenge: Battery weight, long work hours<br>
+                                Solution: Battery-electric for short tasks, hybrid for intensive
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Grain Dryers -->
+                    <div class="tech-row">
+                        <div class="tech-header">
+                            <div class="tech-icon" style="background: #d35400;">🌾</div>
+                            <div>
+                                <div class="tech-name">High-Temperature Grain Dryers</div>
+                            </div>
+                        </div>
+                        <div class="tech-details">
+                            9-10 TWh displacement • 80% propane-powered • $150K-500K capital • 200-500 kW service
+                        </div>
+                        <div class="timeline-bar-container">
+                            <div class="timeline-bar status-prototype" style="left: 20%; width: 53.3%;">
+                                Demo 2025-2028 → Commercial Viability 2028-2033
+                            </div>
+                            <div class="info-tooltip" style="left: 150px; top: 45px;">
+                                <strong>Pilot Installations, Early Commercial</strong><br>
+                                Technology: High-temp heat pumps 160-220°F, COP 2.5-3.5<br>
+                                Not yet competitive without incentives<br>
+                                Barrier: Scaling, high capital, power requirements
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- TIER 3: LIMITED POTENTIAL -->
+            <div class="tier-section">
+                <div class="tier-header">TIER 3: LIMITED POTENTIAL (Beyond 2035)</div>
+                <div class="tier-content">
+                    <!-- Large Tractors -->
+                    <div class="tech-row">
+                        <div class="tech-header">
+                            <div class="tech-icon" style="background: #95a5a6;">🚜</div>
+                            <div>
+                                <div class="tech-name">Large Tractors & Combines (>300 HP)</div>
+                            </div>
+                        </div>
+                        <div class="tech-details">
+                            10-15 TWh • 4-8 MWh battery packs required (20-40 tons) • Not viable with current physics
+                        </div>
+                        <div class="timeline-bar-container">
+                            <div class="timeline-bar status-research" style="left: 66.7%; width: 33.3%;">
+                                Research/Concept → Not Viable Before 2040
+                            </div>
+                            <div class="info-tooltip" style="left: 400px; top: 45px;">
+                                <strong>Research/Concept Stage</strong><br>
+                                Technology Barrier: Prohibitively heavy battery packs<br>
+                                Likely Outcome: Diesel-electric hybrid, renewable diesel, or hydrogen<br>
+                                Full battery-electric not viable with current trajectory
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="stats">
+            <div class="stat-box">
+                <div class="stat-value">~450 TWh</div>
+                <div class="stat-label">Total Non-Electric Ag Energy</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-value">126-168 TWh</div>
+                <div class="stat-label">Equipment Electrification Potential</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-value">28-37%</div>
+                <div class="stat-label">% of Ag Energy Addressable</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-value">95-125 TWh</div>
+                <div class="stat-label">Tier 1 Ready Now (2025-2030)</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-value">24-30 TWh</div>
+                <div class="stat-label">Tier 2 Emerging (2028-2035)</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-value">10-15 TWh</div>
+                <div class="stat-label">Tier 3 Limited (Beyond 2035)</div>
+            </div>
+        </div>
+    </div>
+</div>
+```

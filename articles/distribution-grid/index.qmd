@@ -1,0 +1,1164 @@
+---
+title: "Distribution Grid Analysis: A Primer"
+date: "2026-05-06"
+description: "How distribution grid simulation works, what regulatory frameworks require, and why the absence of combined multi-technology assessment creates systematic investment risk."
+categories: ["distribution grid", "grid planning", "policy", "regulation", "engineering"]
+---
+
+## Open Source Distribution Planning Tools
+
+Commercial platforms and open source frameworks exist for distribution grid planning. Examples of commercial tools are CYMDIST (Eaton), Synergi Electric (DNV), and DEW. They are the standard across most US utilities, favored for their validated interfaces, regulatory acceptance in rate case filings, and dedicated vendor support. Open source tools such as OpenDSS (EPRI), pandapower, and GridLAB-D have become the standard in research and academic work, and are increasingly used by utilities and developers for DER integration studies, valued for their flexibility, Python interoperability, and no licensing costs. The two ecosystems are not mutually exclusive and many utilities run commercial tools for core planning while using open source frameworks for scenario analysis, DER impact studies, and pilot evaluation. The interactive summary below provides details about the capabilities and use cases for open source distribution grid planning tools.
+
+```{=html}
+<style>
+#w-tools {
+  --color-text-primary: #1a1a1a;
+  --color-text-secondary: #666;
+  --color-text-info: #1a5fa8;
+  --color-text-warning: #7d4e00;
+  --color-text-danger: #b91c1c;
+  --color-text-success: #166534;
+  --color-background-primary: #ffffff;
+  --color-background-secondary: #f4f4f5;
+  --color-background-info: #dbeafe;
+  --color-background-warning: #fef3c7;
+  --color-background-danger: #fee2e2;
+  --color-background-success: #dcfce7;
+  --color-border-primary: #a1a1aa;
+  --color-border-secondary: #d4d4d8;
+  --color-border-tertiary: #e4e4e7;
+  --border-radius-lg: 8px;
+  --border-radius-md: 6px;
+  --gap: 12px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: #f9f9f9;
+  color: var(--color-text-primary);
+  padding: 24px;
+  border-radius: 8px;
+  margin: 1.5rem 0;
+}
+#w-tools * { box-sizing: border-box; margin: 0; padding: 0; }
+#w-tools .container { max-width: 860px; margin: 0 auto; }
+#w-tools h1 { font-size: 20px; font-weight: 600; margin-bottom: 4px; }
+#w-tools .subtitle { font-size: 13px; color: var(--color-text-secondary); margin-bottom: 20px; }
+#w-tools .th { font-size: 14px; font-weight: 600; }
+#w-tools .ts { font-size: 12px; color: var(--color-text-secondary); }
+#w-tools .tool-card { background: var(--color-background-primary); border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-lg); padding: 14px 16px; margin-bottom: 10px; cursor: pointer; transition: border-color 0.15s; }
+#w-tools .tool-card:hover { border-color: var(--color-border-secondary); }
+#w-tools .tool-card.active { border-color: var(--color-border-primary); }
+#w-tools .tool-header { display: flex; align-items: flex-start; gap: 10px; }
+#w-tools .tool-name { font-weight: 500; font-size: 15px; flex: 1; }
+#w-tools .tool-org { font-size: 12px; color: var(--color-text-secondary); margin-top: 2px; }
+#w-tools .tier-badge { font-size: 11px; padding: 2px 8px; border-radius: 99px; font-weight: 500; white-space: nowrap; }
+#w-tools .tier-core { background: var(--color-background-info); color: var(--color-text-info); }
+#w-tools .tier-bridge { background: var(--color-background-warning); color: var(--color-text-warning); }
+#w-tools .tier-upstream { background: var(--color-background-success); color: var(--color-text-success); }
+#w-tools .tier-adjacent { background: var(--color-background-secondary); color: var(--color-text-secondary); }
+#w-tools .tool-detail { margin-top: 12px; display: none; border-top: 0.5px solid var(--color-border-tertiary); padding-top: 12px; }
+#w-tools .tool-detail.open { display: block; }
+#w-tools .score-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 12px; }
+#w-tools .score-item { font-size: 12px; }
+#w-tools .score-label { color: var(--color-text-secondary); margin-bottom: 3px; }
+#w-tools .bar-bg { background: var(--color-background-secondary); border-radius: 4px; height: 6px; overflow: hidden; }
+#w-tools .bar-fill { height: 6px; border-radius: 4px; }
+#w-tools .blue-fill { background: #378ADD; }
+#w-tools .teal-fill { background: #1D9E75; }
+#w-tools .amber-fill { background: #BA7517; }
+#w-tools .coral-fill { background: #D85A30; }
+#w-tools .desc { font-size: 13px; color: var(--color-text-secondary); line-height: 1.6; margin-bottom: 10px; }
+#w-tools .tags { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 8px; }
+#w-tools .tag { font-size: 11px; background: var(--color-background-secondary); color: var(--color-text-secondary); border-radius: 4px; padding: 2px 7px; }
+#w-tools .gap-box { background: var(--color-background-danger); border: 0.5px solid #fca5a5; border-radius: var(--border-radius-md); padding: 12px 14px; margin-bottom: 8px; font-size: 13px; color: var(--color-text-danger); line-height: 1.6; }
+#w-tools .gap-box strong { font-weight: 500; display: block; margin-bottom: 3px; }
+#w-tools .verdict { background: var(--color-background-success); border: 0.5px solid #86efac; border-radius: var(--border-radius-md); padding: 12px 14px; margin-top: 12px; font-size: 13px; color: var(--color-text-success); line-height: 1.6; }
+#w-tools .verdict strong { font-weight: 500; display: block; margin-bottom: 3px; }
+#w-tools .filter-row { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 14px; }
+#w-tools .filter-btn { font-size: 12px; padding: 4px 10px; border-radius: 99px; border: 0.5px solid var(--color-border-secondary); background: transparent; color: var(--color-text-secondary); cursor: pointer; }
+#w-tools .filter-btn.active { background: var(--color-background-secondary); color: var(--color-text-primary); border-color: var(--color-border-primary); }
+#w-tools .matrix-table { width: 100%; border-collapse: collapse; font-size: 12px; margin-top: 6px; }
+#w-tools .matrix-table th { font-weight: 500; color: var(--color-text-secondary); text-align: left; padding: 6px 8px; border-bottom: 0.5px solid var(--color-border-tertiary); font-size: 11px; }
+#w-tools .matrix-table td { padding: 7px 8px; border-bottom: 0.5px solid var(--color-border-tertiary); vertical-align: middle; }
+#w-tools .matrix-table tr:last-child td { border-bottom: none; }
+#w-tools .dot-yes { color: #1D9E75; font-size: 14px; }
+#w-tools .dot-partial { color: #BA7517; font-size: 14px; }
+#w-tools .dot-no { color: var(--color-text-secondary); font-size: 14px; opacity: 0.4; }
+#w-tools .tab-row { display: flex; gap: 0; border-bottom: 0.5px solid var(--color-border-tertiary); margin-bottom: 16px; }
+#w-tools .tab { font-size: 13px; padding: 8px 14px; cursor: pointer; color: var(--color-text-secondary); border-bottom: 2px solid transparent; margin-bottom: -1px; }
+#w-tools .tab.active { color: var(--color-text-primary); border-bottom-color: var(--color-text-primary); font-weight: 500; }
+#w-tools .tab-panel { display: none; }
+#w-tools .tab-panel.active { display: block; }
+#w-tools .note { font-size: 12px; color: var(--color-text-secondary); margin-top: 10px; line-height: 1.6; }
+#w-tools h2.section { font-size: 11px; font-weight: 500; color: var(--color-text-secondary); margin: 1.8rem 0 0.6rem; letter-spacing: 0.03em; text-transform: uppercase; }
+</style>
+
+<div id="w-tools">
+<div class="container">
+<h1>Open Source Distribution Planning Tools</h1>
+<p class="subtitle">Capability review across core simulation, format bridges, and upstream adoption tools</p>
+
+<div class="tab-row">
+  <div class="tab active" onclick="switchTabTools('tools')">Tool profiles</div>
+  <div class="tab" onclick="switchTabTools('matrix')">Capability matrix</div>
+  <div class="tab" onclick="switchTabTools('outputs')">Simulation outputs</div>
+  <div class="tab" onclick="switchTabTools('gaps')">Gaps &amp; recommendations</div>
+</div>
+
+<div class="tab-panel active" id="wtools-tools">
+  <div class="filter-row">
+    <button class="filter-btn active" onclick="filterCardsTools('all', this)">All</button>
+    <button class="filter-btn" onclick="filterCardsTools('core', this)">Core simulation</button>
+    <button class="filter-btn" onclick="filterCardsTools('bridge', this)">Format bridges</button>
+    <button class="filter-btn" onclick="filterCardsTools('upstream', this)">Upstream / adoption</button>
+    <button class="filter-btn" onclick="filterCardsTools('adjacent', this)">Adjacent</button>
+  </div>
+
+  <div class="tool-card" data-tier="core" onclick="toggleCardTools(this)">
+    <div class="tool-header"><div><div class="tool-name">OpenDSS</div><div class="tool-org">EPRI — open source (BSD)</div></div><span class="tier-badge tier-core">Core simulation</span></div>
+    <div class="tool-detail">
+      <p class="desc">The de facto open source standard for distribution system simulation. Supports unbalanced multiphase power flow, time-series quasi-static simulation, and a large DER model library. Python interface (dss_python / opendssdirect.py) makes it scriptable. Most research papers and NREL tools (EVI-DiST, SHIFT) use it as the backend solver.</p>
+      <div class="score-grid">
+        <div class="score-item"><div class="score-label">DER/EV/BESS modeling</div><div class="bar-bg"><div class="bar-fill blue-fill" style="width:90%"></div></div></div>
+        <div class="score-item"><div class="score-label">Ease of use</div><div class="bar-bg"><div class="bar-fill teal-fill" style="width:55%"></div></div></div>
+        <div class="score-item"><div class="score-label">Load growth translation</div><div class="bar-bg"><div class="bar-fill amber-fill" style="width:45%"></div></div></div>
+        <div class="score-item"><div class="score-label">Impact quantification</div><div class="bar-bg"><div class="bar-fill coral-fill" style="width:70%"></div></div></div>
+      </div>
+      <div class="tags"><span class="tag">Unbalanced 3-phase</span><span class="tag">Time-series</span><span class="tag">Hosting capacity</span><span class="tag">Volt/VAR</span><span class="tag">Python API</span><span class="tag">V2G (scripted)</span><span class="tag">Grid-forming inverters</span></div>
+    </div>
+  </div>
+
+  <div class="tool-card" data-tier="core" onclick="toggleCardTools(this)">
+    <div class="tool-header"><div><div class="tool-name">pandapower</div><div class="tool-org">University of Kassel / Fraunhofer IEE — open source (BSD)</div></div><span class="tier-badge tier-core">Core simulation</span></div>
+    <div class="tool-detail">
+      <p class="desc">Python-native, pandas-backed power flow and OPF tool. Excellent for symmetric (balanced) distribution and sub-transmission analysis. More accessible than OpenDSS for data scientists already working in Python/pandas. Weaker on unbalanced three-phase analysis.</p>
+      <div class="score-grid">
+        <div class="score-item"><div class="score-label">DER/EV/BESS modeling</div><div class="bar-bg"><div class="bar-fill blue-fill" style="width:70%"></div></div></div>
+        <div class="score-item"><div class="score-label">Ease of use</div><div class="bar-bg"><div class="bar-fill teal-fill" style="width:85%"></div></div></div>
+        <div class="score-item"><div class="score-label">Load growth translation</div><div class="bar-bg"><div class="bar-fill amber-fill" style="width:60%"></div></div></div>
+        <div class="score-item"><div class="score-label">Impact quantification</div><div class="bar-bg"><div class="bar-fill coral-fill" style="width:65%"></div></div></div>
+      </div>
+      <div class="tags"><span class="tag">Balanced power flow</span><span class="tag">OPF</span><span class="tag">Short circuit (IEC 60909)</span><span class="tag">Storage</span><span class="tag">pandas integration</span><span class="tag">GUI</span></div>
+    </div>
+  </div>
+
+  <div class="tool-card" data-tier="core" onclick="toggleCardTools(this)">
+    <div class="tool-header"><div><div class="tool-name">GridLAB-D</div><div class="tool-org">PNNL / DOE — open source (BSD)</div></div><span class="tier-badge tier-core">Core simulation</span></div>
+    <div class="tool-detail">
+      <p class="desc">Agent-based simulator built for smart grid and demand-side management. Strong for behavioral modeling: EV charging schedules, thermostat-controlled loads, SCADA-like controls. Steep learning curve — uses its own GLM scripting language, not Python-native.</p>
+      <div class="score-grid">
+        <div class="score-item"><div class="score-label">DER/EV/BESS modeling</div><div class="bar-bg"><div class="bar-fill blue-fill" style="width:80%"></div></div></div>
+        <div class="score-item"><div class="score-label">Ease of use</div><div class="bar-bg"><div class="bar-fill teal-fill" style="width:35%"></div></div></div>
+        <div class="score-item"><div class="score-label">Load growth translation</div><div class="bar-bg"><div class="bar-fill amber-fill" style="width:50%"></div></div></div>
+        <div class="score-item"><div class="score-label">Impact quantification</div><div class="bar-bg"><div class="bar-fill coral-fill" style="width:75%"></div></div></div>
+      </div>
+      <div class="tags"><span class="tag">Agent-based</span><span class="tag">EV charging behavior</span><span class="tag">Managed charging</span><span class="tag">DR / DSM</span><span class="tag">Unbalanced</span></div>
+    </div>
+  </div>
+
+  <div class="tool-card" data-tier="core" onclick="toggleCardTools(this)">
+    <div class="tool-header"><div><div class="tool-name">PowerModelsDistribution.jl</div><div class="tool-org">LANL / NREL — open source (BSD)</div></div><span class="tier-badge tier-core">Core simulation</span></div>
+    <div class="tool-detail">
+      <p class="desc">Julia-based framework for unbalanced distribution OPF. Supports multiple OPF relaxations. Best tool for optimization-heavy work. Reads OpenDSS files natively. High barrier to entry — requires Julia fluency and power systems math background.</p>
+      <div class="score-grid">
+        <div class="score-item"><div class="score-label">DER/EV/BESS modeling</div><div class="bar-bg"><div class="bar-fill blue-fill" style="width:85%"></div></div></div>
+        <div class="score-item"><div class="score-label">Ease of use</div><div class="bar-bg"><div class="bar-fill teal-fill" style="width:30%"></div></div></div>
+        <div class="score-item"><div class="score-label">Load growth translation</div><div class="bar-bg"><div class="bar-fill amber-fill" style="width:30%"></div></div></div>
+        <div class="score-item"><div class="score-label">Impact quantification</div><div class="bar-bg"><div class="bar-fill coral-fill" style="width:80%"></div></div></div>
+      </div>
+      <div class="tags"><span class="tag">Unbalanced OPF</span><span class="tag">Grid-forming inverters</span><span class="tag">Hosting capacity (OPF)</span><span class="tag">Microgrids</span><span class="tag">Julia</span></div>
+    </div>
+  </div>
+
+  <div class="tool-card" data-tier="bridge" onclick="toggleCardTools(this)">
+    <div class="tool-header"><div><div class="tool-name">DiTTo (Distribution Transformation Tool)</div><div class="tool-org">NREL — open source (BSD)</div></div><span class="tier-badge tier-bridge">Format bridge</span></div>
+    <div class="tool-detail">
+      <p class="desc">Converts feeder models between formats via an intermediate Python API. If you have CYME models from a utility and want to run them in OpenDSS or GridLAB-D, DiTTo is the path. Also supports CIM (IEC 61968/61970). Not a simulator — it's a model translator and modifier.</p>
+      <div class="score-grid">
+        <div class="score-item"><div class="score-label">Format coverage</div><div class="bar-bg"><div class="bar-fill blue-fill" style="width:85%"></div></div></div>
+        <div class="score-item"><div class="score-label">Ease of use</div><div class="bar-bg"><div class="bar-fill teal-fill" style="width:65%"></div></div></div>
+        <div class="score-item"><div class="score-label">Model fidelity retention</div><div class="bar-bg"><div class="bar-fill amber-fill" style="width:70%"></div></div></div>
+        <div class="score-item"><div class="score-label">Active maintenance</div><div class="bar-bg"><div class="bar-fill coral-fill" style="width:80%"></div></div></div>
+      </div>
+      <div class="tags"><span class="tag">CYME → OpenDSS</span><span class="tag">GLM ↔ DSS</span><span class="tag">CIM support</span><span class="tag">Feeder modification API</span><span class="tag">NREL-maintained</span></div>
+    </div>
+  </div>
+
+  <div class="tool-card" data-tier="bridge" onclick="toggleCardTools(this)">
+    <div class="tool-header"><div><div class="tool-name">EVI-DiST</div><div class="tool-org">NREL — open source (BSD)</div></div><span class="tier-badge tier-bridge">Format bridge</span></div>
+    <div class="tool-detail">
+      <p class="desc">Electric Vehicle Infrastructure — Distribution System Integration Tool. Integrates EVI-Pro, DiTTo, HELICS, OpenDSS, ResStock, ComStock, and CYME. Has a web dashboard. Deployed with multiple utilities across 5+ states. Closest thing to a complete load-growth-to-distribution-impact pipeline in open source.</p>
+      <div class="score-grid">
+        <div class="score-item"><div class="score-label">EV impact modeling</div><div class="bar-bg"><div class="bar-fill blue-fill" style="width:95%"></div></div></div>
+        <div class="score-item"><div class="score-label">Ease of use</div><div class="bar-bg"><div class="bar-fill teal-fill" style="width:60%"></div></div></div>
+        <div class="score-item"><div class="score-label">Load growth → feeder pipeline</div><div class="bar-bg"><div class="bar-fill amber-fill" style="width:85%"></div></div></div>
+        <div class="score-item"><div class="score-label">Managed charging / V2G</div><div class="bar-bg"><div class="bar-fill coral-fill" style="width:80%"></div></div></div>
+      </div>
+      <div class="tags"><span class="tag">EV load profiles</span><span class="tag">Transformer loading</span><span class="tag">Voltage profiles</span><span class="tag">Managed charging</span><span class="tag">V2G</span><span class="tag">Web dashboard</span></div>
+    </div>
+  </div>
+
+  <div class="tool-card" data-tier="upstream" onclick="toggleCardTools(this)">
+    <div class="tool-header"><div><div class="tool-name">dGen / dGeo</div><div class="tool-org">NREL — open source</div></div><span class="tier-badge tier-upstream">Upstream / adoption</span></div>
+    <div class="tool-detail">
+      <p class="desc">Projects rooftop solar, storage, and other DER adoption at county/zip level using Bass diffusion modeling. Output is exactly what needs to feed distribution planning tools, but the handoff is manual. No native integration with OpenDSS or pandapower.</p>
+      <div class="score-grid">
+        <div class="score-item"><div class="score-label">DER adoption forecasting</div><div class="bar-bg"><div class="bar-fill blue-fill" style="width:90%"></div></div></div>
+        <div class="score-item"><div class="score-label">Spatial resolution</div><div class="bar-bg"><div class="bar-fill teal-fill" style="width:75%"></div></div></div>
+        <div class="score-item"><div class="score-label">→ distribution model handoff</div><div class="bar-bg"><div class="bar-fill amber-fill" style="width:15%"></div></div></div>
+        <div class="score-item"><div class="score-label">Ease of use</div><div class="bar-bg"><div class="bar-fill coral-fill" style="width:45%"></div></div></div>
+      </div>
+      <div class="tags"><span class="tag">Rooftop solar</span><span class="tag">BESS adoption</span><span class="tag">Bass diffusion</span><span class="tag">Policy scenarios</span><span class="tag">County / zip level</span></div>
+    </div>
+  </div>
+
+  <div class="tool-card" data-tier="adjacent" onclick="toggleCardTools(this)">
+    <div class="tool-header"><div><div class="tool-name">PyPSA</div><div class="tool-org">TU Berlin / Breakthrough Energy — open source (MIT)</div></div><span class="tier-badge tier-adjacent">Adjacent</span></div>
+    <div class="tool-detail">
+      <p class="desc">Primarily a transmission and sector-coupling optimization tool for long-run capacity planning. Has time-series multi-period OPF. Some distribution-level use is possible but not designed for feeder-level unbalanced analysis. Better suited for system-level planning than feeder-level impact assessment.</p>
+      <div class="score-grid">
+        <div class="score-item"><div class="score-label">System-level planning</div><div class="bar-bg"><div class="bar-fill blue-fill" style="width:90%"></div></div></div>
+        <div class="score-item"><div class="score-label">Distribution feeder modeling</div><div class="bar-bg"><div class="bar-fill teal-fill" style="width:20%"></div></div></div>
+        <div class="score-item"><div class="score-label">Ease of use</div><div class="bar-bg"><div class="bar-fill amber-fill" style="width:70%"></div></div></div>
+        <div class="score-item"><div class="score-label">Societal impact metrics</div><div class="bar-bg"><div class="bar-fill coral-fill" style="width:60%"></div></div></div>
+      </div>
+      <div class="tags"><span class="tag">Capacity expansion</span><span class="tag">Sector coupling</span><span class="tag">Multi-period OPF</span><span class="tag">CO₂ constraints</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="tab-panel" id="wtools-matrix">
+  <p class="note" style="margin-bottom:12px">● = native support &nbsp; ◑ = possible with scripting &nbsp; ○ = not supported</p>
+  <table class="matrix-table">
+    <thead><tr><th>Capability</th><th>OpenDSS</th><th>pandapower</th><th>GridLAB-D</th><th>PMD.jl</th><th>EVI-DiST</th></tr></thead>
+    <tbody>
+      <tr><td>Unbalanced 3-phase power flow</td><td class="dot-yes">●</td><td class="dot-no">○</td><td class="dot-yes">●</td><td class="dot-yes">●</td><td class="dot-yes">●</td></tr>
+      <tr><td>Time-series quasi-static simulation</td><td class="dot-yes">●</td><td class="dot-partial">◑</td><td class="dot-yes">●</td><td class="dot-partial">◑</td><td class="dot-yes">●</td></tr>
+      <tr><td>Rooftop solar (PV) modeling</td><td class="dot-yes">●</td><td class="dot-yes">●</td><td class="dot-yes">●</td><td class="dot-yes">●</td><td class="dot-yes">●</td></tr>
+      <tr><td>BESS dispatch modeling</td><td class="dot-yes">●</td><td class="dot-yes">●</td><td class="dot-yes">●</td><td class="dot-yes">●</td><td class="dot-partial">◑</td></tr>
+      <tr><td>EV charging load profiles</td><td class="dot-partial">◑</td><td class="dot-partial">◑</td><td class="dot-yes">●</td><td class="dot-partial">◑</td><td class="dot-yes">●</td></tr>
+      <tr><td>Managed charging / V2G</td><td class="dot-partial">◑</td><td class="dot-no">○</td><td class="dot-yes">●</td><td class="dot-partial">◑</td><td class="dot-yes">●</td></tr>
+      <tr><td>Microgrid islanding</td><td class="dot-yes">●</td><td class="dot-partial">◑</td><td class="dot-yes">●</td><td class="dot-yes">●</td><td class="dot-no">○</td></tr>
+      <tr><td>Grid-forming inverter dynamics</td><td class="dot-partial">◑</td><td class="dot-no">○</td><td class="dot-partial">◑</td><td class="dot-yes">●</td><td class="dot-no">○</td></tr>
+      <tr><td>Hosting capacity analysis</td><td class="dot-yes">●</td><td class="dot-partial">◑</td><td class="dot-no">○</td><td class="dot-yes">●</td><td class="dot-partial">◑</td></tr>
+      <tr><td>Fault analysis / short circuit</td><td class="dot-yes">●</td><td class="dot-yes">●</td><td class="dot-no">○</td><td class="dot-no">○</td><td class="dot-no">○</td></tr>
+      <tr><td>Load growth → feeder input</td><td class="dot-no">○</td><td class="dot-no">○</td><td class="dot-no">○</td><td class="dot-no">○</td><td class="dot-yes">●</td></tr>
+      <tr><td>CYME model import</td><td class="dot-no">○</td><td class="dot-no">○</td><td class="dot-no">○</td><td class="dot-no">○</td><td class="dot-yes">● (via DiTTo)</td></tr>
+      <tr><td>Customer impact metrics</td><td class="dot-partial">◑</td><td class="dot-partial">◑</td><td class="dot-partial">◑</td><td class="dot-partial">◑</td><td class="dot-yes">●</td></tr>
+      <tr><td>Environmental / equity metrics</td><td class="dot-no">○</td><td class="dot-no">○</td><td class="dot-no">○</td><td class="dot-no">○</td><td class="dot-no">○</td></tr>
+    </tbody>
+  </table>
+  <p class="note">PMD.jl = PowerModelsDistribution.jl. EVI-DiST shown as integrated stack (OpenDSS + DiTTo + EVI-Pro).</p>
+</div>
+
+<div class="tab-panel" id="wtools-gaps">
+  <h2 class="section" style="margin-top:0">Key gaps in the open source stack</h2>
+  <div class="gap-box"><strong>Gap 1: Load growth → feeder model translation</strong>No tool natively converts county/zip-level DER adoption forecasts into modified feeder load objects in OpenDSS or GridLAB-D. This is currently a manual, bespoke scripting exercise at every organization that does it.</div>
+  <div class="gap-box"><strong>Gap 2: Societal and equity impact quantification</strong>Every tool stops at electrical metrics (voltage, current, losses). Translating to customer bill impacts, reliability metrics (SAIDI/SAIFI), environmental justice indicators, or community resilience scores requires entirely separate toolchains.</div>
+  <div class="gap-box"><strong>Gap 3: Pilot design and benefit tracking</strong>No open source tool is designed around the pilot evaluation workflow: defining success metrics upfront, ingesting measured data against a counterfactual baseline, and scaling findings to a broader service territory.</div>
+  <div class="gap-box"><strong>Gap 4: Grid-forming inverter dynamics in distribution</strong>OpenDSS is quasi-static and cannot model sub-cycle GFM dynamics. Truly studying GFM behavior on distribution requires dynamic simulators (EMTP-RV, PSCAD) which are all commercial.</div>
+  <div class="verdict"><strong>Recommended stack for DER/EV/BESS impact quantification</strong>dGen or EVI-Pro (load growth) → DiTTo (model translation) → OpenDSS via opendssdirect.py (solver) → custom Python post-processing (benefit metrics). EVI-DiST assembles this for EV-specific work and is worth studying as a template architecture even if extending to a broader DER portfolio.</div>
+</div>
+
+<div class="tab-panel" id="wtools-outputs">
+  <p class="note" style="margin-bottom:12px">● = native output &nbsp; ◑ = with post-processing / scripting &nbsp; ○ = not produced</p>
+  <table class="matrix-table">
+    <thead><tr><th>Raw output</th><th>Unit / format</th><th>OpenDSS</th><th>pandapower</th><th>GridLAB-D</th><th>PMD.jl</th><th>EVI-DiST</th></tr></thead>
+    <tbody>
+      <tr><td>Bus voltage</td><td>pu per bus, per time step</td><td class="dot-yes">●</td><td class="dot-yes">●</td><td class="dot-yes">●</td><td class="dot-yes">●</td><td class="dot-yes">●</td></tr>
+      <tr><td>Line and transformer loading</td><td>% of rated capacity, per segment / device</td><td class="dot-yes">●</td><td class="dot-yes">●</td><td class="dot-yes">●</td><td class="dot-yes">●</td><td class="dot-yes">●</td></tr>
+      <tr><td>Fault current magnitude</td><td>Amps, per fault type per bus</td><td class="dot-yes">●</td><td class="dot-yes">●</td><td class="dot-no">○</td><td class="dot-no">○</td><td class="dot-no">○</td></tr>
+      <tr><td>Hosting capacity</td><td>kW or MW per node / feeder segment</td><td class="dot-yes">●</td><td class="dot-partial">◑</td><td class="dot-no">○</td><td class="dot-yes">●</td><td class="dot-partial">◑</td></tr>
+      <tr><td>Energy losses</td><td>kWh per feeder per period</td><td class="dot-yes">●</td><td class="dot-yes">●</td><td class="dot-yes">●</td><td class="dot-yes">●</td><td class="dot-partial">◑</td></tr>
+      <tr><td>Harmonic distortion (THD / TDD)</td><td>%, per bus, per harmonic order</td><td class="dot-yes">●</td><td class="dot-no">○</td><td class="dot-no">○</td><td class="dot-no">○</td><td class="dot-no">○</td></tr>
+      <tr><td>Transformer hot-spot temperature</td><td>°C, per device, per time step</td><td class="dot-no">○</td><td class="dot-no">○</td><td class="dot-no">○</td><td class="dot-no">○</td><td class="dot-no">○</td></tr>
+    </tbody>
+  </table>
+  <p class="note">Transformer thermal aging (IEEE C57.91) is not modeled by any tool in the open source stack and is not triggered by any regulatory requirement. Harmonic analysis is limited to OpenDSS. PMD.jl = PowerModelsDistribution.jl.</p>
+</div>
+</div>
+</div>
+
+```
+Three methodological limitations are worth noting across the open source stack:
+
+- Hosting capacity analysis using deterministic static methods understates true hosting capacity by 2–5× compared to quasi-static time-series methods, because it uses worst-case snapshots rather than stepping through actual time-varying load and generation patterns.<sup>[1]</sup>
+- As inverter-based resource (IBR) penetration grows, classical fault analysis methods produce increasingly inaccurate results. IBRs provide 1.0–1.2× rated current during faults versus 5–10× from synchronous machines, fundamentally altering protection coordination assumptions at higher DER penetration.<sup>[2]</sup>
+- Transformer thermal aging — governed by IEEE C57.91's Arrhenius model — is not modeled by any tool in the open source stack and is not triggered by any regulatory requirement, despite being directly relevant when load shape changes from cyclic to continuous operation without a corresponding change in peak demand.
+
+
+## Study Types and Regulatory Triggers
+
+Distribution interconnection analysis consists of seven study types. Applicable state tariff or federal standard as well as technology type and size determine the type of analysis that needs to be conducted for a specific interconnection. 
+
+```{=html}
+<style>
+#w-triggers {
+  --text-primary:   #1a1a1a;
+  --text-secondary: #555;
+  --text-muted:     #888;
+  --bg-page:        #f9f9f9;
+  --bg-card:        #ffffff;
+  --border:         #e4e4e7;
+  --border-strong:  #c4c4c8;
+  --teal:           #2a7d6f;
+  --teal-bg:        #eaf3f1;
+  --amber:          #7d4e00;
+  --amber-bg:       #fef3c7;
+  --blue:           #1a5fa8;
+  --blue-bg:        #dbeafe;
+  --gray:           #444;
+  --gray-bg:        #f0f0f0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: var(--bg-page);
+  color: var(--text-primary);
+  padding: 24px;
+  font-size: 14px;
+  border-radius: 8px;
+  margin: 1.5rem 0;
+}
+#w-triggers * { box-sizing: border-box; margin: 0; padding: 0; }
+#w-triggers .container { max-width: 900px; margin: 0 auto; }
+#w-triggers h1 { font-size: 17px; font-weight: 600; margin-bottom: 3px; }
+#w-triggers .subtitle { font-size: 12px; color: var(--text-muted); margin-bottom: 18px; }
+#w-triggers .filters { display: flex; gap: 6px; margin-bottom: 16px; flex-wrap: wrap; }
+#w-triggers .filter-btn {
+  font-size: 12px; font-weight: 500;
+  padding: 4px 12px; border-radius: 99px;
+  border: 1px solid var(--border-strong);
+  background: var(--bg-card); color: var(--text-secondary);
+  cursor: pointer; transition: all 0.12s;
+}
+#w-triggers .filter-btn:hover { border-color: var(--teal); color: var(--teal); }
+#w-triggers .filter-btn.active { background: var(--teal); border-color: var(--teal); color: #fff; }
+#w-triggers table { width: 100%; border-collapse: collapse; background: var(--bg-card); border-radius: 8px; overflow: hidden; border: 1px solid var(--border); }
+#w-triggers thead { background: #f4f4f5; }
+#w-triggers th {
+  text-align: left; padding: 10px 14px;
+  font-size: 11px; font-weight: 600;
+  letter-spacing: 0.05em; text-transform: uppercase;
+  color: var(--text-secondary);
+  border-bottom: 1px solid var(--border);
+}
+#w-triggers td { padding: 11px 14px; vertical-align: top; border-bottom: 1px solid var(--border); line-height: 1.55; }
+#w-triggers tr:last-child td { border-bottom: none; }
+#w-triggers tr.hidden { display: none; }
+#w-triggers tbody tr:hover td { background: #fafafa; }
+#w-triggers .study-cell { display: flex; flex-direction: column; gap: 6px; }
+#w-triggers .study-name { font-weight: 500; font-size: 13.5px; }
+#w-triggers .badge {
+  display: inline-block; font-size: 10px; font-weight: 600;
+  letter-spacing: 0.04em; text-transform: uppercase;
+  padding: 2px 7px; border-radius: 4px; width: fit-content;
+}
+#w-triggers .badge-triggered { background: var(--teal-bg); color: var(--teal); }
+#w-triggers .badge-varies    { background: var(--amber-bg); color: var(--amber); }
+#w-triggers .badge-judgment  { background: var(--blue-bg);  color: var(--blue); }
+#w-triggers .badge-practice  { background: var(--gray-bg);  color: var(--gray); }
+#w-triggers .trigger-text { color: var(--text-primary); font-size: 13px; }
+#w-triggers .standard-text { color: var(--text-secondary); font-size: 12.5px; line-height: 1.6; }
+#w-triggers .gap-note {
+  display: inline-block; margin-top: 5px;
+  font-size: 11.5px; color: #b91c1c;
+  background: #fee2e2; border-radius: 4px;
+  padding: 2px 7px;
+}
+#w-triggers .legend { display: flex; gap: 14px; margin-top: 14px; flex-wrap: wrap; }
+#w-triggers .legend-item { display: flex; align-items: center; gap: 5px; font-size: 11.5px; color: var(--text-muted); }
+#w-triggers .count { font-size: 11px; color: var(--text-muted); margin-left: 4px; }
+#w-triggers .tab-row { display: flex; gap: 0; border-bottom: 1px solid var(--border); margin-bottom: 18px; }
+#w-triggers .wtab { font-size: 13px; padding: 8px 14px; cursor: pointer; color: var(--text-secondary); border-bottom: 2px solid transparent; margin-bottom: -1px; background: none; border-top: none; border-left: none; border-right: none; }
+#w-triggers .wtab.active { color: var(--text-primary); border-bottom-color: var(--teal); font-weight: 500; }
+#w-triggers .wtab-panel { display: none; }
+#w-triggers .wtab-panel.active { display: block; }
+#w-triggers .gap-cell { font-size: 12px; color: #b91c1c; line-height: 1.6; }
+</style>
+
+<div id="w-triggers">
+<div class="container">
+  <h1>Regulatory Triggers by Study Type</h1>
+  <p class="subtitle">Which studies are required, when, and under what standard — across U.S. distribution interconnection frameworks</p>
+
+  <div class="tab-row">
+    <button class="wtab active" onclick="switchTabTriggers('study-types')">By study type</button>
+    <button class="wtab" onclick="switchTabTriggers('by-technology')">By technology</button>
+  </div>
+
+  <div class="wtab-panel active" id="wtrig-study-types">
+  <div class="filters">
+    <button class="filter-btn active" data-filter="all">All <span class="count">7</span></button>
+    <button class="filter-btn" data-filter="triggered">Triggered by interconnection</button>
+    <button class="filter-btn" data-filter="varies">Varies by state</button>
+    <button class="filter-btn" data-filter="judgment">Utility judgment</button>
+    <button class="filter-btn" data-filter="practice">Engineering practice only</button>
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th style="width:22%">Study Type</th>
+        <th style="width:42%">Primary Regulatory Trigger</th>
+        <th style="width:36%">Governing Standard / Requirement</th>
+      </tr>
+    </thead>
+    <tbody id="trig-tbody">
+      <tr data-status="triggered">
+        <td><div class="study-cell">
+          <span class="study-name">Load flow (QSTS)</span>
+          <span class="badge badge-triggered">Triggered</span>
+        </div></td>
+        <td><span class="trigger-text">DER interconnection application above simplified-process threshold; new large load; feeder reconfiguration.</span></td>
+        <td><span class="standard-text">State utility tariff; IEEE 1547-2018; ICA requirement in CA (CPUC Rule 21).</span></td>
+      </tr>
+      <tr data-status="varies">
+        <td><div class="study-cell">
+          <span class="study-name">Hosting capacity analysis</span>
+          <span class="badge badge-varies">Varies by state</span>
+        </div></td>
+        <td><span class="trigger-text">California: mandatory quarterly ICA update (Rule 21). Other states: voluntary or on-request. <strong>No national requirement.</strong></span></td>
+        <td><span class="standard-text">CPUC Rule 21 (CA); IREC 2018 framework; LBNL IDSP components.</span></td>
+      </tr>
+      <tr data-status="triggered">
+        <td><div class="study-cell">
+          <span class="study-name">Fault / short-circuit analysis</span>
+          <span class="badge badge-triggered">Triggered</span>
+        </div></td>
+        <td><span class="trigger-text">New generation or storage interconnection above utility threshold; large load with on-site generation.</span></td>
+        <td><span class="standard-text">ANSI/IEEE C37 series; IEC 60909; IEEE 1547-2018 anti-islanding; NERC FAC-002.</span></td>
+      </tr>
+      <tr data-status="triggered">
+        <td><div class="study-cell">
+          <span class="study-name">Protection coordination</span>
+          <span class="badge badge-triggered">Triggered</span>
+        </div></td>
+        <td><span class="trigger-text">Any interconnection that changes fault current on a feeder above utility threshold.</span></td>
+        <td><span class="standard-text">Utility tariff; IEEE 1547-2018.
+          <span class="gap-note">⚠ No national distribution standard for IBRs — gap identified by NERC 2025</span>
+        </span></td>
+      </tr>
+      <tr data-status="judgment">
+        <td><div class="study-cell">
+          <span class="study-name">Harmonic analysis</span>
+          <span class="badge badge-judgment">Utility judgment</span>
+        </div></td>
+        <td><span class="trigger-text">Large load with significant power electronics (data center, EV charging hub); required if IEEE 519 compliance is at risk.</span></td>
+        <td><span class="standard-text">IEEE 519-2022.
+          <span class="gap-note">⚠ No automatic MW threshold — triggered by utility engineer judgment</span>
+        </span></td>
+      </tr>
+      <tr data-status="practice">
+        <td><div class="study-cell">
+          <span class="study-name">Transformer thermal aging</span>
+          <span class="badge badge-practice">Engineering practice only</span>
+        </div></td>
+        <td><span class="trigger-text">Not systematically required by any regulatory process. Utility engineering practice only.</span></td>
+        <td><span class="standard-text">IEEE C57.91 — an engineering standard, not a regulatory requirement.</span></td>
+      </tr>
+      <tr data-status="practice">
+        <td><div class="study-cell">
+          <span class="study-name">Voltage sag analysis</span>
+          <span class="badge badge-practice">Engineering practice only</span>
+        </div></td>
+        <td><span class="trigger-text">Included in fault analysis by commercial tools (CYMDIST). Not separately required by regulation.</span></td>
+        <td><span class="standard-text">IEEE 1564; IEEE 1159; SEMI F47 (industrial customers).</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="legend">
+    <div class="legend-item"><span class="badge badge-triggered">Triggered</span> Required when interconnection event occurs</div>
+    <div class="legend-item"><span class="badge badge-varies">Varies</span> Mandatory in some states only</div>
+    <div class="legend-item"><span class="badge badge-judgment">Judgment</span> Utility discretion, no automatic threshold</div>
+    <div class="legend-item"><span class="badge badge-practice">Practice</span> Engineering convention, no regulatory requirement</div>
+  </div>
+  </div>
+
+  <div class="wtab-panel" id="wtrig-by-technology">
+  <p style="font-size:13px;color:var(--text-secondary);margin-bottom:14px;">Each technology interconnects through its own process, under its own standard, studied independently. No existing framework requires assessing combined impacts on the same feeder.</p>
+  <table>
+    <thead>
+      <tr>
+        <th style="width:17%">Technology</th>
+        <th style="width:28%">Study triggered</th>
+        <th style="width:27%">Standard / tariff basis</th>
+        <th style="width:28%">Key gap</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span class="study-name">Rooftop solar / DER</span></td>
+        <td><span class="trigger-text">Simplified or full interconnection study depending on size relative to feeder peak. Fast-track possible if within hosting capacity map limits.</span></td>
+        <td><span class="standard-text">IEEE 1547-2018; CPUC Rule 21 (CA); state-specific tariffs. ICA maps used as screen.</span></td>
+        <td><span class="gap-cell">Hosting capacity maps may be stale. No study for cumulative DER below individual thresholds. Map methodology not standardized nationally.</span></td>
+      </tr>
+      <tr>
+        <td><span class="study-name">Battery storage (BESS)</span></td>
+        <td><span class="trigger-text">Interconnection study as combined generation and load; protection coordination required for bidirectional flow. Grid-forming BESS may require additional dynamic study.</span></td>
+        <td><span class="standard-text">IEEE 1547-2018; UL 9540; IEEE 2030.2. Bidirectional metering and protection standards vary by state.</span></td>
+        <td><span class="gap-cell">No established national standard for grid-forming inverter protection coordination. Microgrid relay gap documented by NERC. Bidirectional hosting capacity not routinely calculated.</span></td>
+      </tr>
+      <tr>
+        <td><span class="study-name">EV charging (EVSE)</span></td>
+        <td><span class="trigger-text">Utility load study if installation exceeds existing site service capacity or threshold. No federal EVSE interconnection standard exists.</span></td>
+        <td><span class="standard-text">SAE J3400 / CHAdeMO (hardware); no national grid interconnection standard for EVSE. State utility tariffs only.</span></td>
+        <td><span class="gap-cell">No mandatory interconnection study below MW threshold. Cumulative feeder impact from many EVSE is invisible to the study process. Fleet depot charging treated as single large customer.</span></td>
+      </tr>
+      <tr>
+        <td><span class="study-name">Large load (&gt;5–20 MW)</span></td>
+        <td><span class="trigger-text">Large Load Interconnection Study (LLIS) or material change provision in existing tariff. Includes load flow, fault, harmonic, and protection studies.</span></td>
+        <td><span class="standard-text">State utility tariff (distribution); NERC FAC-002 (bulk); ERCOT PGRR115 Dec 2025 (&gt;25 MW, TX); FERC Docket RM26-4-000 — action by June 2026 (&gt;20 MW at transmission only).</span></td>
+        <td><span class="gap-cell">FERC action will address transmission-level interconnection only. No national standard for distribution-level large load studies. Load shape changes not captured by MW-based triggers.</span></td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+</div>
+</div>
+
+```
+
+## What Individual Studies Cannot Capture
+
+Some utilities, particularly in states with integrated distribution planning requirements such as California and New York, do conduct combined multi-technology feeder analysis internally. But no US regulatory framework requires it as a condition of interconnection approval.
+
+This gap carries two compounding costs: reliability risk from inadequate combined modeling and non-wires alternatives not surfacing when they could be a lower cost solution. With respect to the former, NERC's 2024 advisory linked 16 coordinated IBR disturbance events to poor multi-resource study practice<sup>[3]</sup>. In the case of the latter, technologies studied independently cannot surface whether aggregated DER, storage, or demand response could defer a planned infrastructure upgrade. New York's BQDM program illustrated the stakes: mandated multi-resource analysis identified a ~$200 million demand-side solution where wire-first planning had been tracking a $1 billion substation upgrade.<sup>[4]</sup>
+
+The analysis below maps what compound technology interactions look like when co-located assets are assessed together.
+
+```{=html}
+<style>
+#w-compound {
+  --color-text-primary:#1a1a1a;
+  --color-text-secondary:#666;
+  --color-text-info:#1a5fa8;
+  --color-text-warning:#7d4e00;
+  --color-text-danger:#b91c1c;
+  --color-text-success:#166534;
+  --color-background-primary:#fff;
+  --color-background-secondary:#f4f4f5;
+  --color-background-info:#dbeafe;
+  --color-background-warning:#fef3c7;
+  --color-background-danger:#fee2e2;
+  --color-background-success:#dcfce7;
+  --color-border-primary:#a1a1aa;
+  --color-border-secondary:#d4d4d8;
+  --color-border-tertiary:#e4e4e7;
+  --color-border-danger:#fca5a5;
+  --color-border-success:#86efac;
+  --color-border-warning:#fcd34d;
+  --border-radius-lg:8px;
+  --border-radius-md:6px;
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  background:#f9f9f9;
+  padding:20px;
+  color:#1a1a1a;
+  border-radius:8px;
+  margin:1.5rem 0;
+}
+#w-compound *{box-sizing:border-box;margin:0;padding:0}
+#w-compound .container{max-width:900px;margin:0 auto}
+#w-compound h1{font-size:18px;font-weight:600;margin-bottom:4px}
+#w-compound .subtitle{font-size:13px;color:#666;margin-bottom:20px}
+#w-compound .wrap{font-size:13px;color:var(--color-text-primary)}
+#w-compound .tabs{display:flex;gap:0;border-bottom:0.5px solid var(--color-border-tertiary);margin-bottom:1.25rem;overflow-x:auto}
+#w-compound .tab{font-size:12px;padding:8px 14px;cursor:pointer;color:var(--color-text-secondary);border-bottom:2px solid transparent;margin-bottom:-1px;white-space:nowrap}
+#w-compound .tab.on{color:var(--color-text-primary);border-bottom-color:var(--color-text-primary);font-weight:500}
+#w-compound .panel{display:none}
+#w-compound .panel.on{display:block}
+#w-compound .grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+#w-compound .grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+#w-compound .card{background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);padding:12px 14px}
+#w-compound .card h3{font-size:13px;font-weight:500;margin-bottom:6px}
+#w-compound .badge{display:inline-block;font-size:11px;padding:2px 7px;border-radius:99px;margin-bottom:6px}
+#w-compound .up{background:var(--color-background-danger);color:var(--color-text-danger)}
+#w-compound .dn{background:var(--color-background-info);color:var(--color-text-info)}
+#w-compound .warn{background:var(--color-background-warning);color:var(--color-text-warning)}
+#w-compound .ok{background:var(--color-background-success);color:var(--color-text-success)}
+#w-compound .row{display:flex;justify-content:space-between;align-items:baseline;padding:4px 0;border-bottom:0.5px solid var(--color-border-tertiary);font-size:12px;line-height:1.5}
+#w-compound .row:last-child{border-bottom:none}
+#w-compound .lbl{color:var(--color-text-secondary);flex:1}
+#w-compound .val{font-weight:500;text-align:right;flex:1}
+#w-compound .sec{font-size:11px;font-weight:500;text-transform:uppercase;letter-spacing:.04em;color:var(--color-text-secondary);margin:14px 0 6px}
+#w-compound .bar-wrap{height:6px;background:var(--color-background-secondary);border-radius:3px;overflow:hidden;margin-top:3px}
+#w-compound .bar{height:6px;border-radius:3px}
+#w-compound .blue{background:#378ADD}
+#w-compound .teal{background:#1D9E75}
+#w-compound .amber{background:#BA7517}
+#w-compound .coral{background:#D85A30}
+#w-compound .purple{background:#7F77DD}
+#w-compound .tech-btn{cursor:pointer;padding:5px 10px;border-radius:6px;border:0.5px solid var(--color-border-secondary);background:transparent;color:var(--color-text-secondary);font-size:11px;font-weight:500;transition:background .1s}
+#w-compound .tech-btn.on{background:var(--color-background-secondary);color:var(--color-text-primary);border-color:var(--color-border-primary)}
+#w-compound .detail{display:none;margin-top:10px;padding-top:10px;border-top:0.5px solid var(--color-border-tertiary)}
+#w-compound .detail.on{display:block}
+#w-compound .matrix{width:100%;border-collapse:collapse;font-size:11px}
+#w-compound .matrix th{font-weight:500;color:var(--color-text-secondary);text-align:left;padding:6px 8px;border-bottom:0.5px solid var(--color-border-tertiary);font-size:10px}
+#w-compound .matrix td{padding:6px 8px;border-bottom:0.5px solid var(--color-border-tertiary);vertical-align:top;line-height:1.5}
+#w-compound .matrix tr:last-child td{border-bottom:none}
+#w-compound .matrix .tech{font-weight:500;white-space:nowrap}
+#w-compound .split{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+#w-compound .iou-card{border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);padding:14px 16px}
+#w-compound .iou-card h3{font-size:13px;font-weight:500;margin-bottom:10px}
+#w-compound .incentive-row{display:flex;align-items:flex-start;gap:8px;padding:5px 0;border-bottom:0.5px solid var(--color-border-tertiary);font-size:12px;line-height:1.5}
+#w-compound .incentive-row:last-child{border-bottom:none}
+#w-compound .arrow{font-size:14px;margin-top:1px;flex-shrink:0}
+#w-compound .note-box{border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-md);padding:10px 12px;font-size:12px;margin-top:10px;line-height:1.6}
+#w-compound .note-box.warn{background:var(--color-background-warning);color:var(--color-text-warning)}
+#w-compound .note-box.info{background:var(--color-background-info);color:var(--color-text-info)}
+#w-compound .note-box.success{background:var(--color-background-success);color:var(--color-text-success)}
+#w-compound .time-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:8px}
+#w-compound .time-card{border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-md);padding:10px;background:white}
+#w-compound .time-card h4{font-size:12px;font-weight:500;margin-bottom:6px}
+#w-compound .tech-tag{font-size:10px;padding:2px 6px;border-radius:4px;margin:2px 2px 2px 0;display:inline-block}
+#w-compound .decision-flow{margin-top:8px}
+#w-compound .dstep{border-left:2px solid var(--color-border-secondary);padding:6px 0 6px 12px;margin-left:6px;font-size:12px;position:relative;line-height:1.5}
+#w-compound .dstep::before{content:'';position:absolute;left:-5px;top:10px;width:8px;height:8px;border-radius:50%;background:var(--color-border-primary)}
+#w-compound .dstep h4{font-size:12px;font-weight:500}
+</style>
+
+<div id="w-compound">
+<div class="container">
+<h1>Co-Located Technologies: Feeder Impacts, Regulatory Gaps, and Upgrade Decisions</h1>
+<p class="subtitle">Impact analysis, regulatory triggers, upgrade vs. NWA decisions, and utility incentives for co-located DER, BESS, EV, and large loads</p>
+<div class="wrap">
+<div class="tabs">
+  <div class="tab on" onclick="swCmnd(0)">Technology impacts</div>
+  <div class="tab" onclick="swCmnd(1)">Regulatory triggers</div>
+  <div class="tab" onclick="swCmnd(2)">Compound effects</div>
+  <div class="tab" onclick="swCmnd(3)">Upgrade vs. NWA</div>
+  <div class="tab" onclick="swCmnd(4)">IOU vs. municipality</div>
+</div>
+
+<!-- TAB 0 -->
+<div class="panel on" id="p0">
+  <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px">
+    <button class="tech-btn on" onclick="selCmnd(0,this)">Rooftop solar / DER</button>
+    <button class="tech-btn" onclick="selCmnd(1,this)">Battery storage (BESS)</button>
+    <button class="tech-btn" onclick="selCmnd(2,this)">EV charging</button>
+    <button class="tech-btn" onclick="selCmnd(3,this)">Large load</button>
+  </div>
+  <div class="detail on" id="d0">
+    <div class="grid2">
+      <div class="card">
+        <div class="sec">Electrical impact on feeder</div>
+        <div class="row"><span class="lbl">Voltage effect</span><span class="val"><span class="badge up">Rise</span> at feeder end</span></div>
+        <div class="row"><span class="lbl">When worst</span><span class="val">Midday, minimum load</span></div>
+        <div class="row"><span class="lbl">Power flow direction</span><span class="val">Possible reversal</span></div>
+        <div class="row"><span class="lbl">Thermal effect</span><span class="val">Reduces net load</span></div>
+        <div class="row"><span class="lbl">Fault current change</span><span class="val">Small (inverter limited)</span></div>
+        <div class="row"><span class="lbl">Harmonics</span><span class="val">Minor (IEEE 1547 compliant)</span></div>
+        <div class="sec" style="margin-top:10px">Compound interaction</div>
+        <div class="row"><span class="lbl">With large load</span><span class="val" style="color:var(--color-text-success)">Partially offsetting midday</span></div>
+        <div class="row"><span class="lbl">With EV (evening)</span><span class="val" style="color:var(--color-text-danger)">No offset — solar offline</span></div>
+        <div class="row"><span class="lbl">With BESS</span><span class="val" style="color:var(--color-text-success)">BESS captures excess, smooths</span></div>
+      </div>
+      <div class="card">
+        <div class="sec">Key constraint binding first</div>
+        <div style="margin-bottom:4px;font-size:12px;color:var(--color-text-secondary)">Voltage limit</div>
+        <div class="bar-wrap"><div class="bar amber" style="width:90%"></div></div>
+        <div style="margin-bottom:4px;margin-top:6px;font-size:12px;color:var(--color-text-secondary)">Thermal limit</div>
+        <div class="bar-wrap"><div class="bar blue" style="width:35%"></div></div>
+        <div style="margin-bottom:4px;margin-top:6px;font-size:12px;color:var(--color-text-secondary)">Protection coordination</div>
+        <div class="bar-wrap"><div class="bar coral" style="width:60%"></div></div>
+        <div class="sec">Primary mitigation</div>
+        <div class="row"><span class="lbl">Smart inverter Volt/VAR</span><span class="val"><span class="badge ok">NWA</span></span></div>
+        <div class="row"><span class="lbl">Capacitor resizing</span><span class="val"><span class="badge warn">Low capex upgrade</span></span></div>
+        <div class="row"><span class="lbl">Reconductoring</span><span class="val"><span class="badge warn">High capex</span></span></div>
+      </div>
+    </div>
+  </div>
+  <div class="detail" id="d1">
+    <div class="grid2">
+      <div class="card">
+        <div class="sec">Electrical impact on feeder</div>
+        <div class="row"><span class="lbl">Voltage — charging mode</span><span class="val"><span class="badge dn">Drop</span> adds to load</span></div>
+        <div class="row"><span class="lbl">Voltage — discharging mode</span><span class="val"><span class="badge up">Rise</span> acts as generator</span></div>
+        <div class="row"><span class="lbl">Ramp rate</span><span class="val">ms–seconds (fastest)</span></div>
+        <div class="row"><span class="lbl">Fault current</span><span class="val">Grid-forming: significant</span></div>
+        <div class="row"><span class="lbl">Bidirectional flow</span><span class="val">Changes protection logic</span></div>
+        <div class="sec" style="margin-top:10px">Compound interaction</div>
+        <div class="row"><span class="lbl">With solar (charge)</span><span class="val" style="color:var(--color-text-success)">Absorbs excess — beneficial</span></div>
+        <div class="row"><span class="lbl">With EV / large load</span><span class="val" style="color:var(--color-text-success)">Discharges to offset peak</span></div>
+        <div class="row"><span class="lbl">Wrong dispatch timing</span><span class="val" style="color:var(--color-text-danger)">Amplifies instead of offsets</span></div>
+      </div>
+      <div class="card">
+        <div class="sec">Key constraint binding first</div>
+        <div style="margin-bottom:4px;font-size:12px;color:var(--color-text-secondary)">Protection coordination (bidirectionality)</div>
+        <div class="bar-wrap"><div class="bar coral" style="width:85%"></div></div>
+        <div style="margin-bottom:4px;margin-top:6px;font-size:12px;color:var(--color-text-secondary)">Voltage (discharge mode)</div>
+        <div class="bar-wrap"><div class="bar amber" style="width:65%"></div></div>
+        <div style="margin-bottom:4px;margin-top:6px;font-size:12px;color:var(--color-text-secondary)">Thermal (charge mode)</div>
+        <div class="bar-wrap"><div class="bar blue" style="width:40%"></div></div>
+        <div class="sec">Primary mitigation / value</div>
+        <div class="row"><span class="lbl">Peak shaving for feeder</span><span class="val"><span class="badge ok">NWA — high value</span></span></div>
+        <div class="row"><span class="lbl">Voltage support (V/VAR)</span><span class="val"><span class="badge ok">NWA</span></span></div>
+        <div class="row"><span class="lbl">UPS at data center</span><span class="val"><span class="badge ok">Demand flexibility asset</span></span></div>
+      </div>
+    </div>
+  </div>
+  <div class="detail" id="d2">
+    <div class="grid2">
+      <div class="card">
+        <div class="sec">Electrical impact on feeder</div>
+        <div class="row"><span class="lbl">Voltage effect</span><span class="val"><span class="badge dn">Drop</span> evening peak</span></div>
+        <div class="row"><span class="lbl">Worst case timing</span><span class="val">5–9pm residential; fleet depot varies</span></div>
+        <div class="row"><span class="lbl">DC fast (50–350 kW)</span><span class="val">Point overload + harmonics</span></div>
+        <div class="row"><span class="lbl">Fleet depot</span><span class="val">Coincident large loads</span></div>
+        <div class="row"><span class="lbl">V2G discharging</span><span class="val"><span class="badge up">Voltage rise</span> changes protection</span></div>
+        <div class="sec" style="margin-top:10px">Compound interaction</div>
+        <div class="row"><span class="lbl">With large load (industrial)</span><span class="val" style="color:var(--color-text-danger)">Additive evening thermal stress</span></div>
+        <div class="row"><span class="lbl">With solar (midday L2)</span><span class="val" style="color:var(--color-text-success)">Beneficial — absorbs excess</span></div>
+        <div class="row"><span class="lbl">Managed charging</span><span class="val" style="color:var(--color-text-success)">Avoids 30–50% upgrades</span></div>
+      </div>
+      <div class="card">
+        <div class="sec">Upgrade probability (Li &amp; Jenn, PNAS 2024 — California)</div>
+        <div style="margin-bottom:4px;font-size:12px;color:var(--color-text-secondary)">Feeders needing upgrade by 2045</div>
+        <div class="bar-wrap"><div class="bar coral" style="width:67%"></div></div>
+        <div style="font-size:11px;color:var(--color-text-secondary);margin-top:2px">67% of California feeders</div>
+        <div style="margin-bottom:4px;margin-top:8px;font-size:12px;color:var(--color-text-secondary)">Residential vs commercial feeder need</div>
+        <div class="bar-wrap"><div class="bar amber" style="width:67%"></div></div>
+        <div style="font-size:11px;color:var(--color-text-secondary);margin-top:2px">Residential needs 2× more upgrade</div>
+        <div style="margin-bottom:4px;margin-top:8px;font-size:12px;color:var(--color-text-secondary)">Upgrade cost avoided by managed charging</div>
+        <div class="bar-wrap"><div class="bar teal" style="width:40%"></div></div>
+        <div style="font-size:11px;color:var(--color-text-secondary);margin-top:2px">30–50% avoided (NREL/LBNL/Kevala 2024)</div>
+      </div>
+    </div>
+  </div>
+  <div class="detail" id="d3">
+    <div class="grid2">
+      <div class="card">
+        <div class="sec">Electrical impact on feeder</div>
+        <div class="row"><span class="lbl">Voltage effect</span><span class="val"><span class="badge dn">Continuous drop</span></span></div>
+        <div class="row"><span class="lbl">Load factor</span><span class="val">80–90% (data center)</span></div>
+        <div class="row"><span class="lbl">Transformer aging</span><span class="val">8× faster vs. warehouse (IEEE C57.91)</span></div>
+        <div class="row"><span class="lbl">Harmonics</span><span class="val">Significant: UPS, SMPS, VFDs</span></div>
+        <div class="row"><span class="lbl">On-site gensets</span><span class="val">Fault current contribution</span></div>
+        <div class="row"><span class="lbl">Load ramp (AI training)</span><span class="val">5–10 MW in seconds</span></div>
+        <div class="sec" style="margin-top:10px">Compound interaction</div>
+        <div class="row"><span class="lbl">With EV depot (industrial)</span><span class="val" style="color:var(--color-text-danger)">Additive thermal — worst combo</span></div>
+        <div class="row"><span class="lbl">With onsite BESS</span><span class="val" style="color:var(--color-text-success)">UPS as grid flexibility asset</span></div>
+        <div class="row"><span class="lbl">With rooftop solar</span><span class="val" style="color:var(--color-text-success)">Partial offset (midday only)</span></div>
+      </div>
+      <div class="card">
+        <div class="sec">Key constraint binding first</div>
+        <div style="margin-bottom:4px;font-size:12px;color:var(--color-text-secondary)">Thermal — feeder conductor</div>
+        <div class="bar-wrap"><div class="bar coral" style="width:95%"></div></div>
+        <div style="margin-bottom:4px;margin-top:6px;font-size:12px;color:var(--color-text-secondary)">Transformer aging (IEEE C57.91)</div>
+        <div class="bar-wrap"><div class="bar coral" style="width:90%"></div></div>
+        <div style="margin-bottom:4px;margin-top:6px;font-size:12px;color:var(--color-text-secondary)">Protection (on-site generation)</div>
+        <div class="bar-wrap"><div class="bar amber" style="width:75%"></div></div>
+        <div style="margin-bottom:4px;margin-top:6px;font-size:12px;color:var(--color-text-secondary)">Voltage (secondary)</div>
+        <div class="bar-wrap"><div class="bar blue" style="width:55%"></div></div>
+        <div class="sec">Primary mitigation</div>
+        <div class="row"><span class="lbl">Dedicated feeder / new circuit</span><span class="val"><span class="badge warn">Near-certain upgrade</span></span></div>
+        <div class="row"><span class="lbl">K-factor transformer</span><span class="val"><span class="badge warn">Upgrade (harmonics)</span></span></div>
+        <div class="row"><span class="lbl">Load flexibility agreement</span><span class="val"><span class="badge ok">NWA — emerging</span></span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TAB 1 -->
+<div class="panel" id="p1">
+  <table class="matrix">
+    <thead><tr><th>Technology</th><th>Study triggered</th><th>Standard / tariff basis</th><th>Who pays upgrade cost</th><th>Weakest point in process</th></tr></thead>
+    <tbody>
+      <tr><td class="tech">Rooftop solar / DER</td><td>Simplified or full interconnection study (varies by size)</td><td>IEEE 1547-2018, CPUC Rule 21 (CA), state DER tariffs; ICA/hosting capacity maps inform fast-track</td><td>Customer pays if upgrade needed; utility if system benefit</td><td>No universal MW threshold for fast-track; hosting capacity maps often stale</td></tr>
+      <tr><td class="tech">BESS (standalone)</td><td>Interconnection study as generation + load; protection coordination required</td><td>IEEE 1547, UL 9540; state storage tariffs; bidirectional metering rules vary</td><td>Customer typically; some states allow cost socialization for grid-forming BESS</td><td>Bidirectional protection standards not universally established; microgrid relay gap</td></tr>
+      <tr><td class="tech">EV charging (EVSE)</td><td>Utility load study if above site service threshold; no federal standard for EVSE interconnection</td><td>SAE J3400 / CHAdeMO for hardware; no national EVSE grid interconnection standard; utility tariff provisions only</td><td>Highly variable: developer, utility, or cost-shared via tariff rider</td><td>No mandatory study requirement below a MW threshold; cumulative feeder impact invisible</td></tr>
+      <tr><td class="tech">Large load (&gt;5–20 MW)</td><td>Large Load Interconnection Study (LLIS) or material change provision in existing tariff</td><td>State utility tariff (distribution); NERC FAC-002 (bulk); ERCOT PGRR115 Dec 2025 (&gt;25 MW); FERC Docket RM26-4-000 — action by June 2026 (transmission level)</td><td>Customer pays customer interconnection facilities; network upgrades allocation varies widely by state</td><td>No national standard for distribution-level large load studies; load shape changes not captured by MW-based triggers</td></tr>
+      <tr><td class="tech">Combined (all four on feeder)</td><td>No combined multi-technology study requirement exists in any jurisdiction</td><td>Gap: each technology studied independently; compound feeder stress is not a recognized regulatory concept</td><td>Cost allocation for compound upgrades is unresolved and a live regulatory debate</td><td>Utilities study each technology serially; no framework for aggregate feeder impact</td></tr>
+    </tbody>
+  </table>
+  <div class="note-box warn" style="margin-top:12px">No US jurisdiction requires a combined multi-technology distribution study when DER, BESS, EV, and large loads accumulate on the same feeder over time. Each is studied individually when it interconnects. Compound stress emerges between study cycles.</div>
+</div>
+
+<!-- TAB 2 -->
+<div class="panel" id="p2">
+  <div class="sec" style="margin-top:0">Three scenarios on the same industrial feeder</div>
+  <div class="time-grid">
+    <div class="time-card">
+      <h4>Midday — best case (11am–2pm)</h4>
+      <div><span class="tech-tag" style="background:#dcfce7;color:#166534">Solar: generating</span></div>
+      <div><span class="tech-tag" style="background:#dcfce7;color:#166534">BESS: charging from solar</span></div>
+      <div><span class="tech-tag" style="background:#dbeafe;color:#1a5fa8">Large load: steady</span></div>
+      <div><span class="tech-tag" style="background:#dbeafe;color:#1a5fa8">EV fleet: low charging</span></div>
+      <div class="sec" style="margin-top:6px">Net feeder stress</div>
+      <div class="bar-wrap"><div class="bar teal" style="width:30%"></div></div>
+      <p style="font-size:11px;color:#666;margin-top:4px">Solar partially offsets large load. BESS absorbs excess. Thermal loading moderate.</p>
+    </div>
+    <div class="time-card">
+      <h4>Evening — worst case (5–9pm)</h4>
+      <div><span class="tech-tag" style="background:#f4f4f5;color:#666">Solar: offline</span></div>
+      <div><span class="tech-tag" style="background:#fef3c7;color:#92400e">BESS: may be depleted</span></div>
+      <div><span class="tech-tag" style="background:#fee2e2;color:#b91c1c">Large load: cooling peak</span></div>
+      <div><span class="tech-tag" style="background:#fee2e2;color:#b91c1c">EV fleet depot: peak charge</span></div>
+      <div class="sec" style="margin-top:6px">Net feeder stress</div>
+      <div class="bar-wrap"><div class="bar coral" style="width:95%"></div></div>
+      <p style="font-size:11px;color:#666;margin-top:4px">Full thermal loading. No generation offset. High probability of transformer violation.</p>
+    </div>
+    <div class="time-card">
+      <h4>Post-outage restoration</h4>
+      <div><span class="tech-tag" style="background:#fee2e2;color:#b91c1c">EV: simultaneous reconnect</span></div>
+      <div><span class="tech-tag" style="background:#fee2e2;color:#b91c1c">Large load: UPS retransfer</span></div>
+      <div><span class="tech-tag" style="background:#fef3c7;color:#92400e">BESS: anti-islanding response</span></div>
+      <div><span class="tech-tag" style="background:#fef3c7;color:#92400e">Solar: reconnect delay</span></div>
+      <div class="sec" style="margin-top:6px">Cold load pickup surge</div>
+      <div class="bar-wrap"><div class="bar coral" style="width:85%"></div></div>
+      <p style="font-size:11px;color:#666;margin-top:4px">Indianapolis AMI study (2020–2025): combined EV + large load surge is 46% more volatile than single-technology events.</p>
+    </div>
+  </div>
+  <div class="sec" style="margin-top:16px">Four compound technical problems not captured by current planning tools</div>
+  <div class="grid2" style="margin-top:4px">
+    <div class="card"><h3>1. Harmonic stacking</h3><p style="font-size:12px;color:#555;line-height:1.6;margin-top:4px">IEEE 519-2022 limits apply per customer at the point of common coupling. Multiple customers, each individually compliant, can collectively exceed feeder harmonic limits. No regulatory mechanism detects the aggregate violation.</p></div>
+    <div class="card"><h3>2. Transformer aging acceleration</h3><p style="font-size:12px;color:#555;line-height:1.6;margin-top:4px">A large load at 85% load factor keeps the transformer near rated temperature continuously. EV charging in the evening prevents overnight cooling. Combined thermal history substantially accelerates aging beyond either load in isolation — but no regulatory trigger captures this interaction.</p></div>
+    <div class="card"><h3>3. Protection coordination invalidation</h3><p style="font-size:12px;color:#555;line-height:1.6;margin-top:4px">Each technology changes fault current characteristics. Incremental accumulation of multiple small-to-medium sources can invalidate protection coordination without any single source exceeding the threshold for a required protection study.</p></div>
+    <div class="card"><h3>4. Coincident demand uncertainty</h3><p style="font-size:12px;color:#555;line-height:1.6;margin-top:4px">Standard coincidence factors were calibrated on residential and commercial loads. Data centers, EV fleet depots, and rooftop solar have coincidence characteristics not captured in conventional planning models. (E3, December 2025)</p></div>
+  </div>
+</div>
+
+<!-- TAB 3 -->
+<div class="panel" id="p3">
+  <div class="grid2">
+    <div>
+      <div class="sec" style="margin-top:0">Decision flow when multiple technologies appear on a feeder</div>
+      <div class="decision-flow">
+        <div class="dstep"><h4>Trigger: new interconnection request or material load change</h4><p style="font-size:11px;color:#666;margin-top:3px">Each technology studied individually. No combined study required. Utility runs power flow for that technology only.</p></div>
+        <div class="dstep"><h4>QSTS load flow — identify binding constraint</h4><p style="font-size:11px;color:#666;margin-top:3px">Does new load/generation cause: thermal overload? Voltage violation? Protection coordination failure? Harmonic limit breach?</p></div>
+        <div class="dstep"><h4>Screen for NWA eligibility</h4><p style="font-size:11px;color:#666;margin-top:3px">Is the constraint addressable by demand flexibility, smart inverter control, BESS dispatch, or managed charging? Required in NY, CA. Absent in most states.</p></div>
+        <div class="dstep"><h4>Cost-benefit comparison</h4><p style="font-size:11px;color:#666;margin-top:3px">Compare capital upgrade cost vs. NWA program cost + residual risk. IOU incentive typically favors capital under cost-of-service regulation.</p></div>
+        <div class="dstep"><h4>Decision: upgrade, NWA, or hybrid</h4><p style="font-size:11px;color:#666;margin-top:3px">Upgrade: reconductor, new transformer, new feeder, substation expansion. NWA: BESS, managed charging, DERMS, demand response, Volt/VAR optimization.</p></div>
+      </div>
+    </div>
+    <div>
+      <div class="sec" style="margin-top:0">NWA options by constraint type</div>
+      <div class="card" style="margin-bottom:8px">
+        <h3>Thermal overload</h3>
+        <div class="row"><span class="lbl">Managed EV charging</span><span class="val"><span class="badge ok">High effectiveness</span></span></div>
+        <div class="row"><span class="lbl">BESS peak shaving</span><span class="val"><span class="badge ok">High effectiveness</span></span></div>
+        <div class="row"><span class="lbl">Demand response (large load)</span><span class="val"><span class="badge ok">Emerging</span></span></div>
+        <div class="row"><span class="lbl">Dynamic line rating</span><span class="val"><span class="badge warn">Grid enhancing tech</span></span></div>
+      </div>
+      <div class="card" style="margin-bottom:8px">
+        <h3>Voltage violation</h3>
+        <div class="row"><span class="lbl">Smart inverter Volt/VAR</span><span class="val"><span class="badge ok">No capex</span></span></div>
+        <div class="row"><span class="lbl">BESS reactive power</span><span class="val"><span class="badge ok">High effectiveness</span></span></div>
+        <div class="row"><span class="lbl">Capacitor bank resizing</span><span class="val"><span class="badge warn">Low capex upgrade</span></span></div>
+      </div>
+      <div class="card">
+        <h3>Protection coordination failure</h3>
+        <div class="row"><span class="lbl">Adaptive relay settings</span><span class="val"><span class="badge ok">NWA (software)</span></span></div>
+        <div class="row"><span class="lbl">Anti-islanding upgrade</span><span class="val"><span class="badge warn">Relay hardware</span></span></div>
+        <div class="row"><span class="lbl">Reconductoring</span><span class="val"><span class="badge up">Hard upgrade required</span></span></div>
+      </div>
+      <div class="note-box info" style="margin-top:10px">CA LMS study (Kevala 2025): peak reduction programs save $3.7–13.7B NPV in distribution capital costs by 2030. Highest-value NWA is demand flexibility on feeders with the largest overloads.</div>
+    </div>
+  </div>
+</div>
+
+<!-- TAB 4 -->
+<div class="panel" id="p4">
+  <div class="split">
+    <div class="iou-card">
+      <h3>Investor-owned utility (IOU)</h3>
+      <div style="font-size:11px;color:#666;margin-bottom:10px">Serves ~68% of US customers via 6% of utilities</div>
+      <div class="sec" style="margin-top:0">Revenue model</div>
+      <div class="incentive-row"><span class="arrow" style="color:var(--color-text-danger)">→</span><span>Rate of return on rate base (~9.7–9.75% authorized ROE, 2025). Every approved capital dollar earns a regulated return permanently until retired from rate base.</span></div>
+      <div class="incentive-row"><span class="arrow" style="color:var(--color-text-danger)">→</span><span>CAPEX flows to rate base and earns return. OPEX (e.g., contracted DERMS, managed charging programs) does not earn return and may reduce earnings if it causes opex budget overruns.</span></div>
+      <div class="sec">Incentive implications</div>
+      <div class="incentive-row"><span class="arrow" style="color:var(--color-text-danger)">→</span><span>Financial incentive differential between wires upgrades and NWAs. A $10M feeder reconductoring earns regulated return; a $10M BESS NWA program as opex earns nothing.</span></div>
+      <div class="incentive-row"><span class="arrow" style="color:var(--color-text-success)">→</span><span>Data center and large load growth is financially beneficial: new large customers expand the rate base, justify major capital programs, and increase volumetric revenue.</span></div>
+      <div class="incentive-row"><span class="arrow" style="color:var(--color-text-warning)">→</span><span>Performance-based ratemaking (PBR) in NY, CA, and HI attempts to link earnings to outcomes rather than capital spending. Early results are mixed.</span></div>
+      <div class="note-box warn" style="margin-top:10px">IOUs are incentivized to maximize capital investment in distribution upgrades under cost-of-service regulation. NWAs are financially disadvantageous unless regulators explicitly allow return on NWA investments or implement PBR mechanisms.</div>
+    </div>
+    <div class="iou-card">
+      <h3>Municipal utility (muni / POU)</h3>
+      <div style="font-size:11px;color:#666;margin-bottom:10px">Not-for-profit; ~30% of US customers via majority of utilities by count</div>
+      <div class="sec" style="margin-top:0">Revenue model</div>
+      <div class="incentive-row"><span class="arrow" style="color:var(--color-text-success)">→</span><span>Non-profit structure. Revenue reinvested in system or returned via rate reductions. No shareholder return requirement.</span></div>
+      <div class="incentive-row"><span class="arrow" style="color:var(--color-text-success)">→</span><span>Capital financed through municipal revenue bonds at 4–5% interest — lower cost of capital than IOUs (~7–8% WACC blended).</span></div>
+      <div class="sec">Incentive implications</div>
+      <div class="incentive-row"><span class="arrow" style="color:var(--color-text-success)">→</span><span>No structural bias toward capital over NWAs. A $10M NWA that avoids a $15M feeder upgrade saves ratepayers $5M with no earnings impact.</span></div>
+      <div class="incentive-row"><span class="arrow" style="color:var(--color-text-success)">→</span><span>Directly accountable to customers who are voters and board members. Rate increases are politically visible, creating strong incentives to minimize costs.</span></div>
+      <div class="incentive-row"><span class="arrow" style="color:var(--color-text-warning)">→</span><span>Resource-constrained. Smaller engineering teams and less analytical capacity may lead to infrastructure-first decisions by default rather than incentive.</span></div>
+      <div class="note-box success" style="margin-top:10px">Munis have better structural incentive alignment with customers on NWA adoption, but face capacity constraints. The gap is institutional capability, not financial incentive.</div>
+    </div>
+  </div>
+  <div class="note-box warn" style="margin-top:12px">Practical implication: an IOU's planning team needs NWA analysis packaged as a rate case–ready avoided cost document that a PUC will accept. A muni's board needs a rate impact table showing upgrade cost vs. NWA program cost per ratepayer per year. Same calculation, different presentation layer.</div>
+</div>
+</div>
+</div>
+</div>
+
+```
+
+## How Outputs Translate to Planning Decisions and Stakeholder Actions
+
+Raw simulation outputs — voltage profiles, thermal loading, hosting capacity estimates — only become useful when translated into the terms each stakeholder depends on. Planners need violation timelines tied to capital schedules; regulators need investment justification; developers need interconnection feasibility; and customers need rate and reliability projections. That translation is largely non-standardized, and the widget below maps both the three impact domains and where the pipeline breaks down by stakeholder group.
+
+```{=html}
+<style>
+#w-impact {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: #f9f9f9;
+  padding: 24px;
+  border-radius: 8px;
+  margin: 1.5rem 0;
+}
+#w-impact .container { max-width: 760px; margin: 0 auto; }
+#w-impact h1 { font-size: 18px; font-weight: 600; margin-bottom: 4px; color: #1a1a1a; }
+#w-impact .subtitle { font-size: 13px; color: #666; margin-bottom: 24px; }
+#w-impact svg { width: 100%; height: auto; }
+#w-impact .detail-cards { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-top: 24px; }
+#w-impact .detail-card { background: white; border: 0.5px solid #e4e4e7; border-radius: 8px; padding: 14px; }
+#w-impact .detail-card h3 { font-size: 13px; font-weight: 600; margin-bottom: 8px; }
+#w-impact .detail-card ul { font-size: 12px; color: #555; padding-left: 16px; line-height: 1.8; }
+#w-impact .tag-teal { background: #dcfce7; color: #166534; }
+#w-impact .tag-purple { background: #ede9fe; color: #5b21b6; }
+#w-impact .tag-amber { background: #fef3c7; color: #92400e; }
+#w-impact .card-tag { font-size: 11px; padding: 2px 8px; border-radius: 99px; margin-bottom: 8px; display: inline-block; font-weight: 500; }
+#w-impact .tab-row { display: flex; gap: 0; border-bottom: 1px solid #e4e4e7; margin-bottom: 20px; }
+#w-impact .witab { font-size: 13px; padding: 8px 14px; cursor: pointer; color: #666; border-bottom: 2px solid transparent; margin-bottom: -1px; background: none; border-top: none; border-left: none; border-right: none; }
+#w-impact .witab.active { color: #1a1a1a; border-bottom-color: #1a1a1a; font-weight: 500; }
+#w-impact .wi-panel { display: none; }
+#w-impact .wi-panel.active { display: block; }
+#w-impact .sh-table { width: 100%; border-collapse: collapse; background: white; border-radius: 8px; overflow: hidden; border: 1px solid #e4e4e7; }
+#w-impact .sh-table thead { background: #f4f4f5; }
+#w-impact .sh-table th { padding: 10px 12px; text-align: left; font-size: 12px; font-weight: 600; color: #1a1a1a; border-bottom: 1px solid #e4e4e7; }
+#w-impact .sh-table td { padding: 10px 12px; vertical-align: top; border-bottom: 1px solid #f0f0f0; line-height: 1.55; font-size: 12.5px; color: #333; }
+#w-impact .sh-table tr:last-child td { border-bottom: none; }
+#w-impact .sh-name { font-weight: 500; font-size: 13px; color: #1a1a1a; display: block; }
+#w-impact .sh-gap { color: #b91c1c; font-size: 12px; line-height: 1.6; }
+</style>
+
+<div id="w-impact">
+<div class="container">
+<h1>Customer Impact Translation</h1>
+<p class="subtitle">How raw simulation outputs from distribution tools translate into planning decisions across stakeholder groups</p>
+
+<div class="tab-row">
+  <button class="witab active" onclick="switchTabImpact('domains')">Impact domains</button>
+  <button class="witab" onclick="switchTabImpact('stakeholders')">By stakeholder</button>
+</div>
+
+<div class="wi-panel active" id="wi-domains">
+<svg viewBox="0 0 680 365" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<style>
+.th { font-family: -apple-system, sans-serif; font-size: 14px; font-weight: 600; fill: #1a1a1a; }
+.ts { font-family: -apple-system, sans-serif; font-size: 12px; fill: #555; }
+.c-gray rect { fill: #f4f4f5; stroke: #d4d4d8; stroke-width: 0.5; }
+.c-teal rect { fill: #dcfce7; stroke: #86efac; stroke-width: 0.5; cursor: pointer; }
+.c-purple rect { fill: #ede9fe; stroke: #c4b5fd; stroke-width: 0.5; cursor: pointer; }
+.c-amber rect { fill: #fef3c7; stroke: #fcd34d; stroke-width: 0.5; cursor: pointer; }
+</style>
+<marker id="arrowT" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+  <path d="M2 1L8 5L2 9" fill="none" stroke="#1D9E75" stroke-width="1.5"/>
+</marker>
+<marker id="arrowP" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+  <path d="M2 1L8 5L2 9" fill="none" stroke="#7F77DD" stroke-width="1.5"/>
+</marker>
+<marker id="arrowA" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+  <path d="M2 1L8 5L2 9" fill="none" stroke="#BA7517" stroke-width="1.5"/>
+</marker>
+</defs>
+
+<g class="c-gray">
+  <rect x="40" y="40" width="175" height="300" rx="8"/>
+  <text class="th" x="127" y="62" text-anchor="middle" dominant-baseline="central">Simulation outputs</text>
+  <text class="ts" x="127" y="85" text-anchor="middle">Bus voltage (pu)</text>
+  <text class="ts" x="127" y="107" text-anchor="middle">Line loading (%)</text>
+  <text class="ts" x="127" y="129" text-anchor="middle">Transformer load (%)</text>
+  <text class="ts" x="127" y="151" text-anchor="middle">Fault current (A)</text>
+  <text class="ts" x="127" y="173" text-anchor="middle">Hosting capacity (kW)</text>
+  <text class="ts" x="127" y="195" text-anchor="middle">Peak demand delta</text>
+  <text class="ts" x="127" y="217" text-anchor="middle">Curtailment (MWh)</text>
+  <text class="ts" x="127" y="239" text-anchor="middle">Energy losses (kWh)</text>
+  <text class="ts" x="127" y="261" text-anchor="middle">Voltage sag events</text>
+</g>
+
+<path d="M215 85 L255 85" fill="none" stroke="#1D9E75" stroke-width="1.5" marker-end="url(#arrowT)"/>
+<path d="M215 190 L255 190" fill="none" stroke="#7F77DD" stroke-width="1.5" marker-end="url(#arrowP)"/>
+<path d="M215 295 L255 295" fill="none" stroke="#BA7517" stroke-width="1.5" marker-end="url(#arrowA)"/>
+
+<g class="c-teal">
+  <rect x="255" y="40" width="385" height="95" rx="8"/>
+  <text class="th" x="447" y="67" text-anchor="middle" dominant-baseline="central">Grid reliability metrics</text>
+  <text class="ts" x="447" y="85" text-anchor="middle">SAIDI / SAIFI delta vs. counterfactual baseline</text>
+  <text class="ts" x="447" y="102" text-anchor="middle">Hosting capacity headroom (MW) by feeder segment</text>
+  <text class="ts" x="447" y="119" text-anchor="middle">Outage probability curves · voltage quality scores</text>
+</g>
+
+<g class="c-purple">
+  <rect x="255" y="145" width="385" height="95" rx="8"/>
+  <text class="th" x="447" y="172" text-anchor="middle" dominant-baseline="central">Economic impact metrics</text>
+  <text class="ts" x="447" y="190" text-anchor="middle">Bill savings by customer segment ($/yr)</text>
+  <text class="ts" x="447" y="207" text-anchor="middle">Avoided capital investment ($M) via load deferral</text>
+  <text class="ts" x="447" y="224" text-anchor="middle">Value stack: energy, capacity, distribution, Env</text>
+</g>
+
+<g class="c-amber">
+  <rect x="255" y="250" width="385" height="95" rx="8"/>
+  <text class="th" x="447" y="277" text-anchor="middle" dominant-baseline="central">Societal and equity metrics</text>
+  <text class="ts" x="447" y="295" text-anchor="middle">EJ community DER program access rate (%)</text>
+  <text class="ts" x="447" y="312" text-anchor="middle">Avoided emissions (tCO₂) · health co-benefits ($)</text>
+  <text class="ts" x="447" y="329" text-anchor="middle">Resilience index · outage burden by income decile</text>
+</g>
+</svg>
+
+<div class="detail-cards">
+  <div class="detail-card">
+    <span class="card-tag tag-teal">Grid reliability</span>
+    <h3>Data sources needed</h3>
+    <ul>
+      <li>Customer-to-node mapping (GIS)</li>
+      <li>IEEE 1366 utility outage records</li>
+      <li>Protection device coordination data</li>
+      <li>Historical SAIDI/SAIFI baseline</li>
+    </ul>
+  </div>
+  <div class="detail-card">
+    <span class="card-tag tag-purple">Economic impact</span>
+    <h3>Data sources needed</h3>
+    <ul>
+      <li>CPUC Avoided Cost Calculator (E3)</li>
+      <li>Utility rate schedules (TOU, demand)</li>
+      <li>Capital cost estimates per upgrade type</li>
+      <li>Net present value / discount rate assumptions</li>
+    </ul>
+  </div>
+  <div class="detail-card">
+    <span class="card-tag tag-amber">Societal / equity</span>
+    <h3>Data sources needed</h3>
+    <ul>
+      <li>Census tract demographics</li>
+      <li>EPA EJScreen indicators</li>
+      <li>CDC Social Vulnerability Index</li>
+      <li>EPA eGRID emissions factors</li>
+      <li>EPA BenMAP health impact model</li>
+    </ul>
+  </div>
+</div>
+</div><!-- end wi-domains -->
+
+<div class="wi-panel" id="wi-stakeholders">
+<table class="sh-table">
+  <thead>
+    <tr>
+      <th style="width:16%">Stakeholder</th>
+      <th style="width:26%">What they need</th>
+      <th style="width:30%">How outputs are translated today</th>
+      <th style="width:28%">Gap</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><span class="sh-name">Distribution planners</span></td>
+      <td>Which feeders to upgrade, when, at what cost</td>
+      <td>Direct use of load flow, HCA, and fault analysis outputs; violation counts by year by scenario</td>
+      <td><span class="sh-gap">No standard output format; feeder-level results rarely integrated with capital planning models automatically</span></td>
+    </tr>
+    <tr>
+      <td><span class="sh-name">State regulators (PUCs)</span></td>
+      <td>Are proposed investments justified? Are alternatives considered? Are costs allocated fairly?</td>
+      <td>Utility rate case filings presenting study results selectively; intervenor expert witnesses challenge assumptions</td>
+      <td><span class="sh-gap">In ~30 states, regulators do not receive distribution system plans before rate cases; planning assumptions are not routinely disclosed</span></td>
+    </tr>
+    <tr>
+      <td><span class="sh-name">Large load customers</span></td>
+      <td>Can I connect? How much will upgrades cost? How long will it take?</td>
+      <td>Interconnection study results: thermal headroom, upgrade requirements, cost estimate</td>
+      <td><span class="sh-gap">Study timelines of 3–9 months, lack of utility standardization, and no national process for distribution-level large loads</span></td>
+    </tr>
+    <tr>
+      <td><span class="sh-name">DER developers</span></td>
+      <td>Can I interconnect? Where is capacity? What will upgrades cost?</td>
+      <td>Hosting capacity maps; interconnection study if above simplified threshold</td>
+      <td><span class="sh-gap">HCA maps often stale; maps don't communicate upgrade cost or feasibility to reach next MW of headroom</span></td>
+    </tr>
+    <tr>
+      <td><span class="sh-name">EV charging developers</span></td>
+      <td>Will my EVSE installation require feeder upgrades? At whose cost?</td>
+      <td>Utility load study if above site service threshold; no federal standard exists</td>
+      <td><span class="sh-gap">No mandatory interconnection study below MW threshold; cumulative feeder impact from many EVSE installations is not assessed</span></td>
+    </tr>
+    <tr>
+      <td><span class="sh-name">Community / EJ advocates</span></td>
+      <td>Are investments reaching disadvantaged communities? Are rate impacts equitable?</td>
+      <td>Not systematically provided; requires bespoke spatial analysis linking feeder maps, census data, and rate impact models</td>
+      <td><span class="sh-gap">No standardized pipeline from distribution study outputs to equity metrics; CPUC D.24-10-030 (Oct 2024) begins to mandate this in CA only</span></td>
+    </tr>
+    <tr>
+      <td><span class="sh-name">Residential customers</span></td>
+      <td>Will my rates change? Will reliability improve?</td>
+      <td>Rate case summary documents; SAIDI/SAIFI reporting</td>
+      <td><span class="sh-gap">Translation from engineering metrics to customer outcomes is not standardized anywhere</span></td>
+    </tr>
+  </tbody>
+</table>
+</div><!-- end wi-stakeholders -->
+
+</div>
+</div>
+```
+
+The most immediate opportunities lie in extending the integrated distribution planning frameworks developed in New York, California, and Illinois — requiring public disclosure of system plans, combined multi-technology study standards, and systematic NWA evaluation — to the roughly 30 states where no such requirements currently exist, and in establishing a federal research agenda to fill the empirical gap in multi-stressor feeder analysis that no jurisdiction has yet required anyone to close.
+
+---
+
+## References
+
+1. Horowitz et al., NREL 2019; IEC/IEEE review literature 2023–25
+2. NERC July 2025 whitepaper; PG&E/Sandia SWAP project 2023
+3. NERC, IBR and DER Disturbances Advisory, June 2024
+4. NY PSC, Reforming the Energy Vision (REV) proceeding; Con Edison Brooklyn-Queens Demand Management Program (BQDM), 2014–2016
+
+```{=html}
+<script>
+function switchTabImpact(name) {
+  document.querySelectorAll('#w-impact .witab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('#w-impact .wi-panel').forEach(p => p.classList.remove('active'));
+  document.querySelector('#w-impact .witab[onclick="switchTabImpact(\'' + name + '\')"]').classList.add('active');
+  document.getElementById('wi-' + name).classList.add('active');
+}
+function switchTabTriggers(name) {
+  document.querySelectorAll('#w-triggers .wtab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('#w-triggers .wtab-panel').forEach(p => p.classList.remove('active'));
+  document.querySelector('#w-triggers .wtab[onclick="switchTabTriggers(\'' + name + '\')"]').classList.add('active');
+  document.getElementById('wtrig-' + name).classList.add('active');
+}
+function toggleCardTools(card) {
+  const detail = card.querySelector('.tool-detail');
+  const isOpen = detail.classList.contains('open');
+  document.querySelectorAll('#w-tools .tool-detail.open').forEach(d => d.classList.remove('open'));
+  document.querySelectorAll('#w-tools .tool-card.active').forEach(c => c.classList.remove('active'));
+  if (!isOpen) { detail.classList.add('open'); card.classList.add('active'); }
+}
+function filterCardsTools(tier, btn) {
+  document.querySelectorAll('#w-tools .filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('#w-tools .tool-card').forEach(card => {
+    card.style.display = (tier === 'all' || card.dataset.tier === tier) ? '' : 'none';
+    if (tier !== 'all' && card.dataset.tier !== tier) {
+      card.querySelector('.tool-detail').classList.remove('open');
+      card.classList.remove('active');
+    }
+  });
+}
+function switchTabTools(name) {
+  document.querySelectorAll('#w-tools .tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('#w-tools .tab-panel').forEach(p => p.classList.remove('active'));
+  document.querySelector('#w-tools .tab[onclick="switchTabTools(\'' + name + '\')"]').classList.add('active');
+  document.getElementById('wtools-' + name).classList.add('active');
+}
+document.querySelectorAll('#w-triggers .filter-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('#w-triggers .filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const filter = btn.dataset.filter;
+    document.querySelectorAll('#trig-tbody tr').forEach(row => {
+      row.classList.toggle('hidden', filter !== 'all' && row.dataset.status !== filter);
+    });
+  });
+});
+function swCmnd(i){document.querySelectorAll('#w-compound .tab').forEach((t,j)=>t.classList.toggle('on',j===i));document.querySelectorAll('#w-compound .panel').forEach((p,j)=>p.classList.toggle('on',j===i));}
+function selCmnd(i,btn){document.querySelectorAll('#w-compound .tech-btn').forEach(b=>b.classList.remove('on'));btn.classList.add('on');document.querySelectorAll('#w-compound .detail').forEach((d,j)=>d.classList.toggle('on',j===i));}
+</script>
+```

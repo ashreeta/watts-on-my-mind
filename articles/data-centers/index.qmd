@@ -1,0 +1,18 @@
+---
+title: "What Do Data Center Load Profiles Look Like?"
+date: "2025-10-22"
+description: "How flat is truly flat? The factors — workload type, infrastructure design, and cooling strategy — that shape data center demand curves."
+categories: ["data centers", "load profiles", "forecasting"]
+---
+
+The answer is both simple and complex. While load profiles are typically flat, the shape depends on several factors: the **type of data center**, the **mix of workloads** it supports, and its **infrastructure design**.
+
+The widget below summarizes key factors that influence load profile characteristics.
+
+```{=html}
+<iframe src="widget_load_profiles.html" width="100%" height="800" style="border:none; border-radius:8px; margin:2rem 0;"></iframe>
+```
+
+Ideally, **metered data** would allow for better quantification of load shapes and help refine existing models. But multiple barriers stand in the way. First, most utilities don't require load profile submissions during interconnection making baseline data scarce. Second, even when data exists, the workloads of any specific data center are likely to evolve continuously, both in the short term and long term with technology adoption and shifting user demand. The ESIG report on large load forecasting^[[ESIG, Large Loads Forecasting report, 2025](https://www.esig.energy/wp-content/uploads/2025/12/ESIG-Large-Loads-Forecasting-report-2025.pdf)] provides additonal details on issues and methods to forecast large loads. 
+
+This is an evolving area of interest as data centers become a larger share of electricity demand — better quantifying these profiles will be essential for planning and forecasting.

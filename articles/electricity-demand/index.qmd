@@ -1,0 +1,66 @@
+---
+title: "The Future of U.S. Electricity Demand Through 2030"
+date: "2025-10-30"
+description: "Regional load growth projections to 2030 — ERCOT, SPP, CAISO, PJM, and others — and what's driving a projected 25% national increase."
+categories: ["demand growth", "grid planning", "forecasting"]
+---
+
+Over the past few months, I've been compiling a comprehensive dataset on electricity load projections across the United States as part of a larger research project on national electricity demand modeling that we hope to release later this year or early next year. While working on it, I wanted to benchmark our internal projections with public data across the U.S.—which led to this quick side project using a mix of domain knowledge and data extraction.
+
+### Data Collection
+
+My initial approach was to build this analysis from the ground up using utility-level Integrated Resource Plans (IRPs). However, I quickly discovered that comprehensive utility IRP data is surprisingly sparse and fragmented across the country. Given these limitations, I pivoted to aggregating projections at the regional ISO/RTO level, which provides both better data coverage and more meaningful insights for understanding grid-scale dynamics. If you’re interested in IRP tracking, here are two great resources:
+
+  * [**Rocky Mountain Institute’s IRP Tracker**](<https://rmi.org/the-state-of-utility-planning-2025-q3/#:~:text=>) – tracking emissions commitments and decarbonization progress
+  * [**Wood Mackenzie analysis of utility large load pipelines**](<https://www.woodmac.com/press-releases/us-utilities-have-committed-to-116-gw-of-large-load-capacity-growth-equal-to-15.5-of-current-us-peak-demand/>)
+
+### A 25% Increase in National Electricity Demand by 2030
+
+The data reveals that US annual electricity load is projected to grow from approximately 4,365 TWh in 2024-2025 to 5,436 TWh by 2030—a 25% increase in just five years. From about 2001 to 2021, the US saw almost flat electricity demand, with average annual growth rates only about 0.1–0.5% per year. The current projected increase to 2030 represents higher growth rates of 2.5–3% per year.
+
+Here are the key regional highlights:
+
+{{< include _w-load-projections.qmd >}}
+
+**High Growth Regions**
+
+  * **ERCOT (Texas)**: A striking 64% increase, growing from 496 TWh to 811 TWh by 2030
+  * **SPP (Central Plains)**: 60% increase, from 290 TWh to 465 TWh
+  * **CAISO (California)**: 25% growth, reaching 272 TWh
+
+**Moderate Growth Regions:**
+
+  * **SERC**: 19% increase to 1,610 TWh
+  * **PJM**: 15% growth to 920 TWh
+  * **WECC (non-CAISO)**: 14% increase to 1,070 TWh
+
+**Slower Growth:**
+
+  * **NYISO and ISO-NE**: Both projecting modest 7% growth
+
+## Understanding What’s Driving Growth
+
+The NERC assessment map provides crucial context for understanding these regional variations.
+
+![Source: NERC Long-Term Reliability Assessment 2024^[NERC Long-Term Reliability Assessment 2024. Available at: [nerc.com](https://www.nerc.com/pa/RAPA/ra/Reliability%20Assessments%20DL/NERC_Long%20Term%20Reliability%20Assessment_2024.pdf).]](nerc-map-2024.png)
+
+  * **Data centers** are a major factor across most regions, particularly in Texas, the Southeast, and PJM territory
+  * **Industrial electrification** and **large industrial loads** are accelerating in manufacturing-heavy regions
+  * **Transportation electrification** is contributing to baseline growth across all areas
+  * **Heat pumps and building electrification** are reshaping winter peak dynamics in the Northeast and California
+
+### Looking Ahead
+
+Regardless of the precise accuracy of these projections, they provide valuable insight into the scale of transformation our electric grid is undergoing. We're not talking about incremental adjustments; we're looking at a fundamental reshaping of electricity demand patterns that will require unprecedented levels of investment in generation, transmission, and grid flexibility.
+
+For those working in energy markets and grid planning, understanding these regional dynamics will be crucial for navigating the next decade of change.
+
+### Important Caveats and Context
+
+A few critical notes:
+
+**Scenario heterogeneity**: The projections across regions are based on different scenarios and methodologies. ERCOT's figure assumes a 62.6% load factor with a peak load of 148 GW, while SPP uses a "Moderate Electrification" scenario. This means we're comparing somewhat different assumptions across regions—potentially apples to oranges in some cases.
+
+**Calculation uncertainties**: Some values are derived from peak load projections and assumed load factors rather than direct annual energy forecasts, introducing additional uncertainty.
+
+**The relative stability of market share**: Despite ERCOT and SPP's dramatic percentage increases, their share of total US load grows more moderately—from 11% to 15% for ERCOT and from 7% to 9% for SPP. This indicates that the regional distribution of load is largely maintaining historical patterns.

@@ -1,0 +1,14 @@
+---
+title: ""
+subtitle: "Articles on energy systems, electrification, and the power grid."
+listing:
+  contents: articles
+  type: default
+  sort: "date desc"
+  fields: [date, title, description, categories]
+  date-format: "MMMM YYYY"
+  filter-ui: false
+  sort-ui: false
+page-layout: full
+title-block-banner: false
+---
