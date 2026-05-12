@@ -10,3 +10,6 @@ HP_Article/
 # System files
 .DS_Store
 .claude/
+
+/.quarto/
+**/*.quarto_ipynb

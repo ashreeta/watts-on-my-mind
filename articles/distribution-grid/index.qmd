@@ -5,9 +5,10 @@ description: "How distribution grid simulation works, what regulatory frameworks
 categories: ["distribution grid", "grid planning", "policy", "regulation", "engineering"]
 ---
 
-## Open Source Distribution Planning Tools
+## Distribution Planning Tools
 
-Commercial platforms and open source frameworks exist for distribution grid planning. Examples of commercial tools are CYMDIST (Eaton), Synergi Electric (DNV), and DEW. They are the standard across most US utilities, favored for their validated interfaces, regulatory acceptance in rate case filings, and dedicated vendor support. Open source tools such as OpenDSS (EPRI), pandapower, and GridLAB-D have become the standard in research and academic work, and are increasingly used by utilities and developers for DER integration studies, valued for their flexibility, Python interoperability, and no licensing costs. The two ecosystems are not mutually exclusive and many utilities run commercial tools for core planning while using open source frameworks for scenario analysis, DER impact studies, and pilot evaluation. The interactive summary below provides details about the capabilities and use cases for open source distribution grid planning tools.
+Both commercial platforms and open source frameworks exist for distribution grid planning. Commercial tools are the standard and are favored by utilities for their validated interfaces, regulatory acceptance in rate case filings, and dedicated vendor support. 
+More recently, open source tools are increasingly used by academia and utilities and developers for DER integration studies due to their flexibility, python interoperability, and no licensing costs. The two ecosystems are not mutually exclusive and many utilities run commercial tools for core planning while using open source frameworks for scenario analysis, DER impact studies, and pilot evaluation. The interactive summary below provides details about the capabilities and use cases for open source distribution grid planning tools.
 
 ```{=html}
 <style>
