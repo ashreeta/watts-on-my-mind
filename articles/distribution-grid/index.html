@@ -121,7 +121,7 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Contents</h2>
    
   <ul>
-  <li><a href="#open-source-distribution-planning-tools" id="toc-open-source-distribution-planning-tools" class="nav-link active" data-scroll-target="#open-source-distribution-planning-tools">Open Source Distribution Planning Tools</a></li>
+  <li><a href="#distribution-planning-tools" id="toc-distribution-planning-tools" class="nav-link active" data-scroll-target="#distribution-planning-tools">Distribution Planning Tools</a></li>
   <li><a href="#study-types-and-regulatory-triggers" id="toc-study-types-and-regulatory-triggers" class="nav-link" data-scroll-target="#study-types-and-regulatory-triggers">Study Types and Regulatory Triggers</a></li>
   <li><a href="#what-individual-studies-cannot-capture" id="toc-what-individual-studies-cannot-capture" class="nav-link" data-scroll-target="#what-individual-studies-cannot-capture">What Individual Studies Cannot Capture</a></li>
   <li><a href="#how-outputs-translate-to-planning-decisions-and-stakeholder-actions" id="toc-how-outputs-translate-to-planning-decisions-and-stakeholder-actions" class="nav-link" data-scroll-target="#how-outputs-translate-to-planning-decisions-and-stakeholder-actions">How Outputs Translate to Planning Decisions and Stakeholder Actions</a></li>
@@ -175,9 +175,9 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="open-source-distribution-planning-tools" class="level2">
-<h2 class="anchored" data-anchor-id="open-source-distribution-planning-tools">Open Source Distribution Planning Tools</h2>
-<p>Commercial platforms and open source frameworks exist for distribution grid planning. Examples of commercial tools are CYMDIST (Eaton), Synergi Electric (DNV), and DEW. They are the standard across most US utilities, favored for their validated interfaces, regulatory acceptance in rate case filings, and dedicated vendor support. Open source tools such as OpenDSS (EPRI), pandapower, and GridLAB-D have become the standard in research and academic work, and are increasingly used by utilities and developers for DER integration studies, valued for their flexibility, Python interoperability, and no licensing costs. The two ecosystems are not mutually exclusive and many utilities run commercial tools for core planning while using open source frameworks for scenario analysis, DER impact studies, and pilot evaluation. The interactive summary below provides details about the capabilities and use cases for open source distribution grid planning tools.</p>
+<section id="distribution-planning-tools" class="level2">
+<h2 class="anchored" data-anchor-id="distribution-planning-tools">Distribution Planning Tools</h2>
+<p>Both commercial platforms and open source frameworks exist for distribution grid planning. Commercial tools are the standard and are favored by utilities for their validated interfaces, regulatory acceptance in rate case filings, and dedicated vendor support. More recently, open source tools are increasingly used by academia and utilities and developers for DER integration studies due to their flexibility, python interoperability, and no licensing costs. The two ecosystems are not mutually exclusive and many utilities run commercial tools for core planning while using open source frameworks for scenario analysis, DER impact studies, and pilot evaluation. The interactive summary below provides details about the capabilities and use cases for open source distribution grid planning tools.</p>
 <style>
 #w-tools {
   --color-text-primary: #1a1a1a;
@@ -1607,7 +1607,7 @@ function selCmnd(i,btn){document.querySelectorAll('#w-compound .tech-btn').forEa
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp('/' + window.location.host + '/');
+        var filterRegex = new RegExp("https:\/\/ashreeta\.github\.io\/watts-on-my-mind\/");
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }
