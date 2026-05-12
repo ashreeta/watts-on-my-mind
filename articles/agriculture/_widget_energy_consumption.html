@@ -1,0 +1,804 @@
+<style>
+        
+[data-widget="w-energy-consumption"] * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        
+[data-widget="w-energy-consumption"] {
+            font-family: inherit;
+            
+            
+        }
+        
+        
+[data-widget="w-energy-consumption"] .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+            border: 1px solid #e4e4e7;
+            padding: 24px;
+        }
+        
+        
+[data-widget="w-energy-consumption"] h1 {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 8px;
+            font-size: 26px;
+        }
+        
+        
+[data-widget="w-energy-consumption"] .subtitle {
+            text-align: center;
+            color: #7f8c8d;
+            margin-bottom: 20px;
+            font-size: 13px;
+        }
+        
+        
+[data-widget="w-energy-consumption"] .overview {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 20px;
+            margin-bottom: 25px;
+        }
+        
+        
+[data-widget="w-energy-consumption"] .fuel-legend {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #e4e4e7;
+        }
+        
+        
+[data-widget="w-energy-consumption"] .fuel-legend h3 {
+            font-size: 14px;
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+        
+        
+[data-widget="w-energy-consumption"] .fuel-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 8px;
+            font-size: 12px;
+        }
+        
+        
+[data-widget="w-energy-consumption"] .fuel-color {
+            width: 24px;
+            height: 16px;
+            border-radius: 3px;
+            border: 1px solid #999;
+        }
+        
+        
+[data-widget="w-energy-consumption"] .diesel { background: #34495e; }
+        
+[data-widget="w-energy-consumption"] .electricity { background: #f39c12; }
+        
+[data-widget="w-energy-consumption"] .propane { background: #e74c3c; }
+        
+[data-widget="w-energy-consumption"] .natural-gas { background: #3498db; }
+        
+[data-widget="w-energy-consumption"] .gasoline { background: #95a5a6; }
+        
+        
+[data-widget="w-energy-consumption"] .summary-stats {
+            display: grid;
+            grid-template-rows: repeat(3, 1fr);
+            gap: 10px;
+        }
+        
+        
+[data-widget="w-energy-consumption"] .summary-box {
+            background: #2a7d6f;
+            color: white;
+            padding: 12px;
+            border-radius: 6px;
+            text-align: center;
+        }
+        
+        
+[data-widget="w-energy-consumption"] .summary-value {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 4px;
+        }
+        
+        
+[data-widget="w-energy-consumption"] .summary-label {
+            font-size: 11px;
+            opacity: 0.9;
+        }
+        
+        
+[data-widget="w-energy-consumption"] .category-grid {
+            display: grid;
+            gap: 15px;
+        }
+        
+        
+[data-widget="w-energy-consumption"] .category-card {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 15px;
+            border-left: 4px solid #2a7d6f;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        
+        
+[data-widget="w-energy-consumption"] .category-card:hover {
+            transform: translateX(5px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        
+        
+[data-widget="w-energy-consumption"] .category-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+        
+        
+[data-widget="w-energy-consumption"] .category-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        
+[data-widget="w-energy-consumption"] .category-icon {
+            width: 36px;
+            height: 36px;
+            background: #2a7d6f;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+        }
+        
+        
+[data-widget="w-energy-consumption"] .category-name {
+            font-size: 16px;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+        
+        
+[data-widget="w-energy-consumption"] .energy-percent {
+            font-size: 28px;
+            font-weight: bold;
+            color: #2a7d6f;
+        }
+        
+        
+[data-widget="w-energy-consumption"] .category-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+        
+        
+[data-widget="w-energy-consumption"] .fuel-breakdown {
+            background: white;
+            padding: 12px;
+            border-radius: 6px;
+        }
+        
+        
+[data-widget="w-energy-consumption"] .fuel-breakdown h4 {
+            font-size: 12px;
+            color: #7f8c8d;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        
+[data-widget="w-energy-consumption"] .fuel-bars {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+        
+        
+[data-widget="w-energy-consumption"] .fuel-bar-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        
+[data-widget="w-energy-consumption"] .fuel-bar-label {
+            width: 80px;
+            font-size: 11px;
+            color: #2c3e50;
+        }
+        
+        
+[data-widget="w-energy-consumption"] .fuel-bar {
+            flex: 1;
+            height: 20px;
+            background: #e0e0e0;
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        
+[data-widget="w-energy-consumption"] .fuel-bar-fill {
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 10px;
+            font-weight: bold;
+            color: white;
+            transition: width 0.5s ease;
+        }
+        
+        
+[data-widget="w-energy-consumption"] .electrification-status {
+            background: white;
+            padding: 12px;
+            border-radius: 6px;
+        }
+        
+        
+[data-widget="w-energy-consumption"] .electrification-status h4 {
+            font-size: 12px;
+            color: #7f8c8d;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        
+[data-widget="w-energy-consumption"] .current-electric {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+        
+        
+[data-widget="w-energy-consumption"] .electric-gauge {
+            flex: 1;
+            height: 30px;
+            background: #e0e0e0;
+            border-radius: 15px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        
+[data-widget="w-energy-consumption"] .electric-gauge-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #27ae60 0%, #2ecc71 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: bold;
+            color: white;
+            transition: width 0.5s ease;
+        }
+        
+        
+[data-widget="w-energy-consumption"] .electric-label {
+            font-size: 11px;
+            color: #2c3e50;
+            font-weight: 600;
+        }
+        
+        
+[data-widget="w-energy-consumption"] .feasibility {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 8px;
+            padding: 6px 10px;
+            background: #f0f0f0;
+            border-radius: 4px;
+        }
+        
+        
+[data-widget="w-energy-consumption"] .feasibility-label {
+            font-size: 10px;
+            color: #7f8c8d;
+            font-weight: 600;
+        }
+        
+        
+[data-widget="w-energy-consumption"] .feasibility-rating {
+            display: flex;
+            gap: 3px;
+        }
+        
+        
+[data-widget="w-energy-consumption"] .feasibility-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #e0e0e0;
+        }
+        
+        
+[data-widget="w-energy-consumption"] .feasibility-dot.filled {
+            background: #27ae60;
+        }
+        
+        
+[data-widget="w-energy-consumption"] .feasibility-text {
+            font-size: 11px;
+            color: #2c3e50;
+            font-weight: 600;
+            margin-left: 5px;
+        }
+        
+        
+[data-widget="w-energy-consumption"] .data-sources {
+            margin-top: 25px;
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #e4e4e7;
+        }
+        
+        
+[data-widget="w-energy-consumption"] .data-sources h3 {
+            font-size: 14px;
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+        
+        
+[data-widget="w-energy-consumption"] .data-sources p {
+            font-size: 11px;
+            line-height: 1.6;
+            color: #34495e;
+            margin-bottom: 8px;
+        }
+        
+        
+[data-widget="w-energy-consumption"] .data-sources ul {
+            margin-left: 20px;
+            font-size: 11px;
+            color: #34495e;
+            line-height: 1.6;
+        }
+        
+        
+[data-widget="w-energy-consumption"] .data-sources strong {
+            color: #2c3e50;
+        }
+    
+
+[data-widget="w-energy-consumption"] .container {
+    max-width: none;
+    margin: 0;
+    background: transparent;
+    box-shadow: none;
+    border: none;
+    border-radius: 0;
+    padding: 0.5rem 0;
+}
+</style>
+<div data-widget="w-energy-consumption">
+<div class="container">
+        <h1>Agricultural Direct Energy Consumption by Function</h1>
+        <div class="subtitle">Breakdown by Category, Fuel Type, and Electrification Status</div>
+        
+        <div class="overview">
+            <div class="fuel-legend">
+                <h3>Primary Fuel Types</h3>
+                <div class="fuel-item">
+                    <div class="fuel-color diesel"></div>
+                    <span><strong>Diesel:</strong> 44% of direct energy (field operations, some irrigation)</span>
+                </div>
+                <div class="fuel-item">
+                    <div class="fuel-color electricity"></div>
+                    <span><strong>Electricity:</strong> 24% of direct energy (irrigation, cooling, ventilation)</span>
+                </div>
+                <div class="fuel-item">
+                    <div class="fuel-color natural-gas"></div>
+                    <span><strong>Natural Gas:</strong> 13% of direct energy (building heating)</span>
+                </div>
+                <div class="fuel-item">
+                    <div class="fuel-color gasoline"></div>
+                    <span><strong>Gasoline:</strong> 11% of direct energy (light equipment, ATVs, pickups)</span>
+                </div>
+                <div class="fuel-item">
+                    <div class="fuel-color propane"></div>
+                    <span><strong>Propane/LPG:</strong> 7% of direct energy (crop drying, material handling, heating)</span>
+                </div>
+            </div>
+            
+            <div class="summary-stats">
+                <div class="summary-box">
+                    <div class="summary-value">76%</div>
+                    <div class="summary-label">Fossil Fuel Dependent</div>
+                </div>
+                <div class="summary-box">
+                    <div class="summary-value">24%</div>
+                    <div class="summary-label">Currently Electric</div>
+                </div>
+                <div class="summary-box">
+                    <div class="summary-value">7</div>
+                    <div class="summary-label">Function Categories</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="category-grid">
+            <!-- Field Operations -->
+            <div class="category-card">
+                <div class="category-header">
+                    <div class="category-title">
+                        <div class="category-icon">🚜</div>
+                        <div class="category-name">Field Operations</div>
+                    </div>
+                    <div class="energy-percent">44%</div>
+                </div>
+                <div class="category-content">
+                    <div class="fuel-breakdown">
+                        <h4>Fuel Mix</h4>
+                        <div class="fuel-bars">
+                            <div class="fuel-bar-item">
+                                <div class="fuel-bar-label">Diesel</div>
+                                <div class="fuel-bar">
+                                    <div class="fuel-bar-fill diesel" style="width: 100%;">~100%</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="electrification-status">
+                        <h4>Electrification Status</h4>
+                        <div class="current-electric">
+                            <div class="electric-label">Current:</div>
+                            <div class="electric-gauge">
+                                <div class="electric-gauge-fill" style="width: 1%;">&lt;1%</div>
+                            </div>
+                        </div>
+                        <div class="feasibility">
+                            <div class="feasibility-label">Feasibility:</div>
+                            <div class="feasibility-rating">
+                                <div class="feasibility-dot filled"></div>
+                                <div class="feasibility-dot filled"></div>
+                                <div class="feasibility-dot"></div>
+                                <div class="feasibility-dot"></div>
+                                <div class="feasibility-dot"></div>
+                            </div>
+                            <div class="feasibility-text">Moderate - Small tractors only</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Irrigation Pumping -->
+            <div class="category-card">
+                <div class="category-header">
+                    <div class="category-title">
+                        <div class="category-icon">💧</div>
+                        <div class="category-name">Irrigation Pumping</div>
+                    </div>
+                    <div class="energy-percent">13%</div>
+                </div>
+                <div class="category-content">
+                    <div class="fuel-breakdown">
+                        <h4>Fuel Mix</h4>
+                        <div class="fuel-bars">
+                            <div class="fuel-bar-item">
+                                <div class="fuel-bar-label">Electricity</div>
+                                <div class="fuel-bar">
+                                    <div class="fuel-bar-fill electricity" style="width: 80%;">80%</div>
+                                </div>
+                            </div>
+                            <div class="fuel-bar-item">
+                                <div class="fuel-bar-label">Diesel</div>
+                                <div class="fuel-bar">
+                                    <div class="fuel-bar-fill diesel" style="width: 15%;">15%</div>
+                                </div>
+                            </div>
+                            <div class="fuel-bar-item">
+                                <div class="fuel-bar-label">Other</div>
+                                <div class="fuel-bar">
+                                    <div class="fuel-bar-fill gasoline" style="width: 5%;">5%</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="electrification-status">
+                        <h4>Electrification Status</h4>
+                        <div class="current-electric">
+                            <div class="electric-label">Current:</div>
+                            <div class="electric-gauge">
+                                <div class="electric-gauge-fill" style="width: 80%;">80%</div>
+                            </div>
+                        </div>
+                        <div class="feasibility">
+                            <div class="feasibility-label">Feasibility:</div>
+                            <div class="feasibility-rating">
+                                <div class="feasibility-dot filled"></div>
+                                <div class="feasibility-dot filled"></div>
+                                <div class="feasibility-dot filled"></div>
+                                <div class="feasibility-dot filled"></div>
+                                <div class="feasibility-dot filled"></div>
+                            </div>
+                            <div class="feasibility-text">Excellent - Mature technology</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Building Heating -->
+            <div class="category-card">
+                <div class="category-header">
+                    <div class="category-title">
+                        <div class="category-icon">🏭</div>
+                        <div class="category-name">Building Heating</div>
+                    </div>
+                    <div class="energy-percent">13%</div>
+                </div>
+                <div class="category-content">
+                    <div class="fuel-breakdown">
+                        <h4>Fuel Mix</h4>
+                        <div class="fuel-bars">
+                            <div class="fuel-bar-item">
+                                <div class="fuel-bar-label">Propane</div>
+                                <div class="fuel-bar">
+                                    <div class="fuel-bar-fill propane" style="width: 60%;">~60%</div>
+                                </div>
+                            </div>
+                            <div class="fuel-bar-item">
+                                <div class="fuel-bar-label">Natural Gas</div>
+                                <div class="fuel-bar">
+                                    <div class="fuel-bar-fill natural-gas" style="width: 40%;">~40%</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="electrification-status">
+                        <h4>Electrification Status</h4>
+                        <div class="current-electric">
+                            <div class="electric-label">Current:</div>
+                            <div class="electric-gauge">
+                                <div class="electric-gauge-fill" style="width: 8%;">&lt;10%</div>
+                            </div>
+                        </div>
+                        <div class="feasibility">
+                            <div class="feasibility-label">Feasibility:</div>
+                            <div class="feasibility-rating">
+                                <div class="feasibility-dot filled"></div>
+                                <div class="feasibility-dot filled"></div>
+                                <div class="feasibility-dot filled"></div>
+                                <div class="feasibility-dot filled"></div>
+                                <div class="feasibility-dot"></div>
+                            </div>
+                            <div class="feasibility-text">Good - Heat pumps viable</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Light Equipment -->
+            <div class="category-card">
+                <div class="category-header">
+                    <div class="category-title">
+                        <div class="category-icon">🚗</div>
+                        <div class="category-name">Light Equipment</div>
+                    </div>
+                    <div class="energy-percent">11%</div>
+                </div>
+                <div class="category-content">
+                    <div class="fuel-breakdown">
+                        <h4>Fuel Mix</h4>
+                        <div class="fuel-bars">
+                            <div class="fuel-bar-item">
+                                <div class="fuel-bar-label">Gasoline</div>
+                                <div class="fuel-bar">
+                                    <div class="fuel-bar-fill gasoline" style="width: 100%;">~100%</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="electrification-status">
+                        <h4>Electrification Status</h4>
+                        <div class="current-electric">
+                            <div class="electric-label">Current:</div>
+                            <div class="electric-gauge">
+                                <div class="electric-gauge-fill" style="width: 3%;">&lt;5%</div>
+                            </div>
+                        </div>
+                        <div class="feasibility">
+                            <div class="feasibility-label">Feasibility:</div>
+                            <div class="feasibility-rating">
+                                <div class="feasibility-dot filled"></div>
+                                <div class="feasibility-dot filled"></div>
+                                <div class="feasibility-dot filled"></div>
+                                <div class="feasibility-dot filled"></div>
+                                <div class="feasibility-dot"></div>
+                            </div>
+                            <div class="feasibility-text">Good - EVs increasingly viable</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Crop Processing/Drying -->
+            <div class="category-card">
+                <div class="category-header">
+                    <div class="category-title">
+                        <div class="category-icon">🌾</div>
+                        <div class="category-name">Crop Processing/Drying</div>
+                    </div>
+                    <div class="energy-percent">8%</div>
+                </div>
+                <div class="category-content">
+                    <div class="fuel-breakdown">
+                        <h4>Fuel Mix</h4>
+                        <div class="fuel-bars">
+                            <div class="fuel-bar-item">
+                                <div class="fuel-bar-label">Propane</div>
+                                <div class="fuel-bar">
+                                    <div class="fuel-bar-fill propane" style="width: 80%;">80%</div>
+                                </div>
+                            </div>
+                            <div class="fuel-bar-item">
+                                <div class="fuel-bar-label">Electricity</div>
+                                <div class="fuel-bar">
+                                    <div class="fuel-bar-fill electricity" style="width: 20%;">20%</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="electrification-status">
+                        <h4>Electrification Status</h4>
+                        <div class="current-electric">
+                            <div class="electric-label">Current:</div>
+                            <div class="electric-gauge">
+                                <div class="electric-gauge-fill" style="width: 20%;">20%</div>
+                            </div>
+                        </div>
+                        <div class="feasibility">
+                            <div class="feasibility-label">Feasibility:</div>
+                            <div class="feasibility-rating">
+                                <div class="feasibility-dot filled"></div>
+                                <div class="feasibility-dot filled"></div>
+                                <div class="feasibility-dot"></div>
+                                <div class="feasibility-dot"></div>
+                                <div class="feasibility-dot"></div>
+                            </div>
+                            <div class="feasibility-text">Moderate - High-temp heat pumps emerging</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Ventilation/Cooling -->
+            <div class="category-card">
+                <div class="category-header">
+                    <div class="category-title">
+                        <div class="category-icon">❄️</div>
+                        <div class="category-name">Ventilation/Cooling</div>
+                    </div>
+                    <div class="energy-percent">7%</div>
+                </div>
+                <div class="category-content">
+                    <div class="fuel-breakdown">
+                        <h4>Fuel Mix</h4>
+                        <div class="fuel-bars">
+                            <div class="fuel-bar-item">
+                                <div class="fuel-bar-label">Electricity</div>
+                                <div class="fuel-bar">
+                                    <div class="fuel-bar-fill electricity" style="width: 100%;">100%</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="electrification-status">
+                        <h4>Electrification Status</h4>
+                        <div class="current-electric">
+                            <div class="electric-label">Current:</div>
+                            <div class="electric-gauge">
+                                <div class="electric-gauge-fill" style="width: 100%;">100%</div>
+                            </div>
+                        </div>
+                        <div class="feasibility">
+                            <div class="feasibility-label">Feasibility:</div>
+                            <div class="feasibility-rating">
+                                <div class="feasibility-dot filled"></div>
+                                <div class="feasibility-dot filled"></div>
+                                <div class="feasibility-dot filled"></div>
+                                <div class="feasibility-dot filled"></div>
+                                <div class="feasibility-dot filled"></div>
+                            </div>
+                            <div class="feasibility-text">Already Electric - Efficiency focus</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Material Handling -->
+            <div class="category-card">
+                <div class="category-header">
+                    <div class="category-title">
+                        <div class="category-icon">📦</div>
+                        <div class="category-name">Material Handling</div>
+                    </div>
+                    <div class="energy-percent">4%</div>
+                </div>
+                <div class="category-content">
+                    <div class="fuel-breakdown">
+                        <h4>Fuel Mix</h4>
+                        <div class="fuel-bars">
+                            <div class="fuel-bar-item">
+                                <div class="fuel-bar-label">Propane</div>
+                                <div class="fuel-bar">
+                                    <div class="fuel-bar-fill propane" style="width: 70%;">~70%</div>
+                                </div>
+                            </div>
+                            <div class="fuel-bar-item">
+                                <div class="fuel-bar-label">Electricity</div>
+                                <div class="fuel-bar">
+                                    <div class="fuel-bar-fill electricity" style="width: 30%;">~30%</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="electrification-status">
+                        <h4>Electrification Status</h4>
+                        <div class="current-electric">
+                            <div class="electric-label">Current:</div>
+                            <div class="electric-gauge">
+                                <div class="electric-gauge-fill" style="width: 30%;">30%</div>
+                            </div>
+                        </div>
+                        <div class="feasibility">
+                            <div class="feasibility-label">Feasibility:</div>
+                            <div class="feasibility-rating">
+                                <div class="feasibility-dot filled"></div>
+                                <div class="feasibility-dot filled"></div>
+                                <div class="feasibility-dot filled"></div>
+                                <div class="feasibility-dot filled"></div>
+                                <div class="feasibility-dot"></div>
+                            </div>
+                            <div class="feasibility-text">Good - Electric forklifts mature</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="data-sources">
+            <h3>Data Sources and Methodology</h3>
+            <p><strong>% Direct Energy (Function Categories):</strong> Primary source is USDA/DOE "U.S. Agriculture and Forestry Greenhouse Gas Inventory: 1990-2013" providing fuel-type breakdown (Diesel: 44% | Electricity: 24% | Natural Gas: 13% | Gasoline: 11% | Propane/LPG: 7%). These fuel percentages were mapped to functional categories based on predominant uses documented in agricultural energy literature.</p>
+            
+            <p><strong>Functional Allocations:</strong></p>
+            <ul>
+                <li><strong>Field Operations (44%):</strong> All diesel consumption - tractors, combines, harvesters are primary diesel users</li>
+                <li><strong>Irrigation Pumping (13%):</strong> Proportionally allocated from 24% electricity total based on USDA NASS Farm and Ranch Irrigation Survey</li>
+                <li><strong>Building Heating (13%):</strong> Mapped to natural gas/propane consumption</li>
+                <li><strong>Light Equipment (11%):</strong> All gasoline consumption (pickups, ATVs, UTVs)</li>
+                <li><strong>Crop Processing/Drying (8%):</strong> Majority of propane/LPG plus small electricity portion</li>
+                <li><strong>Ventilation/Cooling (7%):</strong> Remaining electricity allocation</li>
+                <li><strong>Material Handling (4%):</strong> Residual propane use plus electric forklifts</li>
+            </ul>
+            
+            <p><strong>Current Electrification Rates:</strong> Source-specific data from University of Georgia Extension (irrigation 80% electric), Iowa State University Extension (crop drying 20% electric), manufacturer specifications (tractors &lt;1% electric), and industry surveys (building heating &lt;10% electric heat pumps, material handling ~30% electric forklifts).</p>
+            
+            <p><strong>Feasibility Ratings:</strong> Based on technology readiness level (TRL), economic competitiveness, and infrastructure requirements synthesized from equipment manufacturers, ACEEE Agricultural Energy Efficiency Opportunities, university extension cost-benefit analyses, and US DOE data.</p>
+        </div>
+    </div>
+</div>

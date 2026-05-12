@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Behind-the-Meter Natural Gas Data Center Projects</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            background: #f9f9f9;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+            border: 1px solid #e4e4e7;
+            overflow: hidden;
+        }
+        
+        .header {
+            background: #2a7d6f;
+            color: white;
+            padding: 24px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 28px;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+        
+        .header p {
+            font-size: 14px;
+            opacity: 0.9;
+            margin-top: 5px;
+        }
+        
+        .stats-bar {
+            display: flex;
+            justify-content: space-around;
+            background: #f8f9fa;
+            padding: 20px;
+            border-bottom: 2px solid #e9ecef;
+        }
+        
+        .stat {
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 32px;
+            font-weight: bold;
+            color: #2a7d6f;
+        }
+        
+        .stat-label {
+            font-size: 12px;
+            color: #6c757d;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 5px;
+        }
+        
+        .table-container {
+            overflow-x: auto;
+            padding: 20px;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13px;
+        }
+        
+        thead {
+            background: #2a7d6f;
+            color: white;
+        }
+        
+        th {
+            padding: 15px 10px;
+            text-align: left;
+            font-weight: 600;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+        
+        td {
+            padding: 12px 10px;
+            border-bottom: 1px solid #e9ecef;
+            vertical-align: top;
+        }
+        
+        tbody tr {
+            transition: background-color 0.2s;
+        }
+        
+        tbody tr:hover {
+            background-color: #f8f9fa;
+        }
+        
+        .project-name {
+            font-weight: 700;
+            color: #2c3e50;
+            font-size: 14px;
+        }
+        
+        .capacity {
+            font-weight: 600;
+            color: #2a7d6f;
+        }
+        
+        .badge {
+            display: inline-block;
+            padding: 4px 8px;
+            border-radius: 8px;
+            font-size: 11px;
+            font-weight: 600;
+            margin: 2px;
+        }
+        
+        .badge-operational {
+            background: #d4edda;
+            color: #155724;
+        }
+        
+        .badge-construction {
+            background: #fff3cd;
+            color: #856404;
+        }
+        
+        .badge-planning {
+            background: #cce5ff;
+            color: #004085;
+        }
+        
+        .badge-ccs {
+            background: #d1ecf1;
+            color: #0c5460;
+        }
+        
+        .badge-no-ccs {
+            background: #f8d7da;
+            color: #721c24;
+        }
+        
+        .highlight-ccs {
+            background: #e7f3ff;
+        }
+        
+        .key-insights {
+            background: #f8f9fa;
+            padding: 25px;
+            margin: 20px;
+            border-radius: 8px;
+            border-left: 4px solid #2a7d6f;
+        }
+        
+        .key-insights h2 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+        
+        .key-insights ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .key-insights li {
+            padding: 8px 0;
+            padding-left: 25px;
+            position: relative;
+        }
+        
+        .key-insights li:before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: #2a7d6f;
+            font-weight: bold;
+        }
+        
+        .footer {
+            background: #f4f4f5;
+            color: #666;
+            padding: 16px;
+            text-align: center;
+            font-size: 12px;
+            border-top: 1px solid #e4e4e7;
+        }
+        
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            
+            .container {
+                box-shadow: none;
+            }
+            
+            .header {
+                background: #2c3e50;
+            }
+            
+            tbody tr:hover {
+                background-color: transparent;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Behind-the-Meter Natural Gas Data Center Projects</h1>
+            <p style="font-size: 12px; margin-top: 10px; opacity: 0.8;">Updated: December 2025</p>
+        </div>
+        
+        <div class="stats-bar">
+            <div class="stat">
+                <div class="stat-number">22</div>
+                <div class="stat-label">Total Projects</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number">~42 GW</div>
+                <div class="stat-label">Combined Capacity</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number">5</div>
+                <div class="stat-label">With CCS Plans</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number">8</div>
+                <div class="stat-label">Renewables Co-located</div>
+            </div>
+        </div>
+        
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Project</th>
+                        <th>Location</th>
+                        <th>Total Capacity</th>
+                        <th>Gas Generation Technology</th>
+                        <th>CCS Technology</th>
+                        <th>Renewables/Battery</th>
+                        <th>Gas Supply & Pipeline Status</th>
+                        <th>Timeline</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><span class="project-name">Meta Hyperion</span></td>
+                        <td>Richland Parish, Louisiana (Franklin Farm)</td>
+                        <td><span class="capacity">5 GW total</span><br>2.26 GW gas<br>1.5 GW solar</td>
+                        <td>Three GE 7HA H-class combined-cycle turbines</td>
+                        <td><span class="badge badge-no-ccs">No CCS</span><br><small>Focus on nuclear + solar</small></td>
+                        <td>✓ 1.5 GW solar<br>✓ 1-4 GW nuclear (RFP early 2030s)</td>
+                        <td><strong>Supply:</strong> Adjacent to Haynesville Shale (14.7-15 Bcf/d)<br><strong>Pipeline:</strong> Existing infrastructure; Entergy building 100-mile 500 kV transmission line</td>
+                        <td>Units online 2028–2029<br>Full campus by 2030</td>
+                        <td><span class="badge badge-construction">Under Construction</span></td>
+                    </tr>
+                    
+                    <tr>
+                        <td><span class="project-name">Meta Socrates/Prometheus</span></td>
+                        <td>New Albany, Ohio (740-acre campus)</td>
+                        <td><span class="capacity">400 MW</span><br>(2×200 MW BTM plants)</td>
+                        <td>3× Solar Titan 250<br>9× Solar PGM130<br>3× Siemens SGT-400<br>15× CAT 3520</td>
+                        <td><span class="badge badge-no-ccs">No CCS</span></td>
+                        <td>Grid backup only</td>
+                        <td><strong>Supply:</strong> Williams Companies<br><strong>Pipeline:</strong> New 24-inch pipelines by Williams</td>
+                        <td>2025–2026<br>Socrates South Q3 2026</td>
+                        <td><span class="badge badge-construction">Under Construction</span></td>
+                    </tr>
+                    
+                    <tr>
+                        <td><span class="project-name">xAI Memphis Colossus</span></td>
+                        <td>Memphis, Tennessee (Sites 1 & 2)</td>
+                        <td><span class="capacity">422 MW</span> current<br>Up to 1.98 GW planned (Site 2: 1.56 GW)</td>
+                        <td>35 trailer turbines (~12 MW each)<br>60 permanent turbines ordered</td>
+                        <td><span class="badge badge-no-ccs">No CCS</span><br><small>Transitioning to TVA grid</small></td>
+                        <td>✓ 150 MW Tesla Megapacks (Site 1)<br>✓ TVA grid: 60% renewable mix</td>
+                        <td><strong>Supply:</strong> Local 16" gas main; regional suppliers<br><strong>Pipeline:</strong> Via local utility pipelines</td>
+                        <td>Site 1: Operational 2024<br>Site 2: Planning phase<br>Expansion ongoing</td>
+                        <td><span class="badge badge-operational">Operational</span> (Site 1)<br><span class="badge badge-planning">Planning</span> (Site 2)</td>
+                    </tr>
+                    
+                    <tr>
+                        <td><span class="project-name">EdgeConneX PowerConneX</span></td>
+                        <td>New Albany, Ohio (49-acre site)</td>
+                        <td><span class="capacity">120 MW</span></td>
+                        <td>Natural gas turbines (exact configuration TBD)</td>
+                        <td><span class="badge badge-no-ccs">No CCS</span></td>
+                        <td>None announced</td>
+                        <td><strong>Supply:</strong> National Gas and Oil Cooperative<br><strong>Pipeline:</strong> Connect to existing pipelines</td>
+                        <td>Build Q4 2025–Q1 2026</td>
+                        <td><span class="badge badge-construction">Permitting</span></td>
+                    </tr>
+                    
+                    <tr class="highlight-ccs">
+                        <td><span class="project-name">Oracle/OpenAI Stargate (Abilene)</span></td>
+                        <td>Abilene, West Texas (875-acre Lancium Clean Campus)</td>
+                        <td><span class="capacity">>1.2 GW</span></td>
+                        <td>GE Vernova gas turbines + Solar Turbines<br>360.5 MW gas generation</td>
+                        <td><span class="badge badge-ccs">Post-Combustion CCS</span><br><strong>Planned:</strong> >90% capture<br><strong>Provider:</strong> TBD<br>45Q tax credits</td>
+                        <td>✓ West Texas wind farms<br>✓ On-site solar<br>✓ Large battery storage<br>✓ Fuel cells possible<br>✓ Zero-water evaporation cooling</td>
+                        <td><strong>Supply:</strong> Texas gas network (near Permian)<br><strong>Pipeline:</strong> Lancium campus has pipeline access</td>
+                        <td>First halls online Oct 2025<br>Expansion through 2026–2027<br>8-building AI supercluster</td>
+                        <td><span class="badge badge-operational">Partially Operational</span></td>
+                    </tr>
+                    
+                    <tr class="highlight-ccs">
+                        <td><span class="project-name">Chevron Permian BTM Project</span></td>
+                        <td>Permian Basin, West Texas</td>
+                        <td><span class="capacity">Up to 5 GW</span></td>
+                        <td>Up to 7× GE 7HA combined-cycle turbines</td>
+                        <td><span class="badge badge-ccs">>90% CO₂ Capture</span><br><strong>CCS-ready:</strong> Post-combustion (provider TBD)</td>
+                        <td>Can incorporate renewables</td>
+                        <td><strong>Supply:</strong> On-site gas from Permian fields<br><strong>Pipeline:</strong> Direct Chevron infrastructure</td>
+                        <td>First 2.5 GW by 2027<br>Full build post-2027</td>
+                        <td><span class="badge badge-planning">Development</span></td>
+                    </tr>
+                    
+                    <tr class="highlight-ccs">
+                        <td><span class="project-name">Prometheus Evanston Campus</span></td>
+                        <td>Evanston, Wyoming</td>
+                        <td><span class="capacity">1.2 GW</span></td>
+                        <td>Low-carbon natural gas (PureWest certified)</td>
+                        <td><span class="badge badge-ccs">CDR Offsets</span><br><strong>Offset:</strong> 500k tons/yr carbon dioxide removal credits</td>
+                        <td>✓ Wind farms<br>✓ 100 MW SMR planned</td>
+                        <td><strong>Supply:</strong> Certified low-methane gas from local supply<br><strong>Pipeline:</strong> Local access</td>
+                        <td>Online 2026</td>
+                        <td><span class="badge badge-planning">In Development</span></td>
+                    </tr>
+                    
+                    <tr>
+                        <td><span class="project-name">IEP Greene County</span></td>
+                        <td>Greene County, Pennsylvania</td>
+                        <td><span class="capacity">944 MW</span></td>
+                        <td>Combined-cycle gas turbines</td>
+                        <td><span class="badge badge-no-ccs">No CCS</span></td>
+                        <td>✓ Battery storage included</td>
+                        <td><strong>Supply:</strong> Peoples Gas (local supply)<br><strong>Pipeline:</strong> Local connection<br>Backup tie to PJM grid (emergency only)</td>
+                        <td>Online by Q1 2029</td>
+                        <td><span class="badge badge-planning">Development</span></td>
+                    </tr>
+                    
+                    <tr>
+                        <td><span class="project-name">Joule Millard County Campus</span></td>
+                        <td>Millard County, Utah</td>
+                        <td><span class="capacity">1.3 GW</span><br>(phase 1)</td>
+                        <td>On-site private gas power plant</td>
+                        <td><span class="badge badge-no-ccs">No CCS</span></td>
+                        <td>Not specified</td>
+                        <td><strong>Supply:</strong> New pipeline tie-in (near IPP gas conversion)<br><strong>Pipeline:</strong> New connection</td>
+                        <td>Groundbreaking Nov 2025</td>
+                        <td><span class="badge badge-planning">Design Phase</span></td>
+                    </tr>
+                    
+                    <tr>
+                        <td><span class="project-name">Oracle Frontier (Shackelford TX)</span></td>
+                        <td>Shackelford County, West Texas (1,200 acres)</td>
+                        <td><span class="capacity">1.4 GW</span><br>Multi-hundred MW gas</td>
+                        <td>Jenbacher reciprocating engine microgrid<br>700 MW VoltaGrid BTM</td>
+                        <td><span class="badge badge-no-ccs">No CCS</span></td>
+                        <td>✓ Potential battery integration<br>Closed-loop liquid cooling (near-zero water)<br>LEED certification planned</td>
+                        <td><strong>Supply:</strong> Local Permian gas access<br><strong>Pipeline:</strong> Existing West Texas infrastructure<br>No grid tie</td>
+                        <td>First building H2 2026<br>Complete by 2028+<br>Announced 2025</td>
+                        <td><span class="badge badge-construction">Under Construction</span></td>
+                    </tr>
+                    
+                    <tr>
+                        <td><span class="project-name">Oracle (Doña Ana NM)</span></td>
+                        <td>Doña Ana County, New Mexico</td>
+                        <td><span class="capacity">Multi-hundred MW</span></td>
+                        <td>Onsite Siemens & GE gas turbines</td>
+                        <td><span class="badge badge-no-ccs">No CCS</span></td>
+                        <td>✓ Possible battery</td>
+                        <td><strong>Supply:</strong> Regional gas access<br><strong>Pipeline:</strong> New pipeline connection</td>
+                        <td>Announced 2025</td>
+                        <td><span class="badge badge-planning">Planning</span></td>
+                    </tr>
+                    
+                    <tr>
+                        <td><span class="project-name">Fermi America Project Matador</span></td>
+                        <td>Texas (multiple sites)</td>
+                        <td><span class="capacity">Up to 11 GW</span><br>by 2038</td>
+                        <td>Multiple BTM plants</td>
+                        <td><span class="badge badge-no-ccs">Not Specified</span></td>
+                        <td>✓ Likely future integration</td>
+                        <td><strong>Supply:</strong> Near gas fields<br><strong>Pipeline:</strong> TBD</td>
+                        <td>Phased through 2038</td>
+                        <td><span class="badge badge-planning">Proposed</span></td>
+                    </tr>
+                    
+                    <tr>
+                        <td><span class="project-name">Prometheus Texas Sites</span></td>
+                        <td>Texas (I-35 Corridor)</td>
+                        <td><span class="capacity">Up to 300 MW</span></td>
+                        <td>On-site gas generation + battery</td>
+                        <td><span class="badge badge-no-ccs">No CCS</span></td>
+                        <td>✓ Engie battery storage</td>
+                        <td><strong>Supply:</strong> Existing pipelines<br><strong>Pipeline:</strong> At Engie sites</td>
+                        <td>Operational by 2026</td>
+                        <td><span class="badge badge-construction">Construction</span></td>
+                    </tr>
+                    
+                    <tr class="highlight-ccs">
+                        <td><span class="project-name">Prometheus Casper Campus</span></td>
+                        <td>Casper, Wyoming</td>
+                        <td><span class="capacity">1.5 GW</span></td>
+                        <td>Natural gas with carbon capture</td>
+                        <td><span class="badge badge-ccs">Casper Carbon Capture</span><br><strong>Strategy:</strong> Carbon-negative via CCS</td>
+                        <td>✓ Likely renewables</td>
+                        <td><strong>Supply:</strong> Wyoming gas<br><strong>Pipeline:</strong> On-site CO₂ sequestration</td>
+                        <td>Planned (phased)</td>
+                        <td><span class="badge badge-planning">Announced</span></td>
+                    </tr>
+                    
+                    <tr>
+                        <td><span class="project-name">FO Permian (Midland) BTM Hub</span></td>
+                        <td>Midland County, Texas (Permian Basin)</td>
+                        <td><span class="capacity">150 MW</span> initial<br>Scalable to 5 GW</td>
+                        <td>Modular gas engines</td>
+                        <td><span class="badge badge-no-ccs">No CCS</span></td>
+                        <td>✓ Battery backup</td>
+                        <td><strong>Supply:</strong> On-site Permian gas<br><strong>Pipeline:</strong> Direct access</td>
+                        <td>As early as 2026</td>
+                        <td><span class="badge badge-planning">Development</span></td>
+                    </tr>
+                    
+                    <tr class="highlight-ccs">
+                        <td><span class="project-name">Chevron-Engine No.1 JV</span></td>
+                        <td>USA (multiple sites)</td>
+                        <td><span class="capacity">Up to 4 GW</span><br>by 2027</td>
+                        <td>7× GE 7HA turbines</td>
+                        <td><span class="badge badge-ccs">Planned CCS</span><br><strong>Integration:</strong> Post-combustion</td>
+                        <td>Not mentioned</td>
+                        <td><strong>Supply:</strong> Chevron gas fields<br><strong>Pipeline:</strong> Direct access</td>
+                        <td>Operational by end of 2027</td>
+                        <td><span class="badge badge-planning">In Development</span></td>
+                    </tr>
+                    
+                    <tr class="highlight-ccs">
+                        <td><span class="project-name">ExxonMobil 1.5GW Plant</span></td>
+                        <td>Likely Texas Gulf or Permian</td>
+                        <td><span class="capacity">1.5 GW</span></td>
+                        <td>High-reliability gas plant</td>
+                        <td><span class="badge badge-ccs">>90% CO₂ Capture</span><br><strong>Provider:</strong> ExxonMobil Low Carbon Solutions<br><strong>Infrastructure:</strong> 900+ mile Gulf Coast CO₂ pipeline</td>
+                        <td>Low-carbon gas from Permian</td>
+                        <td><strong>Supply:</strong> Exxon gas production<br><strong>Pipeline:</strong> Exxon infrastructure + CO₂ storage network</td>
+                        <td>Est. late 2020s</td>
+                        <td><span class="badge badge-planning">Planned</span></td>
+                    </tr>
+                    
+                    <tr class="highlight-ccs">
+                        <td><span class="project-name">Project Horizon (Poolside/CoreWeave)</span></td>
+                        <td>Pecos County, Texas</td>
+                        <td><span class="capacity">2 GW</span><br>(8×250 MW phases)</td>
+                        <td>On-site gas (Oxy's facility)</td>
+                        <td><span class="badge badge-ccs">Indirect CCS</span><br><strong>Method:</strong> Tied to DAC carbon removal</td>
+                        <td>None noted</td>
+                        <td><strong>Supply:</strong> Oxy's Longfellow Ranch<br><strong>Pipeline:</strong> On-site</td>
+                        <td>Phase 1 by Q4 2025<br>Full ~2028</td>
+                        <td><span class="badge badge-construction">Under Construction</span></td>
+                    </tr>
+                    
+                    <tr>
+                        <td><span class="project-name">CloudBurst Data Centers</span></td>
+                        <td>San Marcos, Central Texas</td>
+                        <td><span class="capacity">1.2 GW</span></td>
+                        <td>Natural gas generation</td>
+                        <td><span class="badge badge-no-ccs">No CCS</span></td>
+                        <td>Company mentions "renewable solutions"</td>
+                        <td><strong>Supply:</strong> Energy Transfer Oasis Pipeline (450k MMBtu/day)<br><strong>Pipeline:</strong> Dedicated lateral</td>
+                        <td>FID expected 2025<br>Q3 2026 if approved</td>
+                        <td><span class="badge badge-planning">Awaiting FID</span></td>
+                    </tr>
+                    
+                    <tr>
+                        <td><span class="project-name">Vantage/VoltaGrid</span></td>
+                        <td>Multiple sites (Northern Virginia, Phoenix, Ohio, Washington, Montreal, Quebec City)</td>
+                        <td><span class="capacity">1+ GW</span></td>
+                        <td>VoltaGrid natural gas microgrids (portable and stationary)<br>Up to 70 MW per microsite</td>
+                        <td><span class="badge badge-no-ccs">No CCS</span><br><small>H₂/RNG ready</small></td>
+                        <td>Can run on 100% hydrogen or RNG<br>98% reduction in criteria air pollutants</td>
+                        <td><strong>Supply:</strong> Regional gas suppliers<br><strong>Pipeline:</strong> Regional infrastructure at each site</td>
+                        <td>Deployment Feb 2025<br>Active rollout</td>
+                        <td><span class="badge badge-operational">Active Deployment</span></td>
+                    </tr>
+                    
+                    <tr class="highlight-ccs">
+                        <td><span class="project-name">New Era Helium/Sharon AI</span></td>
+                        <td>Ector County, Permian Basin, Texas (235 acres)</td>
+                        <td><span class="capacity">250 MW</span></td>
+                        <td>Gas-fired power plant</td>
+                        <td><span class="badge badge-ccs">~250k tonnes CO₂/yr</span><br><strong>Provider:</strong> New Era Helium building CCS infrastructure<br><strong>Design:</strong> Net-zero<br>45Q tax credits</td>
+                        <td>None announced</td>
+                        <td><strong>Supply:</strong> New Era Permian production (137k+ acres)<br><strong>Pipeline:</strong> Existing gas transmission access</td>
+                        <td>Site LOI Feb 2025<br>Construction TBD</td>
+                        <td><span class="badge badge-planning">Site Selection</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <div class="key-insights">
+            <h2>Key Notes on Table</h2>
+            <ul>
+                <li><strong>Pipeline Infrastructure:</strong> Most projects leverage existing pipeline infrastructure rather than building new major interstate pipelines; lateral connections (short connecting pipelines from main lines) are common with faster permitting as intrastate</li>
+                <li><strong>Geographic Concentration:</strong> Projects co-located with production (Chevron Permian, New Era Helium Permian, Oracle Stargate near West Texas gas) avoid long-distance pipeline needs; Haynesville Shale (Louisiana) and Permian Basin (West Texas) provide abundant, proximate supply</li>
+                <li><strong>Technology Preferences:</strong> Mix of aeroderivative and industrial gas turbines; simple-cycle turbines for faster deployment vs. combined-cycle for efficiency; typical sizes 2.5 MW to 430 MW per unit; mobile/modular units from VoltaGrid, Solaris Energy Infrastructure for rapid deployment</li>
+                <li><strong>Timeline Drivers:</strong> Grid queue times now 5-10 years in major data center markets; behind-the-meter gas operational in 12-24 months; permits streamlining under current federal policies; direct pipeline laterals avoid grid interconnection delays</li>
+                <li><strong>Environmental Features:</strong> 5 projects include CCS provisions (45Q tax credit eligible); hybrid approaches combining gas with solar, wind, and battery storage; some designed for future hydrogen compatibility; advanced emissions controls (SCR systems, DLE technology)</li>
+                <li><strong>Contract Structures:</strong> Typically 5-10 year gas supply agreements with extension options; fixed-price gas where possible; behind-the-meter configurations to avoid utility rate structures and grid costs</li>
+                <li><strong>Market Scale:</strong> Data centers could consume 6-10 Bcf/day of natural gas by 2027 (~10% of total US consumption); more than 25% of new facilities >500 MW will have BTM power by 2030 (up from 1% today); over 200 gas-fired power units in development for data center sector</li>
+                <li><strong>CCS Technology Leaders:</strong> ExxonMobil leads with >90% capture using proprietary technology and 900+ mile Gulf Coast CO₂ pipeline network; GE Vernova's EGR systems can reduce CCS costs by ~6% while enabling 95%+ capture; industry utilizing Shell CANSOLV, Svante, BASF, and Linde technologies</li>
+            </ul>
+        </div>
+        
+        <div class="footer">
+            <p>Industry data compiled from company press releases, regulatory filings, and energy trade publications | December 2025</p>
+            <p style="margin-top: 10px; font-size: 11px; opacity: 0.8;">For research purposes only. Verify all details with primary sources before making business decisions.</p>
+        </div>
+    </div>
+</body>
+</html>

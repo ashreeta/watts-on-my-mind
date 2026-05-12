@@ -1,0 +1,293 @@
+<style>
+        
+[data-widget="w-load-projections"] {
+            font-family: inherit;
+        }
+        
+        
+[data-widget="w-load-projections"] h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        
+[data-widget="w-load-projections"] .table-container {
+            overflow-x: auto;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+            border: 1px solid #e4e4e7;
+            padding: 20px;
+        }
+        
+        
+[data-widget="w-load-projections"] table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 14px;
+        }
+        
+        
+[data-widget="w-load-projections"] th {
+            background-color: #f4f4f5;
+            color: #555;
+            padding: 12px;
+            text-align: left;
+            font-weight: 600;
+            border-bottom: 2px solid #e4e4e7;
+        }
+        
+        
+[data-widget="w-load-projections"] td {
+            padding: 12px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        
+        
+[data-widget="w-load-projections"] tr:hover {
+            background-color: #f8f9fa;
+        }
+        
+        
+[data-widget="w-load-projections"] .total-row {
+            font-weight: bold;
+            background-color: #f4f4f5;
+            border-top: 2px solid #e4e4e7;
+        }
+        
+        
+[data-widget="w-load-projections"] .percentage {
+            font-weight: bold;
+            padding: 6px 12px;
+            border-radius: 4px;
+            display: inline-block;
+            min-width: 50px;
+            text-align: center;
+        }
+        
+        /* Color coding for percentage increases */
+        
+[data-widget="w-load-projections"] .pct-low {
+            background-color: #d4edda;
+            color: #155724;
+        }
+        
+        
+[data-widget="w-load-projections"] .pct-medium-low {
+            background-color: #fff3cd;
+            color: #856404;
+        }
+        
+        
+[data-widget="w-load-projections"] .pct-medium {
+            background-color: #ffeaa7;
+            color: #6c5800;
+        }
+        
+        
+[data-widget="w-load-projections"] .pct-medium-high {
+            background-color: #ffd89b;
+            color: #7a4100;
+        }
+        
+        
+[data-widget="w-load-projections"] .pct-high {
+            background-color: #ffb6b9;
+            color: #721c24;
+        }
+        
+        
+[data-widget="w-load-projections"] .pct-very-high {
+            background-color: #f8b4b4;
+            color: #721c24;
+        }
+        
+        
+[data-widget="w-load-projections"] .reference {
+            font-size: 12px;
+            color: #666;
+        }
+        
+        
+[data-widget="w-load-projections"] .legend {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+            border: 1px solid #e4e4e7;
+        }
+        
+        
+[data-widget="w-load-projections"] .legend h3 {
+            margin-top: 0;
+            color: #333;
+            font-size: 16px;
+        }
+        
+        
+[data-widget="w-load-projections"] .legend-item {
+            display: inline-block;
+            margin-right: 20px;
+            margin-bottom: 10px;
+        }
+        
+        
+[data-widget="w-load-projections"] .legend-color {
+            display: inline-block;
+            width: 60px;
+            height: 20px;
+            border-radius: 4px;
+            margin-right: 8px;
+            vertical-align: middle;
+        }
+    
+
+[data-widget="w-load-projections"] .container {
+    max-width: none;
+    margin: 0;
+    background: transparent;
+    box-shadow: none;
+    border: none;
+    border-radius: 0;
+    padding: 0.5rem 0;
+}
+</style>
+<div data-widget="w-load-projections">
+<h1>Annual Load Projections by Region (TWh only)</h1>
+    
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>Region</th>
+                    <th>Current (2024-2025) TWh</th>
+                    <th>2030 Projection TWh</th>
+                    <th>Percentage Increase 2024/2025 to 2030</th>
+                    <th>Share of total load in 2024/2025</th>
+                    <th>Share of total load in 2030</th>
+                    <th>Scenario/Notes</th>
+                    <th>Reference</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>SERC</strong></td>
+                    <td>1,350</td>
+                    <td>1,610</td>
+                    <td><span class="percentage pct-medium-low">19%</span></td>
+                    <td>31%</td>
+                    <td>30%</td>
+                    <td>using 2% ACGR and/or 320 GW peak load (2030) with 57.5% LF</td>
+                    <td class="reference">SERC Long-Term Reliability Assessments</td>
+                </tr>
+                <tr>
+                    <td><strong>WECC (non-CAISO)</strong></td>
+                    <td>942</td>
+                    <td>1,070</td>
+                    <td><span class="percentage pct-low">14%</span></td>
+                    <td>22%</td>
+                    <td>20%</td>
+                    <td>20.4% growth to 2034</td>
+                    <td class="reference">WECC Annual Report, NERC assessments</td>
+                </tr>
+                <tr>
+                    <td><strong>PJM</strong></td>
+                    <td>800</td>
+                    <td>920</td>
+                    <td><span class="percentage pct-medium">15%</span></td>
+                    <td>18%</td>
+                    <td>17%</td>
+                    <td>40% growth by 2039</td>
+                    <td class="reference">PJM Inside Lines, 2025 Load Forecast Tables</td>
+                </tr>
+                <tr>
+                    <td><strong>ERCOT</strong></td>
+                    <td>496</td>
+                    <td>811</td>
+                    <td><span class="percentage pct-high">64%</span></td>
+                    <td>11%</td>
+                    <td>15%</td>
+                    <td>811 TWh calculated using 62.6% LF and peak load of 148 GW (2030)</td>
+                    <td class="reference">ERCOT Long-Term Load Forecast Update, 2025 methodology</td>
+                </tr>
+                <tr>
+                    <td><strong>SPP</strong></td>
+                    <td>290</td>
+                    <td>465</td>
+                    <td><span class="percentage pct-high">60%</span></td>
+                    <td>7%</td>
+                    <td>9%</td>
+                    <td>Moderate Electrification scenario</td>
+                    <td class="reference">SPP 2024 LOLE Study Report, Future Load Scenarios report</td>
+                </tr>
+                <tr>
+                    <td><strong>CAISO</strong></td>
+                    <td>218</td>
+                    <td>272</td>
+                    <td><span class="percentage pct-medium">25%</span></td>
+                    <td>5%</td>
+                    <td>5%</td>
+                    <td>CEC baseline forecast</td>
+                    <td class="reference">CAISO 2025 Summer Load & Resources Assessment, CEC 2024 IEPR</td>
+                </tr>
+                <tr>
+                    <td><strong>NYISO</strong></td>
+                    <td>152</td>
+                    <td>163</td>
+                    <td><span class="percentage pct-low">7%</span></td>
+                    <td>3%</td>
+                    <td>3%</td>
+                    <td>Baseline scenario from Gold Book</td>
+                    <td class="reference">NYISO 2025 Gold Book, Power Trends 2025</td>
+                </tr>
+                <tr>
+                    <td><strong>ISO-NE</strong></td>
+                    <td>117</td>
+                    <td>125</td>
+                    <td><span class="percentage pct-low">7%</span></td>
+                    <td>3%</td>
+                    <td>2%</td>
+                    <td>50/50 net forecast</td>
+                    <td class="reference">ISO-NE Capacity, Energy, Loads, and Transmission (CELT) 2025</td>
+                </tr>
+                <tr class="total-row">
+                    <td><strong>Total</strong></td>
+                    <td><strong>4,365</strong></td>
+                    <td><strong>5,436</strong></td>
+                    <td><span class="percentage pct-medium">25%</span></td>
+                    <td colspan="4"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    
+    <div class="legend">
+        <h3>Percentage Increase Color Legend</h3>
+        <div class="legend-item">
+            <span class="legend-color pct-low"></span>
+            <span>0-10% (Low)</span>
+        </div>
+        <div class="legend-item">
+            <span class="legend-color pct-medium-low"></span>
+            <span>11-20% (Medium-Low)</span>
+        </div>
+        <div class="legend-item">
+            <span class="legend-color pct-medium"></span>
+            <span>21-30% (Medium)</span>
+        </div>
+        <div class="legend-item">
+            <span class="legend-color pct-medium-high"></span>
+            <span>31-40% (Medium-High)</span>
+        </div>
+        <div class="legend-item">
+            <span class="legend-color pct-high"></span>
+            <span>41-80% (High)</span>
+        </div>
+        <div class="legend-item">
+            <span class="legend-color pct-very-high"></span>
+            <span>80%+ (Very High)</span>
+        </div>
+    </div>
+</div>

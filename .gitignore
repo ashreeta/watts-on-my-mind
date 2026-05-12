@@ -5,7 +5,7 @@ _site/
 # Non-website content
 Distribution grid article/
 HP_Article/
-*.html
+/*.html
 
 # System files
 .DS_Store
