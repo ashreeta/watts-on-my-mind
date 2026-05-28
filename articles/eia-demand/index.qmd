@@ -10,7 +10,7 @@ reference-location: document
 <!-- ============================================================
   ARTICLE OVERVIEW
 
-  Data source: EIA Cleaned Hourly Electricity Demand (LBNL/EIA)
+  Data source: EIA Cleaned Hourly Electricity Demand (Ruggles et al.)
     - Release 1: 2015-07-02 to 2019-12-31 (13 regions, 54 BAs)
     - Release 2: 2020-01-01 to 2024-12-31 (13 regions, 119 BA + subregions)
   Notebooks: ldc_analysis.ipynb, ldc_explore.ipynb, ldc_diurnal.ipynb
@@ -1415,7 +1415,7 @@ Both the approaches to storytelling from data showcased in this article have pro
 
 ## Data
 
-**Source**: EIA Cleaned Hourly Electricity Demand Data, produced by Lawrence Berkeley National Laboratory in partnership with EIA.[^2] The dataset applies a cleaning algorithm to EIA-930 hourly demand reports, flagging and imputing anomalous values.
+**Source**: EIA Cleaned Hourly Electricity Demand Data.[^2] The dataset applies a cleaning algorithm to EIA-930 hourly demand reports, flagging and imputing anomalous values using a Multiple Imputation by Chained Equations (MICE) technique.
 
 **Releases used**:
 - Release 1 (`release_2020_Oct`): July 2, 2015 to July 1, 2020 — 54 BAs and 13 regions
@@ -1436,7 +1436,7 @@ Both the approaches to storytelling from data showcased in this article have pro
 
 [^1]:U.S. Energy Information Administration, [EIA Form EIA-930 Hourly Electric Grid Monitor](https://www.eia.gov/electricity/gridmonitor/). Hourly balancing authority demand, net generation, and interchange data reported by electric grid operators.
 
-[^2]:Agrawal, S. et al., Lawrence Berkeley National Laboratory / U.S. Energy Information Administration, [EIA Cleaned Hourly Electricity Demand Data](https://github.com/LBNL-ETA/EIA-Cleaned-Hourly-Electricity-Demand-Data). The dataset applies a cleaning algorithm to EIA-930 hourly demand reports, flagging and imputing anomalous values caused by reporting errors, missing submissions, and meter outages. This analysis uses the cleaned demand series rather than raw EIA-930 values.
+[^2]:Ruggles, T.H., Farnham, D.J., Tong, D. et al. Developing reliable hourly electricity demand data through screening and imputation. *Sci Data* **7**, 155 (2020). [https://doi.org/10.1038/s41597-020-0483-x](https://doi.org/10.1038/s41597-020-0483-x). Data archive: Ruggles, T.H., Farnham, D.J. & Wongel, A. (2025). EIA Cleaned Hourly Electricity Demand Data (v1.4). Zenodo. [https://doi.org/10.5281/zenodo.3517196](https://doi.org/10.5281/zenodo.3517196). Repository: [https://github.com/truggles/EIA_Cleaned_Hourly_Electricity_Demand_Data](https://github.com/truggles/EIA_Cleaned_Hourly_Electricity_Demand_Data).
 
 [^3]:[Washington State Clean Energy Transformation Act (CETA), SB 5116](https://app.leg.wa.gov/billsummary?Year=2019&BillNumber=5116), signed May 7, 2019. Requires Washington electric utilities to reach 100% clean electricity by 2045 with interim milestones at 2025 and 2030.
 
