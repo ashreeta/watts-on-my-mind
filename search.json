@@ -77,62 +77,6 @@
     "text": "References\n\nHorowitz et al., NREL 2019; IEC/IEEE review literature 2023–25\nNERC July 2025 whitepaper; PG&E/Sandia SWAP project 2023\nNERC, IBR and DER Disturbances Advisory, June 2024\nNY PSC, Reforming the Energy Vision (REV) proceeding; Con Edison Brooklyn-Queens Demand Management Program (BQDM), 2014–2016"
   },
   {
-    "objectID": "articles/caiso-storage/index.html",
-    "href": "articles/caiso-storage/index.html",
-    "title": "Four Hours: The Logic Behind California’s Battery Fleet",
-    "section": "",
-    "text": "California has installed more utility-scale battery storage than any other state — roughly 10 gigawatts of capacity by the end of 2024, up from near zero in 2018. Over the same period, the state also curtailed a record amount of solar and wind generation: over 3.5 million MWh in 2024 alone.\nIf batteries are the solution to curtailment, both numbers should not be growing in parallel. Yet they are.\nThis article works through five datasets to ask whether California’s battery fleet was built to absorb renewable surplus — or whether it was built to do something more profitable."
-  },
-  {
-    "objectID": "articles/caiso-storage/index.html#what-the-fleet-was-built-for",
-    "href": "articles/caiso-storage/index.html#what-the-fleet-was-built-for",
-    "title": "Four Hours: The Logic Behind California’s Battery Fleet",
-    "section": "What the Fleet Was Built For",
-    "text": "What the Fleet Was Built For\nBefore asking what batteries do, it helps to ask what they were designed to do. Two pieces of the EIA-860M generator registry give us that.\n\nDuration class\nBattery duration — energy capacity divided by power capacity — is a direct proxy for intended use.\n\n\n\n\n\nCo-located vs standalone\nA battery sharing a Plant ID with a solar or wind generator has a direct financial incentive to absorb that plant’s output. A standalone battery has no such pairing — it charges and discharges based purely on market price signals."
-  },
-  {
-    "objectID": "articles/caiso-storage/index.html#the-curtailment-problem",
-    "href": "articles/caiso-storage/index.html#the-curtailment-problem",
-    "title": "Four Hours: The Logic Behind California’s Battery Fleet",
-    "section": "The Curtailment Problem",
-    "text": "The Curtailment Problem\n\n\nNot all curtailment is the same\nThis distinction matters enormously for battery policy.\nSystem curtailment means the whole grid has more supply than it needs. A battery anywhere on the network can absorb this by charging. Local curtailment means a specific transmission line or substation is congested — the generator behind it must back off even if the rest of the grid could use the energy. A battery can only solve local curtailment if it sits on the same side of the constraint as the curtailed generator.\nIf local curtailment is a large fraction of the total, the policy prescription changes: the problem is grid topology, not insufficient battery capacity."
-  },
-  {
-    "objectID": "articles/caiso-storage/index.html#do-batteries-charge-when-curtailment-hits",
-    "href": "articles/caiso-storage/index.html#do-batteries-charge-when-curtailment-hits",
-    "title": "Four Hours: The Logic Behind California’s Battery Fleet",
-    "section": "Do Batteries Charge When Curtailment Hits?",
-    "text": "Do Batteries Charge When Curtailment Hits?\nThis is the central question. If batteries respond to curtailment, their charging should peak at the same hours as the curtailment spike. If they arbitrage, they target the price trough — which in CAISO tends to fall before the physical surplus peak, because batteries want to be fully charged by the 6 PM evening ramp.\n\n\n\nThe seasonal breakdown shows why spring matters most. Spring months (March through May) account for the majority of annual curtailment volume in CAISO — the solar fleet is at full output while space-cooling demand has not yet ramped up. The battery charging and curtailment curves are closest to aligned in spring, but the gap does not fully close."
-  },
-  {
-    "objectID": "articles/caiso-storage/index.html#the-arbitrage-signal",
-    "href": "articles/caiso-storage/index.html#the-arbitrage-signal",
-    "title": "Four Hours: The Logic Behind California’s Battery Fleet",
-    "section": "The Arbitrage Signal",
-    "text": "The Arbitrage Signal\nThe clearest evidence for price-optimized dispatch: do batteries charge when wholesale prices are lowest and discharge when prices are highest?"
-  },
-  {
-    "objectID": "articles/caiso-storage/index.html#what-the-data-shows",
-    "href": "articles/caiso-storage/index.html#what-the-data-shows",
-    "title": "Four Hours: The Logic Behind California’s Battery Fleet",
-    "section": "What the Data Shows",
-    "text": "What the Data Shows"
-  },
-  {
-    "objectID": "articles/caiso-storage/index.html#data-and-methods",
-    "href": "articles/caiso-storage/index.html#data-and-methods",
-    "title": "Four Hours: The Logic Behind California’s Battery Fleet",
-    "section": "Data and Methods",
-    "text": "Data and Methods\nCAISO fuel mix: Five-minute interval generation by fuel type, 2018–2024, downloaded via CAISO OASIS API. Battery storage is reported as a net value — positive when discharging, negative when charging. Files stored as annual parquet files.1\nCAISO curtailment: Daily production and curtailments data from CAISO’s public reports, covering curtailment events by fuel type and reason (System vs Local). Files span 2018–2025.\nCAISO SP15 LMP: Day-ahead locational marginal prices at the SP15 pricing node (Southern California). Sampled at four representative weeks per month, March 2023 through December 2024. Downloaded via CAISO OASIS.\nEIA-860M: Monthly generator-level data from EIA Form 860M, May 2024 snapshot. Battery units identified by Energy Source Code MWH. Duration calculated as Nameplate Energy Capacity (MWh) ÷ Net Summer Capacity (MW). Co-location determined by matching Plant ID between battery units and solar (SUN) or wind (WND) generators within CISO territory.\nScope: Analysis is limited to CAISO (CISO balancing authority). 2025 data is included in the curtailment charts but excluded from the fuel-mix and LMP analyses where coverage is incomplete."
-  },
-  {
-    "objectID": "articles/caiso-storage/index.html#footnotes",
-    "href": "articles/caiso-storage/index.html#footnotes",
-    "title": "Four Hours: The Logic Behind California’s Battery Fleet",
-    "section": "Footnotes",
-    "text": "Footnotes\n\n\nCAISO OASIS API documentation↩︎"
-  },
-  {
     "objectID": "about.html",
     "href": "about.html",
     "title": "About",
@@ -144,7 +88,7 @@
     "href": "index.html",
     "title": "Watt's on My Mind",
     "section": "",
-    "text": "Exploring EIA 930: The Shape of U.S. Electricity Demand\n\n\n\nelectricity demand\n\nload shape\n\ndata analysis\n\nEIA\n\ngrid\n\n\n\nA decade of EIA hourly electricity demand data — regional divergence and multiple structural stories visible in the shape of when America uses power.\n\n\n\n\n\nMay 2026\n\n\n\n\n\n\n\nFour Hours: The Logic Behind California’s Battery Fleet\n\n\n\nCAISO\n\nbattery storage\n\ncurtailment\n\nelectricity markets\n\nCalifornia\n\n\n\nCalifornia has added over 10 GW of utility-scale batteries while curtailment keeps growing. Five datasets, five analytical lenses — on whether the fleet is absorbing solar surplus or optimizing for market returns.\n\n\n\n\n\nMay 2026\n\n\n\n\n\n\n\nDistribution Grid Analysis: A Primer\n\n\n\ndistribution grid\n\ngrid planning\n\npolicy\n\nregulation\n\nengineering\n\n\n\nHow distribution grid simulation works, what regulatory frameworks require, and why the absence of combined multi-technology assessment creates systematic investment risk.\n\n\n\n\n\nMay 2026\n\n\n\n\n\n\n\nHeat Pumps for the Residential Sector: Drivers of Adoption\n\n\n\nheat pumps\n\nelectrification\n\nresidential\n\n\n\nThe mechanics, history, economics, and regional conversion costs behind residential heat pump deployment worldwide.\n\n\n\n\n\nMay 2026\n\n\n\n\n\n\n\nBehind-the-Meter Natural Gas Power Plants: An Emerging Trend\n\n\n\nnatural gas\n\ndata centers\n\nbehind-the-meter\n\n\n\nData centers building dedicated gas generation to bypass interconnection queues — market scale, key players, technology, and carbon capture.\n\n\n\n\n\nDecember 2025\n\n\n\n\n\n\n\nEnergy and Electrification in U.S. Agriculture\n\n\n\nagriculture\n\nelectrification\n\nenergy use\n\n\n\nOn-farm energy use, fuel mix, geographic distribution, and electrification opportunities across the U.S. agricultural sector.\n\n\n\n\n\nNovember 2025\n\n\n\n\n\n\n\nThe Future of U.S. Electricity Demand Through 2030\n\n\n\ndemand growth\n\ngrid planning\n\nforecasting\n\n\n\nRegional load growth projections to 2030 — ERCOT, SPP, CAISO, PJM, and others — and what’s driving a projected 25% national increase.\n\n\n\n\n\nOctober 2025\n\n\n\n\n\n\n\nWhat Do Data Center Load Profiles Look Like?\n\n\n\ndata centers\n\nload profiles\n\nforecasting\n\n\n\nHow flat is truly flat? The factors — workload type, infrastructure design, and cooling strategy — that shape data center demand curves.\n\n\n\n\n\nOctober 2025\n\n\n\n\n\nNo matching items"
+    "text": "Exploring EIA 930: The Shape of U.S. Electricity Demand\n\n\n\nelectricity demand\n\nload shape\n\ndata analysis\n\nEIA\n\ngrid\n\n\n\nA decade of EIA hourly electricity demand data — regional divergence and multiple structural stories visible in the shape of when America uses power.\n\n\n\n\n\nMay 2026\n\n\n\n\n\n\n\nDistribution Grid Analysis: A Primer\n\n\n\ndistribution grid\n\ngrid planning\n\npolicy\n\nregulation\n\nengineering\n\n\n\nHow distribution grid simulation works, what regulatory frameworks require, and why the absence of combined multi-technology assessment creates systematic investment risk.\n\n\n\n\n\nMay 2026\n\n\n\n\n\n\n\nHeat Pumps for the Residential Sector: Drivers of Adoption\n\n\n\nheat pumps\n\nelectrification\n\nresidential\n\n\n\nThe mechanics, history, economics, and regional conversion costs behind residential heat pump deployment worldwide.\n\n\n\n\n\nMay 2026\n\n\n\n\n\n\n\nBehind-the-Meter Natural Gas Power Plants: An Emerging Trend\n\n\n\nnatural gas\n\ndata centers\n\nbehind-the-meter\n\n\n\nData centers building dedicated gas generation to bypass interconnection queues — market scale, key players, technology, and carbon capture.\n\n\n\n\n\nDecember 2025\n\n\n\n\n\n\n\nEnergy and Electrification in U.S. Agriculture\n\n\n\nagriculture\n\nelectrification\n\nenergy use\n\n\n\nOn-farm energy use, fuel mix, geographic distribution, and electrification opportunities across the U.S. agricultural sector.\n\n\n\n\n\nNovember 2025\n\n\n\n\n\n\n\nThe Future of U.S. Electricity Demand Through 2030\n\n\n\ndemand growth\n\ngrid planning\n\nforecasting\n\n\n\nRegional load growth projections to 2030 — ERCOT, SPP, CAISO, PJM, and others — and what’s driving a projected 25% national increase.\n\n\n\n\n\nOctober 2025\n\n\n\n\n\n\n\nWhat Do Data Center Load Profiles Look Like?\n\n\n\ndata centers\n\nload profiles\n\nforecasting\n\n\n\nHow flat is truly flat? The factors — workload type, infrastructure design, and cooling strategy — that shape data center demand curves.\n\n\n\n\n\nOctober 2025\n\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "articles/agriculture/index.html",
