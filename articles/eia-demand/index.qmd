@@ -831,7 +831,7 @@ The Dallas–Fort Worth corridor concentrates the densest cluster of hyperscale 
 
 **ERCO-FWES — ERCOT Far West Subregion (+43.3%)**
 <br>
-The growth here is entirely different in character: the 2024 demand floor of 6.2 GW sits above the 2022 annual peak of 5.5 GW — meaning the entire 2024 profile is structurally above where ERCO-WEST peaked just two years earlier. This floor shift reflects the explosive electrification of Permian Basin oil and gas field operations — electric submersible pumps, gas compression, and water injection systems replacing diesel — combined with the rapid build-out of bitcoin mining campuses that signed some of the largest industrial demand contracts in ERCOT history.[^12]
+The growth here is entirely different in character: the 2024 demand floor of 6.2 GW sits above the 2022 annual peak of 5.5 GW — meaning the entire 2024 profile is structurally above where ERCO-WEST peaked just two years earlier. This floor shift reflects the explosive electrification of Permian Basin oil and gas field operations — electric submersible pumps, gas compression, and water injection systems replacing diesel — combined with the rapid build-out of bitcoin mining campuses that signed some of the largest industrial demand contracts in ERCOT history.
 
 ```{=html}
 <div data-widget style="font-family:'Inter',system-ui,sans-serif;font-size:0.82rem;line-height:1.5;margin:0.2rem 0 1.8rem;color:#222">
@@ -1112,7 +1112,7 @@ The load shape spread metrics point to *where* the shape is changing most. The h
 <img src="widgets/heatmap-ny-nyis.svg" style="width:100%;display:block">
 ```
 
-The defining feature across these five New York zones appears to be a sustained demand reduction, year-round, from roughly noon to 20h. This pattern is the signature of commercial peak-shaving automation: under NYISO's installed-capacity tariff, large commercial and industrial consumers are billed for their capacity obligations based on usage during the single highest-demand hour of the year, which historically falls between noon and 6 PM on hot weekdays, so building management systems maintain permanent automated curtailments across the entire afternoon window.[^13] The abrupt recovery at 20h reflects the simultaneous expiration of utility demand-response program windows — typically ending at 8 PM. A residential-rate counterpart to these commercial signals emerged in late 2023, when the Long Island Power Authority approved new Time-of-Day pricing for PSEG Long Island customers — designating 3–7 PM on weekdays as the on-peak window — and began a phased migration of all eligible residential accounts through 2024–2025.[^17] This rollout reinforces the afternoon demand-reduction signal in the Long Island zone and contributes to the sharp load rebound visible after 19h, once the peak pricing window closes. EV charging is displaced into the overnight hours: the faint red visible in the 23h–4h band through autumn and winter reflects managed-charging rules that hold vehicles idle until off-peak pricing windows open near midnight.[^13] 
+The defining feature across these five New York zones appears to be a sustained demand reduction, year-round, from roughly noon to 20h. This pattern is the signature of commercial peak-shaving automation: under NYISO's installed-capacity tariff, large commercial and industrial consumers are billed for their capacity obligations based on usage during the single highest-demand hour of the year, which historically falls between noon and 6 PM on hot weekdays, so building management systems maintain permanent automated curtailments across the entire afternoon window.[^13] The abrupt recovery at 20h reflects the simultaneous expiration of utility demand-response program windows — typically ending at 8 PM. A residential-rate counterpart to these commercial signals emerged in late 2023, when the Long Island Power Authority approved new Time-of-Day pricing for PSEG Long Island customers — designating 3–7 PM on weekdays as the on-peak window — and began a phased migration of all eligible residential accounts through 2024–2025.[^17] This rollout reinforces the afternoon demand-reduction signal in the Long Island zone and contributes to the sharp load rebound visible after 19h, once the peak pricing window closes. EV charging is displaced into the overnight hours: the faint red visible in the 23h–4h band through autumn and winter reflects managed-charging rules that hold vehicles idle until off-peak pricing windows open near midnight.
 
 ```{=html}
 <div style="font-size:0.80rem;font-weight:600;color:#444;margin-bottom:0.15rem">NE — ISO New England Zone 3</div>
@@ -1415,7 +1415,7 @@ Both the approaches to storytelling from data showcased in this article have pro
 
 ## Data
 
-**Source**: EIA Cleaned Hourly Electricity Demand Data.[^2] The dataset applies a cleaning algorithm to EIA-930 hourly demand reports, flagging and imputing anomalous values using a Multiple Imputation by Chained Equations (MICE) technique.
+**Source**: EIA Cleaned Hourly Electricity Demand Data. The dataset applies a cleaning algorithm to EIA-930 hourly demand reports, flagging and imputing anomalous values using a Multiple Imputation by Chained Equations (MICE) technique.
 
 **Releases used**:
 - Release 1 (`release_2020_Oct`): July 2, 2015 to July 1, 2020 — 54 BAs and 13 regions
@@ -1431,7 +1431,7 @@ Both the approaches to storytelling from data showcased in this article have pro
 
 **Timestamps**: EIA-930 timestamps are stored in UTC. For diurnal analyses, timestamps are converted to local prevailing time per time zone before extracting hour, month, and year.
 
-**Analysis notebook**: The figures in this article were produced using [eia_explore.ipynb](https://github.com/ashreeta/watts-on-my-mind/blob/main/articles/eia-demand/eia_explore.ipynb), available in the same repository. The notebook covers the demand change distribution, BA annual demand profiles, load shape spread metrics, and differential heatmaps. The weather normalization pipeline (scripts 01–05) is in `LDD/weather_norm/`.
+**Analysis notebook**: The figures in this article were produced using [eia_explore.ipynb](https://github.com/ashreeta/watts-on-my-mind/blob/main/articles/eia-demand/eia_explore.ipynb), available in the same repository. The notebook covers the demand change distribution, BA annual demand profiles, load shape spread metrics, and differential heatmaps. The weather normalization pipeline (scripts 01–05) is in [LDD/weather_norm/](https://github.com/ashreeta/watts-on-my-mind/tree/main/LDD/weather_norm).
 
 
 [^1]:U.S. Energy Information Administration, [EIA Form EIA-930 Hourly Electric Grid Monitor](https://www.eia.gov/electricity/gridmonitor/). Hourly balancing authority demand, net generation, and interchange data reported by electric grid operators.
