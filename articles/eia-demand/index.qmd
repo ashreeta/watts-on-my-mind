@@ -723,7 +723,7 @@ Douglas County PUD shares the same cheap hydroelectric resources and has attract
 
 **PSEI — Puget Sound Energy (+20.1%)**
 <br>
-The most visually striking anomaly in the PSEI chart is the spike at the tail end of December 2024 — the moment the $436 million Energize Eastside Transmission Project went fully online.[^8] For years, PSE's 115 kV lines serving the Redmond and Bellevue tech corridors were maxed out, creating a physical bottleneck that queued gigawatts of data center and commercial load that could not yet connect to the grid. The instant the new 230 kV lines were energized in December 2024, queued loads turned on simultaneously, producing the sharp terminal spike visible here. The same January 2024 winter storm is also visible here.
+The most visually striking anomaly in the PSEI chart is the sharp spike at the tail end of December 2024 — the moment the $436 million Energize Eastside Transmission Project went fully online.[^8] For years, PSE's 115 kV lines serving the Redmond and Bellevue tech corridors operated at or near their thermal limits, creating a reliability bottleneck that constrained how much additional load the corridor could absorb. When the new 230 kV lines were energized, that constraint lifted, and the terminal spike reflects accelerated ramp-up of data center and commercial loads in one of the most densely built tech corridors in the Pacific Northwest. The same January 2024 winter storm is also visible as an isolated peak earlier in the year.
 
 ##### Subregion outliers: industrial concentration and step-change baseload
 
