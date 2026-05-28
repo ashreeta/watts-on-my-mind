@@ -7,7 +7,7 @@ categories: ["distribution grid", "grid planning", "policy", "regulation", "engi
 
 ## Distribution Planning Tools
 
-Both commercial platforms and open source frameworks exist for distribution grid planning. Commercial tools are the standard and are favored by utilities for their validated interfaces, regulatory acceptance in rate case filings, and dedicated vendor support. 
+Commercial for distribution planning tools are most commonly used and are favored by utilities primarily due to their validated interfaces, regulatory acceptance in rate case filings, and dedicated vendor support. 
 More recently, open source tools are increasingly used by academia and utilities and developers for DER integration studies due to their flexibility, python interoperability, and no licensing costs. The two ecosystems are not mutually exclusive and many utilities run commercial tools for core planning while using open source frameworks for scenario analysis, DER impact studies, and pilot evaluation. The interactive summary below provides details about the capabilities and use cases for open source distribution grid planning tools.
 
 ```{=html}
@@ -279,7 +279,7 @@ More recently, open source tools are increasingly used by academia and utilities
 </div>
 
 ```
-Three methodological limitations are worth noting across the open source stack:
+Three methodological limitations are worth noting:
 
 - Hosting capacity analysis using deterministic static methods understates true hosting capacity by 2–5× compared to quasi-static time-series methods, because it uses worst-case snapshots rather than stepping through actual time-varying load and generation patterns.<sup>[1]</sup>
 - As inverter-based resource (IBR) penetration grows, classical fault analysis methods produce increasingly inaccurate results. IBRs provide 1.0–1.2× rated current during faults versus 5–10× from synchronous machines, fundamentally altering protection coordination assumptions at higher DER penetration.<sup>[2]</sup>
@@ -518,7 +518,7 @@ Distribution interconnection analysis consists of seven study types. Applicable 
 
 ## What Individual Studies Cannot Capture
 
-Some utilities, particularly in states with integrated distribution planning requirements such as California and New York, do conduct combined multi-technology feeder analysis internally. But no US regulatory framework requires it as a condition of interconnection approval.
+Some utilities, particularly in states with integrated distribution planning requirements such as California and New York, conduct combined multi-technology feeder analysis internally. But no US regulatory framework requires it as a condition of interconnection approval.
 
 This gap carries two compounding costs: reliability risk from inadequate combined modeling and non-wires alternatives not surfacing when they could be a lower cost solution. With respect to the former, NERC's 2024 advisory linked 16 coordinated IBR disturbance events to poor multi-resource study practice<sup>[3]</sup>. In the case of the latter, technologies studied independently cannot surface whether aggregated DER, storage, or demand response could defer a planned infrastructure upgrade. New York's BQDM program illustrated the stakes: mandated multi-resource analysis identified a ~$200 million demand-side solution where wire-first planning had been tracking a $1 billion substation upgrade.<sup>[4]</sup>
 
@@ -1100,7 +1100,7 @@ Raw simulation outputs — voltage profiles, thermal loading, hosting capacity e
 </div>
 ```
 
-The most immediate opportunities lie in extending the integrated distribution planning frameworks developed in New York, California, and Illinois — requiring public disclosure of system plans, combined multi-technology study standards, and systematic NWA evaluation — to the roughly 30 states where no such requirements currently exist, and in establishing a federal research agenda to fill the empirical gap in multi-stressor feeder analysis that no jurisdiction has yet required anyone to close.
+The most immediate opportunities lie in extending the integrated distribution planning frameworks developed in New York, California, and Illinois — requiring public disclosure of system plans, combined multi-technology study standards, and systematic NWA evaluation — to the rest of the US, roughly 30 states where no such requirements currently exist. Establishing a federal research agenda to fill the empirical gap in multi-stressor feeder analysis would also valuable.
 
 ---
 
