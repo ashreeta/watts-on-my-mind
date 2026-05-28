@@ -7,10 +7,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Ashreeta Prasanna">
-<meta name="dcterms.date" content="2025-10-22">
-<meta name="description" content="How flat is truly flat? The factors — workload type, infrastructure design, and cooling strategy — that shape data center demand curves.">
+<meta name="dcterms.date" content="2026-05-19">
+<meta name="description" content="California has added over 10 GW of utility-scale batteries while curtailment keeps growing. Five datasets, five analytical lenses — on whether the fleet is absorbing solar surplus or optimizing for market returns.">
 
-<title>What Do Data Center Load Profiles Look Like? – Watt’s on My Mind</title>
+<title>Four Hours: The Logic Behind California’s Battery Fleet – Watt's on My Mind</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -116,25 +116,45 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Contents</h2>
+   
+  <ul>
+  <li><a href="#what-the-fleet-was-built-for" id="toc-what-the-fleet-was-built-for" class="nav-link active" data-scroll-target="#what-the-fleet-was-built-for">What the Fleet Was Built For</a>
+  <ul class="collapse">
+  <li><a href="#duration-class" id="toc-duration-class" class="nav-link" data-scroll-target="#duration-class">Duration class</a></li>
+  <li><a href="#co-located-vs-standalone" id="toc-co-located-vs-standalone" class="nav-link" data-scroll-target="#co-located-vs-standalone">Co-located vs standalone</a></li>
+  </ul></li>
+  <li><a href="#the-curtailment-problem" id="toc-the-curtailment-problem" class="nav-link" data-scroll-target="#the-curtailment-problem">The Curtailment Problem</a>
+  <ul class="collapse">
+  <li><a href="#not-all-curtailment-is-the-same" id="toc-not-all-curtailment-is-the-same" class="nav-link" data-scroll-target="#not-all-curtailment-is-the-same">Not all curtailment is the same</a></li>
+  </ul></li>
+  <li><a href="#do-batteries-charge-when-curtailment-hits" id="toc-do-batteries-charge-when-curtailment-hits" class="nav-link" data-scroll-target="#do-batteries-charge-when-curtailment-hits">Do Batteries Charge When Curtailment Hits?</a></li>
+  <li><a href="#the-arbitrage-signal" id="toc-the-arbitrage-signal" class="nav-link" data-scroll-target="#the-arbitrage-signal">The Arbitrage Signal</a></li>
+  <li><a href="#what-the-data-shows" id="toc-what-the-data-shows" class="nav-link" data-scroll-target="#what-the-data-shows">What the Data Shows</a></li>
+  <li><a href="#data-and-methods" id="toc-data-and-methods" class="nav-link" data-scroll-target="#data-and-methods">Data and Methods</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">What Do Data Center Load Profiles Look Like?</h1>
+<h1 class="title">Four Hours: The Logic Behind California’s Battery Fleet</h1>
   <div class="quarto-categories">
-    <div class="quarto-category">data centers</div>
-    <div class="quarto-category">load profiles</div>
-    <div class="quarto-category">forecasting</div>
+    <div class="quarto-category">CAISO</div>
+    <div class="quarto-category">battery storage</div>
+    <div class="quarto-category">curtailment</div>
+    <div class="quarto-category">electricity markets</div>
+    <div class="quarto-category">California</div>
   </div>
   </div>
 
 <div>
   <div class="description">
-    How flat is truly flat? The factors — workload type, infrastructure design, and cooling strategy — that shape data center demand curves.
+    California has added over 10 GW of utility-scale batteries while curtailment keeps growing. Five datasets, five analytical lenses — on whether the fleet is absorbing solar surplus or optimizing for market returns.
   </div>
 </div>
 
@@ -151,7 +171,7 @@ ul.task-list li input[type="checkbox"] {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">October 22, 2025</p>
+      <p class="date">May 19, 2026</p>
     </div>
   </div>
   
@@ -163,19 +183,204 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>The answer is both simple and complex. While load profiles are typically flat, the shape depends on several factors: the <strong>type of data center</strong>, the <strong>mix of workloads</strong> it supports, and its <strong>infrastructure design</strong>.</p>
-<p>The widget below summarizes key factors that influence load profile characteristics.</p>
-<iframe src="widget_load_profiles.html" width="100%" height="800" style="border:none; border-radius:8px; margin:2rem 0;"></iframe>
-<p>Ideally, <strong>metered data</strong> would allow for better quantification of load shapes and help refine existing models. But multiple barriers stand in the way. First, most utilities don’t require load profile submissions during interconnection making baseline data scarce. Second, even when data exists, the workloads of any specific data center are likely to evolve continuously, both in the short term and long term with technology adoption and shifting user demand. The ESIG report on large load forecasting<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> provides additonal details on issues and methods to forecast large loads.</p>
-<p>This is an evolving area of interest as data centers become a larger share of electricity demand — better quantifying these profiles will be essential for planning and forecasting.</p>
+<!-- ============================================================
+  ARTICLE OVERVIEW
+
+  Data sources:
+    - CAISO fuel mix (5-min intervals, 2018-2024, parquet files)
+    - CAISO curtailment by reason (production + curtailments xlsx, all years)
+    - CAISO SP15 day-ahead LMP (sampled 4 days/month, Mar 2023–Dec 2024, parquet)
+    - EIA-860M (May 2024) — battery generator registry, nameplate capacity + duration
+
+  Notebook: caiso_battery_deepdive.ipynb
+
+  Five analytical lenses:
+    Chart A — What duration class is the fleet built for?
+    Chart B — Co-located vs standalone deployment
+    Chart C — Do batteries charge when curtailment happens?
+    Chart D — Is curtailment even addressable by batteries?
+    Chart E — Do batteries charge/discharge on the LMP price signal?
+
+  WIDGET PLAN (to be built and inlined as {=html} blocks):
+    w-duration     — Chart A: cumulative MW by duration class, stacked bar (2018–2024)
+    w-coloc        — Chart B: cumulative MW by co-location type, stacked bar
+    w-curtailment  — Chart D: local vs system curtailment, stacked bar by year
+    w-timing       — Chart C1: battery charging (solid) vs solar curtailment (dashed)
+                              by hour of day and year — annual + seasonal views
+    w-lmp          — Chart E: day-ahead LMP lines + battery dispatch bars, dual axis
+  ============================================================ -->
+<p>California has installed more utility-scale battery storage than any other state — roughly 10 gigawatts of capacity by the end of 2024, up from near zero in 2018. Over the same period, the state also curtailed a record amount of solar and wind generation: over 3.5 million MWh in 2024 alone.</p>
+<p>If batteries are the solution to curtailment, both numbers should not be growing in parallel. Yet they are.</p>
+<p>This article works through five datasets to ask whether California’s battery fleet was built to absorb renewable surplus — or whether it was built to do something more profitable.</p>
+<hr>
+<section id="what-the-fleet-was-built-for" class="level2">
+<h2 class="anchored" data-anchor-id="what-the-fleet-was-built-for">What the Fleet Was Built For</h2>
+<p>Before asking what batteries <em>do</em>, it helps to ask what they were <em>designed</em> to do. Two pieces of the EIA-860M generator registry give us that.</p>
+<section id="duration-class" class="level3">
+<h3 class="anchored" data-anchor-id="duration-class">Duration class</h3>
+<p>Battery duration — energy capacity divided by power capacity — is a direct proxy for intended use.</p>
+<!-- AUTHOR NOTE: Explain the three duration brackets and what each signals.
+     ≤2 hr: fast-cycling, ancillary services, frequency regulation
+     3–4 hr: duck-curve arbitrage — charge midday solar, discharge the 6 PM peak
+     ≥5 hr: deep decarbonization / resource adequacy — rare in current fleet
+     The median duration of the CAISO fleet as of 2024 EIA-860M data.
+     Key finding: the fleet is overwhelmingly 4-hour class.
+     What that implies: it was designed for a specific daily cycle, not continuous curtailment absorption. -->
+<!-- WIDGET: w-duration
+     Source: caiso_battery_deepdive.ipynb Chart A (fig_a)
+     Figure: stacked bar chart, x = year (2018–2024), y = cumulative installed MW
+     Three classes: ≤2 hr (blue), 3–4 hr (orange), ≥5 hr (green), unknown (gray)
+     Interactivity: hover shows duration class + year + cumulative MW
+     Caption: "CAISO cumulative battery capacity by duration class, 2018–2024.
+     Duration = Nameplate Energy Capacity (MWh) ÷ Power Capacity (MW), EIA-860M May 2024.
+     The 3–4 hour class dominates — designed for the duck-curve arbitrage cycle." -->
+<!-- w-duration widget goes here -->
+</section>
+<section id="co-located-vs-standalone" class="level3">
+<h3 class="anchored" data-anchor-id="co-located-vs-standalone">Co-located vs standalone</h3>
+<p>A battery sharing a Plant ID with a solar or wind generator has a direct financial incentive to absorb that plant’s output. A standalone battery has no such pairing — it charges and discharges based purely on market price signals.</p>
+<!-- AUTHOR NOTE: Explain what co-location means in EIA-860M terms (Plant ID matching).
+     Caveats: some co-located projects use separate Plant IDs (undercounting co-location).
+     Key finding: the majority of CAISO battery capacity is standalone.
+     What that implies: the fleet is predominantly market-optimized, not curtailment-targeted.
+     This sets up Charts C, D, and E — the behavioral evidence. -->
+<!-- WIDGET: w-coloc
+     Source: caiso_battery_deepdive.ipynb Chart B (fig_b)
+     Figure: stacked bar chart, x = year (2018–2024), y = cumulative installed MW
+     Three classes: co-located with solar (yellow), co-located with wind (green), standalone (blue)
+     Interactivity: hover shows type + year + cumulative MW
+     Caption: "CAISO cumulative battery capacity by co-location type, 2018–2024.
+     Co-location inferred by matching Plant ID in EIA-860M between battery and
+     solar/wind generators. Standalone batteries optimize for market price signals." -->
+<!-- w-coloc widget goes here -->
+<hr>
+</section>
+</section>
+<section id="the-curtailment-problem" class="level2">
+<h2 class="anchored" data-anchor-id="the-curtailment-problem">The Curtailment Problem</h2>
+<!-- AUTHOR NOTE: Brief explanation of why curtailment exists in CAISO.
+     Key concepts to cover in 2–3 paragraphs:
+     - Curtailment = generator is told to back off even though it could produce
+     - Two types: System (grid-wide excess supply) vs Local (transmission constraint)
+     - CAISO solar curtailment has grown every year from 2018 to 2024
+     - 2024 was a record year
+     Suggested hook: total curtailment GWh in 2018 vs 2024 (from Chart D data). -->
+<section id="not-all-curtailment-is-the-same" class="level3">
+<h3 class="anchored" data-anchor-id="not-all-curtailment-is-the-same">Not all curtailment is the same</h3>
+<p>This distinction matters enormously for battery policy.</p>
+<p><strong>System curtailment</strong> means the whole grid has more supply than it needs. A battery anywhere on the network can absorb this by charging. <strong>Local curtailment</strong> means a specific transmission line or substation is congested — the generator behind it must back off even if the rest of the grid could use the energy. A battery can only solve local curtailment if it sits on the <em>same side of the constraint</em> as the curtailed generator.</p>
+<p>If local curtailment is a large fraction of the total, the policy prescription changes: the problem is grid topology, not insufficient battery capacity.</p>
+<!-- AUTHOR NOTE: Reveal the actual local vs system split from the data.
+     Key finding: [X]% of CAISO curtailment is System in recent years; [Y]% is Local.
+     How has the mix shifted over 2018–2024?
+     This contextualize whether batteries are even the right tool. -->
+<!-- WIDGET: w-curtailment
+     Source: caiso_battery_deepdive.ipynb Chart D (fig_d)
+     Figure: stacked bar chart, x = year, y = annual curtailment GWh
+     Two stacks: System (blue) + Local (red)
+     Interactivity: hover shows type + year + GWh
+     Caption: "CAISO annual curtailment by type, 2018–2024.
+     System curtailment (blue) = grid-wide surplus; any battery can absorb it.
+     Local curtailment (red) = transmission-constrained; only co-located storage helps.
+     Source: CAISO Production and Curtailments data." -->
+<!-- w-curtailment widget goes here -->
+<hr>
+</section>
+</section>
+<section id="do-batteries-charge-when-curtailment-hits" class="level2">
+<h2 class="anchored" data-anchor-id="do-batteries-charge-when-curtailment-hits">Do Batteries Charge When Curtailment Hits?</h2>
+<p>This is the central question. If batteries respond to curtailment, their charging should peak at the same hours as the curtailment spike. If they arbitrage, they target the price trough — which in CAISO tends to fall <em>before</em> the physical surplus peak, because batteries want to be fully charged by the 6 PM evening ramp.</p>
+<!-- AUTHOR NOTE: This is the main narrative finding of the article.
+     Walk the reader through what the chart shows before they see it.
+     The battery charging peak shifted from ~7 AM in 2018 to ~11 AM in 2024 —
+     tracking closer to the surplus window, but still 2–3 hours ahead of it.
+     By 2–3 PM when solar surplus is greatest, the fleet is already near capacity.
+     The seasonal subplot shows the seasonal dimension:
+     spring months dominate curtailment volume and peak around 2 PM;
+     June's curtailment peaks at 9 AM as the solar fleet floods the morning grid
+     before summer demand has ramped up. -->
+<!-- WIDGET: w-timing
+     Source: caiso_battery_deepdive.ipynb Chart C (fig = annual view; fig2 = seasonal grid)
+     Recommend: two-tab widget or stacked layout
+       Tab 1 / Panel 1: Annual view (fig) — one color per year,
+         solid lines = battery charging, dashed lines = solar curtailment, by hour of day
+         Unified hover showing both series at same hour
+       Tab 2 / Panel 2: Seasonal 2×4 grid (fig2) — top row = charging, bottom row = curtailment,
+         four seasons as columns (Spring / Summer / Fall / Winter)
+     Interactivity: hover shows year + hour + MW; legend toggle by year
+     Caption: "CAISO average battery charging (solid) vs solar curtailment (dashed) by hour, 2018–2024.
+     Charging peaks 2–3 hours before the curtailment peak — batteries fill up
+     before the worst solar surplus hits." -->
+<!-- w-timing widget goes here -->
+<p>The seasonal breakdown shows why spring matters most. Spring months (March through May) account for the majority of annual curtailment volume in CAISO — the solar fleet is at full output while space-cooling demand has not yet ramped up. The battery charging and curtailment curves are closest to aligned in spring, but the gap does not fully close.</p>
+<hr>
+</section>
+<section id="the-arbitrage-signal" class="level2">
+<h2 class="anchored" data-anchor-id="the-arbitrage-signal">The Arbitrage Signal</h2>
+<p>The clearest evidence for price-optimized dispatch: do batteries charge when wholesale prices are lowest and discharge when prices are highest?</p>
+<!-- AUTHOR NOTE: Explain day-ahead LMP briefly — the hourly wholesale price
+     that battery operators bid against the night before.
+     In CAISO, midday solar routinely pushes LMP to zero or negative in spring.
+     At 6–8 PM when solar drops and demand peaks, gas peakers set the margin — LMP spikes.
+     A battery optimizing for arbitrage will:
+       - Charge at the midday LMP trough (hours 9–13, frequently ≤$0/MWh in spring)
+       - Discharge at the evening LMP spike (hours 17–20, $50–150/MWh on peak days)
+     The 6–8 hour gap between charge and discharge peaks is exactly the 4-hour
+     duration class that dominates the fleet.
+     Report the arbitrage spread: charge window avg LMP vs discharge window avg LMP for 2023/2024. -->
+<!-- WIDGET: w-lmp
+     Source: caiso_battery_deepdive.ipynb Chart E (fig_e)
+     Figure: dual-axis chart
+       Left axis: mean day-ahead SP15 LMP by hour (lines, 2023 + 2024)
+       Right axis: battery charging (blue bars, below zero) + discharging (orange bars, above zero),
+                   averaged 2023–2024
+     Zero-price reference line
+     Interactivity: hover shows hour + LMP ($/MWh) or dispatch (MW) depending on series
+     Caption: "CAISO day-ahead SP15 LMP (lines, left axis) vs battery dispatch (bars, right axis),
+     averaged by hour of day for 2023–2024.
+     Batteries charge at the midday LMP trough and discharge at the 6–8 PM price spike —
+     a dispatch pattern consistent with 4-hour arbitrage, not curtailment response." -->
+<!-- w-lmp widget goes here -->
+<hr>
+</section>
+<section id="what-the-data-shows" class="level2">
+<h2 class="anchored" data-anchor-id="what-the-data-shows">What the Data Shows</h2>
+<!-- AUTHOR NOTE: Pull the five analytical threads together into a 3–4 paragraph conclusion.
+     Suggested structure:
+     (1) The fleet was built for a specific job: 4-hour duration, predominantly standalone,
+         optimized for the daily duck-curve cycle.
+     (2) The curtailment problem is real but partially structural — local/transmission-constrained
+         curtailment requires co-located storage or transmission investment, not more standalone MWh.
+     (3) The timing evidence (Chart C) is ambiguous: batteries are tracking the curtailment
+         window more closely each year as both the fleet and the solar surplus grow,
+         but the 2–3 hour lead means they remain near capacity when the worst curtailment hits.
+     (4) The LMP evidence (Chart E) is unambiguous: dispatch aligns tightly with price signals.
+         This is not a critique — it is how competitive electricity markets are designed to work.
+         The question is whether the market design is creating the right incentives for a
+         grid that needs curtailment absorption more than peak-shaving.
+
+     Optional: policy implications (e.g. ITC paired-storage requirements, CAISO storage
+     counting rules for resource adequacy, value-of-curtailment pricing) — or save these
+     for a follow-on article. -->
+<hr>
+</section>
+<section id="data-and-methods" class="level2">
+<h2 class="anchored" data-anchor-id="data-and-methods">Data and Methods</h2>
+<p><strong>CAISO fuel mix</strong>: Five-minute interval generation by fuel type, 2018–2024, downloaded via CAISO OASIS API. Battery storage is reported as a net value — positive when discharging, negative when charging. Files stored as annual parquet files.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
+<p><strong>CAISO curtailment</strong>: Daily production and curtailments data from CAISO’s public reports, covering curtailment events by fuel type and reason (System vs Local). Files span 2018–2025.</p>
+<p><strong>CAISO SP15 LMP</strong>: Day-ahead locational marginal prices at the SP15 pricing node (Southern California). Sampled at four representative weeks per month, March 2023 through December 2024. Downloaded via CAISO OASIS.</p>
+<p><strong>EIA-860M</strong>: Monthly generator-level data from EIA Form 860M, May 2024 snapshot. Battery units identified by Energy Source Code <code>MWH</code>. Duration calculated as Nameplate Energy Capacity (MWh) ÷ Net Summer Capacity (MW). Co-location determined by matching Plant ID between battery units and solar (SUN) or wind (WND) generators within CISO territory.</p>
+<p><strong>Scope</strong>: Analysis is limited to CAISO (CISO balancing authority). 2025 data is included in the curtailment charts but excluded from the fuel-mix and LMP analyses where coverage is incomplete.</p>
+<!-- AUTHOR NOTE: Add GitHub repo link when created. -->
 
 
+</section>
 
 
 <div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
 
 <ol>
-<li id="fn1"><p><a href="https://www.esig.energy/wp-content/uploads/2025/12/ESIG-Large-Loads-Forecasting-report-2025.pdf">ESIG, Large Loads Forecasting report, 2025</a><a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn1"><p><a href="https://www.caiso.com/market-operations/market-data-and-analysis">CAISO OASIS API documentation</a><a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

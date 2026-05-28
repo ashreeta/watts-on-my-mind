@@ -3,6 +3,7 @@
     "listing": "/index.html",
     "items": [
       "/articles/eia-demand/index.html",
+      "/articles/caiso-storage/index.html",
       "/articles/distribution-grid/index.html",
       "/articles/heat-pumps/index.html",
       "/articles/natural-gas/index.html",
