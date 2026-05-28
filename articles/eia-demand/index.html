@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.9.38">
+<meta name="generator" content="quarto-1.9.37">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -41,10 +41,10 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-5dc53c12107b190ce6c1bbbcf71f8d73.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-90bd2c8e9f833a603ed6e56dd8c7419d.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -181,7 +181,7 @@ ul.task-list li input[type="checkbox"] {
 <!-- ============================================================
   ARTICLE OVERVIEW
 
-  Data source: EIA Cleaned Hourly Electricity Demand (LBNL/EIA)
+  Data source: EIA Cleaned Hourly Electricity Demand (Ruggles et al.)
     - Release 1: 2015-07-02 to 2019-12-31 (13 regions, 54 BAs)
     - Release 2: 2020-01-01 to 2024-12-31 (13 regions, 119 BA + subregions)
   Notebooks: ldc_analysis.ipynb, ldc_explore.ipynb, ldc_diurnal.ipynb
@@ -1529,7 +1529,7 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="data" class="level2">
 <h2 class="anchored" data-anchor-id="data">Data</h2>
-<p><strong>Source</strong>: EIA Cleaned Hourly Electricity Demand Data, produced by Lawrence Berkeley National Laboratory in partnership with EIA.<a href="#fn21" class="footnote-ref" id="fnref21" role="doc-noteref"><sup>21</sup></a> The dataset applies a cleaning algorithm to EIA-930 hourly demand reports, flagging and imputing anomalous values.</p>
+<p><strong>Source</strong>: EIA Cleaned Hourly Electricity Demand Data.<a href="#fn21" class="footnote-ref" id="fnref21" role="doc-noteref"><sup>21</sup></a> The dataset applies a cleaning algorithm to EIA-930 hourly demand reports, flagging and imputing anomalous values using a Multiple Imputation by Chained Equations (MICE) technique.</p>
 <p><strong>Releases used</strong>: - Release 1 (<code>release_2020_Oct</code>): July 2, 2015 to July 1, 2020 — 54 BAs and 13 regions - Release 2 (<code>release_2025_Jan_include_subregions</code>): January 1, 2020 to December 31, 2024 — 119 BA subregion files</p>
 <p><strong>Stitching</strong>: Where both releases cover the same year, Release 1 data is used through December 31, 2019; Release 2 begins January 1, 2020. The six-month overlap (Jan–Jul 2020) is not double-counted.</p>
 <p><strong>Full-year filter</strong>: Years with fewer than 95% of expected hours (8,760 for standard years, 8,784 for leap years) are excluded from LDC and boundary metric calculations. This affects 2015 (partial year, data begins July 2) in some analyses.</p>
@@ -1546,7 +1546,7 @@ ul.task-list li input[type="checkbox"] {
 
 <ol>
 <li id="fn1"><p>U.S. Energy Information Administration, <a href="https://www.eia.gov/electricity/gridmonitor/">EIA Form EIA-930 Hourly Electric Grid Monitor</a>. Hourly balancing authority demand, net generation, and interchange data reported by electric grid operators.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn2"><p>Agrawal, S. et al., Lawrence Berkeley National Laboratory / U.S. Energy Information Administration, <a href="https://github.com/LBNL-ETA/EIA-Cleaned-Hourly-Electricity-Demand-Data">EIA Cleaned Hourly Electricity Demand Data</a>. The dataset applies a cleaning algorithm to EIA-930 hourly demand reports, flagging and imputing anomalous values caused by reporting errors, missing submissions, and meter outages. This analysis uses the cleaned demand series rather than raw EIA-930 values.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>Ruggles, T.H., Farnham, D.J., Tong, D. et al.&nbsp;Developing reliable hourly electricity demand data through screening and imputation. <em>Sci Data</em> <strong>7</strong>, 155 (2020). <a href="https://doi.org/10.1038/s41597-020-0483-x">https://doi.org/10.1038/s41597-020-0483-x</a>. Data archive: Ruggles, T.H., Farnham, D.J. &amp; Wongel, A. (2025). EIA Cleaned Hourly Electricity Demand Data (v1.4). Zenodo. <a href="https://doi.org/10.5281/zenodo.3517196">https://doi.org/10.5281/zenodo.3517196</a>. Repository: <a href="https://github.com/truggles/EIA_Cleaned_Hourly_Electricity_Demand_Data">https://github.com/truggles/EIA_Cleaned_Hourly_Electricity_Demand_Data</a>.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn3"><p>Duke Energy Progress, Hurricane Helene outage restoration reports, September–November 2024; National Weather Service storm summaries for western North Carolina.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn4"><p><a href="https://www.mytpu.org/wp-content/uploads/Tacoma-Power-2023-CPA-Report-_-FINAL.pdf">Tacoma Power, <em>2024–2043 Conservation Potential Assessment</em></a>, Tacoma Public Utilities (2024).<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn5"><p><a href="https://www.mytpu.org/about-tpu/services/power/integrated-resource-plan/">Tacoma Power, <em>2024 Integrated Resource Plan</em></a>, Tacoma Public Utilities (2024).<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
@@ -1565,7 +1565,7 @@ ul.task-list li input[type="checkbox"] {
 <li id="fn18"><p>Connecticut Department of Energy and Environmental Protection / Eversource and United Illuminating, <a href="https://www.utilitydive.com/news/connecticut-energy-efficiency-plan-equity/626840/">2022–2024 Conservation and Load Management Plan</a>. The three-year plan committed $708 million in ratepayer-funded efficiency programs with targets of 409 MW annual peak demand reduction and 4.8 billion kWh of cumulative energy savings. See also Connecticut Energy Efficiency Fund program documentation and <a href="https://neep.org/sites/default/files/media-files/neep_regionalroundup_ct_final_3.pdf">NEEP 2024 Regional Roundup — Connecticut</a>.<a href="#fnref18" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn19"><p>ISO New England. “New England grid saw 134 ‘duck curve’ days in 2025.” <em>ISO Newswire</em>, January 2026.<a href="#fnref19" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn20"><p>California Independent System Operator. <em>Managing the Evolving Grid: Net Load Qualification and Ramping Dynamics</em>; CAISO <em>Gross &amp; Net Load Peaks</em> fact sheet.<a href="#fnref20" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn21"><p>Agrawal, S. et al., Lawrence Berkeley National Laboratory / U.S. Energy Information Administration, <a href="https://github.com/LBNL-ETA/EIA-Cleaned-Hourly-Electricity-Demand-Data">EIA Cleaned Hourly Electricity Demand Data</a>. The dataset applies a cleaning algorithm to EIA-930 hourly demand reports, flagging and imputing anomalous values caused by reporting errors, missing submissions, and meter outages. This analysis uses the cleaned demand series rather than raw EIA-930 values.<a href="#fnref21" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn21"><p>Ruggles, T.H., Farnham, D.J., Tong, D. et al.&nbsp;Developing reliable hourly electricity demand data through screening and imputation. <em>Sci Data</em> <strong>7</strong>, 155 (2020). <a href="https://doi.org/10.1038/s41597-020-0483-x">https://doi.org/10.1038/s41597-020-0483-x</a>. Data archive: Ruggles, T.H., Farnham, D.J. &amp; Wongel, A. (2025). EIA Cleaned Hourly Electricity Demand Data (v1.4). Zenodo. <a href="https://doi.org/10.5281/zenodo.3517196">https://doi.org/10.5281/zenodo.3517196</a>. Repository: <a href="https://github.com/truggles/EIA_Cleaned_Hourly_Electricity_Demand_Data">https://github.com/truggles/EIA_Cleaned_Hourly_Electricity_Demand_Data</a>.<a href="#fnref21" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
