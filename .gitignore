@@ -1,6 +1,9 @@
 # Python virtual environment
 LDD/ldc-env/
 
+# Weather normalization data outputs (large parquet files)
+LDD/weather_norm/data/
+
 # Generated output
 _site/
 .quarto/
