@@ -7,7 +7,7 @@ categories: ["distribution grid", "grid planning", "policy", "regulation", "engi
 
 ## Distribution Planning Tools
 
-Commercial for distribution planning tools are most commonly used and are favored by utilities primarily due to their validated interfaces, regulatory acceptance in rate case filings, and dedicated vendor support. 
+Commercial for distribution planning tools are favored by utilities primarily due to their validated interfaces, regulatory acceptance in rate case filings, and dedicated vendor support. 
 More recently, open source tools are increasingly used by academia and utilities and developers for DER integration studies due to their flexibility, python interoperability, and no licensing costs. The two ecosystems are not mutually exclusive and many utilities run commercial tools for core planning while using open source frameworks for scenario analysis, DER impact studies, and pilot evaluation. The interactive summary below provides details about the capabilities and use cases for open source distribution grid planning tools.
 
 ```{=html}
@@ -281,9 +281,9 @@ More recently, open source tools are increasingly used by academia and utilities
 ```
 Three methodological limitations are worth noting:
 
-- Hosting capacity analysis using deterministic static methods understates true hosting capacity by 2–5× compared to quasi-static time-series methods, because it uses worst-case snapshots rather than stepping through actual time-varying load and generation patterns.<sup>[1]</sup>
-- As inverter-based resource (IBR) penetration grows, classical fault analysis methods produce increasingly inaccurate results. IBRs provide 1.0–1.2× rated current during faults versus 5–10× from synchronous machines, fundamentally altering protection coordination assumptions at higher DER penetration.<sup>[2]</sup>
-- Transformer thermal aging — governed by IEEE C57.91's Arrhenius model — is not modeled by any tool in the open source stack and is not triggered by any regulatory requirement, despite being directly relevant when load shape changes from cyclic to continuous operation without a corresponding change in peak demand.
+- Hosting capacity analysis using deterministic static methods understates true hosting capacity by 2–5× compared to quasi-static time-series methods.<sup>[1]</sup>
+- As inverter-based resource (IBR) penetration grows, classical fault analysis methods produce increasingly inaccurate results.<sup>[2]</sup>
+- Transformer thermal aging is not modeled by any tool in the open source stack and is not triggered by any regulatory requirement, despite being directly relevant when load shape changes from cyclic to continuous operation.
 
 
 ## Study Types and Regulatory Triggers
