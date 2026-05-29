@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.9.38">
+<meta name="generator" content="quarto-1.9.37">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -41,10 +41,10 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-5dc53c12107b190ce6c1bbbcf71f8d73.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-90bd2c8e9f833a603ed6e56dd8c7419d.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -1525,7 +1525,7 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="note-on-data-exploration" class="level2">
 <h2 class="anchored" data-anchor-id="note-on-data-exploration">Note on data exploration</h2>
-<p>Both the approaches to storytelling from data showcased in this article have pros and cons. The broad scan approach takes a long time and can lead to nowhere, but the benefit is that you understand the data quality, stuctuture and its quicks after a while. Selecting out specific subsets of the data to support a storyline is a quicker and more effective approach, but this is susceptible to bias and there is a risk of ignoring alternative storylines that might exist in the full dataset. Data selection is an art, and having a hypotheses or domain knowledge is extremely important when working with big data, simply because a lot of large datasets rarely lend themselves to easy classification. I will also note that LLMs tend to suggest very complex metrics for data analysis that just dont work well with aggregated or noisy data. In this analysis I pivoted to mainly looking at outliers because other load duration curve (LDC) based metrics required deeper contextual knowledge.</p>
+<p>Both the approaches to storytelling from data showcased in this article have pros and cons. The broad scan approach takes a long time and can lead to nowhere, but the benefit is that you understand the data quality, stuctuture and its quirks after a while. Selecting specific subsets of the data to support a storyline is a quicker and more effective approach, but this is susceptible to bias and there is a risk of ignoring alternative storyline. Data selection is an art, and having a hypotheses or domain knowledge is extremely important when working with big data, simply because a lot of large datasets rarely lend themselves to easy classification. I will also note that LLMs tend to suggest very complex metrics for data analysis that just dont work well with aggregated or noisy data. In this analysis I pivoted to mainly looking at outliers because other load duration curve (LDC) based metrics required deeper contextual knowledge.</p>
 </section>
 <section id="data" class="level2">
 <h2 class="anchored" data-anchor-id="data">Data</h2>
@@ -1533,7 +1533,6 @@ ul.task-list li input[type="checkbox"] {
 <p><strong>Releases used</strong>: - Release 1 (<code>release_2020_Oct</code>): July 2, 2015 to July 1, 2020 — 54 BAs and 13 regions - Release 2 (<code>release_2025_Jan_include_subregions</code>): January 1, 2020 to December 31, 2024 — 119 BA subregion files</p>
 <p><strong>Stitching</strong>: Where both releases cover the same year, Release 1 data is used through December 31, 2019; Release 2 begins January 1, 2020. The six-month overlap (Jan–Jul 2020) is not double-counted.</p>
 <p><strong>Full-year filter</strong>: Years with fewer than 95% of expected hours (8,760 for standard years, 8,784 for leap years) are excluded from LDC and boundary metric calculations. This affects 2015 (partial year, data begins July 2) in some analyses.</p>
-<p><strong>Diurnal normalization</strong>: Seasonal mean normalization is used for diurnal profiles (not annual peak). Dividing by the mean of all hours in the relevant season preserves shape differences across years without embedding the extremity of the hottest or coldest day in the denominator.</p>
 <p><strong>Weather normalization</strong>: BA-scale comparisons use weather-normalized demand (log-OLS regression of monthly MWh on HDD, CDD, their squares, month fixed effects, and a year trend; the resulting coefficients are used to rescale each hour to what demand would have been under climatologically normal weather). The weather normals are computed as the 2016–2024 monthly mean HDD/CDD per entity. For regions and larger BAs — which have data from both releases back to 2015 — this is a genuine nine-year average. For BA subregions, which only appear in Release 2 (from 2020), the effective baseline is the <strong>2020–2024 mean</strong>. The weather correction for subregions carries more uncertainty than for the larger entities.</p>
 <p><strong>Timestamps</strong>: EIA-930 timestamps are stored in UTC. For diurnal analyses, timestamps are converted to local prevailing time per time zone before extracting hour, month, and year.</p>
 <p><strong>Analysis notebook</strong>: The figures in this article were produced using <a href="https://github.com/ashreeta/watts-on-my-mind/blob/main/articles/eia-demand/eia_explore.ipynb">eia_explore.ipynb</a>, available in the same repository. The notebook covers the demand change distribution, BA annual demand profiles, load shape spread metrics, and differential heatmaps. The weather normalization pipeline (scripts 01–05) is in <a href="https://github.com/ashreeta/watts-on-my-mind/tree/main/LDD/weather_norm">LDD/weather_norm/</a>.</p>
