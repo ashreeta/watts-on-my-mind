@@ -77,20 +77,6 @@
     "text": "References\n\nHorowitz et al., NREL 2019; IEC/IEEE review literature 2023–25\nNERC July 2025 whitepaper; PG&E/Sandia SWAP project 2023\nNERC, IBR and DER Disturbances Advisory, June 2024\nNY PSC, Reforming the Energy Vision (REV) proceeding; Con Edison Brooklyn-Queens Demand Management Program (BQDM), 2014–2016"
   },
   {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "About",
-    "section": "",
-    "text": "I occasionally research energy-related topics and share a synthesized version of my findings on this website. AI is heavily used in all phases of creating these articles, but I do try to make sure the voice and vision are my own. Please reach out to me on LinkedIn if you would like to get in touch, want further details or have any comments on the content of this website."
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Watt's on My Mind",
-    "section": "",
-    "text": "Exploring EIA 930: The Shape of U.S. Electricity Demand\n\n\n\nelectricity demand\n\nload shape\n\ndata analysis\n\nEIA\n\ngrid\n\n\n\nA decade of EIA hourly electricity demand data — regional divergence and multiple structural stories visible in the shape of when America uses power.\n\n\n\n\n\nMay 2026\n\n\n\n\n\n\n\nDistribution Grid Analysis: A Primer\n\n\n\ndistribution grid\n\ngrid planning\n\npolicy\n\nregulation\n\nengineering\n\n\n\nHow distribution grid simulation works, what regulatory frameworks require, and why the absence of combined multi-technology assessment creates systematic investment risk.\n\n\n\n\n\nMay 2026\n\n\n\n\n\n\n\nHeat Pumps for the Residential Sector: Drivers of Adoption\n\n\n\nheat pumps\n\nelectrification\n\nresidential\n\n\n\nThe mechanics, history, economics, and regional conversion costs behind residential heat pump deployment worldwide.\n\n\n\n\n\nMay 2026\n\n\n\n\n\n\n\nBehind-the-Meter Natural Gas Power Plants: An Emerging Trend\n\n\n\nnatural gas\n\ndata centers\n\nbehind-the-meter\n\n\n\nData centers building dedicated gas generation to bypass interconnection queues — market scale, key players, technology, and carbon capture.\n\n\n\n\n\nDecember 2025\n\n\n\n\n\n\n\nEnergy and Electrification in U.S. Agriculture\n\n\n\nagriculture\n\nelectrification\n\nenergy use\n\n\n\nOn-farm energy use, fuel mix, geographic distribution, and electrification opportunities across the U.S. agricultural sector.\n\n\n\n\n\nNovember 2025\n\n\n\n\n\n\n\nThe Future of U.S. Electricity Demand Through 2030\n\n\n\ndemand growth\n\ngrid planning\n\nforecasting\n\n\n\nRegional load growth projections to 2030 — ERCOT, SPP, CAISO, PJM, and others — and what’s driving a projected 25% national increase.\n\n\n\n\n\nOctober 2025\n\n\n\n\n\n\n\nWhat Do Data Center Load Profiles Look Like?\n\n\n\ndata centers\n\nload profiles\n\nforecasting\n\n\n\nHow flat is truly flat? The factors — workload type, infrastructure design, and cooling strategy — that shape data center demand curves.\n\n\n\n\n\nOctober 2025\n\n\n\n\n\nNo matching items"
-  },
-  {
     "objectID": "articles/agriculture/index.html",
     "href": "articles/agriculture/index.html",
     "title": "Energy and Electrification in U.S. Agriculture",
@@ -103,6 +89,20 @@
     "title": "Energy and Electrification in U.S. Agriculture",
     "section": "Footnotes",
     "text": "Footnotes\n\n\nUSDA Economic Research Service↩︎\nUSDA↩︎\nUSDA NASS↩︎\nUSDA and Department of Energy↩︎\nAgriculture Victoria↩︎\nAmerican Council for an Energy-Efficient Economy↩︎\nRenewable Agriculture and Food Systems↩︎\nUS Department of Energy↩︎\nAssociation of Equipment Manufacturers; Grand View Research↩︎\nMarkets and Markets↩︎\nCadeo Group & Hydraulic Institute↩︎\nUniversity of Georgia Extension↩︎\nUniversity of Arkansas Extension↩︎\nPumps.org↩︎\nCalifornia Energy Commission↩︎\nWisconsin Focus on Energy↩︎\nIowa State University Extension↩︎\nUSDA Agricultural Marketing Service↩︎"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Watt's on My Mind",
+    "section": "",
+    "text": "Exploring EIA 930: The Shape of U.S. Electricity Demand\n\n\n\nelectricity demand\n\nload shape\n\ndata analysis\n\nEIA\n\ngrid\n\n\n\nA decade of EIA hourly electricity demand data — regional divergence and multiple structural stories visible in the shape of when America uses power.\n\n\n\n\n\nMay 2026\n\n\n\n\n\n\n\nDistribution Grid Analysis: A Primer\n\n\n\ndistribution grid\n\ngrid planning\n\npolicy\n\nregulation\n\nengineering\n\n\n\nHow distribution grid simulation works, what regulatory frameworks require, and why the absence of combined multi-technology assessment creates systematic investment risk.\n\n\n\n\n\nMay 2026\n\n\n\n\n\n\n\nHeat Pumps for the Residential Sector: Drivers of Adoption\n\n\n\nheat pumps\n\nelectrification\n\nresidential\n\n\n\nThe mechanics, history, economics, and regional conversion costs behind residential heat pump deployment worldwide.\n\n\n\n\n\nMay 2026\n\n\n\n\n\n\n\nBehind-the-Meter Natural Gas Power Plants: An Emerging Trend\n\n\n\nnatural gas\n\ndata centers\n\nbehind-the-meter\n\n\n\nData centers building dedicated gas generation to bypass interconnection queues — market scale, key players, technology, and carbon capture.\n\n\n\n\n\nDecember 2025\n\n\n\n\n\n\n\nEnergy and Electrification in U.S. Agriculture\n\n\n\nagriculture\n\nelectrification\n\nenergy use\n\n\n\nOn-farm energy use, fuel mix, geographic distribution, and electrification opportunities across the U.S. agricultural sector.\n\n\n\n\n\nNovember 2025\n\n\n\n\n\n\n\nThe Future of U.S. Electricity Demand Through 2030\n\n\n\ndemand growth\n\ngrid planning\n\nforecasting\n\n\n\nRegional load growth projections to 2030 — ERCOT, SPP, CAISO, PJM, and others — and what’s driving a projected 25% national increase.\n\n\n\n\n\nOctober 2025\n\n\n\n\n\n\n\nWhat Do Data Center Load Profiles Look Like?\n\n\n\ndata centers\n\nload profiles\n\nforecasting\n\n\n\nHow flat is truly flat? The factors — workload type, infrastructure design, and cooling strategy — that shape data center demand curves.\n\n\n\n\n\nOctober 2025\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "I occasionally research energy-related topics and share a synthesized version of my findings on this website. AI is heavily used in all phases of creating these articles, but I do try to make sure the voice and vision are my own. Please reach out to me on LinkedIn if you would like to get in touch, want further details or have any comments on the content of this website."
   },
   {
     "objectID": "articles/data-centers/index.html",
