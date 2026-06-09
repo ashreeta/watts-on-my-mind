@@ -1977,10 +1977,6 @@ Figure 6 uses EIA-860M data to show installed capacity as of April 2026 for mark
 [^lbnl]: [LBNL Utility-Scale Battery Storage annual update](https://emp.lbl.gov/utility-scale-battery-storage) — Tracks how RA policy drives duration choices.
 [^amperon]: [Amperon — Battery Energy Storage: ERCOT vs CAISO](https://www.amperon.co/blog/battery-energy-storage-ercot-vs-caiso)
 [^aurora-itc]: [Aurora Solar — Can You Use The ITC For Battery Storage? (IRA Update)](https://aurorasolar.com/blog/federal-tax-incentive-for-battery-storage/)
-[^rabobank-ca]: [Rabobank — Why performance, not volume, now defines California's saturated battery market](https://www.rabobank.com/knowledge/d011477894-why-performance-not-volume-now-defines-californias-saturated-battery-market)
-[^caiso-storage-2024]: [CAISO 2024 Special Report on Battery Storage](https://www.caiso.com/documents/2024-special-report-on-battery-storage-may-29-2025.pdf)
-[^eia-curtailment]: [EIA — Solar and wind power curtailments are increasing in California](https://www.eia.gov/todayinenergy/detail.php?id=65364)
-[^pv-curtailment]: [pv-magazine — California solar curtailment down 12% on back of batteries (July 2025)](https://pv-magazine-usa.com/2025/07/22/california-solar-curtailment-down-12-on-back-of-batteries/)
 [^sgip-cpuc]: [CPUC — SGIP Program](https://www.cpuc.ca.gov/industries-and-topics/electrical-energy/demand-side-management/self-generation-incentive-program)
 [^modoenergy-ra]: [Modo Energy — CAISO battery co-location vs standalone revenues](https://modoenergy.com/research/en/caiso-battery-colocation-standalone-revenues-financing-offtake-ferc-eqr)
 [^gridmatic]: [Gridmatic — Differences in battery participation in the CAISO and ERCOT markets](https://www.gridmatic.com/differences-in-battery-participation-in-the-caiso-and-ercot-markets/)
