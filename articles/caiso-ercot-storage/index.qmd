@@ -1,0 +1,1992 @@
+---
+title: "Duration and Dispatch: Comparing Battery Storage Across CAISO and ERCOT"
+date: "2026-06-02"
+description: "A data-driven approach to showcase how regulatory and market differences between California and Texas have shaped battery storage deployment."
+categories: ["CAISO", "ERCOT", "battery storage", "electricity markets", "Texas", "California"]
+footnotes-title: "References"
+reference-location: document
+draft: false
+---
+
+This article was inspired by an image I saw a few weeks ago[^linkedin], comparing the installed capacity of battery storage in the CAISO and ERCOT markets. I was intrigued by the rapid growth of battery storage in the last few years and decided to see if I could reproduce the figure from publicly available data.
+
+Figure 1 below uses EIA-860M[^eia860m] data reported as of April 2026. The net summer capacity of battery storage was used to calculate the cumulative battery storage capacity by year. The planned capacity is shown as two separate series, one filtered to reflect capacity that is more certain to come online (regulatory approval received and/or construction started), and one with the full planned total. The figure shows that both markets had roughly 16 GW of cumulative battery storage capacity by early 2026, but the speculative pipeline in ERCOT is much larger, with the planned capacity nearly double CAISO's capacity by 2030. One thing to note — the original figure has an ambiguous x-axis, failing to show that the large growth is expected by 2030, rather than in 2025. While ERCOT's capacity is growing faster, the gap between the filtered and total planned capacity suggests significant uncertainty.
+
+
+```{=html}
+<div data-widget style="font-family:'Inter',system-ui,sans-serif;font-size:0.82rem;line-height:1.5;margin:1.8rem 0;color:#222">
+  <div style="margin-bottom:0.15rem;font-size:0.95rem;font-weight:600;color:#111">Figure 1: Cumulative Utility-Scale Battery Storage Capacity</div>
+  <div style="font-size:0.78rem;color:#777;margin-bottom:0.5rem">Net summer capacity (GW) · EIA-860M operating units · dashed = planned (T/TS/U/V) · dotted = planned (all statuses)</div>
+  <div style="overflow-x:auto">
+<svg style="width:100%;height:auto;display:block" xmlns:xlink="http://www.w3.org/1999/xlink" width="716.4pt" height="467.308187pt" viewBox="0 0 716.4 467.308187" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2026-06-09T13:59:46.825157</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.10.9, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 467.308187 
+L 716.4 467.308187 
+L 716.4 0 
+L 0 0 
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 54.305 384.31875 
+L 709.2 384.31875 
+L 709.2 37.81875 
+L 54.305 37.81875 
+z
+" style="fill: #ffffff"/>
+   </g>
+   <g id="matplotlib.axis_1">
+    <g id="xtick_1">
+     <g id="line2d_1">
+      <defs>
+       <path id="m0fbb62cb62" d="M 0 0 
+L 0 3 
+" style="stroke: #e4e2da; stroke-width: 0.8"/>
+      </defs>
+      <g>
+       <use xlink:href="#m0fbb62cb62" x="68.238936" y="384.31875" style="fill: #e4e2da; stroke: #e4e2da; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_1">
+      <text style="font-size: 13px; font-family: 'Inter', 'Helvetica Neue', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #aaaaaa" x="68.238936" y="400.101562" transform="rotate(-0 68.238936 400.101562)">2018</text>
+     </g>
+    </g>
+    <g id="xtick_2">
+     <g id="line2d_2">
+      <g>
+       <use xlink:href="#m0fbb62cb62" x="161.131844" y="384.31875" style="fill: #e4e2da; stroke: #e4e2da; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_2">
+      <text style="font-size: 13px; font-family: 'Inter', 'Helvetica Neue', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #aaaaaa" x="161.131844" y="400.101562" transform="rotate(-0 161.131844 400.101562)">2020</text>
+     </g>
+    </g>
+    <g id="xtick_3">
+     <g id="line2d_3">
+      <g>
+       <use xlink:href="#m0fbb62cb62" x="254.024752" y="384.31875" style="fill: #e4e2da; stroke: #e4e2da; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_3">
+      <text style="font-size: 13px; font-family: 'Inter', 'Helvetica Neue', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #aaaaaa" x="254.024752" y="400.101562" transform="rotate(-0 254.024752 400.101562)">2022</text>
+     </g>
+    </g>
+    <g id="xtick_4">
+     <g id="line2d_4">
+      <g>
+       <use xlink:href="#m0fbb62cb62" x="346.91766" y="384.31875" style="fill: #e4e2da; stroke: #e4e2da; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_4">
+      <text style="font-size: 13px; font-family: 'Inter', 'Helvetica Neue', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #aaaaaa" x="346.91766" y="400.101562" transform="rotate(-0 346.91766 400.101562)">2024</text>
+     </g>
+    </g>
+    <g id="xtick_5">
+     <g id="line2d_5">
+      <g>
+       <use xlink:href="#m0fbb62cb62" x="439.810567" y="384.31875" style="fill: #e4e2da; stroke: #e4e2da; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_5">
+      <text style="font-size: 13px; font-family: 'Inter', 'Helvetica Neue', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #aaaaaa" x="439.810567" y="400.101562" transform="rotate(-0 439.810567 400.101562)">2026</text>
+     </g>
+    </g>
+    <g id="xtick_6">
+     <g id="line2d_6">
+      <g>
+       <use xlink:href="#m0fbb62cb62" x="532.703475" y="384.31875" style="fill: #e4e2da; stroke: #e4e2da; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_6">
+      <text style="font-size: 13px; font-family: 'Inter', 'Helvetica Neue', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #aaaaaa" x="532.703475" y="400.101562" transform="rotate(-0 532.703475 400.101562)">2028</text>
+     </g>
+    </g>
+   </g>
+   <g id="matplotlib.axis_2">
+    <g id="ytick_1">
+     <g id="line2d_7">
+      <path d="M 54.305 384.31875 
+L 709.2 384.31875 
+" clip-path="url(#pd12a990354)" style="fill: none; stroke: #e4e2da; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_8"/>
+     <g id="text_7">
+      <text style="font-size: 13px; font-family: 'Inter', 'Helvetica Neue', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: end; fill: #aaaaaa" x="50.805" y="388.960156" transform="rotate(-0 50.805 388.960156)">0 GW</text>
+     </g>
+    </g>
+    <g id="ytick_2">
+     <g id="line2d_9">
+      <path d="M 54.305 313.289005 
+L 709.2 313.289005 
+" clip-path="url(#pd12a990354)" style="fill: none; stroke: #e4e2da; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_10"/>
+     <g id="text_8">
+      <text style="font-size: 13px; font-family: 'Inter', 'Helvetica Neue', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: end; fill: #aaaaaa" x="50.805" y="317.930411" transform="rotate(-0 50.805 317.930411)">10 GW</text>
+     </g>
+    </g>
+    <g id="ytick_3">
+     <g id="line2d_11">
+      <path d="M 54.305 242.25926 
+L 709.2 242.25926 
+" clip-path="url(#pd12a990354)" style="fill: none; stroke: #e4e2da; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_12"/>
+     <g id="text_9">
+      <text style="font-size: 13px; font-family: 'Inter', 'Helvetica Neue', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: end; fill: #aaaaaa" x="50.805" y="246.900667" transform="rotate(-0 50.805 246.900667)">20 GW</text>
+     </g>
+    </g>
+    <g id="ytick_4">
+     <g id="line2d_13">
+      <path d="M 54.305 171.229516 
+L 709.2 171.229516 
+" clip-path="url(#pd12a990354)" style="fill: none; stroke: #e4e2da; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_14"/>
+     <g id="text_10">
+      <text style="font-size: 13px; font-family: 'Inter', 'Helvetica Neue', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: end; fill: #aaaaaa" x="50.805" y="175.870922" transform="rotate(-0 50.805 175.870922)">30 GW</text>
+     </g>
+    </g>
+    <g id="ytick_5">
+     <g id="line2d_15">
+      <path d="M 54.305 100.199771 
+L 709.2 100.199771 
+" clip-path="url(#pd12a990354)" style="fill: none; stroke: #e4e2da; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_16"/>
+     <g id="text_11">
+      <text style="font-size: 13px; font-family: 'Inter', 'Helvetica Neue', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: end; fill: #aaaaaa" x="50.805" y="104.841177" transform="rotate(-0 50.805 104.841177)">40 GW</text>
+     </g>
+    </g>
+   </g>
+   <g id="line2d_17">
+    <path d="M 456.066826 384.31875 
+L 456.066826 37.81875 
+" clip-path="url(#pd12a990354)" style="fill: none; stroke-dasharray: 1,1.65; stroke-dashoffset: 0; stroke: #e4e2da"/>
+   </g>
+   <g id="patch_3">
+    <path d="M 54.305 384.31875 
+L 54.305 37.81875 
+" style="fill: none; stroke: #e4e2da; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 54.305 384.31875 
+L 709.2 384.31875 
+" style="fill: none; stroke: #e4e2da; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="line2d_18">
+    <path d="M 68.238936 383.153152 
+L 114.68539 383.031691 
+L 161.131844 380.511556 
+L 207.578298 368.822901 
+L 254.024752 351.116606 
+L 300.471206 329.582518 
+L 346.91766 303.910238 
+L 393.364113 273.262323 
+L 439.810567 271.705351 
+" clip-path="url(#pd12a990354)" style="fill: none; stroke: #2166ac; stroke-width: 3.5; stroke-linecap: round"/>
+   </g>
+   <g id="line2d_19">
+    <path d="M 68.238936 383.69866 
+L 114.68539 383.557311 
+L 161.131844 382.76746 
+L 207.578298 378.528405 
+L 254.024752 369.294538 
+L 300.471206 355.212181 
+L 346.91766 326.469995 
+L 393.364113 286.976747 
+L 439.810567 271.638584 
+" clip-path="url(#pd12a990354)" style="fill: none; stroke: #d6604d; stroke-width: 3.5; stroke-linecap: round"/>
+   </g>
+   <g id="line2d_20">
+    <path d="M 439.810567 271.705351 
+L 486.257021 249.990138 
+L 532.703475 235.728075 
+L 579.149929 224.008168 
+" clip-path="url(#pd12a990354)" style="fill: none; stroke-dasharray: 15,7.5; stroke-dashoffset: 0; stroke: #2166ac; stroke-width: 2.5"/>
+   </g>
+   <g id="line2d_21">
+    <path d="M 439.810567 271.638584 
+L 486.257021 220.21731 
+L 532.703475 201.660789 
+L 579.149929 200.072564 
+" clip-path="url(#pd12a990354)" style="fill: none; stroke-dasharray: 15,7.5; stroke-dashoffset: 0; stroke: #d6604d; stroke-width: 2.5"/>
+   </g>
+   <g id="line2d_22">
+    <path d="M 439.810567 271.705351 
+L 486.257021 245.29081 
+L 532.703475 223.425013 
+L 579.149929 201.389456 
+" clip-path="url(#pd12a990354)" style="fill: none; stroke-dasharray: 3,6; stroke-dashoffset: 0; stroke: #2166ac; stroke-opacity: 0.65; stroke-width: 2"/>
+   </g>
+   <g id="line2d_23">
+    <path d="M 439.810567 271.638584 
+L 486.257021 207.456816 
+L 532.703475 126.051757 
+L 579.149929 90.674682 
+" clip-path="url(#pd12a990354)" style="fill: none; stroke-dasharray: 3,6; stroke-dashoffset: 0; stroke: #d6604d; stroke-opacity: 0.65; stroke-width: 2"/>
+   </g>
+   <g id="text_12">
+    <text style="font-style: italic; font-size: 13px; font-family: 'Inter', 'Helvetica Neue', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: start; fill: #999999" x="463.033794" y="54.031562" transform="rotate(-0 463.033794 54.031562)">Planned -&gt;</text>
+   </g>
+   <g id="text_13">
+    <text style="font-weight: 700; font-size: 12px; font-family: 'Inter', 'Helvetica Neue', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: start; fill: #111111" x="465.356117" y="265.875976" transform="rotate(-0 465.356117 265.875976)">15.9 GW</text>
+   </g>
+   <g id="text_14">
+    <text style="font-weight: 700; font-size: 12px; font-family: 'Inter', 'Helvetica Neue', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: start; fill: #2166ac" x="586.116897" y="227.110355" transform="rotate(-0 586.116897 227.110355)">CA  22.6 GW</text>
+   </g>
+   <g id="text_15">
+    <text style="font-weight: 700; font-size: 12px; font-family: 'Inter', 'Helvetica Neue', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: start; fill: #d6604d" x="586.116897" y="178.226752" transform="rotate(-0 586.116897 178.226752)">TX  25.9 GW</text>
+   </g>
+   <g id="text_16">
+    <text style="font-size: 11px; font-family: 'Inter', 'Helvetica Neue', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: start; fill: #2166ac; opacity: 0.7" x="586.116897" y="204.233128" transform="rotate(-0 586.116897 204.233128)">CA  25.8 GW</text>
+   </g>
+   <g id="text_17">
+    <text style="font-size: 11px; font-family: 'Inter', 'Helvetica Neue', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: start; fill: #d6604d; opacity: 0.7" x="586.116897" y="93.518354" transform="rotate(-0 586.116897 93.518354)">41.3 GW</text>
+   </g>
+   <g id="text_18">
+    <text style="font-size: 20px; font-family: 'Inter', 'Helvetica Neue', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: start; fill: #111111" x="54.305" y="21.81875" transform="rotate(-0 54.305 21.81875)">Figure 1: Cumulative Utility-Scale Battery Storage Capacity</text>
+   </g>
+   <g id="legend_1">
+    <g id="line2d_24">
+     <path d="M 61.305 50.151875 
+L 78.105 50.151875 
+L 94.905 50.151875 
+" style="fill: none; stroke: #2166ac; stroke-width: 3.5; stroke-linecap: square"/>
+    </g>
+    <g id="text_19">
+     <text style="font-size: 14px; font-family: 'Inter', 'Helvetica Neue', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: start; fill: #444444" x="106.105" y="55.051875" transform="rotate(-0 106.105 55.051875)">California (CAISO)</text>
+    </g>
+    <g id="line2d_25">
+     <path d="M 61.305 70.143437 
+L 78.105 70.143437 
+L 94.905 70.143437 
+" style="fill: none; stroke: #d6604d; stroke-width: 3.5; stroke-linecap: square"/>
+    </g>
+    <g id="text_20">
+     <text style="font-size: 14px; font-family: 'Inter', 'Helvetica Neue', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: start; fill: #444444" x="106.105" y="75.043437" transform="rotate(-0 106.105 75.043437)">Texas (ERCOT)</text>
+    </g>
+    <g id="line2d_26">
+     <path d="M 61.305 90.135 
+L 78.105 90.135 
+L 94.905 90.135 
+" style="fill: none; stroke-dasharray: 15,7.5; stroke-dashoffset: 0; stroke: #cccccc; stroke-width: 2.5"/>
+    </g>
+    <g id="text_21">
+     <text style="font-size: 14px; font-family: 'Inter', 'Helvetica Neue', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: start; fill: #444444" x="106.105" y="95.035" transform="rotate(-0 106.105 95.035)">Planned (T/TS/U/V)</text>
+    </g>
+    <g id="line2d_27">
+     <path d="M 61.305 110.126563 
+L 78.105 110.126563 
+L 94.905 110.126563 
+" style="fill: none; stroke-dasharray: 3,6; stroke-dashoffset: 0; stroke: #cccccc; stroke-width: 2"/>
+    </g>
+    <g id="text_22">
+     <text style="font-size: 14px; font-family: 'Inter', 'Helvetica Neue', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: start; fill: #444444" x="106.105" y="115.026563" transform="rotate(-0 106.105 115.026563)">Planned (all)</text>
+    </g>
+   </g>
+  </g>
+  <g id="text_23">
+   <text style="font-size: 11px; font-family: 'Inter', 'Helvetica Neue', 'Arial', 'DejaVu Sans', sans-serif; fill: #999999" transform="translate(7.2 434.067062)">Source: EIA-860M April 2026.</text>
+   <text style="font-size: 11px; font-family: 'Inter', 'Helvetica Neue', 'Arial', 'DejaVu Sans', sans-serif; fill: #999999" transform="translate(7.2 445.882781)">Operating = units in service through Apr 2026.</text>
+   <text style="font-size: 11px; font-family: 'Inter', 'Helvetica Neue', 'Arial', 'DejaVu Sans', sans-serif; fill: #999999" transform="translate(7.2 457.830844)">Planned (T/TS/U/V) = approvals received / construction started. Planned (all) = full net summer capacity from Planned sheet.</text>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="pd12a990354">
+   <rect x="54.305" y="37.81875" width="654.895" height="346.5"/>
+  </clipPath>
+ </defs>
+</svg>
+  </div>
+  <div style="font-size:0.73rem;color:#888;margin:0.5rem 0 0.3rem;font-style:italic">Source: EIA Form 860M, April 2026. Planned (dashed) = status codes T/TS/U/V. Planned (dotted) = all status codes.</div>
+</div>
+```
+
+## Design and Dispatch
+
+Next, I processed the data in order to identify the following characteristics which in turn reveal the operational models for battery storage in the two markets:
+
+- Duration of battery storage
+- Co-located vs standalone capacity
+- Co-located vs standalone capacity by duration
+- Seasonal dispatch patterns and nodal price
+
+### Duration of battery storage
+
+Duration of the battery by site was calculated for each individual generator (generator id in the data) by dividing the energy capacity by the capacity of the unit. This was then categorized into bins. Figure 2 shows the cumulative power capacity for each duration category and year by state.
+
+In California, the median battery storage duration is 4 hours while in Texas it is around 2 hours. The most plausible reason for this difference is California's Resource Adequacy (RA) program which requires Load-Serving Entities (utilities, Community Choice Aggregators, and retail sellers) to procure and demonstrate sufficient generating capacity to cover their customers' peak load plus a 15% planning reserve margin. LSEs must show this capacity is contracted and deliverable. CPUC and CAISO's requirement is that a storage resource must demonstrate 4 hours of discharge duration at rated capacity to receive full RA capacity credit. Shorter-duration storage receives proportionally reduced credit — roughly 50% credit for 2-hour storage — making the incremental cost of going from 2 to 4 hours almost always worth it for the RA market.[^cpuc2021]^,^[^cpuc2022]^,^[^caiso-ra]
+
+Texas has no equivalent requirement. Batteries earn revenue by trading energy and the duration that maximises revenue is what gets deployed. This turns out to be around two hours, short enough to allow multiple charge-discharge cycles across the daily price swing and long enough to capture the main arbitrage window.[^amperon]^,^[^lbnl]
+
+```{=html}
+<div data-widget style="font-family:'Inter',system-ui,sans-serif;font-size:0.82rem;line-height:1.5;margin:1.8rem 0;color:#222">
+  <div style="margin-bottom:0.15rem;font-size:0.95rem;font-weight:600;color:#111">Figure 2: Cumulative Battery Capacity by Duration Class</div>
+  <div style="font-size:0.78rem;color:#777;margin-bottom:0.5rem">Net summer capacity (MW) · EIA-860M April 2026 · operating units</div>
+  <div style="overflow-x:auto">
+<svg style="width:100%;height:auto;display:block" xmlns:xlink="http://www.w3.org/1999/xlink" width="928.858125pt" height="366.997498pt" viewBox="0 0 928.858125 366.997498" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2026-06-09T14:22:49.076571</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.10.9, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 366.997498 
+L 928.858125 366.997498 
+L 928.858125 0 
+L 0 0 
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 68.643125 324.480797 
+L 488.413506 324.480797 
+L 488.413506 28.625 
+L 68.643125 28.625 
+z
+" style="fill: #ffffff"/>
+   </g>
+   <g id="matplotlib.axis_1">
+    <g id="xtick_1">
+     <g id="line2d_1">
+      <defs>
+       <path id="m9b5d1dbc47" d="M 0 0 
+L 0 3 
+" style="stroke: #e4e2da; stroke-width: 0.8"/>
+      </defs>
+      <g>
+       <use xlink:href="#m9b5d1dbc47" x="102.061524" y="324.480797" style="fill: #e4e2da; stroke: #e4e2da; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_1">
+      <text style="font-size: 13px; font-family: 'Inter', 'Helvetica Neue', 'Arial', 'DejaVu Sans', sans-serif; fill: #aaaaaa" transform="translate(79.808763 357.98631) rotate(-45)">2018</text>
+     </g>
+    </g>
+    <g id="xtick_2">
+     <g id="line2d_2">
+      <g>
+       <use xlink:href="#m9b5d1dbc47" x="146.178222" y="324.480797" style="fill: #e4e2da; stroke: #e4e2da; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_2">
+      <text style="font-size: 13px; font-family: 'Inter', 'Helvetica Neue', 'Arial', 'DejaVu Sans', sans-serif; fill: #aaaaaa" transform="translate(123.925461 357.98631) rotate(-45)">2019</text>
+     </g>
+    </g>
+    <g id="xtick_3">
+     <g id="line2d_3">
+      <g>
+       <use xlink:href="#m9b5d1dbc47" x="190.294919" y="324.480797" style="fill: #e4e2da; stroke: #e4e2da; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_3">
+      <text style="font-size: 13px; font-family: 'Inter', 'Helvetica Neue', 'Arial', 'DejaVu Sans', sans-serif; fill: #aaaaaa" transform="translate(168.042159 357.98631) rotate(-45)">2020</text>
+     </g>
+    </g>
+    <g id="xtick_4">
+     <g id="line2d_4">
+      <g>
+       <use xlink:href="#m9b5d1dbc47" x="234.411617" y="324.480797" style="fill: #e4e2da; stroke: #e4e2da; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_4">
+      <text style="font-size: 13px; font-family: 'Inter', 'Helvetica Neue', 'Arial', 'DejaVu Sans', sans-serif; fill: #aaaaaa" transform="translate(212.158857 357.98631) rotate(-45)">2021</text>
+     </g>
+    </g>
+    <g id="xtick_5">
+     <g id="line2d_5">
+      <g>
+       <use xlink:href="#m9b5d1dbc47" x="278.528315" y="324.480797" style="fill: #e4e2da; stroke: #e4e2da; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_5">
+      <text style="font-size: 13px; font-family: 'Inter', 'Helvetica Neue', 'Arial', 'DejaVu Sans', sans-serif; fill: #aaaaaa" transform="translate(256.275554 357.98631) rotate(-45)">2022</text>
+     </g>
+    </g>
+    <g id="xtick_6">
+     <g id="line2d_6">
+      <g>
+       <use xlink:href="#m9b5d1dbc47" x="322.645013" y="324.480797" style="fill: #e4e2da; stroke: #e4e2da; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_6">
+      <text style="font-size: 13px; font-family: 'Inter', 'Helvetica Neue', 'Arial', 'DejaVu Sans', sans-serif; fill: #aaaaaa" transform="translate(300.392252 357.98631) rotate(-45)">2023</text>
+     </g>
+    </g>
+    <g id="xtick_7">
+     <g id="line2d_7">
+      <g>
+       <use xlink:href="#m9b5d1dbc47" x="366.761711" y="324.480797" style="fill: #e4e2da; stroke: #e4e2da; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_7">
+      <text style="font-size: 13px; font-family: 'Inter', 'Helvetica Neue', 'Arial', 'DejaVu Sans', sans-serif; fill: #aaaaaa" transform="translate(344.50895 357.98631) rotate(-45)">2024</text>
+     </g>
+    </g>
+    <g id="xtick_8">
+     <g id="line2d_8">
+      <g>
+       <use xlink:href="#m9b5d1dbc47" x="410.878409" y="324.480797" style="fill: #e4e2da; stroke: #e4e2da; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_8">
+      <text style="font-size: 13px; font-family: 'Inter', 'Helvetica Neue', 'Arial', 'DejaVu Sans', sans-serif; fill: #aaaaaa" transform="translate(388.625648 357.98631) rotate(-45)">2025</text>
+     </g>
+    </g>
+    <g id="xtick_9">
+     <g id="line2d_9">
+      <g>
+       <use xlink:href="#m9b5d1dbc47" x="454.995107" y="324.480797" style="fill: #e4e2da; stroke: #e4e2da; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_9">
+      <text style="font-size: 13px; font-family: 'Inter', 'Helvetica Neue', 'Arial', 'DejaVu Sans', sans-serif; fill: #aaaaaa" transform="translate(432.742346 357.98631) rotate(-45)">2026</text>
+     </g>
+    </g>
+   </g>
+   <g id="matplotlib.axis_2">
+    <g id="ytick_1">
+     <g id="line2d_10">
+      <path d="M 68.643125 324.480797 
+L 488.413506 324.480797 
+" clip-path="url(#p357a6b9816)" style="fill: none; stroke: #e4e2da; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_11"/>
+     <g id="text_10">
+      <text style="font-size: 13px; font-family: 'Inter', 'Helvetica Neue', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: end; fill: #aaaaaa" x="65.143125" y="329.122203" transform="rotate(-0 65.143125 329.122203)">0</text>
+     </g>
+    </g>
+    <g id="ytick_2">
+     <g id="line2d_12">
+      <path d="M 68.643125 288.809067 
+L 488.413506 288.809067 
+" clip-path="url(#p357a6b9816)" style="fill: none; stroke: #e4e2da; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_13"/>
+     <g id="text_11">
+      <text style="font-size: 13px; font-family: 'Inter', 'Helvetica Neue', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: end; fill: #aaaaaa" x="65.143125" y="293.450474" transform="rotate(-0 65.143125 293.450474)">2,000</text>
+     </g>
+    </g>
+    <g id="ytick_3">
+     <g id="line2d_14">
+      <path d="M 68.643125 253.137338 
+L 488.413506 253.137338 
+" clip-path="url(#p357a6b9816)" style="fill: none; stroke: #e4e2da; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_15"/>
+     <g id="text_12">
+      <text style="font-size: 13px; font-family: 'Inter', 'Helvetica Neue', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: end; fill: #aaaaaa" x="65.143125" y="257.778744" transform="rotate(-0 65.143125 257.778744)">4,000</text>
+     </g>
+    </g>
+    <g id="ytick_4">
+     <g id="line2d_16">
+      <path d="M 68.643125 217.465608 
+L 488.413506 217.465608 
+" clip-path="url(#p357a6b9816)" style="fill: none; stroke: #e4e2da; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_17"/>
+     <g id="text_13">
+      <text style="font-size: 13px; font-family: 'Inter', 'Helvetica Neue', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: end; fill: #aaaaaa" x="65.143125" y="222.107014" transform="rotate(-0 65.143125 222.107014)">6,000</text>
+     </g>
+    </g>
+    <g id="ytick_5">
+     <g id="line2d_18">
+      <path d="M 68.643125 181.793878 
+L 488.413506 181.793878 
+" clip-path="url(#p357a6b9816)" style="fill: none; stroke: #e4e2da; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_19"/>
+     <g id="text_14">
+      <text style="font-size: 13px; font-family: 'Inter', 'Helvetica Neue', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: end; fill: #aaaaaa" x="65.143125" y="186.435285" transform="rotate(-0 65.143125 186.435285)">8,000</text>
+     </g>
+    </g>
+    <g id="ytick_6">
+     <g id="line2d_20">
+      <path d="M 68.643125 146.122149 
+L 488.413506 146.122149 
+" clip-path="url(#p357a6b9816)" style="fill: none; stroke: #e4e2da; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_21"/>
+     <g id="text_15">
+      <text style="font-size: 13px; font-family: 'Inter', 'Helvetica Neue', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: end; fill: #aaaaaa" x="65.143125" y="150.763555" transform="rotate(-0 65.143125 150.763555)">10,000</text>
+     </g>
+    </g>
+    <g id="ytick_7">
+     <g id="line2d_22">
+      <path d="M 68.643125 110.450419 
+L 488.413506 110.450419 
+" clip-path="url(#p357a6b9816)" style="fill: none; stroke: #e4e2da; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_23"/>
+     <g id="text_16">
+      <text style="font-size: 13px; font-family: 'Inter', 'Helvetica Neue', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: end; fill: #aaaaaa" x="65.143125" y="115.091825" transform="rotate(-0 65.143125 115.091825)">12,000</text>
+     </g>
+    </g>
+    <g id="ytick_8">
+     <g id="line2d_24">
+      <path d="M 68.643125 74.778689 
+L 488.413506 74.778689 
+" clip-path="url(#p357a6b9816)" style="fill: none; stroke: #e4e2da; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_25"/>
+     <g id="text_17">
+      <text style="font-size: 13px; font-family: 'Inter', 'Helvetica Neue', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: end; fill: #aaaaaa" x="65.143125" y="79.420095" transform="rotate(-0 65.143125 79.420095)">14,000</text>
+     </g>
+    </g>
+    <g id="ytick_9">
+     <g id="line2d_26">
+      <path d="M 68.643125 39.106959 
+L 488.413506 39.106959 
+" clip-path="url(#p357a6b9816)" style="fill: none; stroke: #e4e2da; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_27"/>
+     <g id="text_18">
+      <text style="font-size: 13px; font-family: 'Inter', 'Helvetica Neue', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: end; fill: #aaaaaa" x="65.143125" y="43.748366" transform="rotate(-0 65.143125 43.748366)">16,000</text>
+     </g>
+    </g>
+    <g id="text_19">
+     <text style="font-size: 13px; font-family: 'Inter', 'Helvetica Neue', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #aaaaaa" x="16.702188" y="176.552899" transform="rotate(-90 16.702188 176.552899)">Cumulative Installed Capacity (MW)</text>
+    </g>
+   </g>
+   <g id="patch_3">
+    <path d="M 68.643125 324.480797 
+L 68.643125 28.625 
+" style="fill: none; stroke: #e4e2da; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 68.643125 324.480797 
+L 488.413506 324.480797 
+" style="fill: none; stroke: #e4e2da; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 87.723597 324.480797 
+L 116.39945 324.480797 
+L 116.39945 323.753094 
+L 87.723597 323.753094 
+z
+" clip-path="url(#p357a6b9816)" style="fill: #74add1"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 131.840295 324.480797 
+L 160.516148 324.480797 
+L 160.516148 323.729907 
+L 131.840295 323.729907 
+z
+" clip-path="url(#p357a6b9816)" style="fill: #74add1"/>
+   </g>
+   <g id="patch_7">
+    <path d="M 175.956993 324.480797 
+L 204.632846 324.480797 
+L 204.632846 321.878544 
+L 175.956993 321.878544 
+z
+" clip-path="url(#p357a6b9816)" style="fill: #74add1"/>
+   </g>
+   <g id="patch_8">
+    <path d="M 220.073691 324.480797 
+L 248.749544 324.480797 
+L 248.749544 316.097941 
+L 220.073691 316.097941 
+z
+" clip-path="url(#p357a6b9816)" style="fill: #74add1"/>
+   </g>
+   <g id="patch_9">
+    <path d="M 264.190388 324.480797 
+L 292.866242 324.480797 
+L 292.866242 306.409499 
+L 264.190388 306.409499 
+z
+" clip-path="url(#p357a6b9816)" style="fill: #74add1"/>
+   </g>
+   <g id="patch_10">
+    <path d="M 308.307086 324.480797 
+L 336.98294 324.480797 
+L 336.98294 293.016548 
+L 308.307086 293.016548 
+z
+" clip-path="url(#p357a6b9816)" style="fill: #74add1"/>
+   </g>
+   <g id="patch_11">
+    <path d="M 352.423784 324.480797 
+L 381.099638 324.480797 
+L 381.099638 285.707411 
+L 352.423784 285.707411 
+z
+" clip-path="url(#p357a6b9816)" style="fill: #74add1"/>
+   </g>
+   <g id="patch_12">
+    <path d="M 396.540482 324.480797 
+L 425.216336 324.480797 
+L 425.216336 266.920894 
+L 396.540482 266.920894 
+z
+" clip-path="url(#p357a6b9816)" style="fill: #74add1"/>
+   </g>
+   <g id="patch_13">
+    <path d="M 440.65718 324.480797 
+L 469.333034 324.480797 
+L 469.333034 265.372741 
+L 440.65718 265.372741 
+z
+" clip-path="url(#p357a6b9816)" style="fill: #74add1"/>
+   </g>
+   <g id="patch_14">
+    <path d="M 87.723597 323.753094 
+L 116.39945 323.753094 
+L 116.39945 323.753094 
+L 87.723597 323.753094 
+z
+" clip-path="url(#p357a6b9816)" style="fill: #f46d43"/>
+   </g>
+   <g id="patch_15">
+    <path d="M 131.840295 323.729907 
+L 160.516148 323.729907 
+L 160.516148 323.704937 
+L 131.840295 323.704937 
+z
+" clip-path="url(#p357a6b9816)" style="fill: #f46d43"/>
+   </g>
+   <g id="patch_16">
+    <path d="M 175.956993 321.878544 
+L 204.632846 321.878544 
+L 204.632846 317.376772 
+L 175.956993 317.376772 
+z
+" clip-path="url(#p357a6b9816)" style="fill: #f46d43"/>
+   </g>
+   <g id="patch_17">
+    <path d="M 220.073691 316.097941 
+L 248.749544 316.097941 
+L 248.749544 293.284086 
+L 220.073691 293.284086 
+z
+" clip-path="url(#p357a6b9816)" style="fill: #f46d43"/>
+   </g>
+   <g id="patch_18">
+    <path d="M 264.190388 306.409499 
+L 292.866242 306.409499 
+L 292.866242 249.447097 
+L 264.190388 249.447097 
+z
+" clip-path="url(#p357a6b9816)" style="fill: #f46d43"/>
+   </g>
+   <g id="patch_19">
+    <path d="M 308.307086 293.016548 
+L 336.98294 293.016548 
+L 336.98294 196.08754 
+L 308.307086 196.08754 
+z
+" clip-path="url(#p357a6b9816)" style="fill: #f46d43"/>
+   </g>
+   <g id="patch_20">
+    <path d="M 352.423784 285.707411 
+L 381.099638 285.707411 
+L 381.099638 132.515167 
+L 352.423784 132.515167 
+z
+" clip-path="url(#p357a6b9816)" style="fill: #f46d43"/>
+   </g>
+   <g id="patch_21">
+    <path d="M 396.540482 266.920894 
+L 425.216336 266.920894 
+L 425.216336 57.807864 
+L 396.540482 57.807864 
+z
+" clip-path="url(#p357a6b9816)" style="fill: #f46d43"/>
+   </g>
+   <g id="patch_22">
+    <path d="M 440.65718 265.372741 
+L 469.333034 265.372741 
+L 469.333034 53.924996 
+L 440.65718 53.924996 
+z
+" clip-path="url(#p357a6b9816)" style="fill: #f46d43"/>
+   </g>
+   <g id="patch_23">
+    <path d="M 87.723597 323.753094 
+L 116.39945 323.753094 
+L 116.39945 323.551549 
+L 87.723597 323.551549 
+z
+" clip-path="url(#p357a6b9816)" style="fill: #1a9850"/>
+   </g>
+   <g id="patch_24">
+    <path d="M 131.840295 323.704937 
+L 160.516148 323.704937 
+L 160.516148 323.246555 
+L 131.840295 323.246555 
+z
+" clip-path="url(#p357a6b9816)" style="fill: #1a9850"/>
+   </g>
+   <g id="patch_25">
+    <path d="M 175.956993 317.376772 
+L 204.632846 317.376772 
+L 204.632846 316.91839 
+L 175.956993 316.91839 
+z
+" clip-path="url(#p357a6b9816)" style="fill: #1a9850"/>
+   </g>
+   <g id="patch_26">
+    <path d="M 220.073691 293.284086 
+L 248.749544 293.284086 
+L 248.749544 287.567691 
+L 220.073691 287.567691 
+z
+" clip-path="url(#p357a6b9816)" style="fill: #1a9850"/>
+   </g>
+   <g id="patch_27">
+    <path d="M 264.190388 249.447097 
+L 292.866242 249.447097 
+L 292.866242 243.106447 
+L 264.190388 243.106447 
+z
+" clip-path="url(#p357a6b9816)" style="fill: #1a9850"/>
+   </g>
+   <g id="patch_28">
+    <path d="M 308.307086 196.08754 
+L 336.98294 196.08754 
+L 336.98294 189.033456 
+L 308.307086 189.033456 
+z
+" clip-path="url(#p357a6b9816)" style="fill: #1a9850"/>
+   </g>
+   <g id="patch_29">
+    <path d="M 352.423784 132.515167 
+L 381.099638 132.515167 
+L 381.099638 124.569289 
+L 352.423784 124.569289 
+z
+" clip-path="url(#p357a6b9816)" style="fill: #1a9850"/>
+   </g>
+   <g id="patch_30">
+    <path d="M 396.540482 57.807864 
+L 425.216336 57.807864 
+L 425.216336 47.6111 
+L 396.540482 47.6111 
+z
+" clip-path="url(#p357a6b9816)" style="fill: #1a9850"/>
+   </g>
+   <g id="patch_31">
+    <path d="M 440.65718 53.924996 
+L 469.333034 53.924996 
+L 469.333034 43.728232 
+L 440.65718 43.728232 
+z
+" clip-path="url(#p357a6b9816)" style="fill: #1a9850"/>
+   </g>
+   <g id="patch_32">
+    <path d="M 87.723597 323.551549 
+L 116.39945 323.551549 
+L 116.39945 323.551549 
+L 87.723597 323.551549 
+z
+" clip-path="url(#p357a6b9816)" style="fill: #bdbdbd"/>
+   </g>
+   <g id="patch_33">
+    <path d="M 131.840295 323.246555 
+L 160.516148 323.246555 
+L 160.516148 323.246555 
+L 131.840295 323.246555 
+z
+" clip-path="url(#p357a6b9816)" style="fill: #bdbdbd"/>
+   </g>
+   <g id="patch_34">
+    <path d="M 175.956993 316.91839 
+L 204.632846 316.91839 
+L 204.632846 316.91839 
+L 175.956993 316.91839 
+z
+" clip-path="url(#p357a6b9816)" style="fill: #bdbdbd"/>
+   </g>
+   <g id="patch_35">
+    <path d="M 220.073691 287.567691 
+L 248.749544 287.567691 
+L 248.749544 287.567691 
+L 220.073691 287.567691 
+z
+" clip-path="url(#p357a6b9816)" style="fill: #bdbdbd"/>
+   </g>
+   <g id="patch_36">
+    <path d="M 264.190388 243.106447 
+L 292.866242 243.106447 
+L 292.866242 243.106447 
+L 264.190388 243.106447 
+z
+" clip-path="url(#p357a6b9816)" style="fill: #bdbdbd"/>
+   </g>
+   <g id="patch_37">
+    <path d="M 308.307086 189.033456 
+L 336.98294 189.033456 
+L 336.98294 189.033456 
+L 308.307086 189.033456 
+z
+" clip-path="url(#p357a6b9816)" style="fill: #bdbdbd"/>
+   </g>
+   <g id="patch_38">
+    <path d="M 352.423784 124.569289 
+L 381.099638 124.569289 
+L 381.099638 124.569289 
+L 352.423784 124.569289 
+z
+" clip-path="url(#p357a6b9816)" style="fill: #bdbdbd"/>
+   </g>
+   <g id="patch_39">
+    <path d="M 396.540482 47.6111 
+L 425.216336 47.6111 
+L 425.216336 47.6111 
+L 396.540482 47.6111 
+z
+" clip-path="url(#p357a6b9816)" style="fill: #bdbdbd"/>
+   </g>
+   <g id="patch_40">
+    <path d="M 440.65718 43.728232 
+L 469.333034 43.728232 
+L 469.333034 43.701478 
+L 440.65718 43.701478 
+z
+" clip-path="url(#p357a6b9816)" style="fill: #bdbdbd"/>
+   </g>
+   <g id="text_20">
+    <text style="font-size: 16px; font-family: 'Inter', 'Helvetica Neue', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #111111" x="278.528315" y="18.625" transform="rotate(-0 278.528315 18.625)">CAISO</text>
+   </g>
+  </g>
+  <g id="axes_2">
+   <g id="patch_41">
+    <path d="M 501.887744 324.480797 
+L 921.658125 324.480797 
+L 921.658125 28.625 
+L 501.887744 28.625 
+z
+" style="fill: #ffffff"/>
+   </g>
+   <g id="matplotlib.axis_3">
+    <g id="xtick_10">
+     <g id="line2d_28">
+      <g>
+       <use xlink:href="#m9b5d1dbc47" x="535.306143" y="324.480797" style="fill: #e4e2da; stroke: #e4e2da; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_21">
+      <text style="font-size: 13px; font-family: 'Inter', 'Helvetica Neue', 'Arial', 'DejaVu Sans', sans-serif; fill: #aaaaaa" transform="translate(513.053382 357.98631) rotate(-45)">2018</text>
+     </g>
+    </g>
+    <g id="xtick_11">
+     <g id="line2d_29">
+      <g>
+       <use xlink:href="#m9b5d1dbc47" x="579.422841" y="324.480797" style="fill: #e4e2da; stroke: #e4e2da; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_22">
+      <text style="font-size: 13px; font-family: 'Inter', 'Helvetica Neue', 'Arial', 'DejaVu Sans', sans-serif; fill: #aaaaaa" transform="translate(557.17008 357.98631) rotate(-45)">2019</text>
+     </g>
+    </g>
+    <g id="xtick_12">
+     <g id="line2d_30">
+      <g>
+       <use xlink:href="#m9b5d1dbc47" x="623.539539" y="324.480797" style="fill: #e4e2da; stroke: #e4e2da; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_23">
+      <text style="font-size: 13px; font-family: 'Inter', 'Helvetica Neue', 'Arial', 'DejaVu Sans', sans-serif; fill: #aaaaaa" transform="translate(601.286778 357.98631) rotate(-45)">2020</text>
+     </g>
+    </g>
+    <g id="xtick_13">
+     <g id="line2d_31">
+      <g>
+       <use xlink:href="#m9b5d1dbc47" x="667.656237" y="324.480797" style="fill: #e4e2da; stroke: #e4e2da; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_24">
+      <text style="font-size: 13px; font-family: 'Inter', 'Helvetica Neue', 'Arial', 'DejaVu Sans', sans-serif; fill: #aaaaaa" transform="translate(645.403476 357.98631) rotate(-45)">2021</text>
+     </g>
+    </g>
+    <g id="xtick_14">
+     <g id="line2d_32">
+      <g>
+       <use xlink:href="#m9b5d1dbc47" x="711.772935" y="324.480797" style="fill: #e4e2da; stroke: #e4e2da; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_25">
+      <text style="font-size: 13px; font-family: 'Inter', 'Helvetica Neue', 'Arial', 'DejaVu Sans', sans-serif; fill: #aaaaaa" transform="translate(689.520174 357.98631) rotate(-45)">2022</text>
+     </g>
+    </g>
+    <g id="xtick_15">
+     <g id="line2d_33">
+      <g>
+       <use xlink:href="#m9b5d1dbc47" x="755.889633" y="324.480797" style="fill: #e4e2da; stroke: #e4e2da; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_26">
+      <text style="font-size: 13px; font-family: 'Inter', 'Helvetica Neue', 'Arial', 'DejaVu Sans', sans-serif; fill: #aaaaaa" transform="translate(733.636872 357.98631) rotate(-45)">2023</text>
+     </g>
+    </g>
+    <g id="xtick_16">
+     <g id="line2d_34">
+      <g>
+       <use xlink:href="#m9b5d1dbc47" x="800.006331" y="324.480797" style="fill: #e4e2da; stroke: #e4e2da; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_27">
+      <text style="font-size: 13px; font-family: 'Inter', 'Helvetica Neue', 'Arial', 'DejaVu Sans', sans-serif; fill: #aaaaaa" transform="translate(777.75357 357.98631) rotate(-45)">2024</text>
+     </g>
+    </g>
+    <g id="xtick_17">
+     <g id="line2d_35">
+      <g>
+       <use xlink:href="#m9b5d1dbc47" x="844.123028" y="324.480797" style="fill: #e4e2da; stroke: #e4e2da; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_28">
+      <text style="font-size: 13px; font-family: 'Inter', 'Helvetica Neue', 'Arial', 'DejaVu Sans', sans-serif; fill: #aaaaaa" transform="translate(821.870268 357.98631) rotate(-45)">2025</text>
+     </g>
+    </g>
+    <g id="xtick_18">
+     <g id="line2d_36">
+      <g>
+       <use xlink:href="#m9b5d1dbc47" x="888.239726" y="324.480797" style="fill: #e4e2da; stroke: #e4e2da; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_29">
+      <text style="font-size: 13px; font-family: 'Inter', 'Helvetica Neue', 'Arial', 'DejaVu Sans', sans-serif; fill: #aaaaaa" transform="translate(865.986965 357.98631) rotate(-45)">2026</text>
+     </g>
+    </g>
+   </g>
+   <g id="matplotlib.axis_4">
+    <g id="ytick_10">
+     <g id="line2d_37">
+      <path d="M 501.887744 324.480797 
+L 921.658125 324.480797 
+" clip-path="url(#pd6211c1c2a)" style="fill: none; stroke: #e4e2da; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_38"/>
+    </g>
+    <g id="ytick_11">
+     <g id="line2d_39">
+      <path d="M 501.887744 288.809067 
+L 921.658125 288.809067 
+" clip-path="url(#pd6211c1c2a)" style="fill: none; stroke: #e4e2da; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_40"/>
+    </g>
+    <g id="ytick_12">
+     <g id="line2d_41">
+      <path d="M 501.887744 253.137338 
+L 921.658125 253.137338 
+" clip-path="url(#pd6211c1c2a)" style="fill: none; stroke: #e4e2da; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_42"/>
+    </g>
+    <g id="ytick_13">
+     <g id="line2d_43">
+      <path d="M 501.887744 217.465608 
+L 921.658125 217.465608 
+" clip-path="url(#pd6211c1c2a)" style="fill: none; stroke: #e4e2da; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_44"/>
+    </g>
+    <g id="ytick_14">
+     <g id="line2d_45">
+      <path d="M 501.887744 181.793878 
+L 921.658125 181.793878 
+" clip-path="url(#pd6211c1c2a)" style="fill: none; stroke: #e4e2da; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_46"/>
+    </g>
+    <g id="ytick_15">
+     <g id="line2d_47">
+      <path d="M 501.887744 146.122149 
+L 921.658125 146.122149 
+" clip-path="url(#pd6211c1c2a)" style="fill: none; stroke: #e4e2da; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_48"/>
+    </g>
+    <g id="ytick_16">
+     <g id="line2d_49">
+      <path d="M 501.887744 110.450419 
+L 921.658125 110.450419 
+" clip-path="url(#pd6211c1c2a)" style="fill: none; stroke: #e4e2da; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_50"/>
+    </g>
+    <g id="ytick_17">
+     <g id="line2d_51">
+      <path d="M 501.887744 74.778689 
+L 921.658125 74.778689 
+" clip-path="url(#pd6211c1c2a)" style="fill: none; stroke: #e4e2da; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_52"/>
+    </g>
+    <g id="ytick_18">
+     <g id="line2d_53">
+      <path d="M 501.887744 39.106959 
+L 921.658125 39.106959 
+" clip-path="url(#pd6211c1c2a)" style="fill: none; stroke: #e4e2da; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_54"/>
+    </g>
+   </g>
+   <g id="patch_42">
+    <path d="M 501.887744 324.480797 
+L 501.887744 28.625 
+" style="fill: none; stroke: #e4e2da; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="patch_43">
+    <path d="M 501.887744 324.480797 
+L 921.658125 324.480797 
+" style="fill: none; stroke: #e4e2da; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="patch_44">
+    <path d="M 520.968216 324.480797 
+L 549.64407 324.480797 
+L 549.64407 324.100893 
+L 520.968216 324.100893 
+z
+" clip-path="url(#pd6211c1c2a)" style="fill: #74add1"/>
+   </g>
+   <g id="patch_45">
+    <path d="M 565.084914 324.480797 
+L 593.760768 324.480797 
+L 593.760768 323.922535 
+L 565.084914 323.922535 
+z
+" clip-path="url(#pd6211c1c2a)" style="fill: #74add1"/>
+   </g>
+   <g id="patch_46">
+    <path d="M 609.201612 324.480797 
+L 637.877466 324.480797 
+L 637.877466 321.939186 
+L 609.201612 321.939186 
+z
+" clip-path="url(#pd6211c1c2a)" style="fill: #74add1"/>
+   </g>
+   <g id="patch_47">
+    <path d="M 653.31831 324.480797 
+L 681.994164 324.480797 
+L 681.994164 311.294742 
+L 653.31831 311.294742 
+z
+" clip-path="url(#pd6211c1c2a)" style="fill: #74add1"/>
+   </g>
+   <g id="patch_48">
+    <path d="M 697.435008 324.480797 
+L 726.110862 324.480797 
+L 726.110862 288.108118 
+L 697.435008 288.108118 
+z
+" clip-path="url(#pd6211c1c2a)" style="fill: #74add1"/>
+   </g>
+   <g id="patch_49">
+    <path d="M 741.551706 324.480797 
+L 770.227559 324.480797 
+L 770.227559 252.746732 
+L 741.551706 252.746732 
+z
+" clip-path="url(#pd6211c1c2a)" style="fill: #74add1"/>
+   </g>
+   <g id="patch_50">
+    <path d="M 785.668404 324.480797 
+L 814.344257 324.480797 
+L 814.344257 180.912787 
+L 785.668404 180.912787 
+z
+" clip-path="url(#pd6211c1c2a)" style="fill: #74add1"/>
+   </g>
+   <g id="patch_51">
+    <path d="M 829.785102 324.480797 
+L 858.460955 324.480797 
+L 858.460955 83.222188 
+L 829.785102 83.222188 
+z
+" clip-path="url(#pd6211c1c2a)" style="fill: #74add1"/>
+   </g>
+   <g id="patch_52">
+    <path d="M 873.9018 324.480797 
+L 902.577653 324.480797 
+L 902.577653 45.064138 
+L 873.9018 45.064138 
+z
+" clip-path="url(#pd6211c1c2a)" style="fill: #74add1"/>
+   </g>
+   <g id="patch_53">
+    <path d="M 520.968216 324.100893 
+L 549.64407 324.100893 
+L 549.64407 324.100893 
+L 520.968216 324.100893 
+z
+" clip-path="url(#pd6211c1c2a)" style="fill: #f46d43"/>
+   </g>
+   <g id="patch_54">
+    <path d="M 565.084914 323.922535 
+L 593.760768 323.922535 
+L 593.760768 323.745959 
+L 565.084914 323.745959 
+z
+" clip-path="url(#pd6211c1c2a)" style="fill: #f46d43"/>
+   </g>
+   <g id="patch_55">
+    <path d="M 609.201612 321.939186 
+L 637.877466 321.939186 
+L 637.877466 321.762611 
+L 609.201612 321.762611 
+z
+" clip-path="url(#pd6211c1c2a)" style="fill: #f46d43"/>
+   </g>
+   <g id="patch_56">
+    <path d="M 653.31831 311.294742 
+L 681.994164 311.294742 
+L 681.994164 311.118167 
+L 653.31831 311.118167 
+z
+" clip-path="url(#pd6211c1c2a)" style="fill: #f46d43"/>
+   </g>
+   <g id="patch_57">
+    <path d="M 697.435008 288.108118 
+L 726.110862 288.108118 
+L 726.110862 287.931543 
+L 697.435008 287.931543 
+z
+" clip-path="url(#pd6211c1c2a)" style="fill: #f46d43"/>
+   </g>
+   <g id="patch_58">
+    <path d="M 741.551706 252.746732 
+L 770.227559 252.746732 
+L 770.227559 252.570157 
+L 741.551706 252.570157 
+z
+" clip-path="url(#pd6211c1c2a)" style="fill: #f46d43"/>
+   </g>
+   <g id="patch_59">
+    <path d="M 785.668404 180.912787 
+L 814.344257 180.912787 
+L 814.344257 180.39733 
+L 785.668404 180.39733 
+z
+" clip-path="url(#pd6211c1c2a)" style="fill: #f46d43"/>
+   </g>
+   <g id="patch_60">
+    <path d="M 829.785102 83.222188 
+L 858.460955 83.222188 
+L 858.460955 81.404713 
+L 829.785102 81.404713 
+z
+" clip-path="url(#pd6211c1c2a)" style="fill: #f46d43"/>
+   </g>
+   <g id="patch_61">
+    <path d="M 873.9018 45.064138 
+L 902.577653 45.064138 
+L 902.577653 42.889946 
+L 873.9018 42.889946 
+z
+" clip-path="url(#pd6211c1c2a)" style="fill: #f46d43"/>
+   </g>
+   <g id="patch_62">
+    <path d="M 520.968216 324.100893 
+L 549.64407 324.100893 
+L 549.64407 324.100893 
+L 520.968216 324.100893 
+z
+" clip-path="url(#pd6211c1c2a)" style="fill: #bdbdbd"/>
+   </g>
+   <g id="patch_63">
+    <path d="M 565.084914 323.745959 
+L 593.760768 323.745959 
+L 593.760768 323.745959 
+L 565.084914 323.745959 
+z
+" clip-path="url(#pd6211c1c2a)" style="fill: #bdbdbd"/>
+   </g>
+   <g id="patch_64">
+    <path d="M 609.201612 321.762611 
+L 637.877466 321.762611 
+L 637.877466 321.762611 
+L 609.201612 321.762611 
+z
+" clip-path="url(#pd6211c1c2a)" style="fill: #bdbdbd"/>
+   </g>
+   <g id="patch_65">
+    <path d="M 653.31831 311.118167 
+L 681.994164 311.118167 
+L 681.994164 311.118167 
+L 653.31831 311.118167 
+z
+" clip-path="url(#pd6211c1c2a)" style="fill: #bdbdbd"/>
+   </g>
+   <g id="patch_66">
+    <path d="M 697.435008 287.931543 
+L 726.110862 287.931543 
+L 726.110862 287.931543 
+L 697.435008 287.931543 
+z
+" clip-path="url(#pd6211c1c2a)" style="fill: #bdbdbd"/>
+   </g>
+   <g id="patch_67">
+    <path d="M 741.551706 252.570157 
+L 770.227559 252.570157 
+L 770.227559 252.570157 
+L 741.551706 252.570157 
+z
+" clip-path="url(#pd6211c1c2a)" style="fill: #bdbdbd"/>
+   </g>
+   <g id="patch_68">
+    <path d="M 785.668404 180.39733 
+L 814.344257 180.39733 
+L 814.344257 180.39733 
+L 785.668404 180.39733 
+z
+" clip-path="url(#pd6211c1c2a)" style="fill: #bdbdbd"/>
+   </g>
+   <g id="patch_69">
+    <path d="M 829.785102 81.404713 
+L 858.460955 81.404713 
+L 858.460955 81.228138 
+L 829.785102 81.228138 
+z
+" clip-path="url(#pd6211c1c2a)" style="fill: #bdbdbd"/>
+   </g>
+   <g id="patch_70">
+    <path d="M 873.9018 42.889946 
+L 902.577653 42.889946 
+L 902.577653 42.713371 
+L 873.9018 42.713371 
+z
+" clip-path="url(#pd6211c1c2a)" style="fill: #bdbdbd"/>
+   </g>
+   <g id="text_30">
+    <text style="font-size: 16px; font-family: 'Inter', 'Helvetica Neue', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #111111" x="711.772935" y="18.625" transform="rotate(-0 711.772935 18.625)">ERCOT</text>
+   </g>
+   <g id="legend_1">
+    <g id="text_31">
+     <text style="font-size: 13px; font-family: 'Inter', 'Helvetica Neue', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: start; fill: #222222" x="562.726729" y="49.607812" transform="rotate(-0 562.726729 49.607812)">Duration</text>
+    </g>
+    <g id="patch_71">
+     <path d="M 513.587744 67.952031 
+L 539.587744 67.952031 
+L 539.587744 58.852031 
+L 513.587744 58.852031 
+z
+" style="fill: #74add1; stroke: #74add1; stroke-linejoin: miter"/>
+    </g>
+    <g id="text_32">
+     <text style="font-size: 13px; font-family: 'Inter', 'Helvetica Neue', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: start; fill: #444444" x="549.987744" y="67.952031" transform="rotate(-0 549.987744 67.952031)">≤2 hr</text>
+    </g>
+    <g id="patch_72">
+     <path d="M 513.587744 86.29625 
+L 539.587744 86.29625 
+L 539.587744 77.19625 
+L 513.587744 77.19625 
+z
+" style="fill: #f46d43; stroke: #f46d43; stroke-linejoin: miter"/>
+    </g>
+    <g id="text_33">
+     <text style="font-size: 13px; font-family: 'Inter', 'Helvetica Neue', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: start; fill: #444444" x="549.987744" y="86.29625" transform="rotate(-0 549.987744 86.29625)">3–4 hr</text>
+    </g>
+    <g id="patch_73">
+     <path d="M 513.587744 104.640469 
+L 539.587744 104.640469 
+L 539.587744 95.540469 
+L 513.587744 95.540469 
+z
+" style="fill: #1a9850; stroke: #1a9850; stroke-linejoin: miter"/>
+    </g>
+    <g id="text_34">
+     <text style="font-size: 13px; font-family: 'Inter', 'Helvetica Neue', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: start; fill: #444444" x="549.987744" y="104.640469" transform="rotate(-0 549.987744 104.640469)">≥5 hr</text>
+    </g>
+    <g id="patch_74">
+     <path d="M 513.587744 123.204062 
+L 539.587744 123.204062 
+L 539.587744 114.104062 
+L 513.587744 114.104062 
+z
+" style="fill: #bdbdbd; stroke: #bdbdbd; stroke-linejoin: miter"/>
+    </g>
+    <g id="text_35">
+     <text style="font-size: 13px; font-family: 'Inter', 'Helvetica Neue', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: start; fill: #444444" x="549.987744" y="123.204062" transform="rotate(-0 549.987744 123.204062)">Unknown / missing</text>
+    </g>
+   </g>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p357a6b9816">
+   <rect x="68.643125" y="28.625" width="419.770381" height="295.855797"/>
+  </clipPath>
+  <clipPath id="pd6211c1c2a">
+   <rect x="501.887744" y="28.625" width="419.770381" height="295.855797"/>
+  </clipPath>
+ </defs>
+</svg>
+  </div>
+  <div style="font-size:0.73rem;color:#888;margin:0.5rem 0 0.3rem;font-style:italic">Source: EIA Form 860M, April 2026. Duration = Nameplate Energy (MWh) ÷ Net Summer Capacity (MW).</div>
+</div>
+```
+
+### Co-located vs standalone
+
+Co-location was derived from the EIA-860M data using Plant ID matching: a battery is classified as co-located if its Plant ID also appears as the Plant ID of a solar or wind generator within the same grid area. This is a lower-bound estimate — projects registered under different Plant IDs at the same site will appear as standalone (co-located counts are therefore likely understated, particularly in Texas where large integrated projects sometimes use separate registrations).
+
+```{=html}
+<div data-widget style="font-family:'Inter',system-ui,sans-serif;font-size:0.82rem;line-height:1.5;margin:1.8rem 0;color:#222">
+  <div style="margin-bottom:0.15rem;font-size:0.95rem;font-weight:600;color:#111">Figure 3: Co-located vs standalone battery capacity, 2018–2025</div>
+  <div style="font-size:0.78rem;color:#777;margin-bottom:0.5rem">Cumulative net summer capacity by co-location type · EIA-860M</div>
+  <div style="display:flex;flex-wrap:wrap;gap:4px;margin:0.5rem 0 0.6rem;font-size:0.75rem;color:#555"><span style="display:inline-flex;align-items:center;gap:5px;margin-right:12px"><span style="display:inline-block;width:12px;height:12px;background:#f6b740;border-radius:2px;opacity:0.85"></span>Co-located solar</span><span style="display:inline-flex;align-items:center;gap:5px;margin-right:12px"><span style="display:inline-block;width:12px;height:12px;background:#74c476;border-radius:2px;opacity:0.85"></span>Co-located wind</span><span style="display:inline-flex;align-items:center;gap:5px;margin-right:12px"><span style="display:inline-block;width:12px;height:12px;background:#6baed6;border-radius:2px;opacity:0.85"></span>Standalone</span></div>
+  <div style="border:1px solid #e4e2da;border-radius:6px;padding:1rem 1rem 0.5rem;background:#ffffff">
+    <svg viewBox="0 0 520 210" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;display:block;font-family:Inter,system-ui,sans-serif">
+<line x1="45" y1="170.0" x2="248" y2="170.0" stroke="#eee" stroke-width="0.8"/>
+<text x="41" y="173.5" text-anchor="end" font-size="9" fill="#888">0</text>
+<line x1="45" y1="132.0" x2="248" y2="132.0" stroke="#eee" stroke-width="0.8"/>
+<text x="41" y="135.5" text-anchor="end" font-size="9" fill="#888">3</text>
+<line x1="45" y1="94.0" x2="248" y2="94.0" stroke="#eee" stroke-width="0.8"/>
+<text x="41" y="97.5" text-anchor="end" font-size="9" fill="#888">6</text>
+<line x1="45" y1="56.0" x2="248" y2="56.0" stroke="#eee" stroke-width="0.8"/>
+<text x="41" y="59.5" text-anchor="end" font-size="9" fill="#888">9</text>
+<line x1="45" y1="18.0" x2="248" y2="18.0" stroke="#eee" stroke-width="0.8"/>
+<text x="41" y="21.5" text-anchor="end" font-size="9" fill="#888">12</text>
+<text x="146.5" y="13" text-anchor="middle" font-size="11" fill="#333" font-weight="600">CAISO</text>
+<rect x="48.6" y="169.3" width="18.3" height="0.7" fill="#6baed6" opacity="0.85" rx="1"/>
+<text x="57.7" y="182" text-anchor="middle" font-size="9" fill="#555">2018</text>
+<rect x="73.9" y="169.1" width="18.3" height="0.9" fill="#6baed6" opacity="0.85" rx="1"/>
+<rect x="99.3" y="164.8" width="18.3" height="5.2" fill="#6baed6" opacity="0.85" rx="1"/>
+<rect x="99.3" y="164.6" width="18.3" height="0.2" fill="#f6b740" opacity="0.85" rx="1"/>
+<text x="108.4" y="182" text-anchor="middle" font-size="9" fill="#555">2020</text>
+<rect x="124.7" y="154.4" width="18.3" height="15.6" fill="#6baed6" opacity="0.85" rx="1"/>
+<rect x="124.7" y="143.8" width="18.3" height="10.6" fill="#f6b740" opacity="0.85" rx="1"/>
+<rect x="150.1" y="135.9" width="18.3" height="34.1" fill="#6baed6" opacity="0.85" rx="1"/>
+<rect x="150.1" y="112.2" width="18.3" height="23.7" fill="#f6b740" opacity="0.85" rx="1"/>
+<text x="159.2" y="182" text-anchor="middle" font-size="9" fill="#555">2022</text>
+<rect x="175.4" y="117.5" width="18.3" height="52.5" fill="#6baed6" opacity="0.85" rx="1"/>
+<rect x="175.4" y="73.8" width="18.3" height="43.7" fill="#f6b740" opacity="0.85" rx="1"/>
+<rect x="200.8" y="86.9" width="18.3" height="83.1" fill="#6baed6" opacity="0.85" rx="1"/>
+<rect x="200.8" y="28.0" width="18.3" height="58.9" fill="#f6b740" opacity="0.85" rx="1"/>
+<text x="209.9" y="182" text-anchor="middle" font-size="9" fill="#555">2024</text>
+<rect x="226.2" y="49.1" width="18.3" height="120.9" fill="#6baed6" opacity="0.85" rx="1"/>
+<rect x="226.2" y="-26.6" width="18.3" height="75.7" fill="#f6b740" opacity="0.85" rx="1"/>
+<line x1="272" y1="170.0" x2="510" y2="170.0" stroke="#eee" stroke-width="0.8"/>
+<text x="268" y="173.5" text-anchor="end" font-size="9" fill="#888">0</text>
+<line x1="272" y1="132.0" x2="510" y2="132.0" stroke="#eee" stroke-width="0.8"/>
+<text x="268" y="135.5" text-anchor="end" font-size="9" fill="#888">3</text>
+<line x1="272" y1="94.0" x2="510" y2="94.0" stroke="#eee" stroke-width="0.8"/>
+<text x="268" y="97.5" text-anchor="end" font-size="9" fill="#888">6</text>
+<line x1="272" y1="56.0" x2="510" y2="56.0" stroke="#eee" stroke-width="0.8"/>
+<text x="268" y="59.5" text-anchor="end" font-size="9" fill="#888">9</text>
+<line x1="272" y1="18.0" x2="510" y2="18.0" stroke="#eee" stroke-width="0.8"/>
+<text x="268" y="21.5" text-anchor="end" font-size="9" fill="#888">12</text>
+<text x="391.0" y="13" text-anchor="middle" font-size="11" fill="#333" font-weight="600">ERCOT</text>
+<rect x="276.2" y="169.7" width="21.4" height="0.3" fill="#74c476" opacity="0.85" rx="1"/>
+<text x="286.9" y="182" text-anchor="middle" font-size="9" fill="#555">2018</text>
+<rect x="305.9" y="169.9" width="21.4" height="0.1" fill="#6baed6" opacity="0.85" rx="1"/>
+<rect x="305.9" y="169.6" width="21.4" height="0.3" fill="#74c476" opacity="0.85" rx="1"/>
+<rect x="305.9" y="169.5" width="21.4" height="0.1" fill="#f6b740" opacity="0.85" rx="1"/>
+<rect x="335.7" y="168.4" width="21.4" height="1.6" fill="#6baed6" opacity="0.85" rx="1"/>
+<rect x="335.7" y="168.2" width="21.4" height="0.3" fill="#74c476" opacity="0.85" rx="1"/>
+<rect x="335.7" y="168.1" width="21.4" height="0.1" fill="#f6b740" opacity="0.85" rx="1"/>
+<text x="346.4" y="182" text-anchor="middle" font-size="9" fill="#555">2020</text>
+<rect x="365.4" y="162.0" width="21.4" height="8.0" fill="#6baed6" opacity="0.85" rx="1"/>
+<rect x="365.4" y="161.8" width="21.4" height="0.3" fill="#74c476" opacity="0.85" rx="1"/>
+<rect x="365.4" y="160.5" width="21.4" height="1.3" fill="#f6b740" opacity="0.85" rx="1"/>
+<rect x="395.2" y="148.3" width="21.4" height="21.7" fill="#6baed6" opacity="0.85" rx="1"/>
+<rect x="395.2" y="148.0" width="21.4" height="0.3" fill="#74c476" opacity="0.85" rx="1"/>
+<rect x="395.2" y="144.0" width="21.4" height="4.0" fill="#f6b740" opacity="0.85" rx="1"/>
+<text x="405.9" y="182" text-anchor="middle" font-size="9" fill="#555">2022</text>
+<rect x="424.9" y="126.0" width="21.4" height="44.0" fill="#6baed6" opacity="0.85" rx="1"/>
+<rect x="424.9" y="123.6" width="21.4" height="2.4" fill="#74c476" opacity="0.85" rx="1"/>
+<rect x="424.9" y="118.9" width="21.4" height="4.6" fill="#f6b740" opacity="0.85" rx="1"/>
+<rect x="454.7" y="82.7" width="21.4" height="87.3" fill="#6baed6" opacity="0.85" rx="1"/>
+<rect x="454.7" y="80.1" width="21.4" height="2.6" fill="#74c476" opacity="0.85" rx="1"/>
+<rect x="454.7" y="67.7" width="21.4" height="12.4" fill="#f6b740" opacity="0.85" rx="1"/>
+<text x="465.4" y="182" text-anchor="middle" font-size="9" fill="#555">2024</text>
+<rect x="484.4" y="20.2" width="21.4" height="149.8" fill="#6baed6" opacity="0.85" rx="1"/>
+<rect x="484.4" y="16.3" width="21.4" height="3.9" fill="#74c476" opacity="0.85" rx="1"/>
+<rect x="484.4" y="-2.8" width="21.4" height="19.0" fill="#f6b740" opacity="0.85" rx="1"/>
+<line x1="260" y1="18" x2="260" y2="170" stroke="#ddd" stroke-width="0.8"/><text x="10" y="94.0" text-anchor="middle" font-size="11" fill="#555" transform="rotate(-90,10,94.0)">GW</text>
+    </svg>
+  </div>
+  <div style="font-size:0.73rem;color:#888;margin:0.5rem 0 0.3rem;font-style:italic">Co-location inferred from Plant ID matching in EIA-860M. Lower-bound estimate.</div>
+</div>
+```
+
+California has a larger share of batteries paired with solar generators while Texas has predominantly standalone battery storage, shown in Figure 3. The most plausible reasons for this difference are incentive structures. Before the Inflation Reduction Act (August 2022), battery storage could only qualify for the federal Investment Tax Credit (ITC) if it was charged exclusively from an on-site solar facility.[^aurora-itc] Standalone batteries charged from the grid did not qualify. Therefore many projects were paired with solar specifically to access the 30% ITC. California's Self-Generation Incentive Program (SGIP) had a dedicated large-scale storage budget.[^sgip-cpuc] Large-scale projects that could demonstrate 75%+ charging from on-site solar qualified for the higher "paired renewable" incentive tier ($2.00/W base + $2.50/W resiliency adder = $4.50/W), versus the plain storage rate. This created an incremental financial case for co-locating solar and storage, particularly during 2019–2022 when the large-scale budget was still available.
+
+### Co-location × Duration
+
+Figure 4 below shows the share of installed capacity by duration class within each co-location type. In CAISO, standalone batteries concentrate heavily at 3–4 hours (81%), while co-located solar batteries show a wider spread — 65% at 3–4hr, 28% at ≤2hr, and a small ≥5hr tail.
+
+Standalone batteries skew toward longer durations because as discussed earlier, they are built  primarily for Resource Adequacy  and CPUC's RA program requires 4 hours of discharge at rated capacity for full NQC credit.
+
+Batteries co-located with solar have a wider spread. The higher ≤2hr share is likely due to many pre-IRA co-located batteries (2019–2022) built primarily to access the 30% ITC rather than to optimise for RA, with duration set by developer economics.[^aurora-itc]
+
+
+
+```{=html}
+<div data-widget style="font-family:'Inter',system-ui,sans-serif;font-size:0.82rem;line-height:1.5;margin:1.8rem 0;color:#222">
+  <div style="margin-bottom:0.15rem;font-size:0.95rem;font-weight:600;color:#111">Figure 4: Duration class by co-location type — CAISO vs ERCOT</div>
+  <div style="font-size:0.78rem;color:#777;margin-bottom:0.5rem">Share of installed capacity by duration class within each co-location type · EIA-860M</div>
+  <div style="display:flex;flex-wrap:wrap;gap:4px;margin:0.5rem 0 0.6rem;font-size:0.75rem;color:#555"><span style="display:inline-flex;align-items:center;gap:5px;margin-right:12px"><span style="display:inline-block;width:12px;height:12px;background:#74add1;border-radius:2px;opacity:0.85"></span>≤2 hr</span><span style="display:inline-flex;align-items:center;gap:5px;margin-right:12px"><span style="display:inline-block;width:12px;height:12px;background:#f46d43;border-radius:2px;opacity:0.85"></span>3–4 hr</span><span style="display:inline-flex;align-items:center;gap:5px;margin-right:12px"><span style="display:inline-block;width:12px;height:12px;background:#1a9850;border-radius:2px;opacity:0.85"></span>≥5 hr</span><span style="display:inline-flex;align-items:center;gap:5px;margin-right:12px"><span style="display:inline-block;width:12px;height:12px;background:#bdbdbd;border-radius:2px;opacity:0.85"></span>Unknown</span></div>
+  <div style="border:1px solid #e4e2da;border-radius:6px;padding:1rem 1rem 0.5rem;background:#ffffff">
+    <svg viewBox="0 0 520 195" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;display:block;font-family:Inter,system-ui,sans-serif">
+<line x1="48" y1="155.0" x2="250" y2="155.0" stroke="#eee" stroke-width="0.8"/>
+<text x="44" y="158.0" text-anchor="end" font-size="9" fill="#888">0%</text>
+<line x1="48" y1="120.8" x2="250" y2="120.8" stroke="#eee" stroke-width="0.8"/>
+<text x="44" y="123.8" text-anchor="end" font-size="9" fill="#888">25%</text>
+<line x1="48" y1="86.5" x2="250" y2="86.5" stroke="#eee" stroke-width="0.8"/>
+<text x="44" y="89.5" text-anchor="end" font-size="9" fill="#888">50%</text>
+<line x1="48" y1="52.2" x2="250" y2="52.2" stroke="#eee" stroke-width="0.8"/>
+<text x="44" y="55.2" text-anchor="end" font-size="9" fill="#888">75%</text>
+<line x1="48" y1="18.0" x2="250" y2="18.0" stroke="#eee" stroke-width="0.8"/>
+<text x="44" y="21.0" text-anchor="end" font-size="9" fill="#888">100%</text>
+<text x="149.0" y="13" text-anchor="middle" font-size="11" fill="#333" font-weight="600">CAISO</text>
+<rect x="60.1" y="145.3" width="56.6" height="9.6" fill="#1a9850" opacity="0.85" rx="1"/>
+<rect x="60.1" y="56.2" width="56.6" height="89.1" fill="#f46d43" opacity="0.85" rx="1"/>
+<text x="88.4" y="104.8" text-anchor="middle" font-size="9" fill="white" font-weight="600">65%</text>
+<rect x="60.1" y="18.0" width="56.6" height="38.2" fill="#74add1" opacity="0.85" rx="1"/>
+<text x="88.4" y="41.1" text-anchor="middle" font-size="9" fill="white" font-weight="600">28%</text>
+<text x="88.4" y="167" text-anchor="middle" font-size="10" fill="#555">Solar</text>
+<rect x="140.9" y="152.8" width="56.6" height="2.2" fill="#1a9850" opacity="0.85" rx="1"/>
+<rect x="140.9" y="41.4" width="56.6" height="111.4" fill="#f46d43" opacity="0.85" rx="1"/>
+<text x="169.2" y="101.1" text-anchor="middle" font-size="9" fill="white" font-weight="600">81%</text>
+<rect x="140.9" y="18.0" width="56.6" height="23.4" fill="#74add1" opacity="0.85" rx="1"/>
+<text x="169.2" y="33.7" text-anchor="middle" font-size="9" fill="white" font-weight="600">17%</text>
+<text x="169.2" y="167" text-anchor="middle" font-size="10" fill="#555">Standalone</text>
+<line x1="270" y1="155.0" x2="510" y2="155.0" stroke="#eee" stroke-width="0.8"/>
+<line x1="270" y1="120.8" x2="510" y2="120.8" stroke="#eee" stroke-width="0.8"/>
+<line x1="270" y1="86.5" x2="510" y2="86.5" stroke="#eee" stroke-width="0.8"/>
+<line x1="270" y1="52.2" x2="510" y2="52.2" stroke="#eee" stroke-width="0.8"/>
+<line x1="270" y1="18.0" x2="510" y2="18.0" stroke="#eee" stroke-width="0.8"/>
+<text x="390.0" y="13" text-anchor="middle" font-size="11" fill="#333" font-weight="600">ERCOT</text>
+<rect x="280.3" y="154.1" width="48.0" height="0.9" fill="#f46d43" opacity="0.85" rx="1"/>
+<rect x="280.3" y="18.0" width="48.0" height="136.1" fill="#74add1" opacity="0.85" rx="1"/>
+<text x="304.3" y="90.1" text-anchor="middle" font-size="9" fill="white" font-weight="600">99%</text>
+<text x="304.3" y="167" text-anchor="middle" font-size="10" fill="#555">Solar</text>
+<rect x="348.9" y="18.0" width="48.0" height="137.0" fill="#74add1" opacity="0.85" rx="1"/>
+<text x="372.9" y="90.5" text-anchor="middle" font-size="9" fill="white" font-weight="600">100%</text>
+<text x="372.9" y="167" text-anchor="middle" font-size="10" fill="#555">Wind</text>
+<rect x="417.4" y="153.8" width="48.0" height="1.1" fill="#f46d43" opacity="0.85" rx="1"/>
+<rect x="417.4" y="18.0" width="48.0" height="135.8" fill="#74add1" opacity="0.85" rx="1"/>
+<text x="441.4" y="89.9" text-anchor="middle" font-size="9" fill="white" font-weight="600">99%</text>
+<text x="441.4" y="167" text-anchor="middle" font-size="10" fill="#555">Standalone</text>
+<line x1="260.0" y1="18" x2="260.0" y2="155" stroke="#ddd" stroke-width="0.8"/><text x="7" y="86.5" text-anchor="middle" font-size="9.5" fill="#555" transform="rotate(-90,7,86.5)">Share of installed</text><text x="18" y="86.5" text-anchor="middle" font-size="9.5" fill="#555" transform="rotate(-90,18,86.5)">capacity by duration class</text>
+    </svg>
+  </div>
+  <div style="font-size:0.73rem;color:#888;margin:0.5rem 0 0.3rem;font-style:italic">Duration = Nameplate Energy Capacity (MWh) ÷ Net Summer Capacity (MW). Co-location inferred from Plant ID matching.</div>
+</div>
+```
+
+---
+
+### Seasonal dispatch patterns and nodal price
+
+I wanted to understand the relationship between storage dispatch and curtailment to see if any conclusions could be drawn about higher storage capacity being able to reduce curtailment. However, it appears that storage is still playing catch-up to solar deployment in California, and I decided to save that for a more detailed analysis in a separate article. Here, I've pivoted to showing average nodal energy prices alongside charging and discharging energy by season for the two markets. The intention is primarily to identify and confirm that battery operation is optimized around wholesale market prices. A few things are confirmed by these data patterns and the information on co-location presented earlier:
+
+- In CAISO, co-located batteries which were installed under ITC can only charge from their paired solar/wind generation. In practice this means co-located batteries cannot participate in arbitrage the same way as standalone batteries.
+- Also, in CAISO, most battery projects get their primary source of revenue from resource adequacy contracts[^modoenergy-ra] while in ERCOT they rely more heavily on energy arbitrage and ancillary services.[^gridmatic]
+- Both markets show a strong midday charging signal driven by solar generation suppressing prices, with discharge concentrated in the evening demand peak.
+
+```{=html}
+<div data-widget style="font-family:'Inter',system-ui,sans-serif;font-size:0.82rem;line-height:1.5;margin:1.8rem 0;color:#222">
+  <div style="margin-bottom:0.15rem;font-size:0.95rem;font-weight:600;color:#111">Figure 5: Wholesale price + battery dispatch by season — CAISO SP15 vs ERCOT HB_NORTH (2024–2025)</div>
+  <div style="font-size:0.78rem;color:#777;margin-bottom:0.5rem">Lines (left axis): mean DAM price ± IQR band · Bars (right axis): mean fleet dispatch ± IQR whiskers · Darker = discharging (↑), lighter = charging (↓)</div>
+  <div style="border:1px solid #e4e2da;border-radius:6px;padding:0.5rem;background:#ffffff">
+<div>                        <script>window.PlotlyConfig = {MathJaxConfig: 'local'};</script>
+        <script charset="utf-8" src="https://cdn.plot.ly/plotly-3.5.0.min.js" integrity="sha256-fHbNLP+GlIXN+efbQec78UkemUz3NJp7UmfGxC1tNxs=" crossorigin="anonymous"></script>                <div id="5f9db611-e1c2-4e4d-ac73-254748c0079b" class="plotly-graph-div" style="height:740px; width:100%;"></div>            <script>                window.PLOTLYENV=window.PLOTLYENV || {};                                if (document.getElementById("5f9db611-e1c2-4e4d-ac73-254748c0079b")) {                    Plotly.newPlot(                        "5f9db611-e1c2-4e4d-ac73-254748c0079b",                        [{"fill":"toself","fillcolor":"rgba(69,117,180,0.12)","hoverinfo":"skip","line":{"width":0},"showlegend":false,"x":{"dtype":"i4","bdata":"AQAAAAIAAAADAAAABAAAAAUAAAAGAAAABwAAAAgAAAAJAAAACgAAAAsAAAAMAAAADQAAAA4AAAAPAAAAEAAAABEAAAASAAAAEwAAABQAAAAVAAAAFgAAABcAAAAYAAAAGAAAABcAAAAWAAAAFQAAABQAAAATAAAAEgAAABEAAAAQAAAADwAAAA4AAAANAAAADAAAAAsAAAAKAAAACQAAAAgAAAAHAAAABgAAAAUAAAAEAAAAAwAAAAIAAAABAAAA"},"y":{"dtype":"f8","bdata":"rHMMyF7+Q0CE2JlC5zdDQOrsZHCUlUJAdvhrskayQkC2+BQA4+JCQNttF5rrzUVAAtnr3R9SSEAC9tGpKw9BQI4ev7fp1yFA499nXDiQBsCs\u002f3OYL0cRwKXap+MxyxPA9rTDX5O1FsCkNnFyvysXwCNnYU87rBfASNxj6UPvE8AicY+lD13jP9eGinH+nDZAZ4NMMnK\u002fRUBIUPwYc8hIQA3DR8SURkhAMSqpE9CJRkDIe9XKhA5FQGsr9pfdFkRAVDpY\u002f+ciP0BOet\u002f42pZAQGlv8IXJOEJAh78ma9QWQ0CPNo5Yi4ZCQLtE9dbA4D1AVIzzN6EQEMC3tBoS9340wGgibHh6aznAsacd\u002fpoWPcBwCFVq9t49wJI\u002fGHju3zzATtaoh2jiOsCfWRKgpjg5wELPZtXnPjXALsVVZd8BKcDSGK2jqs0iQPqWOV0WdkBAAWpq2VpnQEDmV3OAYOg8QMLAc+\u002fh1jtAKsb5m1BKPEB2ieqtgQs9QFw9J71vTD1A"},"type":"scatter","xaxis":"x","yaxis":"y"},{"hovertemplate":"\u003cb\u003eCAISO Spring\u003c\u002fb\u003e HE%{x}: $%{y:.1f}\u002fMWh\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"CAISO_price","line":{"color":"#4575b4","width":2.5},"name":"CAISO price","showlegend":true,"x":{"dtype":"i4","bdata":"AQAAAAIAAAADAAAABAAAAAUAAAAGAAAABwAAAAgAAAAJAAAACgAAAAsAAAAMAAAADQAAAA4AAAAPAAAAEAAAABEAAAASAAAAEwAAABQAAAAVAAAAFgAAABcAAAAYAAAA"},"y":{"dtype":"f8","bdata":"QTPzAiu1QUBOgxV4r\u002fFAQFSJduNLTEBAD\u002fLYhrRPQECqo1ZpE\u002fNAQJY3QxhMJ0NAmPViKKeBREB4HrJNbn02QCHZ34AjkPa\u002fjnqIRnfqJsARZ70tcqUswG8TpecR1y7At2OMWGFSMMCFMG7NUawwwOAfGaZyZTDAmFyR3PM9LcAB5TMyO0wgwF7SAwWAgSNASoXb1eeKQkBaYy5grPVFQNj5KsotzEVAccEz\u002f5+WRED\u002f+r6ETv9CQOeYhelMFEJA"},"type":"scatter","xaxis":"x","yaxis":"y"},{"error_y":{"array":{"dtype":"f8","bdata":"etDIO3+Xc0CEo8ALpUleQAAAAAAAAAAAAAAAAAAAAAD8RPWgkTdeQG5CxgzruHlAHKh7FgQii0AekdTgKHB7QAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAATsiYYZ1kkECI6kEj7+yPQBDUPQsCe5BACDDa4W4vjkA8OVD3LJaLQKMd7rbyl4JA"},"arrayminus":{"dtype":"f8","bdata":"hi83xIDQf0A+rh96LatvQH+lQK1f+VFANPLO3+L0TkCCXYUvN0RoQMnenHmKj4FA5FeE6fv\u002fjUBxt5WP6xOHQHqKjV8RNlVAtMPdVj6uM0A08s7f4rTWP\u002f4WpzXbpyBAAAAAAAAAAABkKZNgV+HjPwR1z4IAowFAEGC0w91WLUCZYZ0cqLtPQKoHjbzzI4BAsjdnnmLZlEC8Cl9uiOKQQPArwvT9gpBA+M8lHpFojUDExq8I002MQF3iEUkNbIZA"},"color":"rgba(69,117,180,0.8)","symmetric":false,"thickness":1.2,"type":"data"},"hovertemplate":"\u003cb\u003eCAISO Spring\u003c\u002fb\u003e HE%{x}\u003cbr\u003eDischarge: %{y:.0f} MW\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"CAISO_dis","marker":{"color":"rgba(69,117,180,0.5)"},"name":"CAISO discharge","showlegend":true,"x":{"dtype":"i4","bdata":"AQAAAAIAAAADAAAABAAAAAUAAAAGAAAABwAAAAgAAAAJAAAACgAAAAsAAAAMAAAADQAAAA4AAAAPAAAAEAAAABEAAAASAAAAEwAAABQAAAAVAAAAFgAAABcAAAAYAAAA"},"y":{"dtype":"f8","bdata":"w5cbYkCWgkA+rh96LatvQH+lQK1f+VFANPLO3+L0TkCCXYUvN0RoQMnenHmK1Y1A8ivC9P36nEBxt5WP6xOHQHqKjV8RNlVAtMPdVj6uM0A08s7f4rTWP\u002f4WpzXbpyBAAAAAAAAAAABkKZNgV+HjPwR1z4IAowFAEGC0w91WLUCZYZ0cqLtPQKoHjbzzI4BA2ZszT7HMokCvwpcbomO0QPyKMH1\u002f3bNA\u002f7nEI5JcsECx8SvC9AejQF3iEUkNyI1A"},"type":"bar","xaxis":"x","yaxis":"y2"},{"customdata":{"dtype":"f8","bdata":"AAAAAABgRUCYG2JAOiZZQDX3\u002fh2a8mxA+luc1mzXb0DutvJx\u002fYBZQFLghdJUMiFAzLBODtQ9NUAtq03ImEWAQCPv\u002fC1OIJhAcVqzfaI7o0DxiKQGR1erQEIj7\u002fxturBAy2oTMuZ4sUALX26IwbOwQFoQYLTDrqtA3z+XeMS8okDhKPBCaSCVQPZDr2W1GX1AkhocBV6oKkAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACwCNP3zyUMQMSAdCxlMkNA"},"error_y":{"array":{"dtype":"f8","bdata":"AAAAAABgRUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFLghdJUMiFAzLBODtQ9NUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAkhocBV6oKkAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACwCNP3zyUMQMSAdCxlMkNA"},"arrayminus":{"dtype":"f8","bdata":"AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"},"color":"rgba(69,117,180,0.5)","symmetric":false,"thickness":1.2,"type":"data"},"hovertemplate":"\u003cb\u003eCAISO Spring\u003c\u002fb\u003e HE%{x}\u003cbr\u003eCharge: %{customdata:.0f} MW\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"CAISO_chg","marker":{"color":"rgba(69,117,180,0.25)"},"name":"CAISO charge","showlegend":true,"x":{"dtype":"i4","bdata":"AQAAAAIAAAADAAAABAAAAAUAAAAGAAAABwAAAAgAAAAJAAAACgAAAAsAAAAMAAAADQAAAA4AAAAPAAAAEAAAABEAAAASAAAAEwAAABQAAAAVAAAAFgAAABcAAAAYAAAA"},"y":{"dtype":"f8","bdata":"AAAAAABgRcCYG2JAOiZZwDX3\u002fh2a8mzA+luc1mzXb8DutvJx\u002fYBZwFLghdJUMiHAzLBODtQ9NcAtq03ImEWAwCPv\u002fC1OIJjAcVqzfaI7o8DxiKQGR1erwEIj7\u002fxturDAy2oTMuZ4scALX26IwbOwwFoQYLTDrqvA3z+XeMS8osDhKPBCaSCVwPZDr2W1GX3AkhocBV6oKsAAAAAAAAAAgAAAAAAAAACAAAAAAAAAAICwCNP3zyUMwMSAdCxlMkPA"},"type":"bar","xaxis":"x","yaxis":"y2"},{"fill":"toself","fillcolor":"rgba(69,117,180,0.12)","hoverinfo":"skip","line":{"width":0},"showlegend":false,"x":{"dtype":"i4","bdata":"AQAAAAIAAAADAAAABAAAAAUAAAAGAAAABwAAAAgAAAAJAAAACgAAAAsAAAAMAAAADQAAAA4AAAAPAAAAEAAAABEAAAASAAAAEwAAABQAAAAVAAAAFgAAABcAAAAYAAAAGAAAABcAAAAWAAAAFQAAABQAAAATAAAAEgAAABEAAAAQAAAADwAAAA4AAAANAAAADAAAAAsAAAAKAAAACQAAAAgAAAAHAAAABgAAAAUAAAAEAAAAAwAAAAIAAAABAAAA"},"y":{"dtype":"f8","bdata":"VoLF4czwRUD186YiFRpFQALU1LK1a0RAHxFTIokhRECfyJOka3tEQC7\u002fIf32hUVAegH20akvRUB\u002fh6JAn1JAQIy+gjRjbz1Aevzepj8LPEBWgsXhzDE9QBjshm2Lpj1A8S4X8Z1aPkDj32dcOGQ+QAXAeAYNOUBAUps4ud+3QUDL1voioVFDQP2fw3x51UZAKCzxgLIgTEBIS+XtCF5RQBToE3mSwU9AM\u002f59xoU9TEATuHU3T4lJQA9iZwqdc0dArK3YX3YtQ0DOMSB7vQZEQDhPdcjNBUZAf59x4UAqSEBwJTs2AhdIQG4Xmus0RERAKlJhbCEGPEA6AU2EDRk0QOxph78mKzBAhne5iO+oJ0CcpzrkZggpQGH9n8N8tShAdonqrYGxKUDmszwP7oooQArXo3A9iiRAqgmi7gP8J0D+1HjpJgUzQJXZIJOMoUBAKAr0iTzMQUDY8PRKWexAQFdbsb\u002fsw0BA6BN5knTnQECyutVz0pRBQEQ0uoPYJEJA"},"type":"scatter","xaxis":"x2","yaxis":"y3"},{"hovertemplate":"\u003cb\u003eCAISO Summer\u003c\u002fb\u003e HE%{x}: $%{y:.1f}\u002fMWh\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"CAISO_price","line":{"color":"#4575b4","width":2.5},"name":"CAISO price","showlegend":false,"x":{"dtype":"i4","bdata":"AQAAAAIAAAADAAAABAAAAAUAAAAGAAAABwAAAAgAAAAJAAAACgAAAAsAAAAMAAAADQAAAA4AAAAPAAAAEAAAABEAAAASAAAAEwAAABQAAAAVAAAAFgAAABcAAAAYAAAA"},"y":{"dtype":"f8","bdata":"fitOBNMvRED6fOPNVmBDQK5\u002fOe9OnUJAF4sbBlVZQkB+JBJyy65CQJEKYwtBkUNA5awTSCe9QkBH\u002fJ0Andw4QI0g9+nHIjNA+oJlzm\u002fjMUAS9jzhYTMzQNoXgU83eTNACTDdwn7GM0BPu9RXuWI0QJWYGGltUzZAZGdGjtbbOUBmxV2qvw89QCHd4vQI0EJA+XhdDh3aSkB3DPGELfNSQDlQHI97Zk5Acqx4ECjUSUDkw4reWspGQL7v8od5MEVA"},"type":"scatter","xaxis":"x2","yaxis":"y3"},{"error_y":{"array":{"dtype":"f8","bdata":"4meU+JkDe0DuwFw7MN9cQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAALYDc+3AQXFAZCELWUjHdUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAANAo8TNKq2VAoFHiZ7R3lEAcmGsHpnSVQLQDc+1AJZpAEGO19bcjmUAUSqEUSuuNQFD7tE\u002f714RA"},"arrayminus":{"dtype":"f8","bdata":"D8y1AzPehECJn1HiZ\u002fhtQImfUeJn\u002fE9Axc8o8TM6OUDQKPEzSqhQQEr8jBI\u002fbntAnN70prdcfUDbgbl2YF4qQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADxM0r8jPIYQBM\u002fo8TPfEhAEz+jxM+6YEBOb3rTm7NiQJhrB+Zarn1AYK4dmEtXmkDkZ5T4WQ2UQEz8jBK\u002fQZdA8JxKCkiYlkD2Wq\u002f1WhGRQLAES7AEzItA"},"color":"rgba(69,117,180,0.8)","symmetric":false,"thickness":1.2,"type":"data"},"hovertemplate":"\u003cb\u003eCAISO Summer\u003c\u002fb\u003e HE%{x}\u003cbr\u003eDischarge: %{y:.0f} MW\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"CAISO_dis","marker":{"color":"rgba(69,117,180,0.5)"},"name":"CAISO discharge","showlegend":false,"x":{"dtype":"i4","bdata":"AQAAAAIAAAADAAAABAAAAAUAAAAGAAAABwAAAAgAAAAJAAAACgAAAAsAAAAMAAAADQAAAA4AAAAPAAAAEAAAABEAAAASAAAAEwAAABQAAAAVAAAAFgAAABcAAAAYAAAA"},"y":{"dtype":"f8","bdata":"D8y1AzNahkCJn1HiZ\u002fhtQImfUeJn\u002fE9Axc8o8TM6OUDQKPEzSqhQQEr8jBI\u002frntAnN70prdcfUDbgbl2YF4qQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADxM0r8jPIYQBM\u002fo8TPfEhAEz+jxM+6YEBOb3rTm7NiQJhrB+Zarn1AMNcOzCXTp0D5GSV+FnS7QBM\u002fo8Tv27tAPKeSAhIjt0B7rdd6rRapQFiCJVgCBZRA"},"type":"bar","xaxis":"x2","yaxis":"y4"},{"customdata":{"dtype":"f8","bdata":"0CjxM0qkUkB605ve9DtoQE5vetObwHVAfkaJn9FJfUC96U1v+vp0QJze9KY3+1RAC1nIQhaAcEC2A3PtADGhQCV+Romn6rFAUuJnlCiHtUBGiZ9RCli2QJze9KZ3rLRAjRI\u002foySgsEA4velNTzmmQF07MNfOvphA4meU+FmqiUCrqqqqKvN\u002fQGwH5tqBRWdAunZgrh1YGkAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAB9y7d8y7foP83VXM3VHE5A"},"error_y":{"array":{"dtype":"f8","bdata":"0CjxM0qkUkAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAJze9KY3+1RAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAunZgrh1YGkAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAB9y7d8y7foP83VXM3VHE5A"},"arrayminus":{"dtype":"f8","bdata":"AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"},"color":"rgba(69,117,180,0.5)","symmetric":false,"thickness":1.2,"type":"data"},"hovertemplate":"\u003cb\u003eCAISO Summer\u003c\u002fb\u003e HE%{x}\u003cbr\u003eCharge: %{customdata:.0f} MW\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"CAISO_chg","marker":{"color":"rgba(69,117,180,0.25)"},"name":"CAISO charge","showlegend":false,"x":{"dtype":"i4","bdata":"AQAAAAIAAAADAAAABAAAAAUAAAAGAAAABwAAAAgAAAAJAAAACgAAAAsAAAAMAAAADQAAAA4AAAAPAAAAEAAAABEAAAASAAAAEwAAABQAAAAVAAAAFgAAABcAAAAYAAAA"},"y":{"dtype":"f8","bdata":"0CjxM0qkUsB605ve9DtowE5vetObwHXAfkaJn9FJfcC96U1v+vp0wJze9KY3+1TAC1nIQhaAcMC2A3PtADGhwCV+Romn6rHAUuJnlCiHtcBGiZ9RCli2wJze9KZ3rLTAjRI\u002foySgsMA4velNTzmmwF07MNfOvpjA4meU+FmqicCrqqqqKvN\u002fwGwH5tqBRWfAunZgrh1YGsAAAAAAAAAAgAAAAAAAAACAAAAAAAAAAIB9y7d8y7fov83VXM3VHE7A"},"type":"bar","xaxis":"x2","yaxis":"y4"},{"fill":"toself","fillcolor":"rgba(69,117,180,0.12)","hoverinfo":"skip","line":{"width":0},"showlegend":false,"x":{"dtype":"i4","bdata":"AQAAAAIAAAADAAAABAAAAAUAAAAGAAAABwAAAAgAAAAJAAAACgAAAAsAAAAMAAAADQAAAA4AAAAPAAAAEAAAABEAAAASAAAAEwAAABQAAAAVAAAAFgAAABcAAAAYAAAAGAAAABcAAAAWAAAAFQAAABQAAAATAAAAEgAAABEAAAAQAAAADwAAAA4AAAANAAAADAAAAAsAAAAKAAAACQAAAAgAAAAHAAAABgAAAAUAAAAEAAAAAwAAAAIAAAABAAAA"},"y":{"dtype":"f8","bdata":"IEHxY8zER0B\u002fEwoRcDhHQFLVBFH3b0ZAvVKWIY4+RkBe9BWkGaBGQIkkehnFl0dAiSR6GcVSSkDwETElklVHQNyAzw8jMj5AdsjNcAOoOkDek4eFWhE6QCwOZ341uTpA20sao3VWO0DwETElkl48QGA8g4b++T1AD+7O2m1RQ0D+mqxRD1BJQLaEfNCzAUtAldQJaCJMTEBaR1UTRNhLQF35LM+DO0tAsvm4NlTqSkCuDRXj\u002fIFJQJsg6j4AVUhAJHoZxXKXREByxFp8CrBFQNAn8iTpOUZAM1AZ\u002fz47RkBSmzi536pGQC7KbJBJu0ZAEHo2qz6WRUBma32R0IY2QKFKzR5orSVAg8DKoUXWCkAzG2SSkVMHQBQi4BCqhANArcCQ1a0uCUCMnIU97WAMQBNE3Qcg5Q5ADhXj\u002fE0IIUAwKqkT0Lg\u002fQNDtJY3RCUVAc2iR7XwYREBfDOVEu8pCQGE3bFuUb0JAYDyDhv6IQkBcj8L1KBhDQDemJyzxqUNA"},"type":"scatter","xaxis":"x3","yaxis":"y5"},{"hovertemplate":"\u003cb\u003eCAISO Fall\u003c\u002fb\u003e HE%{x}: $%{y:.1f}\u002fMWh\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"CAISO_price","line":{"color":"#4575b4","width":2.5},"name":"CAISO price","showlegend":false,"x":{"dtype":"i4","bdata":"AQAAAAIAAAADAAAABAAAAAUAAAAGAAAABwAAAAgAAAAJAAAACgAAAAsAAAAMAAAADQAAAA4AAAAPAAAAEAAAABEAAAASAAAAEwAAABQAAAAVAAAAFgAAABcAAAAYAAAA"},"y":{"dtype":"f8","bdata":"c0XjftjGRUAI5\u002fVwnyNFQJzz23N1jURAhESe8lZbREC\u002fJjnOMbJEQBYIJq8y6EVAdh0xBy21R0DOqgHcaHpDQPg0\u002f\u002fZW\u002fDNADRsukLlbLkCOPYpjJf0tQMbS8RtyLS5AsaAh8wCXLkCtAof\u002fuvUuQGjdKgAqqDBAHyH4MDVTOUBwUt8Tw95BQDBE4IR0VElAZZjWZXbXTUAXac6BcqVMQGunVE3enElArmV4vk7iSEAXbfxN9rlHQLBqI7G3k0ZA"},"type":"scatter","xaxis":"x3","yaxis":"y5"},{"error_y":{"array":{"dtype":"f8","bdata":"NVdzNVe3ckDYmI3ZmG1JQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHqe53meRXRAJEmSJEnYhUBUN3VTN2N+QAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQ\u002f\u002fAP\u002f6yYQDIqozIqVJxAbK7mai5UkECcyZmcyQKRQMRO7MTOGZFAFp1bxcY5kEBi8QBCDEqJQG4qmifUnn5A"},"arrayminus":{"dtype":"f8","bdata":"y6iMyqgYfkDKmZzJmRRlQPEP\u002f\u002fAPT0dAZ3ImZ3LGNUBYgiVYgmVTQMMwDMMw74BA3LZt27ZxiUBWZEVWZDCIQKy5mqu5OkpAn\u002fZpn\u002fZp9z8AAAAAAAAAAOIf\u002fuEf\u002fg9AVEZlVEZlE0BDKZRCKZQEQK7maq7mqipAlmAJlmCbdEDwAA\u002fwADqYQM7VXM3V5Z1AlFEZldHQkEBkNmZjNm+SQDyxEzsxK5RA6mKkOjmXkkCeDv+987WMQMnqMuyV0IdA"},"color":"rgba(69,117,180,0.8)","symmetric":false,"thickness":1.2,"type":"data"},"hovertemplate":"\u003cb\u003eCAISO Fall\u003c\u002fb\u003e HE%{x}\u003cbr\u003eDischarge: %{y:.0f} MW\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"CAISO_dis","marker":{"color":"rgba(69,117,180,0.5)"},"name":"CAISO discharge","showlegend":false,"x":{"dtype":"i4","bdata":"AQAAAAIAAAADAAAABAAAAAUAAAAGAAAABwAAAAgAAAAJAAAACgAAAAsAAAAMAAAADQAAAA4AAAAPAAAAEAAAABEAAAASAAAAEwAAABQAAAAVAAAAFgAAABcAAAAYAAAA"},"y":{"dtype":"f8","bdata":"y6iMyqgYfkDKmZzJmRRlQPEP\u002f\u002fAPT0dAZ3ImZ3LGNUBYgiVYgmVTQMMwDMMw74BAbtu2bdtcmkBWZEVWZDCIQKy5mqu5OkpAn\u002fZpn\u002fZp9z8AAAAAAAAAAOIf\u002fuEf\u002fg9AVEZlVEZlE0BDKZRCKZQEQK7maq7mqipAlmAJlmCbdEDwAA\u002fwADqYQOdqruZqfq1AZVRGZfRDt0CZjdmYzZ61QE\u002fsxE7MH7JAdTFSnZyvq0BPh\u002f\u002fe+UmeQMnqMuyVCIlA"},"type":"bar","xaxis":"x3","yaxis":"y6"},{"customdata":{"dtype":"f8","bdata":"6qZu6qZeW0AUO7ETO1lvQJIkSZIkbYBAgzRIgzS3gkAIh3AIh452QDqiIzqiM1NA0y\u002f90i\u002f9KECe53me5waDQI\u002f3eI83GahAy7d8y1cXs0A3dVM3lUG2QGIndmLHKLdAXc3VXK0ptUCtyIqsSBuxQG7btm1bOqdAb+qmbuoPlEA7sRM7sVF9QJdv+ZZv+TtAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABJ2q8V7hkgQCk3Fc0TqlhA"},"error_y":{"array":{"dtype":"f8","bdata":"qJu6qZs6M0AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADqiIzqis1BA0y\u002f90i\u002f9KEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAJdv+ZZv+TtAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABJ2q8V7hkgQCk3Fc0TqlhA"},"arrayminus":{"dtype":"f8","bdata":"AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"},"color":"rgba(69,117,180,0.5)","symmetric":false,"thickness":1.2,"type":"data"},"hovertemplate":"\u003cb\u003eCAISO Fall\u003c\u002fb\u003e HE%{x}\u003cbr\u003eCharge: %{customdata:.0f} MW\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"CAISO_chg","marker":{"color":"rgba(69,117,180,0.25)"},"name":"CAISO charge","showlegend":false,"x":{"dtype":"i4","bdata":"AQAAAAIAAAADAAAABAAAAAUAAAAGAAAABwAAAAgAAAAJAAAACgAAAAsAAAAMAAAADQAAAA4AAAAPAAAAEAAAABEAAAASAAAAEwAAABQAAAAVAAAAFgAAABcAAAAYAAAA"},"y":{"dtype":"f8","bdata":"6qZu6qZeW8AUO7ETO1lvwJIkSZIkbYDAgzRIgzS3gsAIh3AIh452wDqiIzqiM1PA0y\u002f90i\u002f9KMCe53me5waDwI\u002f3eI83GajAy7d8y1cXs8A3dVM3lUG2wGIndmLHKLfAXc3VXK0ptcCtyIqsSBuxwG7btm1bOqfAb+qmbuoPlMA7sRM7sVF9wJdv+ZZv+TvAAAAAAAAAAIAAAAAAAAAAgAAAAAAAAACAAAAAAAAAAIBJ2q8V7hkgwCk3Fc0TqljA"},"type":"bar","xaxis":"x3","yaxis":"y6"},{"fill":"toself","fillcolor":"rgba(69,117,180,0.12)","hoverinfo":"skip","line":{"width":0},"showlegend":false,"x":{"dtype":"i4","bdata":"AQAAAAIAAAADAAAABAAAAAUAAAAGAAAABwAAAAgAAAAJAAAACgAAAAsAAAAMAAAADQAAAA4AAAAPAAAAEAAAABEAAAASAAAAEwAAABQAAAAVAAAAFgAAABcAAAAYAAAAGAAAABcAAAAWAAAAFQAAABQAAAATAAAAEgAAABEAAAAQAAAADwAAAA4AAAANAAAADAAAAAsAAAAKAAAACQAAAAgAAAAHAAAABgAAAAUAAAAEAAAAAwAAAAIAAAABAAAA"},"y":{"dtype":"f8","bdata":"3h\u002fvVSvbSEDjqrLvikxIQG3i5H6HBkhA98d71cr8R0C\u002f8bVnlqxIQHpTkQpjA0tAQs9m1ed2TkD\u002fsnvysKRLQAZM4NbdSENA3C4012lgQECTqYJRSdU+QB5QNuUK3z1Ajjulg\u002fV\u002fPEAHCObo8YM7QMcRa\u002fEpKD1A1GUxsfncRECxxAPKptBLQFg5tMh2Bk5AyVnY0w7nTUCbWrbWFzVNQH4YITza8ExAkdWtnpPWTEB8CoDxDGpLQC3saYe\u002fBkpASMSUSKLzREBBn8iTpNNFQLyuX7AbrkZA54wo7Q3WRkD3deCcEdFGQO8gdqbQXUdAbD6uDRVHR0B4l4v4TuBDQGTMXUvIdyVAgQncupunyj8Zc9cS8sH9v+IjYkok0eK\u002fxRuZR\u002f5g9j\u002fS4\u002fc2\u002fVkJQHUCmggbnhxAGXPXEvLJNEAnFCLgEOpDQKMG0zB8lEZA1EhL5e3sREBEhlW8kSFDQNRDNLqDyEJAR3L5D+nDQkBWn6ut2DNDQGr2QCsw2ENA"},"type":"scatter","xaxis":"x4","yaxis":"y7"},{"hovertemplate":"\u003cb\u003eCAISO Winter\u003c\u002fb\u003e HE%{x}: $%{y:.1f}\u002fMWh\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"CAISO_price","line":{"color":"#4575b4","width":2.5},"name":"CAISO price","showlegend":false,"x":{"dtype":"i4","bdata":"AQAAAAIAAAADAAAABAAAAAUAAAAGAAAABwAAAAgAAAAJAAAACgAAAAsAAAAMAAAADQAAAA4AAAAPAAAAEAAAABEAAAASAAAAEwAAABQAAAAVAAAAFgAAABcAAAAYAAAA"},"y":{"dtype":"f8","bdata":"KTHCSj86SEBVufCXxJRHQDfGQMt2NEdAHCIhETEkR0Bqmc02kuRHQOuJMOt7CUpAEVKLR22STEBi\u002fiVG2YNJQFm1UJWsSj9A1D0FG2M9NUBoWgqNrxUyQE7oSInpoDBA\u002fGlkqrt+LUA7qBGzgLoqQHc7P9JxSy9A1FbXphGXPEBrePlyZ6xJQMlQP1qh0ExAkiJ6ckq3TECLS5IFuk5MQJoehbRKGUxAq2KV+SjfS0A5CJDNz5VKQHxdRF0RSklA"},"type":"scatter","xaxis":"x4","yaxis":"y7"},{"error_y":{"array":{"dtype":"f8","bdata":"2IIt2ILzZkAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAB4d3d3d09GQKqqqqqqq3lA3N3d3V3eikAIJOtcebOHQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAC2+3ALKNOUQArMdMNWxZFAMHf2M4vcjUBI+uu5iqeOQPi43NnP9IxAaGjtPtwiikAY\u002fqPo2CmDQMFMN2yl2XFA"},"arrayminus":{"dtype":"f8","bdata":"lD7pkz7qdEBERERERHRkQGPU8LcpTlJAtmALtmA7TkAiIiIiIuxiQKuqqqoqmIFAJCIiIqL5ikD8bYpRQ4iRQPVJn\u002fRJCWBAMzMzMzOLQUCY0F5Ce4koQK48IFnnygJAXXlAss6Vzz8XbMEWbEEPQEmR6wNdEzFAXZx4e4VYckBKBI\u002f013mXQPYzizypvpJAaMQEZrpjkEC4BRRGdZyNQAhHIyYwRYxAmJcSwSPRjEDoAVwXJ+6HQD+zyJNaWnpA"},"color":"rgba(69,117,180,0.8)","symmetric":false,"thickness":1.2,"type":"data"},"hovertemplate":"\u003cb\u003eCAISO Winter\u003c\u002fb\u003e HE%{x}\u003cbr\u003eDischarge: %{y:.0f} MW\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"CAISO_dis","marker":{"color":"rgba(69,117,180,0.5)"},"name":"CAISO discharge","showlegend":false,"x":{"dtype":"i4","bdata":"AQAAAAIAAAADAAAABAAAAAUAAAAGAAAABwAAAAgAAAAJAAAACgAAAAsAAAAMAAAADQAAAA4AAAAPAAAAEAAAABEAAAASAAAAEwAAABQAAAAVAAAAFgAAABcAAAAYAAAA"},"y":{"dtype":"f8","bdata":"lD7pkz7qdEBERERERHRkQGPU8LcpTlJAtmALtmA7TkAiIiIiIuxiQKuqqqoqhIdAiYiIiOhJoED8bYpRQ0uTQPVJn\u002fRJCWBAMzMzMzOLQUCY0F5Ce4koQK48IFnnygJAXXlAss6Vzz8XbMEWbEEPQEmR6wNdEzFAXZx4e4VYckAlgkf6a2igQPuZRZ7Us69ANGICM12rrkBuAYVRnRKqQMLRiAnM+qVA5qVE8MiPoED0AK6LE1+RQD+zyJNaWnpA"},"type":"bar","xaxis":"x4","yaxis":"y8"},{"customdata":{"dtype":"f8","bdata":"gWSdKw\u002fMZkB3d3d3dy90QKVP+qRP\u002fn9AC7ZgC7YHfkCUPumTPttsQC+hvYT2AkZAN8Wo4W\u002fTEkAekKxz5c1jQA1\u002fm2LUSplAd3d3dzefp0De3d3dHbauQDtXHpAcurFAJOtceRCYskCWByTrvAixQC3D\u002f4XIcqlAttI2ld89kEApOnZIqNdOQAAAAAAAAAAAAAAAAAAAAADkcmc\u002fs8izP2bjm6G1++g\u002f6AFcFyfeBkD+o+jYIWFBQKEHcF2caGNA"},"error_y":{"array":{"dtype":"f8","bdata":"AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAC+hvYT2AkZAN8Wo4W\u002fTEkAekKxz5c1jQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAApOnZIqNdOQAAAAAAAAAAAAAAAAAAAAADkcmc\u002fs8izP2bjm6G1++g\u002f6AFcFyfeBkD+o+jYIWFBQAAAAAAAAAAA"},"arrayminus":{"dtype":"f8","bdata":"AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"},"color":"rgba(69,117,180,0.5)","symmetric":false,"thickness":1.2,"type":"data"},"hovertemplate":"\u003cb\u003eCAISO Winter\u003c\u002fb\u003e HE%{x}\u003cbr\u003eCharge: %{customdata:.0f} MW\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"CAISO_chg","marker":{"color":"rgba(69,117,180,0.25)"},"name":"CAISO charge","showlegend":false,"x":{"dtype":"i4","bdata":"AQAAAAIAAAADAAAABAAAAAUAAAAGAAAABwAAAAgAAAAJAAAACgAAAAsAAAAMAAAADQAAAA4AAAAPAAAAEAAAABEAAAASAAAAEwAAABQAAAAVAAAAFgAAABcAAAAYAAAA"},"y":{"dtype":"f8","bdata":"gWSdKw\u002fMZsB3d3d3dy90wKVP+qRP\u002fn\u002fAC7ZgC7YHfsCUPumTPttswC+hvYT2AkbAN8Wo4W\u002fTEsAekKxz5c1jwA1\u002fm2LUSpnAd3d3dzefp8De3d3dHbauwDtXHpAcurHAJOtceRCYssCWByTrvAixwC3D\u002f4XIcqnAttI2ld89kMApOnZIqNdOwAAAAAAAAACAAAAAAAAAAIDkcmc\u002fs8izv2bjm6G1++i\u002f6AFcFyfeBsD+o+jYIWFBwKEHcF2caGPA"},"type":"bar","xaxis":"x4","yaxis":"y8"},{"fill":"toself","fillcolor":"rgba(244,109,67,0.12)","hoverinfo":"skip","line":{"width":0},"showlegend":false,"x":{"dtype":"i1","bdata":"AQIDBAUGBwgJCgsMDQ4PEBESExQVFhcYGBcWFRQTEhEQDw4NDAsKCQgHBgUEAwIB"},"y":{"dtype":"f8","bdata":"H4XrUbiOOkApXI\u002fC9eg3QOtRuB6FezZAcT0K16PQNkAUrkfheuQ3QLgehetR+DtAFK5H4XpUQkCuR+F6FLZBQMP1KFyPMjlAmpmZmZkJNEBxPQrXo9AzQBSuR+F6NDVAUrgehevBNUDhehSuR5E3QKRwPQrXAzhAAAAAAABQOkDiehSuR7E9QAAAAAAAUEFArkfhehQOSEAK16NwPZpWQPYoXI\u002fCbVVAwvUoXI\u002fSR0CPwvUoXH9BQFK4HoXrATxAKVyPwvXILEAVrkfheoQwQD0K16NwPTZA4noUrkfpQUC4HoXrUfBDQJqZmZmZyThAZmZmZmamMkDMzMzMzMwsQFyPwvUovChA4XoUrkeBJEDrUbgehQskQLgehetRmCNAAAAAAAAAJEAehetRuH4jQK5H4XoULiRAcT0K16NwKEA0MzMzM\u002fMwQDMzMzMz8zFAPgrXo3B9KUDC9Shcj+IlQClcj8L1KCRAuR6F61FYJEDC9Shcj4IlQMzMzMzM7ChA"},"type":"scatter","xaxis":"x5","yaxis":"y9"},{"hovertemplate":"\u003cb\u003eERCOT Spring\u003c\u002fb\u003e HE%{x}: $%{y:.1f}\u002fMWh\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"ERCOT_price","line":{"color":"#f46d43","width":2.5},"name":"ERCOT price","showlegend":false,"x":{"dtype":"i1","bdata":"AQIDBAUGBwgJCgsMDQ4PEBESExQVFhcY"},"y":{"dtype":"f8","bdata":"X1ZC1Z+3NED8tltOsGQyQOVGbuRGDjFAPYiy0ZftMECEaS3mRQUyQHhNLmhqtzVAgJ5kYh2KPED465LKh4E7QIfvmlzQJDRArQKGbXa6L0COvqyEqv8tQMd\u002f33bLiS5AoGirwXMUMEA6AkVbDcYxQArXo3A9mjJANTd81+QCNUCDpvaqgFE6QAHDNjvFu0FAywmWkQfJSECOQNFWg+lZQOM9S+kMs1dAOoRpLealRkDKBU3tVWE9QHZJ5cO4xzZA"},"type":"scatter","xaxis":"x5","yaxis":"y9"},{"error_y":{"array":{"dtype":"f8","bdata":"NDMzMzN7QkCAGPfrkjJAQDipfBj3qy9A2K9LKh8mJED8\u002f\u002f\u002f\u002f\u002f+87QIxA0VaDk1NARFsNniOobUAw7tcllQViQHDTm970NjtAAoq2Gjx3QkB0SeXDuG9CQEwqH8b9ykRAsMFzBIpWPUBoZmZmZnZHQLCQhSxkMURAzIdxvy5BT0DUVoPnCHxGQBDjfl1SYUlAEG01eI5gX0CAXVL5MPuHQN70pje93o5AQNFWg+eIckAw7tcllU9JQIAY9+uSSjVA"},"arrayminus":{"dtype":"f8","bdata":"AAAAAABEV0Ao2mrwHDVRQBk8R6BoO0xAcXrTm94sTEA0MzMzM3tOQAxZyEIW5l9A9+uSyofLekBOb3rTm\u002fl8QPjrksqHK2RAlg\u002fjfl2CSkAmULTV4FlLQBg8R6Boi0dA9uuSyoeRS0DMzMzMzGRVQA2eI1C0VVJA5ggUbTVMWECWVD6M+5FYQAkUbTV46GFA7tcllQ8TdUBB0VaDZxaQQMS4X5fU3ZBAYJdUPoz6gEANniNQtMVmQOA5AkVbRVJA"},"color":"rgba(244,109,67,0.8)","symmetric":false,"thickness":1.2,"type":"data"},"hovertemplate":"\u003cb\u003eERCOT Spring\u003c\u002fb\u003e HE%{x}\u003cbr\u003eDischarge: %{y:.0f} MW\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"ERCOT_dis","marker":{"color":"rgba(244,109,67,0.5)"},"name":"ERCOT discharge","showlegend":false,"x":{"dtype":"i1","bdata":"AQIDBAUGBwgJCgsMDQ4PEBESExQVFhcY"},"y":{"dtype":"f8","bdata":"zczMzMyuZECOQNFWgyNdQHMEirYaDFpAnyNQtNXsWUBnZmZmZupcQIYsZCELY2lAYtyvSyrShECnN73pzSWGQPx1SeXDV3BAMe7XJZX\u002fX0CjrQbPEYxgQKBoq8FzvGBAZCELWch6Y0BmZmZmZtZlQG01eI5A2WVAcwSKthrWaEBLKh\u002fG\u002fehoQJ4jULTVZ3BAxLhfl1RigEAOniNQtFmXQF1S+TDuS5lAYJdUPozJiECgaKvBc9RxQCNQtNXggWFA"},"type":"bar","xaxis":"x5","yaxis":"y10"},{"customdata":{"dtype":"f8","bdata":"yEIWspBOfUD5MO7XJTWCQA2eI1C0WINAeI5A0dZggUBr8ByBoqh3QLlfl1Q+iGxAmFQ+jPtNYUBkIQtZyMJrQAAAAAAA2oNAf11S+TDVjkAWspCFLPONQDxHoGgr6ohAC1nIQpYLhUCKtho8RyWCQLBLKh9GVYBAfRj365IkfECIcb8uqc14QDi96U1vzHNAuqTyYdxRaUBGWw2eI5BfQMAuqXwYv15ABIq2GjyHZ0BHoGirwapxQASKtho8onlA"},"error_y":{"array":{"dtype":"f8","bdata":"Lql8GPf0cEDyYdyvS0p1QBo8R6Bo2XlAI1C01eBedUA8R6Boq79pQKXyYdyvU1tAykIWspA9UECXVD6M+wVgQAAAAAAARHlAf11S+TBdhECwSyofxs6DQN70pje9wn5Ar0sqH8amd0CuBs8RKBZzQPRh3K9LhG5AlMqHcb\u002fyakCqfBj36\u002fRmQAoUbTV4AmBAQRaykIVQVUBYg+cIFO1LQBr365LK10xAO0egaKvZVkAn2mrwHOdhQKKtBs8RsmxA"},"arrayminus":{"dtype":"f8","bdata":"QEegaKvrb0AOniNQtM9xQIBdUvkwGndAuF+XVD6SaUC4pPJh3GtfQHznCBRtlUNACBRtNXg+QUDY4DkCRUtIQAAAAAAAVG5AtdXgOQKPgECE5wgUbcaAQPDXJZUPRn1A6k1vetNCc0Ck8mHcr5tjQEDRVoPndmJADJ4jULRFW0B805ve9ApZQOzXJZUPk1RAGG01eI7IS0CALGQhC7k3QABFWw2eAzpAJAtZyEKWSEBM5cO4X3NTQGBS+TDuVWJA"},"color":"rgba(244,109,67,0.5)","symmetric":false,"thickness":1.2,"type":"data"},"hovertemplate":"\u003cb\u003eERCOT Spring\u003c\u002fb\u003e HE%{x}\u003cbr\u003eCharge: %{customdata:.0f} MW\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"ERCOT_chg","marker":{"color":"rgba(244,109,67,0.25)"},"name":"ERCOT charge","showlegend":false,"x":{"dtype":"i1","bdata":"AQIDBAUGBwgJCgsMDQ4PEBESExQVFhcY"},"y":{"dtype":"f8","bdata":"yEIWspBOfcD5MO7XJTWCwA2eI1C0WIPAeI5A0dZggcBr8ByBoqh3wLlfl1Q+iGzAmFQ+jPtNYcBkIQtZyMJrwAAAAAAA2oPAf11S+TDVjsAWspCFLPONwDxHoGgr6ojAC1nIQpYLhcCKtho8RyWCwLBLKh9GVYDAfRj365IkfMCIcb8uqc14wDi96U1vzHPAuqTyYdxRacBGWw2eI5BfwMAuqXwYv17ABIq2GjyHZ8BHoGirwapxwASKtho8onnA"},"type":"bar","xaxis":"x5","yaxis":"y10"},{"fill":"toself","fillcolor":"rgba(244,109,67,0.12)","hoverinfo":"skip","line":{"width":0},"showlegend":false,"x":{"dtype":"i1","bdata":"AQIDBAUGBwgJCgsMDQ4PEBESExQVFhcYGBcWFRQTEhEQDw4NDAsKCQgHBgUEAwIB"},"y":{"dtype":"f8","bdata":"H4XrUbgeO0CQwvUoXA85QB+F61G4rjdA61G4HoUbN0DXo3A9Coc3QD4K16NwjTlA16NwPQqHO0CZmZmZmak4QKRwPQrXAzRAHoXrUbgeM0AK16NwPYo1QPYoXI\u002fCBTlASOF6FK4HPUBcj8L1KNxAQLgehetR6EFASOF6FK5XQ0AfhetRuOZEQOtRuB6FM0VAw\u002fUoXI9CS0BI4XoUrtdVQArXo3A9alRApHA9CtebSkAzMzMzM9tCQFyPwvUozD1A4XoUrkdBM0B7FK5H4co3QK5H4XoULjxAUrgeheupR0Bcj8L1KJxIQHA9CtejWEBA7FG4HoUbPUDiehSuRwE8QGZmZmZm5jpASOF6FK7XOUDD9Shcj2I4QML1KFyP0jVAPgrXo3AdM0DC9Shcj8IvQJqZmZmZGSpAFa5H4Xr0KkDD9Shcj4IwQAAAAAAAQDFAXI\u002fC9ShcMECF61G4HmUuQOxRuB6Fay1APgrXo3CdLkD2KFyPwqUwQJDC9ShcbzJA"},"type":"scatter","xaxis":"x6","yaxis":"y11"},{"hovertemplate":"\u003cb\u003eERCOT Summer\u003c\u002fb\u003e HE%{x}: $%{y:.1f}\u002fMWh\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"ERCOT_price","line":{"color":"#f46d43","width":2.5},"name":"ERCOT price","showlegend":false,"x":{"dtype":"i1","bdata":"AQIDBAUGBwgJCgsMDQ4PEBESExQVFhcY"},"y":{"dtype":"f8","bdata":"IUxrMS+SN0BDFrKQhWw1QFoJVX+eJDRAV8T5cQCxM0DxHIGirSY0QNVeFTBs4zVAKNpq8BxJN0DmBMvIgyg1QP66pPJhNDFAai3mRd1xMEADCJJIY68yQBj365LK5zVA8RyBoq22OUDg+O\u002fbbkk9QHIAQRJplD9AUTb6shLyQEAvqXwY94tCQE5vetObWkNAGjxHoGhfSUCWEywjD8hWQP33bbeclFNAWEYeRNmgR0AqnaEr4nxAQAbLyIMoCzpA"},"type":"scatter","xaxis":"x6","yaxis":"y11"},{"error_y":{"array":{"dtype":"f8","bdata":"GPfrksobVED0pje96Q0\u002fQCRQtNXgCTpALGQhC1n4MECUyodxv7ZAQLAGzxEoJlVAFLKQhSxwW0D4HIGirbY8QFC01eA5QjZADFnIQhbCQ0D4pje96d1HQExvetOb\u002fkVA9GHcr0sSSUDUVoPnCFRBQMwRKNpq0FdAwHMEirYaUUBI5cO4X4tRQHyirQbPAUhA8ByBoq1SVEAagaKthhyEQJ5oq8Fz2ZdAFvfrkspjiUB505ve9CdwQErlw7hfh1NA"},"arrayminus":{"dtype":"f8","bdata":"Tm9605uSWUCofBj36+JRQFY+jPt1wUtAHYGirQZHTkDpTW9605dSQHZJ5cO4JWBAXA2eI1BubECPhSxkIUdbQAxZyEIW0kVAwnMEirbqR0Ci8mHcr5tNQLCQhSxkwU5A0pve9KYjVECaVD6M+01YQDTu1yWVj15A2iWVD+OeXkDsTW960+9bQFrIQhay6FhAVz6M+3Wja0BL5cO438KPQGCXVD4MUJVAGjxHoGjYi0CGLGQhC+5xQIPnCBRtfVxA"},"color":"rgba(244,109,67,0.8)","symmetric":false,"thickness":1.2,"type":"data"},"hovertemplate":"\u003cb\u003eERCOT Summer\u003c\u002fb\u003e HE%{x}\u003cbr\u003eDischarge: %{y:.0f} MW\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"ERCOT_dis","marker":{"color":"rgba(244,109,67,0.5)"},"name":"ERCOT discharge","showlegend":false,"x":{"dtype":"i1","bdata":"AQIDBAUGBwgJCgsMDQ4PEBESExQVFhcY"},"y":{"dtype":"f8","bdata":"QdFWg+dOZUAP435dUulbQJGFLGQhH1dAKNpq8BxVV0C2GjxHoKRdQNyvSyofLGhArgbPESjjd0Bh3K9LKq1qQIYsZCELwVRArgbPESgCV0AP435dUh1gQPkw7tclmWRAg+cIFG2zaUAZ9+uSykduQI37dUnlK3FA3a9LKh\u002f+cUCuBs8RKBdxQC1kIQtZLG5A+OuSyoekekA\u002fjPt1iTGeQH0Y9+uSMKVADZ4jUDTSlUC5X5dUPrl7QPWmN73p9WdA"},"type":"bar","xaxis":"x6","yaxis":"y12"},{"customdata":{"dtype":"f8","bdata":"\u002fbqk8mHsfUDIQhaykM9\u002fQFC01eA5L4BAetOb3vSZfkBmZmZmZhB2QFG01eA5hG5AMe7XJZWtaEAo2mrwHPN8QNgllQ+jYJlAvy6pfLgooEDmw7hf12aVQLqk8mHcNYdA\u002frqk8mEjgEDYJZUP4\u002fx6QOE5AkVbAXhA9aY3vek1d0BcDZ4jUHZ2QPkw7tcllnZAUvkw7tcockAvqXwY97VhQIhxvy6plFpA8mHcr0tkaEBK5cO4X5ZyQM8RKNpqXXlA"},"error_y":{"array":{"dtype":"f8","bdata":"lA\u002fjfl3yaUBcUvkw7uNpQKY3velN821AwHMEiragZ0CZmZmZma1iQNab3vSmM1lAL6l8GPdnV0C2GjxHoNRmQON+XVJ5HIlASyofxj2hk0BmIQtZSGGLQKd8GPfrbnxAyUIWspCPcUDjfl1S+bRpQPWmN73pZWhA6k1vetPPZkCF5wgUbQljQIz7dUnlNWNArksqH8b5XUD465LKh+VSQN2vSyofxklASiofxv3GVUDCLql8GHtaQJ4jULTVOmVA"},"arrayminus":{"dtype":"f8","bdata":"niNQtNUUY0A8R6Boq1lgQIz7dUnll2JAUOXDuF9TWkAAAAAAAGBbQCSVD+N+ZU1APEegaKvJQ0CwSyofxpllQITnCBTtjYlAHDxHoKgtkEAARVsNHgaGQIy2GjxHuHhACBRtNXh+akBQtNXgOapjQD6M+3VJxWBAyP26pPKRWkAoZCELWfhWQFBvetObqldAuBo8R6BEUEAUKNpq8ARKQLAGzxEo+j5ACEVbDZ5LSECw1eA5An1PQPTrksqHrVxA"},"color":"rgba(244,109,67,0.5)","symmetric":false,"thickness":1.2,"type":"data"},"hovertemplate":"\u003cb\u003eERCOT Summer\u003c\u002fb\u003e HE%{x}\u003cbr\u003eCharge: %{customdata:.0f} MW\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"ERCOT_chg","marker":{"color":"rgba(244,109,67,0.25)"},"name":"ERCOT charge","showlegend":false,"x":{"dtype":"i1","bdata":"AQIDBAUGBwgJCgsMDQ4PEBESExQVFhcY"},"y":{"dtype":"f8","bdata":"\u002fbqk8mHsfcDIQhaykM9\u002fwFC01eA5L4DAetOb3vSZfsBmZmZmZhB2wFG01eA5hG7AMe7XJZWtaMAo2mrwHPN8wNgllQ+jYJnAvy6pfLgooMDmw7hf12aVwLqk8mHcNYfA\u002frqk8mEjgMDYJZUP4\u002fx6wOE5AkVbAXjA9aY3vek1d8BcDZ4jUHZ2wPkw7tcllnbAUvkw7tcocsAvqXwY97VhwIhxvy6plFrA8mHcr0tkaMBK5cO4X5ZywM8RKNpqXXnA"},"type":"bar","xaxis":"x6","yaxis":"y12"},{"fill":"toself","fillcolor":"rgba(244,109,67,0.12)","hoverinfo":"skip","line":{"width":0},"showlegend":false,"x":{"dtype":"i1","bdata":"AQIDBAUGBwgJCgsMDQ4PEBESExQVFhcYGBcWFRQTEhEQDw4NDAsKCQgHBgUEAwIB"},"y":{"dtype":"f8","bdata":"j8L1KFzPOUBnZmZmZvY3QHA9Ctej0DZAexSuR+GqNkBmZmZmZpY3QD4K16NwTTpACtejcD2qPkDhehSuRxE+QArXo3A9+jZAH4XrUbieM0AUrkfheiQzQHoUrkfhCjRAZ2ZmZmbWNkBI4XoUrjc5QOtRuB6FCztANDMzMzMzPkDNzMzMzKxCQHA9Ctej2E1AmZmZmZlRVEDC9ShcjzJSQAAAAAAAGEhA9ihcj8KVQkAfhetRuE4+QM3MzMzMDDpAAAAAAADAMEBI4XoUrhczQML1KFyPAjZArkfhehTuOkCQwvUoXIdCQArXo3A9akRAehSuR+GKPEAfhetRuO42QB+F61G4PjJA4noUrkdhMUApXI\u002fC9YgvQHsUrkfh2i1AMzMzMzPTKkCF61G4HgUoQB+F61G4HiZA4XoUrkfhLUCuR+F6FH40QKRwPQrXEzRAMzMzMzOzMUBH4XoUrkcuQJqZmZmZeSxACtejcD2qLEAAAAAAAAAuQBWuR+F6pDBA"},"type":"scatter","xaxis":"x7","yaxis":"y13"},{"hovertemplate":"\u003cb\u003eERCOT Fall\u003c\u002fb\u003e HE%{x}: $%{y:.1f}\u002fMWh\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"ERCOT_price","line":{"color":"#f46d43","width":2.5},"name":"ERCOT price","showlegend":false,"x":{"dtype":"i1","bdata":"AQIDBAUGBwgJCgsMDQ4PEBESExQVFhcY"},"y":{"dtype":"f8","bdata":"s8Tk5fdXNkDfNbmgqbU0QP\u002fkT\u002f7kzzNAy7Ecy7HcM0CyUU4YuLQ0QByWLrYvqDdA\u002fxnTZIC5O0DPj5YCwyk7QGyC8wQcLTNAPtVTPdXTLkAgYojsLhUvQBfbF+SnpDBAgTnL5p\u002fRMkAP6qAO6uA0QHy8x3u8pzZAtGz+GdOEOEBu27Zt20ZAQDvdBqFD3UhASHd0R3esUECqPXTdcNdMQMuFKWUfA0RA8ulri4OlPkCmX\u002fqlX1o6QJt\u002fxjQZwDZA"},"type":"scatter","xaxis":"x7","yaxis":"y13"},{"error_y":{"array":{"dtype":"f8","bdata":"sFIrtVKrNUCgvdmbvdk3QDQGYzAGYz5AzJ\u002f8yZ+8OkCAFmiBFjhDQKRN2qRNSkBAkC3Zki1hWUAELdACLYxrQCht0iZt0kZA1B3d0R3dMkAA0y\u002f90s9CQCD4gR\u002f4gUZA7Lu+67t+R0AgEzIhE8JFQCDUQR3UoUVAbIqmaIpGUECw1Eqt1OpVQJyHeZiHp3pAUPVUT\u002fUZjUDql37pl8mZQCijMiqjr4BAOKiDOqh7YkD49m\u002f\u002f9s87QLiRG7mRuz5A"},"arrayminus":{"dtype":"f8","bdata":"7cRO7MRmUUCYh3mYh9lNQOd8zud8vklA53zO53zuSEDzJ3\u002fyJ8dQQP7SL\u002f3Sv2BANk7jNE6vekDlT\u002f7kT8J6QLZkS7ZkW2FAjLiIi7gIUEAasAEbsFlQQEhu5EZuNExA127t1m6dVEBv9mZv9oZZQIuv+IqvcF5A\u002fNu\u002f\u002fdtfW0AHfuAHfjR2QBqe4RmekpFAjLiIizhrk0CwARuwgTyZQKMpmqIp8Y1AF1\u002fxFV\u002fddUBUNEVTNJFhQPmBH\u002fiBp1RA"},"color":"rgba(244,109,67,0.8)","symmetric":false,"thickness":1.2,"type":"data"},"hovertemplate":"\u003cb\u003eERCOT Fall\u003c\u002fb\u003e HE%{x}\u003cbr\u003eDischarge: %{y:.0f} MW\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"ERCOT_dis","marker":{"color":"rgba(244,109,67,0.5)"},"name":"ERCOT discharge","showlegend":false,"x":{"dtype":"i1","bdata":"AQIDBAUGBwgJCgsMDQ4PEBESExQVFhcY"},"y":{"dtype":"f8","bdata":"3ciN3MjtYUDMwzzMw6xXQA3YgA3YIFZA2qRN2qRdVUAmW7IlW8JcQJdsyZZsmW1AG6dxGqe1hUC\u002f9Eu\u002f9KWGQFD+5E\u002f+rGxAv+u7vuvbXUAN2IAN2EBgQMVO7MROXGJAOIRDOIRDZkCe4Rme4TlqQCy+4iu+Gm1AmId5mIf5bkBqpVZqpQCAQIAESIAEU5ZARlzERdy8pEALtEALNJSlQDh7szd7x5VAJUmSJElOgUCHZ3iGZ9BtQJZaqZVa4WBA"},"type":"bar","xaxis":"x7","yaxis":"y14"},{"customdata":{"dtype":"f8","bdata":"f+mXfulJgkCzJVuyJWGFQLVSK7VS\u002fYdAPMzDPMwvhkBbqZVaqYWAQC7Zki3ZynNAyY3cyI28Z0C6kRu5kZNvQGZd1mVdzpRA+HiP9\u002fhco0CSG7mRG1qgQH\u002fpl37popRAIzdyIzeYikCXdVmXdXeDQGzABmzAXoFAfc7nfM4vfkCpgzqog9p2QE3RFE3RtG5A4P7t3\u002f7tY0AESIAESABmQGADNmADWnFAxVd8xVfkdkADNmADNnh5QAEbsAEb9H9A"},"error_y":{"array":{"dtype":"f8","bdata":"\u002fKVf+qWnbkBmS7ZkS4xzQJ3YiZ3Yi3RARWVURmUsdUC2Uiu1UhVwQPZLv\u002fRL\u002f2BAxU7sxE68UUBUK7VSK7VgQMy6rMu6U4VA8PEe73GGkECu1Eqt1LuPQMqf\u002fMmfJYRAEzuxEzs1ekD7t3\u002f7t8NzQNiADdiAtXFAxmmcxmm0akDroA7qoB5lQGdv9mZvdl5AWpd1WZdtUUBv9mZv9p5bQMAGbMAGaGJAveIrvuJbYkCgBVqgBY5mQGicxmmcsmpA"},"arrayminus":{"dtype":"f8","bdata":"nPM5n\u002fNNZEBonMZpnI5pQPiBH\u002fiBT2hA3Ju92ZtBbkD8wA\u002f8wENlQEibtEmbdFRAEPzAD\u002fwAQkDghV7ohf5NQNDwDM\u002fwaHxAEA7hEA4EkkCqlVqplWuQQJzzOZ\u002fzSXxARPADP\u002fCva0B4hmd4hvdQQKD8yZ\u002f8cVpAPPmTP\u002fmDUUCQJEmSJBlZQM7DPMzDXFJAGJ7hGZ5RSEC8rMu6rEtIQIDyJ3\u002fyh1ZA7KAO6qAuXUAux3Isx2phQCzHcizHalpA"},"color":"rgba(244,109,67,0.5)","symmetric":false,"thickness":1.2,"type":"data"},"hovertemplate":"\u003cb\u003eERCOT Fall\u003c\u002fb\u003e HE%{x}\u003cbr\u003eCharge: %{customdata:.0f} MW\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"ERCOT_chg","marker":{"color":"rgba(244,109,67,0.25)"},"name":"ERCOT charge","showlegend":false,"x":{"dtype":"i1","bdata":"AQIDBAUGBwgJCgsMDQ4PEBESExQVFhcY"},"y":{"dtype":"f8","bdata":"f+mXfulJgsCzJVuyJWGFwLVSK7VS\u002fYfAPMzDPMwvhsBbqZVaqYWAwC7Zki3ZynPAyY3cyI28Z8C6kRu5kZNvwGZd1mVdzpTA+HiP9\u002fhco8CSG7mRG1qgwH\u002fpl37popTAIzdyIzeYisCXdVmXdXeDwGzABmzAXoHAfc7nfM4vfsCpgzqog9p2wE3RFE3RtG7A4P7t3\u002f7tY8AESIAESABmwGADNmADWnHAxVd8xVfkdsADNmADNnh5wAEbsAEb9H\u002fA"},"type":"bar","xaxis":"x7","yaxis":"y14"},{"fill":"toself","fillcolor":"rgba(244,109,67,0.12)","hoverinfo":"skip","line":{"width":0},"showlegend":false,"x":{"dtype":"i1","bdata":"AQIDBAUGBwgJCgsMDQ4PEBESExQVFhcYGBcWFRQTEhEQDw4NDAsKCQgHBgUEAwIB"},"y":{"dtype":"f8","bdata":"pHA9CtfjO0BxPQrXo3A6QOxRuB6FqzpAAAAAAACAO0CuR+F6FK48QAAAAAAAAEJASOF6FK4nR0DsUbgehctHQNejcD0Kt0FAH4XrUbhePEApXI\u002fC9eg6QArXo3A9SjhAj8L1KFyPNkCkcD0K16M1QJqZmZmZGTVAj8L1KFwPNkCkcD0K16M9QM3MzMzM7EdAw\u002fUoXI8iSEDNzMzMzAxFQKRwPQrX40JAhetRuB6FQEB7FK5H4fo9QAAAAAAAgDtAexSuR+H6L0D2KFyPwnUxQOF6FK5HoTJAXI\u002fC9SicNECPwvUoXI83QK5H4XoUbj1Aw\u002fUoXI+COkCamZmZmRkwQFK4HoXrUSVASOF6FK5HI0B7FK5H4fojQDMzMzMzsyRAAAAAAACAJkBxPQrXo\u002fAoQHE9CtejcCxAKVyPwvVoM0AK16NwPYo4QIXrUbgeRTdAAAAAAAAAM0BI4XoUrkcvQK5H4XoUrixA9ihcj8J1LEDsUbgehessQGZmZmZm5i5A"},"type":"scatter","xaxis":"x8","yaxis":"y15"},{"hovertemplate":"\u003cb\u003eERCOT Winter\u003c\u002fb\u003e HE%{x}: $%{y:.1f}\u002fMWh\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"ERCOT_price","line":{"color":"#f46d43","width":2.5},"name":"ERCOT price","showlegend":false,"x":{"dtype":"i1","bdata":"AQIDBAUGBwgJCgsMDQ4PEBESExQVFhcY"},"y":{"dtype":"f8","bdata":"Gc55074\u002fOUAXvmDaHMo3QFgcl\u002fWXyjdAMzaK6WCrOEBzncUnZZQ7QHh2WuUSOkJAp3qolh0JTEDu0D\u002f4zJ1PQHCvz213BUZAczQFtBoIPECtxQLrnoM3QMMU9eQVkTRAjoEGYSG6MkACO0Fb36QxQBXvNqm16TBA3bqdDMXZMUDGJA7et4Y4QKGnwUXL00RAWLB\u002fyx8mRkBJs\u002fv7QuBCQHd8CFJuKkFAGzGM2q3bPUBY0qIK1Iw7QN+uQTMO+ThA"},"type":"scatter","xaxis":"x8","yaxis":"y15"},{"error_y":{"array":{"dtype":"f8","bdata":"zD6SY6BBSEBUUMR6XmJEQAR9lozX1jpAPFp5+49rQED09h9XbDlLQCRVe+zce1NAPnbuzehBfEBuKpon1JqCQMKJETIXvmRAsHNvRg\u002f6SUCwyb8KiphFQDR60GfJ+EJAGD3os2S8Q0DA0K5mrcNEQHC41JAATkZABGEhun7AQ0AcddJYFplhQDgxQubCP4ZAJoCjThrrhUAqxU82QPV4QFBF84RaEGBAoFALGJP4UEBuuNSQAA5QQHA3XGpIQEBA"},"arrayminus":{"dtype":"f8","bdata":"AUedNJZlVUDW153C0C5TQIwtp+kW11BASLmpaJ6QU0CHBHDUScNYQG5VwokREmlAel6iMqWchEAsb\u002f9xxeqNQFJuKpon7HRAWnn7jyt2XkBaTtMt7oZXQLSP5BhokFNAs4\u002fkGGiQTkByYoTMhe9PQPvWyOoyjFNAfk\u002fvosB\u002fU0ALXzBtDv1yQDC0q1nrsJFAiNlHcgwkkEA46qSxLCKBQL\u002fD7CM5DnRAsFf6c7bjaED4rZHVZRhdQEjk0crb\u002f1JA"},"color":"rgba(244,109,67,0.8)","symmetric":false,"thickness":1.2,"type":"data"},"hovertemplate":"\u003cb\u003eERCOT Winter\u003c\u002fb\u003e HE%{x}\u003cbr\u003eDischarge: %{y:.0f} MW\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"ERCOT_dis","marker":{"color":"rgba(244,109,67,0.5)"},"name":"ERCOT discharge","showlegend":false,"x":{"dtype":"i1","bdata":"AQIDBAUGBwgJCgsMDQ4PEBESExQVFhcY"},"y":{"dtype":"f8","bdata":"5wm1gDEpYkDW153C0G5dQCXHQIOw0FxA1w+IZ4ILYUDdm9GDPotkQIT3rZHV9XNA4cQImQvfjkDJ6jLsldKVQIWhXc1aV39AeonKlOInbED6c7bjQ+BkQA17pT9ne2FAQK7YcprOXUAG\u002fg6zj+RfQOTRytt\u002fbGNA8tqqhBNzY0DYK\u002f0524l7QMpNRfOEYphAIXPhC6bFmEBrHdjkX6GLQIyQufAFc35ApfjJBqg2ckAvCvwdZj9mQFclnBghw2BA"},"type":"bar","xaxis":"x8","yaxis":"y16"},{"customdata":{"dtype":"f8","bdata":"arrF3XCxg0CG6PoB8XCGQGS8tirhrIVA1ALGJA76gUAyiYP3ral4QApu4\u002fzyLW5AetBnyXhNY0DHzr0ZPThhQC98wbQ5DH1AraCI9bzEh0D8ZANUXwuLQCiNZZGOMI5Ac8WW03TPjkDuzehBnzeQQA1Qfd0pMJFA3v7jii3bikB8lozXVjV3QK11YJN\u002fpWFAdLbjQ5DyYUBnrQOb\u002fAtmQJJHK2\u002f\u002f0WtA9aDPkvHacUBKHLxvjWx4QBQjZC58SYFA"},"error_y":{"array":{"dtype":"f8","bdata":"oUFYiK4PeEAM0fUD4nl\u002fQGISB+9b831A2zi\u002ffE\u002f3d0Ax39O7KEBsQHpCLWBMol9A9KDPkvFaVUD0A+KZ4HZQQF74gmlz2G9AJw7et0bGfkCW\u002fpzt+LSBQFvAmMTBp4NApvjJBqhGhEAPzwS3cXaEQLQ5lFTt9YVARGVK8ZOFgUDF+eV7endoQI0e9FkyPlNATtMt7oYrU0ABjjppLAtXQL4o8HeYvV5AhNs4v3zPYkAu0hF5tNJqQPUSlSnFx3VA"},"arrayminus":{"dtype":"f8","bdata":"LIt0RB5NcEDA+9bI6qpzQDiHkqo9DnRA5CcboPp6bUA0h5KqPQZlQCBXbDlNd1RAGL5g2hzKS0AY+DvMPlJEQKIHfZaMN2RA2vEhSLlZc0AINvlXQQl6QOQYaBAWYndAgts4v3ynfUBIyFz4gjF9QBqTOHjfSoBArGieUAtgeUB4DDQIC5FfQLSP5BhokEJAyL8KiliPTED844otpylEQOgUhnY1K0VAlOInG6C6VECkW9wNl1pTQBja1ax1IGNA"},"color":"rgba(244,109,67,0.5)","symmetric":false,"thickness":1.2,"type":"data"},"hovertemplate":"\u003cb\u003eERCOT Winter\u003c\u002fb\u003e HE%{x}\u003cbr\u003eCharge: %{customdata:.0f} MW\u003cextra\u003e\u003c\u002fextra\u003e","legendgroup":"ERCOT_chg","marker":{"color":"rgba(244,109,67,0.25)"},"name":"ERCOT charge","showlegend":false,"x":{"dtype":"i1","bdata":"AQIDBAUGBwgJCgsMDQ4PEBESExQVFhcY"},"y":{"dtype":"f8","bdata":"arrF3XCxg8CG6PoB8XCGwGS8tirhrIXA1ALGJA76gcAyiYP3ral4wApu4\u002fzyLW7AetBnyXhNY8DHzr0ZPThhwC98wbQ5DH3AraCI9bzEh8D8ZANUXwuLwCiNZZGOMI7Ac8WW03TPjsDuzehBnzeQwA1Qfd0pMJHA3v7jii3bisB8lozXVjV3wK11YJN\u002fpWHAdLbjQ5DyYcBnrQOb\u002fAtmwJJHK2\u002f\u002f0WvA9aDPkvHaccBKHLxvjWx4wBQjZC58SYHA"},"type":"bar","xaxis":"x8","yaxis":"y16"}],                        {"template":{"data":{"barpolar":[{"marker":{"line":{"color":"white","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"barpolar"}],"bar":[{"error_x":{"color":"#2a3f5f"},"error_y":{"color":"#2a3f5f"},"marker":{"line":{"color":"white","width":0.5},"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"bar"}],"carpet":[{"aaxis":{"endlinecolor":"#2a3f5f","gridcolor":"#C8D4E3","linecolor":"#C8D4E3","minorgridcolor":"#C8D4E3","startlinecolor":"#2a3f5f"},"baxis":{"endlinecolor":"#2a3f5f","gridcolor":"#C8D4E3","linecolor":"#C8D4E3","minorgridcolor":"#C8D4E3","startlinecolor":"#2a3f5f"},"type":"carpet"}],"choropleth":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"choropleth"}],"contourcarpet":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"contourcarpet"}],"contour":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"contour"}],"heatmap":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"heatmap"}],"histogram2dcontour":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"histogram2dcontour"}],"histogram2d":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"histogram2d"}],"histogram":[{"marker":{"pattern":{"fillmode":"overlay","size":10,"solidity":0.2}},"type":"histogram"}],"mesh3d":[{"colorbar":{"outlinewidth":0,"ticks":""},"type":"mesh3d"}],"parcoords":[{"line":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"parcoords"}],"pie":[{"automargin":true,"type":"pie"}],"scatter3d":[{"line":{"colorbar":{"outlinewidth":0,"ticks":""}},"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatter3d"}],"scattercarpet":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattercarpet"}],"scattergeo":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattergeo"}],"scattergl":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattergl"}],"scattermapbox":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattermapbox"}],"scattermap":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scattermap"}],"scatterpolargl":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterpolargl"}],"scatterpolar":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterpolar"}],"scatter":[{"fillpattern":{"fillmode":"overlay","size":10,"solidity":0.2},"type":"scatter"}],"scatterternary":[{"marker":{"colorbar":{"outlinewidth":0,"ticks":""}},"type":"scatterternary"}],"surface":[{"colorbar":{"outlinewidth":0,"ticks":""},"colorscale":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"type":"surface"}],"table":[{"cells":{"fill":{"color":"#EBF0F8"},"line":{"color":"white"}},"header":{"fill":{"color":"#C8D4E3"},"line":{"color":"white"}},"type":"table"}]},"layout":{"annotationdefaults":{"arrowcolor":"#2a3f5f","arrowhead":0,"arrowwidth":1},"autotypenumbers":"strict","coloraxis":{"colorbar":{"outlinewidth":0,"ticks":""}},"colorscale":{"diverging":[[0,"#8e0152"],[0.1,"#c51b7d"],[0.2,"#de77ae"],[0.3,"#f1b6da"],[0.4,"#fde0ef"],[0.5,"#f7f7f7"],[0.6,"#e6f5d0"],[0.7,"#b8e186"],[0.8,"#7fbc41"],[0.9,"#4d9221"],[1,"#276419"]],"sequential":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]],"sequentialminus":[[0.0,"#0d0887"],[0.1111111111111111,"#46039f"],[0.2222222222222222,"#7201a8"],[0.3333333333333333,"#9c179e"],[0.4444444444444444,"#bd3786"],[0.5555555555555556,"#d8576b"],[0.6666666666666666,"#ed7953"],[0.7777777777777778,"#fb9f3a"],[0.8888888888888888,"#fdca26"],[1.0,"#f0f921"]]},"colorway":["#636efa","#EF553B","#00cc96","#ab63fa","#FFA15A","#19d3f3","#FF6692","#B6E880","#FF97FF","#FECB52"],"font":{"color":"#2a3f5f"},"geo":{"bgcolor":"white","lakecolor":"white","landcolor":"white","showlakes":true,"showland":true,"subunitcolor":"#C8D4E3"},"hoverlabel":{"align":"left"},"hovermode":"closest","mapbox":{"style":"light"},"paper_bgcolor":"white","plot_bgcolor":"white","polar":{"angularaxis":{"gridcolor":"#EBF0F8","linecolor":"#EBF0F8","ticks":""},"bgcolor":"white","radialaxis":{"gridcolor":"#EBF0F8","linecolor":"#EBF0F8","ticks":""}},"scene":{"xaxis":{"backgroundcolor":"white","gridcolor":"#DFE8F3","gridwidth":2,"linecolor":"#EBF0F8","showbackground":true,"ticks":"","zerolinecolor":"#EBF0F8"},"yaxis":{"backgroundcolor":"white","gridcolor":"#DFE8F3","gridwidth":2,"linecolor":"#EBF0F8","showbackground":true,"ticks":"","zerolinecolor":"#EBF0F8"},"zaxis":{"backgroundcolor":"white","gridcolor":"#DFE8F3","gridwidth":2,"linecolor":"#EBF0F8","showbackground":true,"ticks":"","zerolinecolor":"#EBF0F8"}},"shapedefaults":{"line":{"color":"#2a3f5f"}},"ternary":{"aaxis":{"gridcolor":"#DFE8F3","linecolor":"#A2B1C6","ticks":""},"baxis":{"gridcolor":"#DFE8F3","linecolor":"#A2B1C6","ticks":""},"bgcolor":"white","caxis":{"gridcolor":"#DFE8F3","linecolor":"#A2B1C6","ticks":""}},"title":{"x":0.05},"xaxis":{"automargin":true,"gridcolor":"#EBF0F8","linecolor":"#EBF0F8","ticks":"","title":{"standoff":15},"zerolinecolor":"#EBF0F8","zerolinewidth":2},"yaxis":{"automargin":true,"gridcolor":"#EBF0F8","linecolor":"#EBF0F8","ticks":"","title":{"standoff":15},"zerolinecolor":"#EBF0F8","zerolinewidth":2}}},"xaxis":{"anchor":"y","domain":[0.0,0.19],"tickvals":[6,12,18,24],"ticktext":["6","12","18","24"]},"yaxis":{"anchor":"x","domain":[0.55,1.0],"title":{"text":"$\u002fMWh"},"range":[-39.4934233,100.0324758]},"yaxis2":{"anchor":"x","overlaying":"y","side":"right","range":[-6033.95,9904.45],"title":{"standoff":8}},"xaxis2":{"anchor":"y3","domain":[0.25,0.44],"tickvals":[6,12,18,24],"ticktext":["6","12","18","24"]},"yaxis3":{"anchor":"x2","domain":[0.55,1.0],"range":[-39.4934233,100.0324758]},"yaxis4":{"anchor":"x2","overlaying":"y3","side":"right","range":[-6033.95,9904.45],"title":{"standoff":8}},"xaxis3":{"anchor":"y5","domain":[0.5,0.69],"tickvals":[6,12,18,24],"ticktext":["6","12","18","24"]},"yaxis5":{"anchor":"x3","domain":[0.55,1.0],"range":[-39.4934233,100.0324758]},"yaxis6":{"anchor":"x3","overlaying":"y5","side":"right","range":[-6033.95,9904.45],"title":{"standoff":8}},"xaxis4":{"anchor":"y7","domain":[0.75,0.94],"tickvals":[6,12,18,24],"ticktext":["6","12","18","24"]},"yaxis7":{"anchor":"x4","domain":[0.55,1.0],"range":[-39.4934233,100.0324758]},"yaxis8":{"anchor":"x4","overlaying":"y7","side":"right","title":{"text":"MW","standoff":8},"range":[-6033.95,9904.45]},"xaxis5":{"anchor":"y9","domain":[0.0,0.19],"title":{"text":"Hour Ending"},"tickvals":[6,12,18,24],"ticktext":["6","12","18","24"]},"yaxis9":{"anchor":"x5","domain":[0.0,0.45],"title":{"text":"$\u002fMWh"},"range":[-39.4934233,100.0324758]},"yaxis10":{"anchor":"x5","overlaying":"y9","side":"right","range":[-6033.95,9904.45],"title":{"standoff":8}},"xaxis6":{"anchor":"y11","domain":[0.25,0.44],"title":{"text":"Hour Ending"},"tickvals":[6,12,18,24],"ticktext":["6","12","18","24"]},"yaxis11":{"anchor":"x6","domain":[0.0,0.45],"range":[-39.4934233,100.0324758]},"yaxis12":{"anchor":"x6","overlaying":"y11","side":"right","range":[-6033.95,9904.45],"title":{"standoff":8}},"xaxis7":{"anchor":"y13","domain":[0.5,0.69],"title":{"text":"Hour Ending"},"tickvals":[6,12,18,24],"ticktext":["6","12","18","24"]},"yaxis13":{"anchor":"x7","domain":[0.0,0.45],"range":[-39.4934233,100.0324758]},"yaxis14":{"anchor":"x7","overlaying":"y13","side":"right","range":[-6033.95,9904.45],"title":{"standoff":8}},"xaxis8":{"anchor":"y15","domain":[0.75,0.94],"title":{"text":"Hour Ending"},"tickvals":[6,12,18,24],"ticktext":["6","12","18","24"]},"yaxis15":{"anchor":"x8","domain":[0.0,0.45],"range":[-39.4934233,100.0324758]},"yaxis16":{"anchor":"x8","overlaying":"y15","side":"right","title":{"text":"MW","standoff":8},"range":[-6033.95,9904.45]},"annotations":[{"font":{"size":16},"showarrow":false,"text":"Spring","x":0.095,"xanchor":"center","xref":"paper","y":1.0,"yanchor":"bottom","yref":"paper"},{"font":{"size":16},"showarrow":false,"text":"Summer","x":0.345,"xanchor":"center","xref":"paper","y":1.0,"yanchor":"bottom","yref":"paper"},{"font":{"size":16},"showarrow":false,"text":"Fall","x":0.595,"xanchor":"center","xref":"paper","y":1.0,"yanchor":"bottom","yref":"paper"},{"font":{"size":16},"showarrow":false,"text":"Winter","x":0.845,"xanchor":"center","xref":"paper","y":1.0,"yanchor":"bottom","yref":"paper"},{"font":{"color":"#444","size":11},"showarrow":false,"text":"\u003cb\u003eCAISO SP15\u003c\u002fb\u003e","textangle":-90,"x":-0.13,"xref":"paper","y":0.78,"yref":"paper"},{"font":{"color":"#444","size":11},"showarrow":false,"text":"\u003cb\u003eERCOT HB_NORTH\u003c\u002fb\u003e","textangle":-90,"x":-0.13,"xref":"paper","y":0.22,"yref":"paper"}],"shapes":[{"line":{"color":"lightgray","dash":"dot","width":0.8},"type":"line","x0":0,"x1":1,"xref":"x domain","y0":0,"y1":0,"yref":"y"},{"line":{"color":"lightgray","dash":"dot","width":0.8},"type":"line","x0":0,"x1":1,"xref":"x2 domain","y0":0,"y1":0,"yref":"y3"},{"line":{"color":"lightgray","dash":"dot","width":0.8},"type":"line","x0":0,"x1":1,"xref":"x3 domain","y0":0,"y1":0,"yref":"y5"},{"line":{"color":"lightgray","dash":"dot","width":0.8},"type":"line","x0":0,"x1":1,"xref":"x4 domain","y0":0,"y1":0,"yref":"y7"},{"line":{"color":"lightgray","dash":"dot","width":0.8},"type":"line","x0":0,"x1":1,"xref":"x5 domain","y0":0,"y1":0,"yref":"y9"},{"line":{"color":"lightgray","dash":"dot","width":0.8},"type":"line","x0":0,"x1":1,"xref":"x6 domain","y0":0,"y1":0,"yref":"y11"},{"line":{"color":"lightgray","dash":"dot","width":0.8},"type":"line","x0":0,"x1":1,"xref":"x7 domain","y0":0,"y1":0,"yref":"y13"},{"line":{"color":"lightgray","dash":"dot","width":0.8},"type":"line","x0":0,"x1":1,"xref":"x8 domain","y0":0,"y1":0,"yref":"y15"}],"legend":{"title":{"text":"Series"},"orientation":"h","y":-0.14,"x":0},"margin":{"t":60,"b":100,"l":80,"r":70},"font":{"family":"Inter, system-ui, sans-serif","size":11},"barmode":"overlay","height":740},                        {"responsive": true, "displayModeBar": false}                    )                };            </script>        </div>
+  </div>
+  <div style="font-size:0.73rem;color:#888;margin:0.5rem 0 0.3rem;font-style:italic">Source: CAISO OASIS SP15 DAM LMP; ERCOT DAM Settlement Point Prices; CAISO fuel mix; ERCOT ESR Integration Reports. 2024–2025. All times in local market time (CAISO: Pacific, ERCOT: Central).</div>
+</div>
+```
+
+## Growth in Other Markets
+
+```{=html}
+<div data-widget style="font-family:'Inter',system-ui,sans-serif;font-size:0.82rem;line-height:1.5;margin:1.8rem 0;color:#222">
+  <div style="margin-bottom:0.15rem;font-size:0.95rem;font-weight:600;color:#111">Figure 6: Utility-Scale Battery Storage Capacity by Market</div>
+  <div style="font-size:0.78rem;color:#777;margin-bottom:0.5rem">Net summer capacity (GW) · EIA-860M April 2026 · CAISO and ERCOT shown for reference</div>
+  <div style="overflow-x:auto">
+<svg style="width:100%;height:auto;display:block" xmlns:xlink="http://www.w3.org/1999/xlink" width="858.96pt" height="418.056875pt" viewBox="0 0 858.96 418.056875" xmlns="http://www.w3.org/2000/svg" version="1.1">
+ <metadata>
+  <rdf:RDF xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+   <cc:Work>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+    <dc:date>2026-06-09T13:42:20.418245</dc:date>
+    <dc:format>image/svg+xml</dc:format>
+    <dc:creator>
+     <cc:Agent>
+      <dc:title>Matplotlib v3.10.9, https://matplotlib.org/</dc:title>
+     </cc:Agent>
+    </dc:creator>
+   </cc:Work>
+  </rdf:RDF>
+ </metadata>
+ <defs>
+  <style type="text/css">*{stroke-linejoin: round; stroke-linecap: butt}</style>
+ </defs>
+ <g id="figure_1">
+  <g id="patch_1">
+   <path d="M 0 418.056875 
+L 858.96 418.056875 
+L 858.96 0 
+L 0 0 
+z
+" style="fill: #ffffff"/>
+  </g>
+  <g id="axes_1">
+   <g id="patch_2">
+    <path d="M 49.76 344.976875 
+L 851.76 344.976875 
+L 851.76 34.356875 
+L 49.76 34.356875 
+z
+" style="fill: #ffffff"/>
+   </g>
+   <g id="matplotlib.axis_1">
+    <g id="xtick_1">
+     <g id="line2d_1">
+      <defs>
+       <path id="m792c116958" d="M 0 0 
+L 0 3 
+" style="stroke: #e4e2da; stroke-width: 0.8"/>
+      </defs>
+      <g>
+       <use xlink:href="#m792c116958" x="105.070345" y="344.976875" style="fill: #e4e2da; stroke: #e4e2da; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_1">
+      <text style="font-size: 12px; font-family: 'Inter', 'Helvetica Neue', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #aaaaaa" x="105.070345" y="360.045625" transform="rotate(-0 105.070345 360.045625)">ERCO</text>
+     </g>
+    </g>
+    <g id="xtick_2">
+     <g id="line2d_2">
+      <g>
+       <use xlink:href="#m792c116958" x="167.923009" y="344.976875" style="fill: #e4e2da; stroke: #e4e2da; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_2">
+      <text style="font-size: 12px; font-family: 'Inter', 'Helvetica Neue', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #aaaaaa" x="167.923009" y="360.045625" transform="rotate(-0 167.923009 360.045625)">CISO</text>
+     </g>
+    </g>
+    <g id="xtick_3">
+     <g id="line2d_3">
+      <g>
+       <use xlink:href="#m792c116958" x="230.775674" y="344.976875" style="fill: #e4e2da; stroke: #e4e2da; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_3">
+      <text style="font-size: 12px; font-family: 'Inter', 'Helvetica Neue', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #aaaaaa" x="230.775674" y="360.045625" transform="rotate(-0 230.775674 360.045625)">AZPS</text>
+     </g>
+    </g>
+    <g id="xtick_4">
+     <g id="line2d_4">
+      <g>
+       <use xlink:href="#m792c116958" x="293.628339" y="344.976875" style="fill: #e4e2da; stroke: #e4e2da; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_4">
+      <text style="font-size: 12px; font-family: 'Inter', 'Helvetica Neue', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #aaaaaa" x="293.628339" y="360.045625" transform="rotate(-0 293.628339 360.045625)">SRP</text>
+     </g>
+    </g>
+    <g id="xtick_5">
+     <g id="line2d_5">
+      <g>
+       <use xlink:href="#m792c116958" x="356.481003" y="344.976875" style="fill: #e4e2da; stroke: #e4e2da; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_5">
+      <text style="font-size: 12px; font-family: 'Inter', 'Helvetica Neue', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #aaaaaa" x="356.481003" y="360.045625" transform="rotate(-0 356.481003 360.045625)">MISO</text>
+     </g>
+    </g>
+    <g id="xtick_6">
+     <g id="line2d_6">
+      <g>
+       <use xlink:href="#m792c116958" x="419.333668" y="344.976875" style="fill: #e4e2da; stroke: #e4e2da; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_6">
+      <text style="font-size: 12px; font-family: 'Inter', 'Helvetica Neue', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #aaaaaa" x="419.333668" y="360.045625" transform="rotate(-0 419.333668 360.045625)">NEVP</text>
+     </g>
+    </g>
+    <g id="xtick_7">
+     <g id="line2d_7">
+      <g>
+       <use xlink:href="#m792c116958" x="482.186332" y="344.976875" style="fill: #e4e2da; stroke: #e4e2da; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_7">
+      <text style="font-size: 12px; font-family: 'Inter', 'Helvetica Neue', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #aaaaaa" x="482.186332" y="360.045625" transform="rotate(-0 482.186332 360.045625)">ISNE</text>
+     </g>
+    </g>
+    <g id="xtick_8">
+     <g id="line2d_8">
+      <g>
+       <use xlink:href="#m792c116958" x="545.038997" y="344.976875" style="fill: #e4e2da; stroke: #e4e2da; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_8">
+      <text style="font-size: 12px; font-family: 'Inter', 'Helvetica Neue', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #aaaaaa" x="545.038997" y="360.045625" transform="rotate(-0 545.038997 360.045625)">FPL</text>
+     </g>
+    </g>
+    <g id="xtick_9">
+     <g id="line2d_9">
+      <g>
+       <use xlink:href="#m792c116958" x="607.891661" y="344.976875" style="fill: #e4e2da; stroke: #e4e2da; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_9">
+      <text style="font-size: 12px; font-family: 'Inter', 'Helvetica Neue', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #aaaaaa" x="607.891661" y="360.045625" transform="rotate(-0 607.891661 360.045625)">PNM</text>
+     </g>
+    </g>
+    <g id="xtick_10">
+     <g id="line2d_10">
+      <g>
+       <use xlink:href="#m792c116958" x="670.744326" y="344.976875" style="fill: #e4e2da; stroke: #e4e2da; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_10">
+      <text style="font-size: 12px; font-family: 'Inter', 'Helvetica Neue', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #aaaaaa" x="670.744326" y="360.045625" transform="rotate(-0 670.744326 360.045625)">PSCO</text>
+     </g>
+    </g>
+    <g id="xtick_11">
+     <g id="line2d_11">
+      <g>
+       <use xlink:href="#m792c116958" x="733.596991" y="344.976875" style="fill: #e4e2da; stroke: #e4e2da; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_11">
+      <text style="font-size: 12px; font-family: 'Inter', 'Helvetica Neue', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #aaaaaa" x="733.596991" y="360.045625" transform="rotate(-0 733.596991 360.045625)">PACE</text>
+     </g>
+    </g>
+    <g id="xtick_12">
+     <g id="line2d_12">
+      <g>
+       <use xlink:href="#m792c116958" x="796.449655" y="344.976875" style="fill: #e4e2da; stroke: #e4e2da; stroke-width: 0.8"/>
+      </g>
+     </g>
+     <g id="text_12">
+      <text style="font-size: 12px; font-family: 'Inter', 'Helvetica Neue', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #aaaaaa" x="796.449655" y="360.045625" transform="rotate(-0 796.449655 360.045625)">Others</text>
+     </g>
+    </g>
+    <g id="text_13">
+     <text style="font-size: 12px; font-family: 'Inter', 'Helvetica Neue', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #aaaaaa" x="450.76" y="378.97875" transform="rotate(-0 450.76 378.97875)">Balancing Authority</text>
+    </g>
+   </g>
+   <g id="matplotlib.axis_2">
+    <g id="ytick_1">
+     <g id="line2d_13">
+      <path d="M 49.76 344.976875 
+L 851.76 344.976875 
+" clip-path="url(#p2bae9210cf)" style="fill: none; stroke: #e4e2da; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_14"/>
+     <g id="text_14">
+      <text style="font-size: 12px; font-family: 'Inter', 'Helvetica Neue', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: end; fill: #aaaaaa" x="46.26" y="349.26125" transform="rotate(-0 46.26 349.26125)">0 GW</text>
+     </g>
+    </g>
+    <g id="ytick_2">
+     <g id="line2d_15">
+      <path d="M 49.76 304.853046 
+L 851.76 304.853046 
+" clip-path="url(#p2bae9210cf)" style="fill: none; stroke: #e4e2da; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_16"/>
+     <g id="text_15">
+      <text style="font-size: 12px; font-family: 'Inter', 'Helvetica Neue', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: end; fill: #aaaaaa" x="46.26" y="309.137421" transform="rotate(-0 46.26 309.137421)">2 GW</text>
+     </g>
+    </g>
+    <g id="ytick_3">
+     <g id="line2d_17">
+      <path d="M 49.76 264.729218 
+L 851.76 264.729218 
+" clip-path="url(#p2bae9210cf)" style="fill: none; stroke: #e4e2da; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_18"/>
+     <g id="text_16">
+      <text style="font-size: 12px; font-family: 'Inter', 'Helvetica Neue', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: end; fill: #aaaaaa" x="46.26" y="269.013593" transform="rotate(-0 46.26 269.013593)">5 GW</text>
+     </g>
+    </g>
+    <g id="ytick_4">
+     <g id="line2d_19">
+      <path d="M 49.76 224.605389 
+L 851.76 224.605389 
+" clip-path="url(#p2bae9210cf)" style="fill: none; stroke: #e4e2da; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_20"/>
+     <g id="text_17">
+      <text style="font-size: 12px; font-family: 'Inter', 'Helvetica Neue', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: end; fill: #aaaaaa" x="46.26" y="228.889764" transform="rotate(-0 46.26 228.889764)">8 GW</text>
+     </g>
+    </g>
+    <g id="ytick_5">
+     <g id="line2d_21">
+      <path d="M 49.76 184.48156 
+L 851.76 184.48156 
+" clip-path="url(#p2bae9210cf)" style="fill: none; stroke: #e4e2da; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_22"/>
+     <g id="text_18">
+      <text style="font-size: 12px; font-family: 'Inter', 'Helvetica Neue', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: end; fill: #aaaaaa" x="46.26" y="188.765935" transform="rotate(-0 46.26 188.765935)">10 GW</text>
+     </g>
+    </g>
+    <g id="ytick_6">
+     <g id="line2d_23">
+      <path d="M 49.76 144.357732 
+L 851.76 144.357732 
+" clip-path="url(#p2bae9210cf)" style="fill: none; stroke: #e4e2da; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_24"/>
+     <g id="text_19">
+      <text style="font-size: 12px; font-family: 'Inter', 'Helvetica Neue', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: end; fill: #aaaaaa" x="46.26" y="148.642107" transform="rotate(-0 46.26 148.642107)">12 GW</text>
+     </g>
+    </g>
+    <g id="ytick_7">
+     <g id="line2d_25">
+      <path d="M 49.76 104.233903 
+L 851.76 104.233903 
+" clip-path="url(#p2bae9210cf)" style="fill: none; stroke: #e4e2da; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_26"/>
+     <g id="text_20">
+      <text style="font-size: 12px; font-family: 'Inter', 'Helvetica Neue', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: end; fill: #aaaaaa" x="46.26" y="108.518278" transform="rotate(-0 46.26 108.518278)">15 GW</text>
+     </g>
+    </g>
+    <g id="ytick_8">
+     <g id="line2d_27">
+      <path d="M 49.76 64.110074 
+L 851.76 64.110074 
+" clip-path="url(#p2bae9210cf)" style="fill: none; stroke: #e4e2da; stroke-width: 0.8; stroke-linecap: square"/>
+     </g>
+     <g id="line2d_28"/>
+     <g id="text_21">
+      <text style="font-size: 12px; font-family: 'Inter', 'Helvetica Neue', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: end; fill: #aaaaaa" x="46.26" y="68.394449" transform="rotate(-0 46.26 68.394449)">18 GW</text>
+     </g>
+    </g>
+   </g>
+   <g id="patch_3">
+    <path d="M 49.76 344.976875 
+L 49.76 34.356875 
+" style="fill: none; stroke: #e4e2da; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="patch_4">
+    <path d="M 49.76 344.976875 
+L 851.76 344.976875 
+" style="fill: none; stroke: #e4e2da; stroke-width: 0.8; stroke-linejoin: miter; stroke-linecap: square"/>
+   </g>
+   <g id="patch_5">
+    <path d="M 86.214545 344.976875 
+L 123.926144 344.976875 
+L 123.926144 90.370318 
+L 86.214545 90.370318 
+z
+" clip-path="url(#p2bae9210cf)" style="fill: #d6604d"/>
+   </g>
+   <g id="patch_6">
+    <path d="M 149.06721 344.976875 
+L 186.778809 344.976875 
+L 186.778809 90.521183 
+L 149.06721 90.521183 
+z
+" clip-path="url(#p2bae9210cf)" style="fill: #2166ac"/>
+   </g>
+   <g id="patch_7">
+    <path d="M 211.919875 344.976875 
+L 249.631473 344.976875 
+L 249.631473 303.251303 
+L 211.919875 303.251303 
+z
+" clip-path="url(#p2bae9210cf)" style="fill: #66c2a5"/>
+   </g>
+   <g id="patch_8">
+    <path d="M 274.772539 344.976875 
+L 312.484138 344.976875 
+L 312.484138 318.206257 
+L 274.772539 318.206257 
+z
+" clip-path="url(#p2bae9210cf)" style="fill: #66c2a5"/>
+   </g>
+   <g id="patch_9">
+    <path d="M 337.625204 344.976875 
+L 375.336803 344.976875 
+L 375.336803 326.396332 
+L 337.625204 326.396332 
+z
+" clip-path="url(#p2bae9210cf)" style="fill: #66c2a5"/>
+   </g>
+   <g id="patch_10">
+    <path d="M 400.477868 344.976875 
+L 438.189467 344.976875 
+L 438.189467 327.020659 
+L 400.477868 327.020659 
+z
+" clip-path="url(#p2bae9210cf)" style="fill: #66c2a5"/>
+   </g>
+   <g id="patch_11">
+    <path d="M 463.330533 344.976875 
+L 501.042132 344.976875 
+L 501.042132 328.628822 
+L 463.330533 328.628822 
+z
+" clip-path="url(#p2bae9210cf)" style="fill: #66c2a5"/>
+   </g>
+   <g id="patch_12">
+    <path d="M 526.183197 344.976875 
+L 563.894796 344.976875 
+L 563.894796 328.694625 
+L 526.183197 328.694625 
+z
+" clip-path="url(#p2bae9210cf)" style="fill: #66c2a5"/>
+   </g>
+   <g id="patch_13">
+    <path d="M 589.035862 344.976875 
+L 626.747461 344.976875 
+L 626.747461 328.795737 
+L 589.035862 328.795737 
+z
+" clip-path="url(#p2bae9210cf)" style="fill: #66c2a5"/>
+   </g>
+   <g id="patch_14">
+    <path d="M 651.888527 344.976875 
+L 689.600125 344.976875 
+L 689.600125 335.963458 
+L 651.888527 335.963458 
+z
+" clip-path="url(#p2bae9210cf)" style="fill: #66c2a5"/>
+   </g>
+   <g id="patch_15">
+    <path d="M 714.741191 344.976875 
+L 752.45279 344.976875 
+L 752.45279 336.615069 
+L 714.741191 336.615069 
+z
+" clip-path="url(#p2bae9210cf)" style="fill: #66c2a5"/>
+   </g>
+   <g id="patch_16">
+    <path d="M 777.593856 344.976875 
+L 815.305455 344.976875 
+L 815.305455 255.231105 
+L 777.593856 255.231105 
+z
+" clip-path="url(#p2bae9210cf)" style="fill: #b2e2d8"/>
+   </g>
+   <g id="text_22">
+    <text style="font-size: 11px; font-family: 'Inter', 'Helvetica Neue', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #222222" x="105.070345" y="84.475534" transform="rotate(-0 105.070345 84.475534)">15.86</text>
+   </g>
+   <g id="text_23">
+    <text style="font-size: 11px; font-family: 'Inter', 'Helvetica Neue', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #222222" x="167.923009" y="84.626399" transform="rotate(-0 167.923009 84.626399)">15.85</text>
+   </g>
+   <g id="text_24">
+    <text style="font-size: 11px; font-family: 'Inter', 'Helvetica Neue', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #222222" x="230.775674" y="297.356519" transform="rotate(-0 230.775674 297.356519)">2.60</text>
+   </g>
+   <g id="text_25">
+    <text style="font-size: 11px; font-family: 'Inter', 'Helvetica Neue', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #222222" x="293.628339" y="312.311473" transform="rotate(-0 293.628339 312.311473)">1.67</text>
+   </g>
+   <g id="text_26">
+    <text style="font-size: 11px; font-family: 'Inter', 'Helvetica Neue', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #222222" x="356.481003" y="320.501549" transform="rotate(-0 356.481003 320.501549)">1.16</text>
+   </g>
+   <g id="text_27">
+    <text style="font-size: 11px; font-family: 'Inter', 'Helvetica Neue', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #222222" x="419.333668" y="321.125875" transform="rotate(-0 419.333668 321.125875)">1.12</text>
+   </g>
+   <g id="text_28">
+    <text style="font-size: 11px; font-family: 'Inter', 'Helvetica Neue', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #222222" x="482.186332" y="322.734038" transform="rotate(-0 482.186332 322.734038)">1.02</text>
+   </g>
+   <g id="text_29">
+    <text style="font-size: 11px; font-family: 'Inter', 'Helvetica Neue', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #222222" x="545.038997" y="322.799842" transform="rotate(-0 545.038997 322.799842)">1.01</text>
+   </g>
+   <g id="text_30">
+    <text style="font-size: 11px; font-family: 'Inter', 'Helvetica Neue', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #222222" x="607.891661" y="322.900954" transform="rotate(-0 607.891661 322.900954)">1.01</text>
+   </g>
+   <g id="text_31">
+    <text style="font-size: 11px; font-family: 'Inter', 'Helvetica Neue', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #222222" x="670.744326" y="330.068674" transform="rotate(-0 670.744326 330.068674)">0.56</text>
+   </g>
+   <g id="text_32">
+    <text style="font-size: 11px; font-family: 'Inter', 'Helvetica Neue', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #222222" x="733.596991" y="330.720285" transform="rotate(-0 733.596991 330.720285)">0.52</text>
+   </g>
+   <g id="text_33">
+    <text style="font-size: 11px; font-family: 'Inter', 'Helvetica Neue', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: middle; fill: #222222" x="796.449655" y="249.336321" transform="rotate(-0 796.449655 249.336321)">5.59</text>
+   </g>
+   <g id="text_34">
+    <text style="font-size: 18px; font-family: 'Inter', 'Helvetica Neue', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: start; fill: #111111" x="49.76" y="20.356875" transform="rotate(-0 49.76 20.356875)">Utility-Scale Battery Storage Capacity by Market — April 2026</text>
+   </g>
+  </g>
+  <g id="text_35">
+   <text style="font-size: 11px; font-family: 'Inter', 'Helvetica Neue', 'Arial', 'DejaVu Sans', sans-serif; text-anchor: start; fill: #999999" x="7.2" y="408.557187" transform="rotate(-0 7.2 408.557187)">Source: EIA-860M April 2026. Named markets ≥ 0.5 GW shown individually; remaining markets summed into "Others".</text>
+  </g>
+ </g>
+ <defs>
+  <clipPath id="p2bae9210cf">
+   <rect x="49.76" y="34.356875" width="802" height="310.62"/>
+  </clipPath>
+ </defs>
+</svg>
+  </div>
+  <div style="font-size:0.73rem;color:#888;margin:0.5rem 0 0.3rem;font-style:italic">Source: EIA Form 860M, April 2026. Named markets ≥ 0.5 GW shown individually; remaining markets summed into "Others".</div>
+</div>
+```
+
+Figure 6 uses EIA-860M data to show installed capacity as of April 2026 for markets with at least 500 MW of battery storage. Beyond CAISO and ERCOT, AZPS, SRP, MISO, NEVP, ISNE, FPL, and PNM have each crossed the 1 GW mark. A few market changes which will impact battery storage deployment:
+
+- ERCOT's Real-Time Co-Optimization with Batteries (RTC+B) project launched December 2025, treating batteries as unified resources co-optimized across energy and ancillary services.[^rtcb]
+- CAISO's Slice of Day (SOD) framework meanwhile will change resource adequacy (RA) obligations for load serving entities (LSEs) from a simple monthly target to a 12-month, 24-hour target.
+- CAISO's Extended Day-Ahead Market (EDAM) launched in May 2026 and SPP Markets+ expected in October 2027.[^modoenergy-edam]
+
+## Data and Methods
+
+**EIA-860M**: Monthly generator-level data from EIA Form 860M, April 2026 snapshot.[^eia860m] Battery units are identified by `Technology == "Batteries"`. **Duration** is computed as Nameplate Energy Capacity (MWh) ÷ Net Summer Capacity (MW). **Co-location type** is inferred by matching Plant ID between battery and solar/wind generators within the same balancing authority. Both duration and co-location are analytical constructs derived from the data; neither is a field that EIA publishes directly.
+
+**CAISO fuel mix**: Five-minute interval net generation by fuel type, 2018–2025, downloaded via the gridstatus.io API[^gridstatus] (underlying source: CAISO OASIS).[^caiso-oasis] Battery storage is reported as a signed net value (positive = discharging, negative = charging).
+
+**CAISO SP15 LMP**: Day-ahead locational marginal prices at the SP15 hub, 2024–2025, downloaded via the gridstatus.io API.
+
+**ERCOT battery dispatch**: Hourly ESR charge and discharge data, December 2023 to present, downloaded via the gridstatus.io API.[^ercot-esr]
+
+**ERCOT DAM Settlement Point Prices**: Annual Excel files containing hourly day-ahead settlement point prices for ERCOT hubs. HB_NORTH used as the reference hub price. 2024–2025 annual files.[^ercot-prices]
+
+
+<!-- AUTHOR NOTE: Add analysis notebook links and GitHub repo when created. -->
+
+[^linkedin]: [John Bistline, LinkedIn post — "Texas just passed California in utility-scale battery storage"](https://www.linkedin.com/posts/john-bistline-10166437_texas-just-passed-california-in-utility-scale-share-7457851304296468480-HVOz/)
+[^eia860m]: [EIA Form 860M](https://www.eia.gov/electricity/data/eia860m/) — Monthly generator-level data from the U.S. Energy Information Administration.
+[^cpuc2021]: [CPUC Decision 21-06-040](https://docs.cpuc.ca.gov) — Updated RA methodology formalizing the 4-hour duration standard.
+[^cpuc2022]: [CPUC Decision 22-11-009](https://docs.cpuc.ca.gov) — Further ELCC methodology refinements retaining the 4-hour anchor.
+[^caiso-ra]: [CAISO RA requirements and planning parameters](https://www.caiso.com/planning/Pages/ReliabilityRequirements/Default.aspx)
+[^lbnl]: [LBNL Utility-Scale Battery Storage annual update](https://emp.lbl.gov/utility-scale-battery-storage) — Tracks how RA policy drives duration choices.
+[^amperon]: [Amperon — Battery Energy Storage: ERCOT vs CAISO](https://www.amperon.co/blog/battery-energy-storage-ercot-vs-caiso)
+[^aurora-itc]: [Aurora Solar — Can You Use The ITC For Battery Storage? (IRA Update)](https://aurorasolar.com/blog/federal-tax-incentive-for-battery-storage/)
+[^rabobank-ca]: [Rabobank — Why performance, not volume, now defines California's saturated battery market](https://www.rabobank.com/knowledge/d011477894-why-performance-not-volume-now-defines-californias-saturated-battery-market)
+[^caiso-storage-2024]: [CAISO 2024 Special Report on Battery Storage](https://www.caiso.com/documents/2024-special-report-on-battery-storage-may-29-2025.pdf)
+[^eia-curtailment]: [EIA — Solar and wind power curtailments are increasing in California](https://www.eia.gov/todayinenergy/detail.php?id=65364)
+[^pv-curtailment]: [pv-magazine — California solar curtailment down 12% on back of batteries (July 2025)](https://pv-magazine-usa.com/2025/07/22/california-solar-curtailment-down-12-on-back-of-batteries/)
+[^sgip-cpuc]: [CPUC — SGIP Program](https://www.cpuc.ca.gov/industries-and-topics/electrical-energy/demand-side-management/self-generation-incentive-program)
+[^modoenergy-ra]: [Modo Energy — CAISO battery co-location vs standalone revenues](https://modoenergy.com/research/en/caiso-battery-colocation-standalone-revenues-financing-offtake-ferc-eqr)
+[^gridmatic]: [Gridmatic — Differences in battery participation in the CAISO and ERCOT markets](https://www.gridmatic.com/differences-in-battery-participation-in-the-caiso-and-ercot-markets/)
+[^rtcb]: [Energy Storage News — Foundational market shifts affecting BESS in CAISO and ERCOT](https://www.energy-storage.news/foundational-market-shifts-affecting-bess-in-caiso-and-ercot-coming-in-2025/)
+[^modoenergy-edam]: [Modo Energy — What the launch of EDAM means for renewable investments](https://modoenergy.com/research/en/caiso-spp-extended-day-ahead-market-launch-edam-western-interconnection-markets-plus)
+[^gridstatus]: [gridstatus](https://www.gridstatus.io) — open-source library and API for accessing real-time and historical grid data from US electricity markets.
+[^caiso-oasis]: [CAISO OASIS API](https://www.caiso.com/market-operations/market-data-and-analysis)
+[^ercot-esr]: [ERCOT Data Portal NP4-765-ER](https://data.ercot.com/data-product-details/np4-765-er)
+[^ercot-prices]: [ERCOT DAM Settlement Point Prices NP4-183-ER](https://www.ercot.com/mp/data-products/data-product-details?id=NP4-183-ER)
