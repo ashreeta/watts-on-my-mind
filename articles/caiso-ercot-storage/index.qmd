@@ -1436,7 +1436,7 @@ Co-location was derived from the EIA-860M data using Plant ID matching: a batter
 </div>
 ```
 
-California has a larger share of batteries paired with solar generators while Texas has predominantly standalone battery storage, shown in Figure 3. The most plausible reasons for this difference are incentive structures. Before the Inflation Reduction Act (August 2022), battery storage could only qualify for the federal Investment Tax Credit (ITC) if it was charged exclusively from an on-site solar facility.[^aurora-itc] Standalone batteries charged from the grid did not qualify. Therefore many projects were paired with solar specifically to access the 30% ITC. California's Self-Generation Incentive Program (SGIP) had a dedicated large-scale storage budget.[^sgip-cpuc] Large-scale projects that could demonstrate 75%+ charging from on-site solar qualified for the higher "paired renewable" incentive tier ($2.00/W base + $2.50/W resiliency adder = $4.50/W), versus the plain storage rate. This created an incremental financial case for co-locating solar and storage, particularly during 2019–2022 when the large-scale budget was still available.
+California has a larger share of batteries paired with solar generators while Texas has predominantly standalone battery storage, shown in Figure 3. The most plausible reasons for this difference are incentive structures. Before the Inflation Reduction Act (August 2022), battery storage could only qualify for the federal Investment Tax Credit (ITC) if it was charged exclusively from an on-site solar facility. Standalone batteries charged from the grid did not qualify. Therefore many projects were paired with solar specifically to access the 30% ITC. California's Self-Generation Incentive Program (SGIP) had a dedicated large-scale storage budget.[^sgip-cpuc] Large-scale projects that could demonstrate 75%+ charging from on-site solar qualified for the higher "paired renewable" incentive tier ($2.00/W base + $2.50/W resiliency adder = $4.50/W), versus the plain storage rate. This created an incremental financial case for co-locating solar and storage, particularly during 2019–2022 when the large-scale budget was still available.
 
 ### Co-location × Duration
 
@@ -1444,7 +1444,7 @@ Figure 4 below shows the share of installed capacity by duration class within ea
 
 Standalone batteries skew toward longer durations because as discussed earlier, they are built  primarily for Resource Adequacy  and CPUC's RA program requires 4 hours of discharge at rated capacity for full NQC credit.
 
-Batteries co-located with solar have a wider spread. The higher ≤2hr share is likely due to many pre-IRA co-located batteries (2019–2022) built primarily to access the 30% ITC rather than to optimise for RA, with duration set by developer economics.[^aurora-itc]
+Batteries co-located with solar have a wider spread. The higher ≤2hr share is likely due to many pre-IRA co-located batteries (2019–2022) built primarily to access the 30% ITC rather than to optimise for RA, with duration set by developer economics.
 
 
 
@@ -1976,7 +1976,6 @@ Figure 6 uses EIA-860M data to show installed capacity as of April 2026 for mark
 [^caiso-ra]: [CAISO RA requirements and planning parameters](https://www.caiso.com/planning/Pages/ReliabilityRequirements/Default.aspx)
 [^lbnl]: [LBNL Utility-Scale Battery Storage annual update](https://emp.lbl.gov/utility-scale-battery-storage) — Tracks how RA policy drives duration choices.
 [^amperon]: [Amperon — Battery Energy Storage: ERCOT vs CAISO](https://www.amperon.co/blog/battery-energy-storage-ercot-vs-caiso)
-[^aurora-itc]: [Aurora Solar — Can You Use The ITC For Battery Storage? (IRA Update)](https://aurorasolar.com/blog/federal-tax-incentive-for-battery-storage/)
 [^sgip-cpuc]: [CPUC — SGIP Program](https://www.cpuc.ca.gov/industries-and-topics/electrical-energy/demand-side-management/self-generation-incentive-program)
 [^modoenergy-ra]: [Modo Energy — CAISO battery co-location vs standalone revenues](https://modoenergy.com/research/en/caiso-battery-colocation-standalone-revenues-financing-offtake-ferc-eqr)
 [^gridmatic]: [Gridmatic — Differences in battery participation in the CAISO and ERCOT markets](https://www.gridmatic.com/differences-in-battery-participation-in-the-caiso-and-ercot-markets/)
