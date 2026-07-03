@@ -1,6 +1,6 @@
 ---
 title: "Curtailment: Can we avoid it?"
-date: "2026-06-22"
+date: "2026-07-02"
 description: "Curtailment is growing in every major electricity market, even as battery storage expands. This article provides a deeper look at potential solutions"
 categories: ["CAISO", "ERCOT", "curtailment", "transmission", "battery storage", "electricity markets"]
 reference-location: document
