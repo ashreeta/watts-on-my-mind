@@ -125,7 +125,6 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#study-types-and-regulatory-triggers" id="toc-study-types-and-regulatory-triggers" class="nav-link" data-scroll-target="#study-types-and-regulatory-triggers">Study Types and Regulatory Triggers</a></li>
   <li><a href="#what-individual-studies-cannot-capture" id="toc-what-individual-studies-cannot-capture" class="nav-link" data-scroll-target="#what-individual-studies-cannot-capture">What Individual Studies Cannot Capture</a></li>
   <li><a href="#how-outputs-translate-to-planning-decisions-and-stakeholder-actions" id="toc-how-outputs-translate-to-planning-decisions-and-stakeholder-actions" class="nav-link" data-scroll-target="#how-outputs-translate-to-planning-decisions-and-stakeholder-actions">How Outputs Translate to Planning Decisions and Stakeholder Actions</a></li>
-  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
   </ul>
 </nav>
     </div>
@@ -177,7 +176,8 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="distribution-planning-tools" class="level2">
 <h2 class="anchored" data-anchor-id="distribution-planning-tools">Distribution Planning Tools</h2>
-<p>Commercial for distribution planning tools are favored by utilities primarily due to their validated interfaces, regulatory acceptance in rate case filings, and dedicated vendor support. More recently, open source tools are increasingly used by academia and utilities and developers for DER integration studies due to their flexibility, python interoperability, and no licensing costs. The two ecosystems are not mutually exclusive and many utilities run commercial tools for core planning while using open source frameworks for scenario analysis, DER impact studies, and pilot evaluation. The interactive summary below provides details about the capabilities and use cases for open source distribution grid planning tools.</p>
+<p>Distribution grid planning tools simulate how power flows across feeders, transformers, and substations under different load, generation, and topology scenarios, giving utilities and regulators the technical basis for interconnection approvals and infrastructure investment decisions.</p>
+<p>Commercial distribution planning tools are favored by utilities primarily due to their validated interfaces, regulatory acceptance in rate case filings, and dedicated vendor support. More recently, open source tools are increasingly used by academia and utilities and developers for DER integration studies due to their flexibility, python interoperability, and no licensing costs. The two ecosystems are not mutually exclusive and many utilities run commercial tools for core planning while using open source frameworks for scenario analysis, DER impact studies, and pilot evaluation. The interactive summary below provides details about the capabilities and use cases for open source distribution grid planning tools.</p>
 <style>
 #w-tools {
   --color-text-primary: #1a1a1a;
@@ -623,8 +623,8 @@ ul.task-list li input[type="checkbox"] {
 </div>
 <p>Three methodological limitations are worth noting:</p>
 <ul>
-<li>Hosting capacity analysis using deterministic static methods understates true hosting capacity by 2–5× compared to quasi-static time-series methods.<sup>[1]</sup></li>
-<li>As inverter-based resource (IBR) penetration grows, classical fault analysis methods produce increasingly inaccurate results.<sup>[2]</sup></li>
+<li>Hosting capacity analysis using deterministic static methods understates true hosting capacity by 2–5× compared to quasi-static time-series methods.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></li>
+<li>As inverter-based resource (IBR) penetration grows, classical fault analysis methods produce increasingly inaccurate results.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></li>
 <li>Transformer thermal aging is not modeled by any tool in the open source stack and is not triggered by any regulatory requirement, despite being directly relevant when load shape changes from cyclic to continuous operation.</li>
 </ul>
 </section>
@@ -855,7 +855,7 @@ ul.task-list li input[type="checkbox"] {
 <section id="what-individual-studies-cannot-capture" class="level2">
 <h2 class="anchored" data-anchor-id="what-individual-studies-cannot-capture">What Individual Studies Cannot Capture</h2>
 <p>Some utilities, particularly in states with integrated distribution planning requirements such as California and New York, conduct combined multi-technology feeder analysis internally. But no US regulatory framework requires it as a condition of interconnection approval.</p>
-<p>This gap carries two compounding costs: reliability risk from inadequate combined modeling and non-wires alternatives not surfacing when they could be a lower cost solution. With respect to the former, NERC’s 2024 advisory linked 16 coordinated IBR disturbance events to poor multi-resource study practice<sup>[3]</sup>. In the case of the latter, technologies studied independently cannot surface whether aggregated DER, storage, or demand response could defer a planned infrastructure upgrade. New York’s BQDM program illustrated the stakes: mandated multi-resource analysis identified a ~$200 million demand-side solution where wire-first planning had been tracking a $1 billion substation upgrade.<sup>[4]</sup></p>
+<p>This gap carries two compounding costs: reliability risk from inadequate combined modeling and non-wires alternatives not surfacing when they could be a lower cost solution. With respect to the former, NERC’s 2024 advisory linked 16 coordinated IBR disturbance events to poor multi-resource study practice.<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> In the case of the latter, technologies studied independently cannot surface whether aggregated DER, storage, or demand response could defer a planned infrastructure upgrade. New York’s BQDM program illustrated the stakes: mandated multi-resource analysis identified a ~$200 million demand-side solution where wire-first planning had been tracking a $1 billion substation upgrade.<a href="#fn4" class="footnote-ref" id="fnref4" role="doc-noteref"><sup>4</sup></a></p>
 <p>The analysis below maps what compound technology interactions look like when co-located assets are assessed together.</p>
 <style>
 #w-compound {
@@ -1470,15 +1470,6 @@ ul.task-list li input[type="checkbox"] {
 </div>
 <p>The most immediate opportunities lie in extending the integrated distribution planning frameworks developed in New York, California, and Illinois — requiring public disclosure of system plans, combined multi-technology study standards, and systematic NWA evaluation — to the rest of the US, roughly 30 states where no such requirements currently exist. Establishing a federal research agenda to fill the empirical gap in multi-stressor feeder analysis would also valuable.</p>
 <hr>
-</section>
-<section id="references" class="level2">
-<h2 class="anchored" data-anchor-id="references">References</h2>
-<ol type="1">
-<li>Horowitz et al., NREL 2019; IEC/IEEE review literature 2023–25</li>
-<li>NERC July 2025 whitepaper; PG&amp;E/Sandia SWAP project 2023</li>
-<li>NERC, IBR and DER Disturbances Advisory, June 2024</li>
-<li>NY PSC, Reforming the Energy Vision (REV) proceeding; Con Edison Brooklyn-Queens Demand Management Program (BQDM), 2014–2016</li>
-</ol>
 <script>
 function switchTabImpact(name) {
   document.querySelectorAll('#w-impact .witab').forEach(t => t.classList.remove('active'));
@@ -1533,7 +1524,16 @@ function selCmnd(i,btn){document.querySelectorAll('#w-compound .tech-btn').forEa
 
 </section>
 
-</main> <!-- /main -->
+
+<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p>Horowitz et al., NREL 2019; IEC/IEEE review literature 2023–25.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>NERC, July 2025 whitepaper on inverter-based resource fault analysis; PG&amp;E/Sandia SWAP project, 2023.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn3"><p>NERC, <em>IBR and DER Disturbances Advisory</em>, June 2024.<a href="#fnref3" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn4"><p>NY PSC, Reforming the Energy Vision (REV) proceeding; Con Edison Brooklyn-Queens Demand Management Program (BQDM), 2014–2016.<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
