@@ -1106,8 +1106,6 @@ Raw simulation outputs — voltage profiles, thermal loading, hosting capacity e
 
 The most immediate opportunities lie in extending the integrated distribution planning frameworks developed in New York, California, and Illinois — requiring public disclosure of system plans, combined multi-technology study standards, and systematic NWA evaluation — to the rest of the US, roughly 30 states where no such requirements currently exist. Establishing a federal research agenda to fill the empirical gap in multi-stressor feeder analysis would also valuable.
 
----
-
 [^horowitz-hca]: Horowitz et al., NREL 2019; IEC/IEEE review literature 2023–25.
 
 [^nerc-ibr-fault]: NERC, July 2025 whitepaper on inverter-based resource fault analysis; PG&E/Sandia SWAP project, 2023.

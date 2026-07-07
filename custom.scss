@@ -139,6 +139,16 @@ h3 {
   margin-bottom: 0.5rem;
 }
 
+// Bootstrap forces the References/Footnotes appendix heading to 1em
+// !important — match it back to the body h2 style for consistency.
+#quarto-appendix.default .quarto-appendix-heading {
+  font-size: 1.65rem !important;
+  font-weight: 400;
+  padding-bottom: 0.35rem;
+  border-bottom: 1px solid $border-color;
+  opacity: 1;
+}
+
 h4 {
   font-size: 1.05rem;
   font-family: 'Inter', system-ui, sans-serif;
