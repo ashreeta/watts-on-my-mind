@@ -7,7 +7,9 @@ categories: ["distribution grid", "grid planning", "policy", "regulation", "engi
 
 ## Distribution Planning Tools
 
-Commercial for distribution planning tools are favored by utilities primarily due to their validated interfaces, regulatory acceptance in rate case filings, and dedicated vendor support. 
+Distribution grid planning tools simulate how power flows across feeders, transformers, and substations under different load, generation, and topology scenarios, giving utilities and regulators the technical basis for interconnection approvals and infrastructure investment decisions.
+
+Commercial distribution planning tools are favored by utilities primarily due to their validated interfaces, regulatory acceptance in rate case filings, and dedicated vendor support.
 More recently, open source tools are increasingly used by academia and utilities and developers for DER integration studies due to their flexibility, python interoperability, and no licensing costs. The two ecosystems are not mutually exclusive and many utilities run commercial tools for core planning while using open source frameworks for scenario analysis, DER impact studies, and pilot evaluation. The interactive summary below provides details about the capabilities and use cases for open source distribution grid planning tools.
 
 ```{=html}
@@ -281,8 +283,8 @@ More recently, open source tools are increasingly used by academia and utilities
 ```
 Three methodological limitations are worth noting:
 
-- Hosting capacity analysis using deterministic static methods understates true hosting capacity by 2–5× compared to quasi-static time-series methods.<sup>[1]</sup>
-- As inverter-based resource (IBR) penetration grows, classical fault analysis methods produce increasingly inaccurate results.<sup>[2]</sup>
+- Hosting capacity analysis using deterministic static methods understates true hosting capacity by 2–5× compared to quasi-static time-series methods.[^horowitz-hca]
+- As inverter-based resource (IBR) penetration grows, classical fault analysis methods produce increasingly inaccurate results.[^nerc-ibr-fault]
 - Transformer thermal aging is not modeled by any tool in the open source stack and is not triggered by any regulatory requirement, despite being directly relevant when load shape changes from cyclic to continuous operation.
 
 
@@ -520,7 +522,7 @@ Distribution interconnection analysis consists of seven study types. Applicable 
 
 Some utilities, particularly in states with integrated distribution planning requirements such as California and New York, conduct combined multi-technology feeder analysis internally. But no US regulatory framework requires it as a condition of interconnection approval.
 
-This gap carries two compounding costs: reliability risk from inadequate combined modeling and non-wires alternatives not surfacing when they could be a lower cost solution. With respect to the former, NERC's 2024 advisory linked 16 coordinated IBR disturbance events to poor multi-resource study practice<sup>[3]</sup>. In the case of the latter, technologies studied independently cannot surface whether aggregated DER, storage, or demand response could defer a planned infrastructure upgrade. New York's BQDM program illustrated the stakes: mandated multi-resource analysis identified a ~$200 million demand-side solution where wire-first planning had been tracking a $1 billion substation upgrade.<sup>[4]</sup>
+This gap carries two compounding costs: reliability risk from inadequate combined modeling and non-wires alternatives not surfacing when they could be a lower cost solution. With respect to the former, NERC's 2024 advisory linked 16 coordinated IBR disturbance events to poor multi-resource study practice.[^nerc-disturbance] In the case of the latter, technologies studied independently cannot surface whether aggregated DER, storage, or demand response could defer a planned infrastructure upgrade. New York's BQDM program illustrated the stakes: mandated multi-resource analysis identified a ~$200 million demand-side solution where wire-first planning had been tracking a $1 billion substation upgrade.[^bqdm]
 
 The analysis below maps what compound technology interactions look like when co-located assets are assessed together.
 
@@ -1104,12 +1106,13 @@ The most immediate opportunities lie in extending the integrated distribution pl
 
 ---
 
-## References
+[^horowitz-hca]: Horowitz et al., NREL 2019; IEC/IEEE review literature 2023–25.
 
-1. Horowitz et al., NREL 2019; IEC/IEEE review literature 2023–25
-2. NERC July 2025 whitepaper; PG&E/Sandia SWAP project 2023
-3. NERC, IBR and DER Disturbances Advisory, June 2024
-4. NY PSC, Reforming the Energy Vision (REV) proceeding; Con Edison Brooklyn-Queens Demand Management Program (BQDM), 2014–2016
+[^nerc-ibr-fault]: NERC, July 2025 whitepaper on inverter-based resource fault analysis; PG&E/Sandia SWAP project, 2023.
+
+[^nerc-disturbance]: NERC, *IBR and DER Disturbances Advisory*, June 2024.
+
+[^bqdm]: NY PSC, Reforming the Energy Vision (REV) proceeding; Con Edison Brooklyn-Queens Demand Management Program (BQDM), 2014–2016.
 
 ```{=html}
 <script>
