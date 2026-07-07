@@ -3,6 +3,8 @@ title: "Distribution Grid Analysis: A Primer"
 date: "2026-05-06"
 description: "How distribution grid simulation works, what regulatory frameworks require, and why the absence of combined multi-technology assessment creates systematic investment risk."
 categories: ["distribution grid", "grid planning", "policy", "regulation", "engineering"]
+language:
+  section-title-footnotes: "References"
 ---
 
 ## Distribution Planning Tools
